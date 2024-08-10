@@ -1,6 +1,8 @@
 const express = require('express');
 const EmuReport = require('./models/EmuReport'); // Import the EmuReport model
 const sequelize = require('./config/database'); // Import the Sequelize instance
+// Import routes
+const excelRoutes = require('./routes/excelRoutes');
 
 // Initialize Express
 const app = express();
@@ -31,6 +33,11 @@ app.get('/api/emureport/:filename', async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+
+
+// Use routes
+app.use('/api', excelRoutes);
+
 
 // Start the server
 app.listen(PORT, () => {
