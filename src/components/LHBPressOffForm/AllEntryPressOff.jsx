@@ -35,51 +35,55 @@ const AllEntryPressOff = () => {
     const worksheet = workbook.addWorksheet("LHBPressOffForm");
 
     worksheet.columns = [
-      { header: "Date", key: "Date", width: 10 },
+      { header: "Date", key: "Date", width: 30 },
+      { header: "Operator Name", key: "OperatorName", width: 30 },
       { header: "Operator T.No.", key: "OperatorTNo", width: 30 },
+      { header: "Inspector Name", key: "InspectorName", width: 30 },
       { header: "Inspector T.No.", key: "InspectorTNo", width: 30 },
-      { header: "ShopS.No.", key: "ShopSNo", width: 30 },
+      { header: "Shop Sr.No.", key: "ShopSNo", width: 30 },
+      { header: "Machine No.", key: "MachineNumber", width: 30 },
+      { header: "Shift No.", key: "ShiftNumber", width: 30 },
       { header: "Type Of Wheel", key: "TypeOfWheel", width: 30 },
-      {
-        header: "Wheel Pressed Off For RA/RD/RG",
-        key: "WheelPressedOff",
-        width: 30,
-      },
+      { header: "Wheel Pressed Off For RA/RD/RG", key: "WheelPressedOff", width: 30 },
       { header: "Disc Sr.No.", key: "DiscSrNo", width: 30 },
       { header: "General Observation", key: "GeneralObservation", width: 30 },
       { header: "Axle No.", key: "AxleNo", width: 15 },
       { header: "Reason", key: "Reason", width: 30 },
-
-      { header: "Axle Condition", key: "ReasonAxleCondition", width: 30 },
-      {
-        header: "Axle Condition Reason",
-        key: "AxleConditionReason",
-        width: 30,
-      },
+      { header: "Axle Condition", key: "AxleCondition", width: 30 },
+      { header: "Axle Condition Reason", key: "AxleConditionReason", width: 30 },
+      { header: "Axle Cause Of Condemn", key: "AxleConditionCause", width: 30 },
       { header: "Brake Disc Condition", key: "BrakeDiscCondition", width: 30 },
-      {
-        header: "Brake Disc Condition Reason",
-        key: "BrakeDiscConditionReason",
-        width: 30,
-      },
+      { header: "Brake Disc Condition Reason", key: "BrakeDiscConditionReason", width: 30 },
+      { header: "Brake Disc Cause Of Condemn", key: "BrakeDiscConditionCause", width: 30 },
       { header: "Wheel Disc Condition", key: "WheelDiscCondition", width: 30 },
-      {
-        header: "Wheel Condition Reason",
-        key: "WheelConditionReason",
-        width: 30,
-      },
-
+      { header: "Wheel Condition Reason", key: "WheelConditionReason", width: 30 },
+      { header: "Wheel Disc Cause Of Condemn", key: "WheelDiscConditionCause", width: 30 },
+      { header: "Serviceable Disc ID No.", key: "serviceablediscidnumber", width: 30 },
       { header: "Remark", key: "PressedOffRemark", width: 30 },
     ];
     worksheet.getRow(1).values = [
       "Date",
+      "Operator Name",
       "Operator T.No.",
+      "Inspector Name",
       "Inspector T.No.",
-      "ShopS.No.",
+      "Shop Sr.No.",
+      "Machine No.",
+      "Shift No.",
       "Type Of Wheel",
       "Wheel Pressed Off For RA/RD/RG",
       "Disc Sr.No.",
       "General Observation",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
       "",
       "Remark",
     ];
@@ -92,8 +96,22 @@ const AllEntryPressOff = () => {
       "",
       "",
       "",
+      "",
+      "",
+      "",
+      "",
       "Axle No.",
       "Reason",
+      "Axle Condition",
+      "Axle Condition Reason",
+      "Axle Cause Of Condemn",
+      "Brake Disc Condition",
+      "Brake Disc Condition Reason",
+      "Brake Disc Cause Of Condemn",
+      "Wheel Disc Condition",
+      "Wheel Condition Reason",
+      "Wheel Disc Cause Of Condemn",
+      "Serviceable Disc ID No.",
       "",
     ];
 
@@ -105,8 +123,14 @@ const AllEntryPressOff = () => {
     worksheet.mergeCells("E1:E2");
     worksheet.mergeCells("F1:F2");
     worksheet.mergeCells("G1:G2");
-    worksheet.mergeCells("H1:I1");
+    worksheet.mergeCells("H1:H2");
+    worksheet.mergeCells("I1:I2");
     worksheet.mergeCells("J1:J2");
+    worksheet.mergeCells("K1:K2");
+    worksheet.mergeCells("L1:W1");
+    worksheet.mergeCells("X1:X2");
+    
+
 
     // Apply styles to headers
     worksheet.getRow(1).font = { bold: true };
@@ -159,15 +183,29 @@ const AllEntryPressOff = () => {
     data.forEach((item) => {
       worksheet.addRow({
         Date: item.Date,
+        OperatorName: item.OperatorName,
         OperatorTNo: item.OperatorTNo,
+        InspectorName: item.InspectorName,
         InspectorTNo: item.InspectorTNo,
         ShopSNo: item.ShopSNo,
+        MachineNumber: item.MachineNumber,
+        ShiftNumber: item.ShiftNumber,
         TypeOfWheel: item.TypeOfWheel,
         WheelPressedOff: item.WheelPressedOff,
         DiscSrNo: item.DiscSrNo,
         GeneralObservation: item.AxleNo,
         AxleNo: item.Reason,
-        Reason: item.PressedOffRemark,
+        Reason: item.AxleCondition,
+        AxleCondition: item.AxleConditionReason,
+        AxleConditionReason: item.AxleConditionCause,
+        AxleConditionCause: item.BrakeDiscCondition,
+        BrakeDiscCondition: item.BrakeDiscConditionReason,
+        BrakeDiscConditionReason: item.BrakeDiscConditionCause,
+        BrakeDiscConditionCause: item.WheelDiscCondition,
+        WheelDiscCondition: item.WheelConditionReason,
+        WheelConditionReason: item.WheelDiscConditionCause,
+        WheelDiscConditionCause: item.serviceablediscidnumber,
+        serviceablediscidnumber: item.PressedOffRemark,
       });
     });
 
@@ -232,9 +270,9 @@ const AllEntryPressOff = () => {
         row.OperatorName,
         row.InspectorTNo,
         row.InspectorName,
+        row.ShopSNo,
         row.MachineNumber,
         row.ShiftNumber,
-        row.ShopSNo,
         row.TypeOfWheel,
         row.WheelPressedOff,
         row.DiscSrNo,

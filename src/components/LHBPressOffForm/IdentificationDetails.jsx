@@ -4,9 +4,13 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { useDropzone } from "react-dropzone";
 import { useLocation } from "react-router-dom";
 
-function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInputChange,
+function IdentificationDetails({
+  formDataPressOffLHB,
+  setFormDataPressOffLHB,
+  onInputChange,
   onNextStep,
-  onResetStep, }) {
+  onResetStep,
+}) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
   const [errors, setErrors] = useState({}); // State for validation errors
@@ -19,7 +23,7 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
 
       // Manually validate if the file is an image
       if (file && file.type.startsWith("image/")) {
-        setFile(file);  // Set the single file to state
+        setFile(file); // Set the single file to state
       }
     },
   });
@@ -33,11 +37,10 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
       setFormDataPressOffLHB((prevFormData) => ({
         ...prevFormData,
         ShopSNo: WheelNo,
-        wheelid: wheelid
+        wheelid: wheelid,
       }));
     }
   }, [WheelNo, wheelid, setFormDataPressOffLHB]);
-
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -51,21 +54,17 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
     }
   };
 
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     onInputChange(name, value);
     console.log(formDataPressOffLHB);
   };
 
-
   const validateForm = () => {
     const newErrors = {};
     if (!formDataPressOffLHB.Date) {
       newErrors.Date = "Date is required.";
     }
-
-
 
     if (!formDataPressOffLHB.ShopSNo) {
       newErrors.ShopSNo = "Shop Sr.No. is required.";
@@ -77,7 +76,6 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
     if (!formDataPressOffLHB.ShiftNumber) {
       newErrors.ShiftNumber = "Shift No. is required.";
     }
-
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -109,17 +107,27 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
 
   return (
     <div className="component">
-      <h2 style={{ textAlign: "center", backgroundColor: "black", color: "white", opacity: 1 }}>PRESS-OFF OF LHB WHEEL FORM </h2>
+      <h2
+        style={{
+          textAlign: "center",
+          backgroundColor: "black",
+          color: "white",
+          opacity: 1,
+        }}
+      >
+        PRESS-OFF OF LHB WHEEL FORM{" "}
+      </h2>
       <h2> Wheel Details For PRESS-OFF OF LHB WHEEL FORM</h2>
 
       <div className="page-border">
         <div className="page-contentLHB">
-
           <div className="wheel-page-main-content">
             <div className="row-1">
-
               <div>
-                <label>Shop Sr.No. (Wheel No.):<span className="required-asterisk">*</span></label>
+                <label>
+                  Shop Sr.No. (Wheel No.):
+                  <span className="required-asterisk">*</span>
+                </label>
                 <input
                   type="text"
                   name="ShopSNo"
@@ -128,11 +136,23 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   placeholder="Enter Shop Sr.No."
                 />
                 {errors.ShopSNo && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.ShopSNo}</p>
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.ShopSNo}
+                  </p>
                 )}
               </div>
               <div>
-                <label>Axle No.:<span className="required-asterisk">*</span></label>
+                <label>
+                  Axle No.:<span className="required-asterisk">*</span>
+                </label>
                 <input
                   type="text"
                   name="AxleNo"
@@ -141,11 +161,23 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   placeholder="Enter Axle No."
                 />
                 {errors.AxleNo && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.AxleNo}</p>
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.AxleNo}
+                  </p>
                 )}
               </div>
               <div>
-                <label>Disc Sr.No.:<span className="required-asterisk">*</span></label>
+                <label>
+                  Disc Sr.No.:<span className="required-asterisk">*</span>
+                </label>
                 <input
                   type="text"
                   name="DiscSrNo"
@@ -154,15 +186,25 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   placeholder="Enter Disc Sr.No."
                 />
                 {errors.DiscSrNo && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.DiscSrNo}</p>
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.DiscSrNo}
+                  </p>
                 )}
               </div>
-
             </div>
             <div className="row-2">
-
               <div>
-                <label>Date:<span className="required-asterisk">*</span></label>
+                <label>
+                  Date:<span className="required-asterisk">*</span>
+                </label>
                 <input
                   type="date"
                   name="Date"
@@ -170,34 +212,53 @@ function IdentificationDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   onChange={handleChange}
                 />
                 {errors.Date && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.Date}</p>
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.Date}
+                  </p>
                 )}
               </div>
               <div>
-                <label>Shift No.:<span className="required-asterisk">*</span></label>
-                <input
-                  type="text"
+                <label>
+                  Shift No.:<span className="required-asterisk">*</span>
+                </label>
+                <select
+                  id="dropdown"
                   name="ShiftNumber"
                   value={formDataPressOffLHB.ShiftNumber}
                   onChange={handleChange}
-                  placeholder="Enter Shift No."
-                />
+                  required
+                >
+                  <option value="">Select Shift</option>
+                  <option value="Shift 1">Shift 1</option>
+                  <option value="Shift 2">Shift 2</option>
+                  <option value="Shift 3">Shift 3</option>
+                </select>
                 {errors.ShiftNumber && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.ShiftNumber}</p>
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.ShiftNumber}
+                  </p>
                 )}
-              </div>
-
-              <div className="file-container">
-
               </div>
             </div>
             <div className="row-3">
-
-
-
-              <div>
-
-              </div>
+              <div></div>
+              <div></div>
             </div>
             <div className="btn-container">
               <button onClick={saveandcontinue}>Save & Continue</button>

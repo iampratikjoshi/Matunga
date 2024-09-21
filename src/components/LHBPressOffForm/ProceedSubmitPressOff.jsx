@@ -1,6 +1,6 @@
 import React from "react";
 // import "../../resources/LHB/lhbpressoffform/proceedsubmit.css";
-import "../../resources/LHB/preInspectionform/proceedsubmit.css"
+import "../../resources/LHB/preInspectionform/proceedsubmit.css";
 import { useNavigate } from "react-router-dom";
 import { postData } from "../Axios/AxiosConnection";
 import ExcelJS from "exceljs";
@@ -8,7 +8,10 @@ import { saveAs } from "file-saver";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) => {
+const ProceedSubmitPressOff = ({
+  formDataPressOffLHB,
+  setFormDataPressOffLHB,
+}) => {
   const handleNext = async (e) => {
     e.preventDefault();
 
@@ -75,34 +78,54 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
 
     worksheet.columns = [
       { header: "Date", key: "Date", width: 10 },
+      { header: "Operator Name", key: "OperatorName", width: 30 },
       { header: "Operator T.No.", key: "OperatorTNo", width: 30 },
+      { header: "Inspector Name", key: "InspectorName", width: 30 },
       { header: "Inspector T.No.", key: "InspectorTNo", width: 30 },
-      { header: "ShopS.No.", key: "ShopSNo", width: 30 },
+      { header: "Shop Sr.No.", key: "ShopSNo", width: 30 },
+      { header: "Machine No.", key: "MachineNumber", width: 30 },
+      { header: "Shift No.", key: "ShiftNumber", width: 30 },
       { header: "Type Of Wheel", key: "TypeOfWheel", width: 30 },
       { header: "Wheel Pressed Off For RA/RD/RG", key: "WheelPressedOff", width: 30 },
       { header: "Disc Sr.No.", key: "DiscSrNo", width: 30 },
       { header: "General Observation", key: "GeneralObservation", width: 30 },
       { header: "Axle No.", key: "AxleNo", width: 15 },
       { header: "Reason", key: "Reason", width: 30 },
-
-      { header: "Axle Condition", key: "ReasonAxleCondition", width: 30 },
+      { header: "Axle Condition", key: "AxleCondition", width: 30 },
       { header: "Axle Condition Reason", key: "AxleConditionReason", width: 30 },
+      { header: "Axle Cause Of Condemn", key: "AxleConditionCause", width: 30 },
       { header: "Brake Disc Condition", key: "BrakeDiscCondition", width: 30 },
       { header: "Brake Disc Condition Reason", key: "BrakeDiscConditionReason", width: 30 },
+      { header: "Brake Disc Cause Of Condemn", key: "BrakeDiscConditionCause", width: 30 },
       { header: "Wheel Disc Condition", key: "WheelDiscCondition", width: 30 },
       { header: "Wheel Condition Reason", key: "WheelConditionReason", width: 30 },
-
+      { header: "Wheel Disc Cause Of Condemn", key: "WheelDiscConditionCause", width: 30 },
+      { header: "Serviceable Disc ID No.", key: "serviceablediscidnumber", width: 30 },
       { header: "Remark", key: "PressedOffRemark", width: 30 },
     ];
     worksheet.getRow(1).values = [
       "Date",
+      "Operator Name",
       "Operator T.No.",
+      "Inspector Name",
       "Inspector T.No.",
-      "ShopS.No.",
+      "Shop Sr.No.",
+      "Machine No.",
+      "Shift No.",
       "Type Of Wheel",
       "Wheel Pressed Off For RA/RD/RG",
       "Disc Sr.No.",
       "General Observation",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
       "",
       "Remark",
     ];
@@ -115,8 +138,22 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
       "",
       "",
       "",
+      "",
+      "",
+      "",
+      "",
       "Axle No.",
       "Reason",
+      "Axle Condition",
+      "Axle Condition Reason",
+      "Axle Cause Of Condemn",
+      "Brake Disc Condition",
+      "Brake Disc Condition Reason",
+      "Brake Disc Cause Of Condemn",
+      "Wheel Disc Condition",
+      "Wheel Condition Reason",
+      "Wheel Disc Cause Of Condemn",
+      "Serviceable Disc ID No.",
       "",
     ];
 
@@ -128,23 +165,41 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
     worksheet.mergeCells("E1:E2");
     worksheet.mergeCells("F1:F2");
     worksheet.mergeCells("G1:G2");
-    worksheet.mergeCells("H1:I1");
+    worksheet.mergeCells("H1:H2");
+    worksheet.mergeCells("I1:I2");
     worksheet.mergeCells("J1:J2");
+    worksheet.mergeCells("K1:K2");
+    worksheet.mergeCells("L1:W1");
+    worksheet.mergeCells("X1:X2");
 
 
 
     // Add header rows
     worksheet.addRow({
       Date: formDataPressOffLHB.Date,
+      OperatorName: formDataPressOffLHB.OperatorName,
       OperatorTNo: formDataPressOffLHB.OperatorTNo,
+      InspectorName: formDataPressOffLHB.InspectorName,
       InspectorTNo: formDataPressOffLHB.InspectorTNo,
       ShopSNo: formDataPressOffLHB.ShopSNo,
+      MachineNumber: formDataPressOffLHB.MachineNumber,
+      ShiftNumber: formDataPressOffLHB.ShiftNumber,
       TypeOfWheel: formDataPressOffLHB.TypeOfWheel,
       WheelPressedOff: formDataPressOffLHB.WheelPressedOff,
       DiscSrNo: formDataPressOffLHB.DiscSrNo,
       GeneralObservation: formDataPressOffLHB.AxleNo,
       AxleNo: formDataPressOffLHB.Reason,
-      Reason: formDataPressOffLHB.PressedOffRemark
+      Reason: formDataPressOffLHB.AxleCondition,
+      AxleCondition: formDataPressOffLHB.AxleConditionReason,
+      AxleConditionReason: formDataPressOffLHB.AxleConditionCause,
+      AxleConditionCause: formDataPressOffLHB.BrakeDiscCondition,
+      BrakeDiscCondition: formDataPressOffLHB.BrakeDiscConditionReason,
+      BrakeDiscConditionReason: formDataPressOffLHB.BrakeDiscConditionCause,
+      BrakeDiscConditionCause: formDataPressOffLHB.WheelDiscCondition,
+      WheelDiscCondition: formDataPressOffLHB.WheelConditionReason,
+      WheelConditionReason: formDataPressOffLHB.WheelDiscConditionCause,
+      WheelDiscConditionCause: formDataPressOffLHB.serviceablediscidnumber,
+      serviceablediscidnumber: formDataPressOffLHB.PressedOffRemark,
 
     });
 
@@ -227,7 +282,7 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         { content: "Remark", rowSpan: 2 },
       ],
       [
-        { content: "Axle No." , colSpan: 1},
+        { content: "Axle No.", colSpan: 1 },
         { content: "Reason", colSpan: 1 },
         { content: "Axle Condition", colSpan: 1 },
         { content: "Axle Condition Reason", colSpan: 1 },
@@ -239,10 +294,10 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         { content: "Wheel Disc Condition Reason", colSpan: 1 },
         { content: "Wheel Disc Cause Of Condemn", colSpan: 1 },
         { content: "Servicable Disc Id No.", colSpan: 1 },
-      ]
+      ],
     ];
 
-    // Define your table data. For demonstration, we will use dummy data.
+    // Define your table data.
     const tableRows = [
       [
         formDataPressOffLHB.Date,
@@ -250,9 +305,9 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         formDataPressOffLHB.OperatorName,
         formDataPressOffLHB.InspectorTNo,
         formDataPressOffLHB.InspectorName,
+        formDataPressOffLHB.ShopSNo,
         formDataPressOffLHB.MachineNumber,
         formDataPressOffLHB.ShiftNumber,
-        formDataPressOffLHB.ShopSNo,
         formDataPressOffLHB.TypeOfWheel,
         formDataPressOffLHB.WheelPressedOff,
         formDataPressOffLHB.DiscSrNo,
@@ -268,8 +323,7 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         formDataPressOffLHB.WheelConditionReason,
         formDataPressOffLHB.WheelDiscConditionCause,
         formDataPressOffLHB.serviceablediscidnumber,
-        formDataPressOffLHB.PressedOffRemark
-
+        formDataPressOffLHB.PressedOffRemark,
       ],
     ];
 
@@ -327,18 +381,13 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         22: { cellWidth: 40 },
         23: { cellWidth: 40 },
         24: { cellWidth: 25 },
-
       },
       margin: { top: 20, left: 10, right: 10 }, // Adjusted margins
       didDrawPage: (data) => {
         // Add a title on the first page
         if (data.pageNumber === 1) {
           doc.setFontSize(12);
-          doc.text(
-            "LHB Press-Off Form",
-            data.settings.margin.left,
-            20
-          );
+          doc.text("LHB Press-Off Form", data.settings.margin.left, 20);
         }
       },
     });
@@ -387,7 +436,7 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
       "Wheel Disc Cause Of Condemn",
       "Serviceable ID No.",
       "Reason",
-      "Remark"
+      "Remark",
     ];
 
     // Construct the CSV rows with form data
@@ -417,8 +466,6 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         formDataPressOffLHB.serviceablediscidnumber,
         formDataPressOffLHB.Reason,
         formDataPressOffLHB.PressedOffRemark,
-
-
       ],
     ];
 
@@ -446,10 +493,7 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         <button className="blue_button" onClick={handleSubmit}>
           Submit
         </button>
-        <button
-          className="blue_button"
-          onClick={handleNext}
-        >
+        <button className="blue_button" onClick={handleNext}>
           Submit & View All Entries
         </button>
         <button className="green-button" onClick={exportToExcel}>
@@ -484,8 +528,6 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
               <th>Axle No.</th>
               <th>Reason</th>
 
-
-
               <th>Axle Condition</th>
               <th>Axle Condition Reason</th>
               <th>Axle Cause Of Condemn</th>
@@ -497,8 +539,6 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
               <th>Wheel Condition Reason</th>
               <th>Wheel Disc Cause Of Condemn</th>
               <th>Serviceable Disc ID No.</th>
-
-
             </tr>
           </thead>
           <tbody>
@@ -521,7 +561,9 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
               <td colSpan={1}>{formDataPressOffLHB.AxleConditionReason}</td>
               <td colSpan={1}>{formDataPressOffLHB.AxleConditionCause}</td>
               <td colSpan={1}>{formDataPressOffLHB.BrakeDiscCondition}</td>
-              <td colSpan={1}>{formDataPressOffLHB.BrakeDiscConditionReason}</td>
+              <td colSpan={1}>
+                {formDataPressOffLHB.BrakeDiscConditionReason}
+              </td>
               <td colSpan={1}>{formDataPressOffLHB.BrakeDiscConditionCause}</td>
 
               <td colSpan={1}>{formDataPressOffLHB.WheelDiscCondition}</td>
@@ -529,9 +571,7 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
               <td colSpan={1}>{formDataPressOffLHB.WheelDiscConditionCause}</td>
               <td colSpan={1}>{formDataPressOffLHB.serviceablediscidnumber}</td>
 
-
               <td rowSpan="2">{formDataPressOffLHB.PressedOffRemark}</td>
-
             </tr>
           </tbody>
         </table>
@@ -541,7 +581,3 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
 };
 
 export default ProceedSubmitPressOff;
-
-
-
-
