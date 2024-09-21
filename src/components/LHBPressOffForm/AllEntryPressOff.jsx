@@ -219,7 +219,7 @@ const AllEntryPressOff = () => {
       ],
     ];
 
-    // Define your table data. For demonstration, we will use dummy data.
+    // Define your table data. 
     const tableRows = data;
 
     // Set autoTable configuration
