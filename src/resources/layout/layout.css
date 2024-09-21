@@ -1,0 +1,65 @@
+.web-container {
+  display: grid;
+  grid-template-columns: 0fr auto;
+  overflow: hidden;
+}
+
+/* .web-container{
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+} */
+
+/* .xyz {
+  width: calc(100% - 50px);
+} */
+
+/* .sidebar-stripe {
+  width: 50px; 
+  background-color: blue;  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+} */
+
+.icons-container {
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  /* margin-top: 84px; */
+  /* gap: 20px;  */
+}
+
+.icon {
+  color: white; /* White color for icons */
+  font-size: 24px; /* Adjust icon size as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px; /* Adjust height as needed */
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 175vh;
+  /* height: auto; */
+  /* overflow: scroll; */
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  /* min-height: max-content; */
+}
+
+.main {
+  /* flex-grow: 1; */
+  /* margin-left: 50px; */
+  padding: 10px;
+  width: 95%;
+  /* height: 175vh; */
+}
