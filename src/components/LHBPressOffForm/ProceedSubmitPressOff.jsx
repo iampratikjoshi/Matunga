@@ -247,14 +247,28 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
       [
         formDataPressOffLHB.Date,
         formDataPressOffLHB.OperatorTNo,
+        formDataPressOffLHB.OperatorName,
         formDataPressOffLHB.InspectorTNo,
+        formDataPressOffLHB.InspectorName,
+        formDataPressOffLHB.MachineNumber,
+        formDataPressOffLHB.ShiftNumber,
         formDataPressOffLHB.ShopSNo,
         formDataPressOffLHB.TypeOfWheel,
         formDataPressOffLHB.WheelPressedOff,
         formDataPressOffLHB.DiscSrNo,
         formDataPressOffLHB.AxleNo,
         formDataPressOffLHB.Reason,
-        formDataPressOffLHB.Remark
+        formDataPressOffLHB.AxleCondition,
+        formDataPressOffLHB.AxleConditionReason,
+        formDataPressOffLHB.AxleConditionCause,
+        formDataPressOffLHB.BrakeDiscCondition,
+        formDataPressOffLHB.BrakeDiscConditionReason,
+        formDataPressOffLHB.BrakeDiscConditionCause,
+        formDataPressOffLHB.WheelDiscCondition,
+        formDataPressOffLHB.WheelConditionReason,
+        formDataPressOffLHB.WheelDiscConditionCause,
+        formDataPressOffLHB.serviceablediscidnumber,
+        formDataPressOffLHB.PressedOffRemark
 
       ],
     ];
@@ -270,7 +284,8 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
       tableHeight: doc.internal.pageSize.getHeight() - 20,
       theme: "grid",
       headStyles: {
-        fillColor: [0, 0, 0], // Color for the table header
+        fillColor: [240, 240, 240], // Light gray background for the header
+        textColor: [0, 0, 0], // Black text color for the header
         halign: "center",
         valign: "middle",
         fontSize: 5, // Adjusted to fit more content
@@ -282,10 +297,12 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         cellWidth: "wrap", // Allow cells to wrap text
         halign: "center",
         valign: "middle",
+        lineColor: [0, 0, 0], // Set the border color to black
+        lineWidth: 0.1, // Adjust line thickness (optional)
       },
       columnStyles: {
         // Adjusting column widths to ensure the table fits on the page
-        0: { cellWidth: 20 },
+        0: { cellWidth: 30 },
         1: { cellWidth: 35 },
         2: { cellWidth: 35 },
         3: { cellWidth: 35 },
@@ -296,12 +313,12 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         8: { cellWidth: 35 },
         9: { cellWidth: 30 },
         10: { cellWidth: 30 },
-        11: { cellWidth: 30 },
+        11: { cellWidth: 25 },
         12: { cellWidth: 30 },
         13: { cellWidth: 35 },
         14: { cellWidth: 35 },
-        15: { cellWidth: 40 },
-        16: { cellWidth: 40 },
+        15: { cellWidth: 35 },
+        16: { cellWidth: 35 },
         17: { cellWidth: 40 },
         18: { cellWidth: 40 },
         19: { cellWidth: 40 },
@@ -309,7 +326,7 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         21: { cellWidth: 40 },
         22: { cellWidth: 40 },
         23: { cellWidth: 40 },
-        24: { cellWidth: 30 },
+        24: { cellWidth: 25 },
 
       },
       margin: { top: 20, left: 10, right: 10 }, // Adjusted margins
@@ -318,7 +335,7 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         if (data.pageNumber === 1) {
           doc.setFontSize(12);
           doc.text(
-            "PRESS-OFF OF LHB WHEEL FORM Report",
+            "LHB Press-Off Form",
             data.settings.margin.left,
             20
           );
@@ -338,10 +355,10 @@ const ProceedSubmitPressOff = ({ formDataPressOffLHB, setFormDataPressOffLHB }) 
         : pageSize.getHeight();
       doc.setFontSize(10);
       const pageNumber = `Page ${i} of ${totalPages}`;
-      doc.text(pageNumber, pageWidth - 50, pageHeight - 10);
+      doc.text(pageNumber, pageWidth - 80, pageHeight - 20);
     }
 
-    doc.save("LHBPressOffForm.pdf");
+    doc.save("LHB Press Off Report.pdf");
   };
 
   const exportToCSV = () => {

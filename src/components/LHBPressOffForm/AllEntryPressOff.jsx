@@ -40,18 +40,34 @@ const AllEntryPressOff = () => {
       { header: "Inspector T.No.", key: "InspectorTNo", width: 30 },
       { header: "ShopS.No.", key: "ShopSNo", width: 30 },
       { header: "Type Of Wheel", key: "TypeOfWheel", width: 30 },
-      { header: "Wheel Pressed Off For RA/RD/RG", key: "WheelPressedOff", width: 30 },
+      {
+        header: "Wheel Pressed Off For RA/RD/RG",
+        key: "WheelPressedOff",
+        width: 30,
+      },
       { header: "Disc Sr.No.", key: "DiscSrNo", width: 30 },
       { header: "General Observation", key: "GeneralObservation", width: 30 },
       { header: "Axle No.", key: "AxleNo", width: 15 },
       { header: "Reason", key: "Reason", width: 30 },
-      
+
       { header: "Axle Condition", key: "ReasonAxleCondition", width: 30 },
-      { header: "Axle Condition Reason", key: "AxleConditionReason", width: 30 },
+      {
+        header: "Axle Condition Reason",
+        key: "AxleConditionReason",
+        width: 30,
+      },
       { header: "Brake Disc Condition", key: "BrakeDiscCondition", width: 30 },
-      { header: "Brake Disc Condition Reason", key: "BrakeDiscConditionReason", width: 30 },
+      {
+        header: "Brake Disc Condition Reason",
+        key: "BrakeDiscConditionReason",
+        width: 30,
+      },
       { header: "Wheel Disc Condition", key: "WheelDiscCondition", width: 30 },
-      { header: "Wheel Condition Reason", key: "WheelConditionReason", width: 30 },
+      {
+        header: "Wheel Condition Reason",
+        key: "WheelConditionReason",
+        width: 30,
+      },
 
       { header: "Remark", key: "PressedOffRemark", width: 30 },
     ];
@@ -84,14 +100,13 @@ const AllEntryPressOff = () => {
     // Define the main headers and subheaders (optional for visual layout)
     worksheet.mergeCells("A1:A2");
     worksheet.mergeCells("B1:B2");
-    worksheet.mergeCells("C1:C2"); 
+    worksheet.mergeCells("C1:C2");
     worksheet.mergeCells("D1:D2");
     worksheet.mergeCells("E1:E2");
-    worksheet.mergeCells("F1:F2"); 
-    worksheet.mergeCells("G1:G2"); 
+    worksheet.mergeCells("F1:F2");
+    worksheet.mergeCells("G1:G2");
     worksheet.mergeCells("H1:I1");
-    worksheet.mergeCells("J1:J2"); 
-
+    worksheet.mergeCells("J1:J2");
 
     // Apply styles to headers
     worksheet.getRow(1).font = { bold: true };
@@ -144,15 +159,15 @@ const AllEntryPressOff = () => {
     data.forEach((item) => {
       worksheet.addRow({
         Date: item.Date,
-      OperatorTNo: item.OperatorTNo,
-      InspectorTNo: item.InspectorTNo,
-      ShopSNo: item.ShopSNo,
-      TypeOfWheel: item.TypeOfWheel,
-      WheelPressedOff: item.WheelPressedOff,
-      DiscSrNo: item.DiscSrNo,
-      GeneralObservation: item.AxleNo,
-      AxleNo: item.Reason,
-      Reason: item.PressedOffRemark
+        OperatorTNo: item.OperatorTNo,
+        InspectorTNo: item.InspectorTNo,
+        ShopSNo: item.ShopSNo,
+        TypeOfWheel: item.TypeOfWheel,
+        WheelPressedOff: item.WheelPressedOff,
+        DiscSrNo: item.DiscSrNo,
+        GeneralObservation: item.AxleNo,
+        AxleNo: item.Reason,
+        Reason: item.PressedOffRemark,
       });
     });
 
@@ -171,80 +186,128 @@ const AllEntryPressOff = () => {
       format: "a4",
     });
 
+    // Define the headers, including subheaders for columns with subcolumns
     const tableColumn = [
       [
         { content: "Date", rowSpan: 2 },
-        { content: "OperatorTNo", rowSpan: 2 },
-        { content: "InspectorTNo", rowSpan: 2 },
-        { content: "ShopSNo", rowSpan: 2 },
-        { content: "TypeOfWheel", rowSpan: 2 },
-        { content: "WheelPressedOff", rowSpan: 2 },
-        { content: "DiscSrNo", rowSpan: 2 },
-        { content: "General Observation", colSpan: 2 },
+        { content: "Operator Ticket No.", rowSpan: 2 },
+        { content: "Operator Name", rowSpan: 2 },
+        { content: "Inspector Ticket No.", rowSpan: 2 },
+        { content: "Inspector Name", rowSpan: 2 },
+        { content: "Shop Sr.No.", rowSpan: 2 },
+        { content: "Machine No.", rowSpan: 2 },
+        { content: "Shift", rowSpan: 2 },
+        { content: "Type Of Wheel", rowSpan: 2 },
+        { content: "Wheel Pressed Off", rowSpan: 2 },
+        { content: "Disc Sr.No.", rowSpan: 2 },
+        { content: "General Observation", colSpan: 12 },
+        { content: "Remark", rowSpan: 2 },
       ],
       [
-        { content: "Axle No." },
-        { content: "Reason" },
-      ]
-
+        { content: "Axle No.", colSpan: 1 },
+        { content: "Reason", colSpan: 1 },
+        { content: "Axle Condition", colSpan: 1 },
+        { content: "Axle Condition Reason", colSpan: 1 },
+        { content: "Axle Cause of Condemn", colSpan: 1 },
+        { content: "Brake Disc Condition", colSpan: 1 },
+        { content: "Brake Disc Condition Reason", colSpan: 1 },
+        { content: "Brake Disc Cause Of Condemn", colSpan: 1 },
+        { content: "Wheel Disc Condition", colSpan: 1 },
+        { content: "Wheel Disc Condition Reason", colSpan: 1 },
+        { content: "Wheel Disc Cause Of Condemn", colSpan: 1 },
+        { content: "Servicable Disc Id No.", colSpan: 1 },
+      ],
     ];
 
+    // Define your table data. For demonstration, we will use dummy data.
     const tableRows = data;
 
-    // AutoTable configuration
+    // Set autoTable configuration
+
     doc.autoTable({
       head: tableColumn,
       body: tableRows.map((row) => [
         row.Date,
         row.OperatorTNo,
+        row.OperatorName,
         row.InspectorTNo,
+        row.InspectorName,
+        row.MachineNumber,
+        row.ShiftNumber,
         row.ShopSNo,
         row.TypeOfWheel,
         row.WheelPressedOff,
         row.DiscSrNo,
         row.AxleNo,
         row.Reason,
-        row.Remark
+        row.AxleCondition,
+        row.AxleConditionReason,
+        row.AxleConditionCause,
+        row.BrakeDiscCondition,
+        row.BrakeDiscConditionReason,
+        row.BrakeDiscConditionCause,
+        row.WheelDiscCondition,
+        row.WheelConditionReason,
+        row.WheelDiscConditionCause,
+        row.serviceablediscidnumber,
+        row.PressedOffRemark,
       ]),
       startX: 10,
       startY: 30,
-      tableWidth: "auto",
+      tableWidth: "auto", // Automatically adjusts the width to fit the page
+      tableHeight: doc.internal.pageSize.getHeight() - 20,
       theme: "grid",
       headStyles: {
-        fillColor: [0, 0, 0],
+        fillColor: [240, 240, 240], // Light gray background for the header
+        textColor: [0, 0, 0], // Black text color for the header
         halign: "center",
         valign: "middle",
-        fontSize: 8,
-        cellPadding: 3,
+        fontSize: 5, // Adjusted to fit more content
+        // cellPadding: 3,
       },
       styles: {
-        overflow: "linebreak",
-        fontSize: 7,
-        cellWidth: "wrap",
+        overflow: "linebreak", // Wrap text in cells
+        fontSize: 5, // Adjust font size to reduce the table width
+        cellWidth: "wrap", // Allow cells to wrap text
         halign: "center",
         valign: "middle",
+        lineColor: [0, 0, 0], // Set the border color to black
+        lineWidth: 0.1, // Adjust line thickness (optional)
       },
       columnStyles: {
-        0: { cellWidth: 80 },
-        1: { cellWidth: 80 },
-        2: { cellWidth: 80 },
-        3: { cellWidth: 80 },
-        4: { cellWidth: 80 },
-        5: { cellWidth: 80 },
-        6: { cellWidth: 80 },
-        7: { cellWidth: 80 },
-        8: { cellWidth: 80 },
+        // Adjusting column widths to ensure the table fits on the page
+        0: { cellWidth: 30 },
+        1: { cellWidth: 35 },
+        2: { cellWidth: 35 },
+        3: { cellWidth: 35 },
+        4: { cellWidth: 35 },
+        5: { cellWidth: 30 },
+        6: { cellWidth: 30 },
+        7: { cellWidth: 25 },
+        8: { cellWidth: 35 },
+        9: { cellWidth: 30 },
+        10: { cellWidth: 30 },
+        11: { cellWidth: 25 },
+        12: { cellWidth: 30 },
+        13: { cellWidth: 35 },
+        14: { cellWidth: 35 },
+        15: { cellWidth: 35 },
+        16: { cellWidth: 35 },
+        17: { cellWidth: 40 },
+        18: { cellWidth: 40 },
+        19: { cellWidth: 40 },
+        20: { cellWidth: 40 },
+        21: { cellWidth: 40 },
+        22: { cellWidth: 40 },
+        23: { cellWidth: 40 },
+        24: { cellWidth: 25 },
       },
-      margin: { top: 20, left: 10, right: 10 },
+      margin: { top: 20, left: 10, right: 10 }, // Adjusted margins
       didDrawPage: (data) => {
         // Add a title on the first page
         if (data.pageNumber === 1) {
           doc.setFontSize(12);
-          doc.text(
-            "PRESS-OFF OF LHB WHEEL FORM Report",
-            data.settings.margin.left,
-            20
-          );
+          doc.text("LHB Press-Off Form", data.settings.margin.left, 20);
         }
       },
     });
@@ -261,10 +324,10 @@ const AllEntryPressOff = () => {
         : pageSize.getHeight();
       doc.setFontSize(10);
       const pageNumber = `Page ${i} of ${totalPages}`;
-      doc.text(pageNumber, pageWidth - 100, pageHeight - 10);
+      doc.text(pageNumber, pageWidth - 80, pageHeight - 20);
     }
 
-    doc.save("LHBPressOffForm.pdf");
+    doc.save("LHB Press Off Report.pdf");
   };
 
   const exportToCSV = () => {
@@ -293,7 +356,7 @@ const AllEntryPressOff = () => {
       "Wheel Disc Cause Of Condemn",
       "Serviceable ID No.",
       "Reason",
-      "Remark"
+      "Remark",
     ];
 
     // Construct the CSV rows with form data
@@ -377,7 +440,7 @@ const AllEntryPressOff = () => {
         <table>
           <thead className="thead">
             <tr>
-            <th rowSpan="2">Date</th>
+              <th rowSpan="2">Date</th>
               <th rowSpan="2">Operator Name</th>
               <th rowSpan="2">Operator T.No.</th>
               <th rowSpan="2">Inspector Name</th>
@@ -394,16 +457,12 @@ const AllEntryPressOff = () => {
             <tr>
               <th>Axle No.</th>
               <th>Reason</th>
-
-
-
               <th>Axle Condition</th>
               <th>Axle Condition Reason</th>
               <th>Axle Cause Of Condemn</th>
               <th>Brake Disc Condition</th>
               <th>Brake Disc Condition Reason</th>
               <th>Brake Disc Cause Of Condemn</th>
-
               <th>Wheel Disc Condition</th>
               <th>Wheel Condition Reason</th>
               <th>Wheel Disc Cause Of Condemn</th>
@@ -411,41 +470,33 @@ const AllEntryPressOff = () => {
             </tr>
           </thead>
 
-          {data.map((res,index) => (
+          {data.map((res, index) => (
             <tbody name="tbody" key={`tbody-${res.id}+${index}`}>
               <tr name="tr" key={`tr-${res.id}`}>
-                <td rowSpan="2" key={`${res.id}-Date`}>
-                  {res.Date}
-                </td>
                 <td rowSpan="2">{res.Date}</td>
-              <td rowSpan="2">{res.OperatorName}</td>
-              <td rowSpan="2">{res.OperatorTNo}</td>
-              <td rowSpan="2">{res.InspectorName}</td>
-              <td rowSpan="2">{res.InspectorTNo}</td>
-              <td rowSpan="2">{res.ShopSNo}</td>
-              <td rowSpan="2">{res.MachineNumber}</td>
-              <td rowSpan="2">{res.ShiftNumber}</td>
-              <td rowSpan="2">{res.TypeOfWheel}</td>
-              <td rowSpan="2">{res.WheelPressedOff}</td>
-              <td rowSpan="2">{res.DiscSrNo}</td>
-              <td colSpan={1}>{res.AxleNo}</td>
-              <td colSpan={1}>{res.Reason}</td>
-
-              <td colSpan={1}>{res.AxleCondition}</td>
-              <td colSpan={1}>{res.AxleConditionReason}</td>
-              <td colSpan={1}>{res.AxleConditionCause}</td>
-              <td colSpan={1}>{res.BrakeDiscCondition}</td>
-              <td colSpan={1}>{res.BrakeDiscConditionReason}</td>
-              <td colSpan={1}>{res.BrakeDiscConditionCause}</td>
-
-              <td colSpan={1}>{res.WheelDiscCondition}</td>
-              <td colSpan={1}>{res.WheelConditionReason}</td>
-              <td colSpan={1}>{res.WheelDiscConditionCause}</td>
-              <td colSpan={1}>{res.serviceablediscidnumber}</td>
-
-
-              <td rowSpan="2">{res.PressedOffRemark}</td>
-
+                <td rowSpan="2">{res.OperatorName}</td>
+                <td rowSpan="2">{res.OperatorTNo}</td>
+                <td rowSpan="2">{res.InspectorName}</td>
+                <td rowSpan="2">{res.InspectorTNo}</td>
+                <td rowSpan="2">{res.ShopSNo}</td>
+                <td rowSpan="2">{res.MachineNumber}</td>
+                <td rowSpan="2">{res.ShiftNumber}</td>
+                <td rowSpan="2">{res.TypeOfWheel}</td>
+                <td rowSpan="2">{res.WheelPressedOff}</td>
+                <td rowSpan="2">{res.DiscSrNo}</td>
+                <td colSpan={1}>{res.AxleNo}</td>
+                <td colSpan={1}>{res.Reason}</td>
+                <td colSpan={1}>{res.AxleCondition}</td>
+                <td colSpan={1}>{res.AxleConditionReason}</td>
+                <td colSpan={1}>{res.AxleConditionCause}</td>
+                <td colSpan={1}>{res.BrakeDiscCondition}</td>
+                <td colSpan={1}>{res.BrakeDiscConditionReason}</td>
+                <td colSpan={1}>{res.BrakeDiscConditionCause}</td>
+                <td colSpan={1}>{res.WheelDiscCondition}</td>
+                <td colSpan={1}>{res.WheelConditionReason}</td>
+                <td colSpan={1}>{res.WheelDiscConditionCause}</td>
+                <td colSpan={1}>{res.serviceablediscidnumber}</td>
+                <td rowSpan="2">{res.PressedOffRemark}</td>
               </tr>
             </tbody>
           ))}
