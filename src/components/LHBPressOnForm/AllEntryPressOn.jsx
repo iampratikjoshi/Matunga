@@ -395,16 +395,16 @@ const AllEntryPressOn = () => {
       worksheet.getRow(currentRow + 50).values = [
         "M/C No.",
         formDataPressOnLHB.MCNo,
-        "",
+
         "Operator Name",
         formDataPressOnLHB.OperatorNameFinal,
-        "",
+
         "Operator No.",
         formDataPressOnLHB.OperatorNo,
-        "",
+
         "Inspector Name",
         formDataPressOnLHB.InspectorName,
-        "",
+
         "Inspector No",
         formDataPressOnLHB.InspectorNo,
       ];
@@ -482,8 +482,10 @@ const AllEntryPressOn = () => {
       worksheet.getCell(`A${currentRow + 47}`).font = { bold: true };
 
       worksheet.getCell(`A${currentRow + 50}`).font = { bold: true };
-      worksheet.getCell(`D${currentRow + 50}`).font = { bold: true };
       worksheet.getCell(`G${currentRow + 50}`).font = { bold: true };
+      worksheet.getCell(`C${currentRow + 50}`).font = { bold: true };
+      worksheet.getCell(`E${currentRow + 50}`).font = { bold: true };
+      worksheet.getCell(`I${currentRow + 50}`).font = { bold: true };
 
       worksheet.eachRow({ includeEmpty: true }, (row) => {
         row.eachCell({ includeEmpty: true }, (cell) => {
@@ -509,207 +511,464 @@ const AllEntryPressOn = () => {
 
   const exportToPDF = () => {
     const doc = new jsPDF({
-      orientation: "landscape",
+      orientation: "portrait",
       unit: "pt",
       format: "a4",
     });
 
-    const tableColumn = [
-      [
-        { content: "WheelNo", rowSpan: 2 },
-        { content: "AxleNo", rowSpan: 2 },
-        { content: "ATLNo", rowSpan: 2 },
-        { content: "WheelSeatSize", rowSpan: 2 },
-        { content: "BDSeatSize", rowSpan: 2 },
-        { content: "RAValue", rowSpan: 2 },
-        { content: "OperatorName", rowSpan: 2 },
-        { content: "WheelDiscAVTLNO", rowSpan: 2 },
-        { content: "WheelDiscABoreSizeByOperator", rowSpan: 2 },
-        { content: "WheelDiscARAValue", rowSpan: 2 },
-        { content: "WheelDiscAOperatorName", rowSpan: 2 },
-        { content: "WheelDiscAABoreSize", rowSpan: 2 },
-        { content: "WheelDiscABWheelSeatSize", rowSpan: 2 },
-        { content: "WheelDiscAAllow", rowSpan: 2 },
-        { content: "WheelDiscAPressOnPressure", rowSpan: 2 },
-        { content: "WheelDiscARDNo", rowSpan: 2 },
-        { content: "WheelDiscAWheelDiscParticulars", rowSpan: 2 },
-        { content: "WheelDiscATopXAxis", rowSpan: 2 },
-        { content: "WheelDiscATopYAXis", rowSpan: 2 },
-        { content: "WheelDiscAMiddleXAxis", rowSpan: 2 },
-        { content: "WheelDiscAMiddleYAxis", rowSpan: 2 },
-        { content: "WheelDiscALowerXAxis", rowSpan: 2 },
-        { content: "WheelDiscALowerYAxis", rowSpan: 2 },
-        { content: "WheelDiscAAvgXAxis", rowSpan: 2 },
-        { content: "WheelDiscAAvgYAxis", rowSpan: 2 },
-        { content: "WheelDiscBVTLNo", rowSpan: 2 },
-        { content: "WheelDiscBBoreSizeByOperator", rowSpan: 2 },
-        { content: "WheelDiscBRAValue", rowSpan: 2 },
-        { content: "WheelDiscBOperatorName", rowSpan: 2 },
-        { content: "WheelDiscBABoreSize", rowSpan: 2 },
-        { content: "WheelDiscBBWheelSeatSize", rowSpan: 2 },
-        { content: "WheelDiscBAllow", rowSpan: 2 },
-        { content: "WheelDiscBPressOnPressure", rowSpan: 2 },
-        { content: "WheelDiscBRDNo", rowSpan: 2 },
-        { content: "WheelDiscBWheelDiscParticulars", rowSpan: 2 },
-        { content: "WheelDiscBTopXAxis", rowSpan: 2 },
-        { content: "WheelDiscBTopYAxis", rowSpan: 2 },
-        { content: "WheelDiscBMiddleXAxis", rowSpan: 2 },
-        { content: "WheelDiscBMiddleYAxis", rowSpan: 2 },
-        { content: "WheelDiscBLowerXAxis", rowSpan: 2 },
-        { content: "WheelDiscBLowerYAxis", rowSpan: 2 },
-        { content: "WheelDiscBAvgXAxis", rowSpan: 2 },
-        { content: "WheelDiscBAvgYAxis", rowSpan: 2 },
-        { content: "BrakeDiscAABoreSize", rowSpan: 2 },
-        { content: "BrakeDiscABBDSeatSize", rowSpan: 2 },
-        { content: "BrakeDiscAAllow", rowSpan: 2 },
-        { content: "BrakeDiscAPressOnPressure", rowSpan: 2 },
-        { content: "BrakeDiscABDThickness", rowSpan: 2 },
-        { content: "BrakeDiscABrakeDiscParticulars", rowSpan: 2 },
-        { content: "BrakeDiscATopXAxis", rowSpan: 2 },
-        { content: "BrakeDiscATopYAxis", rowSpan: 2 },
-        { content: "BrakeDiscAMiddleXAxis", rowSpan: 2 },
-        { content: "BrakeDiscAMiddleYAxis", rowSpan: 2 },
-        { content: "BrakeDiscALowerXAxis", rowSpan: 2 },
-        { content: "BrakeDiscALowerYAxis", rowSpan: 2 },
-        { content: "BrakeDiscAAvgXAxis", rowSpan: 2 },
-        { content: "BrakeDiscAAvgYAxis", rowSpan: 2 },
-        { content: "BrakeDiscBABoreSize", rowSpan: 2 },
-        { content: "BrakeDiscBBBDSeatSize", rowSpan: 2 },
-        { content: "BrakeDiscBAllow", rowSpan: 2 },
-        { content: "BrakeDiscBPressOnPressure", rowSpan: 2 },
-        { content: "BrakeDiscBBDThickness", rowSpan: 2 },
-        { content: "BrakeDiscBBrakeDiscParticulars", rowSpan: 2 },
-        { content: "BrakeDiscBTopXAxis", rowSpan: 2 },
-        { content: "BrakeDiscBTopYAxis", rowSpan: 2 },
-        { content: "BrakeDiscBMiddleXAxis", rowSpan: 2 },
-        { content: "BrakeDiscBMiddleYAxis", rowSpan: 2 },
-        { content: "BrakeDiscBLowerXAxis", rowSpan: 2 },
-        { content: "BrakeDiscBLowerYAxis", rowSpan: 2 },
-        { content: "BrakeDiscBAvgXAxis", rowSpan: 2 },
-        { content: "BrakeDiscBAvgYAxis", rowSpan: 2 },
-        { content: "MCNo", rowSpan: 2 },
-        { content: "Operator", rowSpan: 2 },
-        { content: "Inspector", rowSpan: 2 },
-      ],
-    ];
+    const handleNullValue = (value) =>
+      value === null || value === undefined ? "" : value;
 
-    const tableRows = data;
+    data.forEach((row, index) => {
+      // Table headers
+      const tableColumn = [];
+      const body = [];
 
-    // AutoTable configuration
-    doc.autoTable({
-      head: tableColumn,
-      body: tableRows.map((row) => [
-        row.WheelNo,
-        row.AxleNo,
-        row.ATLNo,
-        row.WheelSeatSize,
-        row.BDSeatSize,
-        row.RAValue,
-        row.OperatorName,
-        row.WheelDiscAVTLNO,
-        row.WheelDiscABoreSizeByOperator,
-        row.WheelDiscARAValue,
-        row.WheelDiscAOperatorName,
-        row.WheelDiscAABoreSize,
-        row.WheelDiscABWheelSeatSize,
-        row.WheelDiscAAllow,
-        row.WheelDiscAPressOnPressure,
-        row.WheelDiscARDNo,
-        row.WheelDiscAWheelDiscParticulars,
-        row.WheelDiscATopXAxis,
-        row.WheelDiscATopYAxis,
-        row.WheelDiscAMiddleXAxis,
-        row.WheelDiscAMiddleYAxis,
-        row.WheelDiscALowerXAxis,
-        row.WheelDiscALowerYAxis,
-        row.WheelDiscAAvgXAxis,
-        row.WheelDiscAAvgYAxis,
-        row.WheelDiscBVTLNo,
-        row.WheelDiscBBoreSizeByOperator,
-        row.WheelDiscBRAValue,
-        row.WheelDiscBOperatorName,
-        row.WheelDiscBABoreSize,
-        row.WheelDiscBBWheelSeatSize,
-        row.WheelDiscBAllow,
-        row.WheelDiscBPressOnPressure,
-        row.WheelDiscBRDNo,
-        row.WheelDiscBWheelDiscParticulars,
-        row.WheelDiscBTopXAxis,
-        row.WheelDiscBTopYAxis,
-        row.WheelDiscBMiddleXAxis,
-        row.WheelDiscBMiddleYAxis,
-        row.WheelDiscBLowerXAxis,
-        row.WheelDiscBLowerYAxis,
-        row.WheelDiscBAvgXAxis,
-        row.WheelDiscBAvgYAxis,
-        row.BrakeDiscABBDSeatSize,
-        row.BrakeDiscAAllow,
-        row.BrakeDiscAPressOnPressure,
-        row.BrakeDiscABDThickness,
-        row.BrakeDiscABrakeDiscParticulars,
-        row.BrakeDiscATopXAxis,
-        row.BrakeDiscATopYAxis,
-        row.BrakeDiscAMiddleXAxis,
-        row.BrakeDiscAMiddleYAxis,
-        row.BrakeDiscALowerXAxis,
-        row.BrakeDiscALowerYAxis,
-        row.BrakeDiscAAvgXAxis,
-        row.BrakeDiscAAvgYAxis,
-        row.BrakeDiscBBBDSeatSize,
-        row.BrakeDiscBAllow,
-        row.BrakeDiscBPressOnPressure,
-        row.BrakeDiscBBDThickness,
-        row.BrakeDiscBBrakeDiscParticulars,
-        row.BrakeDiscBTopXAxis,
-        row.BrakeDiscBTopYAxis,
-        row.BrakeDiscBMiddleXAxis,
-        row.BrakeDiscBMiddleYAxis,
-        row.BrakeDiscBLowerXAxis,
-        row.BrakeDiscBLowerYAxis,
-        row.BrakeDiscBAvgXAxis,
-        row.BrakeDiscBAvgYAxis,
-        row.MCNo,
-        row.Operator,
-        row.Inspector,
-      ]),
-      startX: 10,
-      startY: 30,
-      tableWidth: "auto",
-      theme: "grid",
-      headStyles: {
-        fillColor: [0, 0, 0],
-        halign: "center",
-        valign: "middle",
-        fontSize: 8,
-        cellPadding: 3,
-      },
-      styles: {
-        overflow: "linebreak",
-        fontSize: 7,
-        cellWidth: "wrap",
-        halign: "center",
-        valign: "middle",
-      },
-      columnStyles: {
-        0: { cellWidth: 80 },
-        1: { cellWidth: 80 },
-        2: { cellWidth: 80 },
-        3: { cellWidth: 80 },
-        4: { cellWidth: 80 },
-        5: { cellWidth: 80 },
-      },
-      margin: { top: 20, left: 10, right: 10 },
-      didDrawPage: (data) => {
-        // Add a title on the first page
-        if (data.pageNumber === 1) {
-          doc.setFontSize(12);
-          doc.text(
-            "LHB Division Pre Inspection Form Report",
-            data.settings.margin.left,
-            20
-          );
-        }
-      },
+      body.push(
+        [
+          { content: "Wheel No.", rowSpan: 1, colSpan: 3 },
+          { content: handleNullValue(row.WheelNo), colSpan: 3 },
+          { content: "Axle No.", rowSpan: 1, colSpan: 2 },
+          { content: handleNullValue(row.AxleNo), colSpan: 2 },
+        ],
+        [
+          { content: "ATL No.", rowSpan: 1, colSpan: 1 },
+          {
+            content: handleNullValue(row.ATLNo),
+            rowSpan: 1,
+            colSpan: 1,
+          },
+          { content: "Wheel Seat Size", rowSpan: 1, colSpan: 1 },
+          {
+            content: handleNullValue(row.WheelSeatSize),
+            rowSpan: 1,
+            colSpan: 1,
+          },
+          { content: "BD Seat Size", rowSpan: 1, colSpan: 1 },
+          { content: handleNullValue(row.BDSeatSize), rowSpan: 1, colSpan: 1 },
+          { content: "RA Value(1.6 Max)", rowSpan: 1, colSpan: 1 },
+          { content: handleNullValue(row.RAValue), rowSpan: 1, colSpan: 1 },
+          { content: "Operator Name", rowSpan: 1, colSpan: 1 },
+          {
+            content: handleNullValue(row.OperatorName),
+            rowSpan: 1,
+            colSpan: 1,
+          },
+        ],
+        [{ content: "Wheel Disc 'A' Side", colSpan: 10 }],
+        [
+          { content: "VTL No.", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscAVTLNO), rowSpan: 1 },
+          { content: "Bore Size By Operator", colSpan: 1 },
+          {
+            content: handleNullValue(row.WheelDiscABoreSizeByOperator),
+            rowSpan: 1,
+            colSpan: 2,
+          },
+          { content: "RA Value", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscARAValue), rowSpan: 1 },
+          { content: "Operator Name", colSpan: 1 },
+          {
+            content: handleNullValue(row.WheelDiscAOperatorName),
+            rowSpan: 1,
+            colSpan: 2,
+          },
+        ],
+        [
+          { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
+          { content: "B' Wheel Seat Size(192-195)mm", colSpan: 2, rowSpan: 2 },
+          { content: "C=B-A int Allow(0.240-0.300)mm", rowSpan: 2 },
+          { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
+          { content: "RD No.", rowSpan: 2 },
+          { content: "Wheel Disc Particulars", colSpan: 2, rowSpan: 2 },
+        ],
+
+        [
+          { content: "Insp.", rowSpan: 1, colSpan: 1 },
+          { content: "X-axis", rowSpan: 1, colSpan: 1 },
+          { content: "Y-axis", rowSpan: 1, colSpan: 1 },
+        ],
+
+        [
+          { content: "Top", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscATopXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscATopYAxis), rowSpan: 1 },
+          {
+            content: handleNullValue(row.WheelDiscABWheelSeatSize),
+            colSpan: 2,
+            rowSpan: 4,
+          },
+          { content: handleNullValue(row.WheelDiscAAllow), rowSpan: 4 },
+          {
+            content: handleNullValue(row.WheelDiscAPressOnPressure),
+            rowSpan: 4,
+          },
+          { content: handleNullValue(row.WheelDiscARDNo), rowSpan: 4 },
+          {
+            content: handleNullValue(row.WheelDiscAWheelDiscParticulars),
+            colSpan: 2,
+            rowSpan: 4,
+          },
+        ],
+        [
+          { content: "Middle", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscAMiddleXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscAMiddleYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Lower", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscALowerXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscALowerYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Avg.", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscAAvgXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscAAvgYAxis), rowSpan: 1 },
+        ],
+        [{ content: "Wheel Disc 'B' Side", colSpan: 10 }],
+        [
+          { content: "VTL No.", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBVTLNo), rowSpan: 1 },
+          { content: "Bore Size By Operator", colSpan: 1 },
+          {
+            content: handleNullValue(row.WheelDiscBBoreSizeByOperator),
+            rowSpan: 1,
+            colSpan: 2,
+          },
+          { content: "RA Value", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBRAValue), rowSpan: 1 },
+          { content: "Operator Name", colSpan: 1 },
+          {
+            content: handleNullValue(row.WheelDiscBOperatorName),
+            rowSpan: 1,
+            colSpan: 2,
+          },
+        ],
+        [
+          { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
+          { content: "B' Wheel Seat Size(192-195)mm", colSpan: 2, rowSpan: 2 },
+          { content: "C=B-A int Allow(0.240-0.300)mm", rowSpan: 2 },
+          { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
+          { content: "RD No.", rowSpan: 2 },
+          { content: "Wheel Disc Particulars", colSpan: 2, rowSpan: 2 },
+        ],
+
+        [
+          { content: "Insp.", rowSpan: 1, colSpan: 1 },
+          { content: "X-axis", rowSpan: 1, colSpan: 1 },
+          { content: "Y-axis", rowSpan: 1, colSpan: 1 },
+        ],
+        [
+          { content: "Top", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBTopXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBTopYAxis), rowSpan: 1 },
+          {
+            content: handleNullValue(row.WheelDiscBBWheelSeatSize),
+            colSpan: 2,
+            rowSpan: 4,
+          },
+          { content: handleNullValue(row.WheelDiscBAllow), rowSpan: 4 },
+          {
+            content: handleNullValue(row.WheelDiscBPressOnPressure),
+            rowSpan: 4,
+          },
+          { content: handleNullValue(row.WheelDiscBRDNo), rowSpan: 4 },
+          {
+            content: handleNullValue(row.WheelDiscBWheelDiscParticulars),
+            colSpan: 2,
+            rowSpan: 4,
+          },
+        ],
+        [
+          { content: "Middle", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBMiddleXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBMiddleYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Lower", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBLowerXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBLowerYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Avg.", rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBAvgXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.WheelDiscBAvgYAxis), rowSpan: 1 },
+        ],
+        [{ content: "Brake Disc 'A' Side", colSpan: 10 }],
+        [
+          { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
+          {
+            content: "B' BD Seat Size(199.230-199.260)mm",
+            colSpan: 2,
+            rowSpan: 2,
+          },
+          { content: "C=B-A int Allow(0.230-0.260)mm", rowSpan: 2 },
+          { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
+          { content: "BD Thickness", rowSpan: 2 },
+          { content: "Brake Disc make & Particulars", colSpan: 2, rowSpan: 2 },
+        ],
+
+        [
+          { content: "Insp.", rowSpan: 1, colSpan: 1 },
+          { content: "X-axis", rowSpan: 1, colSpan: 1 },
+          { content: "Y-axis", rowSpan: 1, colSpan: 1 },
+        ],
+        [
+          { content: "Top", rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscATopXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscATopYAxis), rowSpan: 1 },
+          {
+            content: handleNullValue(row.BrakeDiscABBDSeatSize),
+            colSpan: 2,
+            rowSpan: 4,
+          },
+          { content: handleNullValue(row.BrakeDiscAAllow), rowSpan: 4 },
+          {
+            content: handleNullValue(row.BrakeDiscAPressOnPressure),
+            rowSpan: 4,
+          },
+          { content: handleNullValue(row.BrakeDiscABDThickness), rowSpan: 4 },
+          {
+            content: handleNullValue(row.BrakeDiscABrakeDiscParticulars),
+            colSpan: 2,
+            rowSpan: 4,
+          },
+        ],
+        [
+          { content: "Middle", rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscAMiddleXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscAMiddleYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Lower", rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscALowerXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscALowerYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Avg.", rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscAAvgXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscAAvgYAxis), rowSpan: 1 },
+        ],
+        [{ content: "Brake Disc 'B' Side", colSpan: 10 }],
+        [
+          { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
+          {
+            content: "B' BD Seat Size(199.230-199.260)mm",
+            colSpan: 2,
+            rowSpan: 2,
+          },
+          { content: "C=B-A int Allow(0.230-0.260)mm", rowSpan: 2 },
+          { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
+          { content: "BD Thickness", rowSpan: 2 },
+          { content: "Brake Disc make & Particulars", colSpan: 2, rowSpan: 2 },
+        ],
+
+        [
+          { content: "Insp.", rowSpan: 1, colSpan: 1 },
+          { content: "X-axis", rowSpan: 1, colSpan: 1 },
+          { content: "Y-axis", rowSpan: 1, colSpan: 1 },
+        ],
+        [
+          { content: "Top", rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscBTopXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscBTopYAxis), rowSpan: 1 },
+          {
+            content: handleNullValue(row.BrakeDiscBBBDSeatSize),
+            colSpan: 2,
+            rowSpan: 4,
+          },
+          { content: handleNullValue(row.BrakeDiscBAllow), rowSpan: 4 },
+          {
+            content: handleNullValue(row.BrakeDiscBPressOnPressure),
+            rowSpan: 4,
+          },
+          { content: handleNullValue(row.BrakeDiscBBDThickness), rowSpan: 4 },
+          {
+            content: handleNullValue(row.BrakeDiscBBrakeDiscParticulars),
+            colSpan: 2,
+            rowSpan: 4,
+          },
+        ],
+        [
+          { content: "Middle", rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscBMiddleXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscBMiddleYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Lower", rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscBLowerXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscBLowerYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Avg.", rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscBAvgXAxis), rowSpan: 1 },
+          { content: handleNullValue(row.BrakeDiscBAvgYAxis), rowSpan: 1 },
+        ],
+        [
+          { content: "Machine No.", rowSpan: 1, colSpan: 1 },
+          {
+            content: handleNullValue(row.MCNo),
+            rowSpan: 1,
+            colSpan: 1,
+          },
+          { content: "Operator Name", rowSpan: 1, colSpan: 1 },
+          {
+            content: handleNullValue(row.OperatorNameFinal),
+            rowSpan: 1,
+            colSpan: 1,
+          },
+          { content: "Opertaor No.", rowSpan: 1, colSpan: 1 },
+          { content: handleNullValue(row.OperatorNo), rowSpan: 1, colSpan: 1 },
+          { content: "Inspector Name", rowSpan: 1, colSpan: 1 },
+          {
+            content: handleNullValue(row.InspectorName),
+            rowSpan: 1,
+            colSpan: 1,
+          },
+          { content: "Inspector No.", rowSpan: 1, colSpan: 1 },
+          { content: handleNullValue(row.InspectorNo), rowSpan: 1, colSpan: 1 },
+        ]
+      );
+
+      // Generate the table
+      doc.autoTable({
+        head: tableColumn,
+        body: body,
+        startX: 10,
+        startY: 30,
+        tableWidth: "auto", // Automatically adjusts the width to fit the page
+        tableHeight: doc.internal.pageSize.getHeight() - 20,
+        theme: "grid",
+
+        headStyles: {
+          fillColor: [255, 255, 255], // Light gray background for the header
+          textColor: [0, 0, 0], // Black text color for the header
+          halign: "center",
+          valign: "middle",
+          fontSize: 5, // Adjusted to fit more content
+        },
+        styles: {
+          overflow: "linebreak", // Wrap text in cells
+          fontSize: 5, // Adjust font size to reduce the table width
+          cellWidth: "wrap", // Allow cells to wrap text
+          halign: "center",
+          valign: "middle",
+          lineColor: [0, 0, 0], // Set the border color to black
+          lineWidth: 0.1, // Adjust line thickness (optional)
+        },
+        pageBreak: "auto", // Add automatic page breaks
+        didParseCell: (data) => {
+          const hardcodedCells = [
+            [0, 0], // "Wheel No."
+            [0, 6], // "Axle No."
+            [1, 0], // "ATL No."
+            [1, 2], // "Wheel Seat Size"
+            [1, 4], // "BD Seat Size"
+            [1, 6], // "RA Value(1.6 Max)"
+            [1, 8], // "Operator Name"
+            [2, 0], // "Wheel Disc 'A' Side"
+            [3, 0], // "VTL No."
+            [3, 2], // "Bore Size By Operator"
+            [3, 5], // "RA Value"
+            [3, 7], // "Operator Name"
+            [4, 0], // "A' Bore Size"
+            [4, 3], // "B' Wheel Seat Size(192-195)mm"
+            [4, 5], // "C=B-A int Allow(0.240-0.300)mm"
+            [4, 6], // "Press-On Pressure in Ton(69T-109T)"
+            [4, 7], // "RD No."
+            [4, 8], // "Wheel Disc Particulars"
+            [5, 0], // "Insp."
+            [5, 1], // "X-axis"
+            [5, 2], // "Y-axis"
+            [6, 0], // "Top"
+            [7, 0], // "Middle"
+            [8, 0], // "Lower"
+            [9, 0], // "Avg."
+            [10, 0], // "Wheel Disc 'B' Side"
+            [11, 0], // "VTL No."
+            [11, 2], // "Bore Size By Operator"
+            [11, 5], // "RA Value"
+            [11, 7], // "Operator Name"
+            [12, 0], // "A' Bore Size"
+            [12, 3], // "B' Wheel Seat Size(192-195)mm"
+            [12, 5], // "C=B-A int Allow(0.240-0.300)mm"
+            [12, 6], // "Press-On Pressure in Ton(69T-109T)"
+            [12, 7], // "RD No."
+            [12, 8], // "Wheel Disc Particulars"
+            [13, 0], // "Insp."
+            [13, 1], // "X-axis"
+            [13, 2], // "Y-axis"
+            [14, 0], // "Top"
+            [15, 0], // "Middle"
+            [16, 0], // "Lower"
+            [17, 0], // "Avg."
+            [18, 0], // "Brake Disc 'A' Side"
+            [19, 0], // "A' Bore Size"
+            [19, 3], // "B' BD Seat Size(199.230-199.260)mm"
+            [19, 5], // "C=B-A int Allow(0.230-0.260)mm"
+            [19, 6], // "Press-On Pressure in Ton(69T-109T)"
+            [19, 7], // "BD Thickness"
+            [19, 8], // "Brake Disc make & Particulars"
+            [20, 0], // "Insp."
+            [20, 1], // "X-axis"
+            [20, 2], // "Y-axis"
+            [21, 0], // "Top"
+            [22, 0], // "Middle"
+            [23, 0], // "Lower"
+            [24, 0], // "Avg."
+            [25, 0], // "Brake Disc 'B' Side"
+            [26, 0], // "A' Bore Size"
+            [26, 3], // "B' BD Seat Size(199.230-199.260)mm"
+            [26, 5], // "C=B-A int Allow(0.230-0.260)mm"
+            [26, 6], // "Press-On Pressure in Ton(69T-109T)"
+            [26, 7], // "BD Thickness"
+            [26, 8], // "Brake Disc make & Particulars"
+            [27, 0], // "Insp."
+            [27, 1], // "X-axis"
+            [27, 2], // "Y-axis"
+            [28, 0], // "Top"
+            [29, 0], // "Middle"
+            [30, 0], // "Lower"
+            [31, 0], // "Avg."
+            [32, 0], // "Machine No."
+            [32, 2], // "Operator Name"
+            [32, 4], // "Opertaor No."
+            [32, 6], // "Inspector Name"
+            [32, 8], // "Inspector No."
+          ];
+
+          if (
+            hardcodedCells.some(
+              ([row, col]) =>
+                data.row.index === row && data.column.index === col
+            )
+          ) {
+            data.cell.styles.fillColor = [240, 240, 240]; // White background
+            data.cell.styles.textColor = [0, 0, 0]; // Black text
+            data.cell.styles.fontStyle = "bold"; // Make text bold
+          }
+        },
+        columnStyles: {
+          1: { cellWidth: 40 },
+          3: { cellWidth: 50 },
+          9: { cellWidth: 40 },
+        },
+        margin: { top: 10 }, // Adjusted margins
+        didDrawPage: (data) => {
+          // Add a title on the first page
+          // if (data.pageNumber === 1) {
+          // doc.setFontSize(12);
+          // doc.text(
+          //   "LHB Final Inspection Report",
+          //   data.settings.margin.left,
+          //   20
+          // );
+          // }
+        },
+      });
+      if (index < data.length - 1) {
+        doc.addPage(); // This ensures the next entry starts on a fresh page
+      }
     });
 
     const totalPages = doc.internal.getNumberOfPages();
@@ -724,10 +983,9 @@ const AllEntryPressOn = () => {
         : pageSize.getHeight();
       doc.setFontSize(10);
       const pageNumber = `Page ${i} of ${totalPages}`;
-      doc.text(pageNumber, pageWidth - 100, pageHeight - 10);
+      doc.text(pageNumber, pageWidth - 80, pageHeight - 20);
     }
-
-    doc.save("LHBPressOnForm.pdf");
+    doc.save("LHB Press-On Form.pdf");
   };
 
   const exportToCSV = () => {
@@ -911,7 +1169,7 @@ const AllEntryPressOn = () => {
 
   return (
     <div className="main_div">
-      <div>
+      <div className="button_div">
         <button className="green-button" onClick={exportToExcel}>
           Export To Excel
         </button>
@@ -927,12 +1185,6 @@ const AllEntryPressOn = () => {
         >
           Proceed to Pending Tasks
         </button>
-        {/* <button
-          className="yellow-button"
-          onClick={() => navigate("/LHBPressOnForm/wheel_details")}
-        >
-          Dashboard
-        </button> */}
       </div>
       <div id="table-container" className="table_container">
         {data.map((res, index) => (
@@ -1251,6 +1503,8 @@ const AllEntryPressOn = () => {
                 {res.InspectorNo}
               </div>
             </div>
+            <br></br>
+            <br></br>
           </table>
         ))}
       </div>

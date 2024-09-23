@@ -7,9 +7,6 @@ import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-// import pdfMake from 'pdfmake/build/pdfmake';
-// import pdfFonts from 'pdfmake/build/vfs_fonts';
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const ProceedSubmitPressOn = ({
   formDataPressOnLHB,
@@ -410,12 +407,14 @@ const ProceedSubmitPressOn = ({
     worksheet.getRow(45).values = [
       "M/C No.",
       formDataPressOnLHB.MCNo,
-      "",
-      "Operator",
-      formDataPressOnLHB.Operator,
-      "",
-      "Inspector",
-      formDataPressOnLHB.Inspector,
+      "Operator Name",
+      formDataPressOnLHB.OperatorNameFinal,
+      "Operator No.",
+      formDataPressOnLHB.OperatorNo,
+      "Inspector Name",
+      formDataPressOnLHB.InspectorName,
+      "Inspector No.",
+      formDataPressOnLHB.InspectorNo,
     ];
 
     worksheet.eachRow({ includeEmpty: true }, (row) => {
@@ -429,7 +428,6 @@ const ProceedSubmitPressOn = ({
     });
 
     //Bold Text
-
     worksheet.getCell("A1").font = { bold: true };
     worksheet.getCell("C1").font = { bold: true };
     worksheet.getCell("A3").font = { bold: true };
@@ -501,8 +499,10 @@ const ProceedSubmitPressOn = ({
     worksheet.getCell("A40").font = { bold: true };
     worksheet.getCell("A41").font = { bold: true };
     worksheet.getCell("A45").font = { bold: true };
-    worksheet.getCell("D45").font = { bold: true };
     worksheet.getCell("G45").font = { bold: true };
+    worksheet.getCell("I45").font = { bold: true };
+    worksheet.getCell("C45").font = { bold: true };
+    worksheet.getCell("E45").font = { bold: true };
 
     // Save Excel file
     const uint8Array = await workbook.xlsx.writeBuffer();
@@ -512,405 +512,513 @@ const ProceedSubmitPressOn = ({
     saveAs(blob, "LHBPressOnForm.xlsx");
   };
 
-  // const exportToPDF = () => {
-  //   const doc = new jsPDF({
-  //     orientation: "landscape",
-  //     unit: "pt",
-  //     format: "a4",
-  //   });
+  const exportToPDF = () => {
+    const doc = new jsPDF({
+      orientation: "portrait",
+      unit: "pt",
+      format: "a4",
+    });
 
-  //   // Table headers
-  //   const tableColumn = [
-  //     [
-  //       { content: "Wheel No.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelNo, colSpan: 2 },
-  //       { content: "Axle No.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.AxleNo, colSpan: 6 },
-  //     ],
-  //     [
-  //       { content: "ATL No.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.ATLNo, rowSpan: 1 },
-  //       { content: "Wheel Seat Size", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelSeatSize, rowSpan: 1 },
-  //       { content: "BD Seat Size", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BDSeatSize, rowSpan: 1 },
-  //       { content: "RA Value(1.6 Max)", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.RAValue, rowSpan: 1 },
-  //       { content: "Operator Name", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.OperatorName, rowSpan: 1 },
-  //     ],
-  //     [{ content: "Wheel Disc 'A' Side", colSpan: 10 }],
-  //     [
-  //       { content: "VTL No.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscAVTLNO, rowSpan: 1 },
-  //       { content: "Bore Size By Operator", colSpan: 2 },
-  //       { content: formDataPressOnLHB.WheelDiscABoreSizeByOperator, rowSpan: 1 },
-  //       { content: "RA Value", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscARAValue, rowSpan: 1 },
-  //       { content: "Operator Name", colSpan: 2 },
-  //       { content: formDataPressOnLHB.WheelDiscAOperatorName, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
-  //       { content: "B' Wheel Seat Size(192-195)mm", colSpan: 2, rowSpan: 2 },
-  //       { content: "C=B-A int Allow(0.240-0.300)mm", rowSpan: 2 },
-  //       { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
-  //       { content: "RD No.", rowSpan: 2 },
-  //       { content: "Wheel Disc Particulars", colSpan: 2, rowSpan: 2 },
-  //     ],
+    // Table headers
+    const tableColumn = [
+      [
+        { content: "Wheel No.", rowSpan: 1, colSpan: 3 },
+        { content: formDataPressOnLHB.WheelNo, colSpan: 3 },
+        { content: "Axle No.", rowSpan: 1, colSpan: 2 },
+        { content: formDataPressOnLHB.AxleNo, colSpan: 2 },
+      ],
+      [
+        { content: "ATL No.", rowSpan: 1, colSpan: 1 },
+        {
+          content: formDataPressOnLHB.ATLNo,
+          rowSpan: 1,
+          colSpan: 1,
+        },
+        { content: "Wheel Seat Size", rowSpan: 1, colSpan: 1 },
+        { content: formDataPressOnLHB.WheelSeatSize, rowSpan: 1, colSpan: 1 },
+        { content: "BD Seat Size", rowSpan: 1, colSpan: 1 },
+        { content: formDataPressOnLHB.BDSeatSize, rowSpan: 1, colSpan: 1 },
+        { content: "RA Value(1.6 Max)", rowSpan: 1, colSpan: 1 },
+        { content: formDataPressOnLHB.RAValue, rowSpan: 1, colSpan: 1 },
+        { content: "Operator Name", rowSpan: 1, colSpan: 1 },
+        { content: formDataPressOnLHB.OperatorName, rowSpan: 1, colSpan: 1 },
+      ],
+      [{ content: "Wheel Disc 'A' Side", colSpan: 10 }],
+      [
+        { content: "VTL No.", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscAVTLNO, rowSpan: 1 },
+        { content: "Bore Size By Operator", colSpan: 1 },
+        {
+          content: formDataPressOnLHB.WheelDiscABoreSizeByOperator,
+          rowSpan: 1,
+          colSpan: 2,
+        },
+        { content: "RA Value", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscARAValue, rowSpan: 1 },
+        { content: "Operator Name", colSpan: 1 },
+        {
+          content: formDataPressOnLHB.WheelDiscAOperatorName,
+          rowSpan: 1,
+          colSpan: 2,
+        },
+      ],
+      [
+        { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
+        { content: "B' Wheel Seat Size(192-195)mm", colSpan: 2, rowSpan: 2 },
+        { content: "C=B-A int Allow(0.240-0.300)mm", rowSpan: 2 },
+        { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
+        { content: "RD No.", rowSpan: 2 },
+        { content: "Wheel Disc Particulars", colSpan: 2, rowSpan: 2 },
+      ],
 
-  //     [
-  //       { content: "Insp.", rowSpan: 1 ,colSpan:1},
-  //       { content: "X-axis", rowSpan: 1,colSpan: 1 },
-  //       { content: "Y-axis", rowSpan: 1,colSpan: 1 },
-  //     ],
+      [
+        { content: "Insp.", rowSpan: 1, colSpan: 1 },
+        { content: "X-axis", rowSpan: 1, colSpan: 1 },
+        { content: "Y-axis", rowSpan: 1, colSpan: 1 },
+      ],
 
-  //     [
-  //       { content: "Top", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscATopXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscATopYAXis, rowSpan: 1 },
-  //       {
-  //         content: formDataPressOnLHB.WheelDiscABWheelSeatSize,
-  //         colSpan: 2,
-  //         rowSpan: 4,
-  //       },
-  //       { content: formDataPressOnLHB.WheelDiscAAllow, rowSpan: 4 },
-  //       { content: formDataPressOnLHB.WheelDiscAPressOnPressure, rowSpan: 4 },
-  //       { content: formDataPressOnLHB.WheelDiscARDNo, rowSpan: 4 },
-  //       {
-  //         content: formDataPressOnLHB.WheelDiscAWheelDiscParticulars,
-  //         colSpan: 2,
-  //         rowSpan: 4,
-  //       },
-  //     ],
-  //     [
-  //       { content: "Middle", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscAMiddleXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscAMiddleYAxis, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "Lower", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscALowerXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscALowerYAxis, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "Avg.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscAAvgXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscAAvgYAxis, rowSpan: 1 },
-  //     ],
-  //     [{ content: "Wheel Disc 'B' Side", colSpan: 10 }],
-  //     [
-  //       { content: "VTL No.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBVTLNo, rowSpan: 1 },
-  //       { content: "Bore Size By Operator", colSpan: 2 },
-  //       { content: formDataPressOnLHB.WheelDiscBBoreSizeByOperator, rowSpan: 1 },
-  //       { content: "RA Value", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBRAValue, rowSpan: 1 },
-  //       { content: "Operator Name", colSpan: 2 },
-  //       { content: formDataPressOnLHB.WheelDiscBOperatorName, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
-  //       { content: "B' Wheel Seat Size(192-195)mm", colSpan: 2, rowSpan: 3 },
-  //       { content: "C=B-A int Allow(0.240-0.300)mm", rowSpan: 3 },
-  //       { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 3 },
-  //       { content: "RD No.", rowSpan: 3 },
-  //       { content: "Wheel Disc Particulars", colSpan: 2, rowSpan: 3 },
-  //     ],
+      [
+        { content: "Top", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscATopXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscATopYAxis, rowSpan: 1 },
+        {
+          content: formDataPressOnLHB.WheelDiscABWheelSeatSize,
+          colSpan: 2,
+          rowSpan: 4,
+        },
+        { content: formDataPressOnLHB.WheelDiscAAllow, rowSpan: 4 },
+        { content: formDataPressOnLHB.WheelDiscAPressOnPressure, rowSpan: 4 },
+        { content: formDataPressOnLHB.WheelDiscARDNo, rowSpan: 4 },
+        {
+          content: formDataPressOnLHB.WheelDiscAWheelDiscParticulars,
+          colSpan: 2,
+          rowSpan: 4,
+        },
+      ],
+      [
+        { content: "Middle", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscAMiddleXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscAMiddleYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Lower", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscALowerXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscALowerYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Avg.", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscAAvgXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscAAvgYAxis, rowSpan: 1 },
+      ],
+      [{ content: "Wheel Disc 'B' Side", colSpan: 10 }],
+      [
+        { content: "VTL No.", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBVTLNo, rowSpan: 1 },
+        { content: "Bore Size By Operator", colSpan: 1 },
+        {
+          content: formDataPressOnLHB.WheelDiscBBoreSizeByOperator,
+          rowSpan: 1,
+          colSpan: 2,
+        },
+        { content: "RA Value", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBRAValue, rowSpan: 1 },
+        { content: "Operator Name", colSpan: 1 },
+        {
+          content: formDataPressOnLHB.WheelDiscBOperatorName,
+          rowSpan: 1,
+          colSpan: 2,
+        },
+      ],
+      [
+        { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
+        { content: "B' Wheel Seat Size(192-195)mm", colSpan: 2, rowSpan: 2 },
+        { content: "C=B-A int Allow(0.240-0.300)mm", rowSpan: 2 },
+        { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
+        { content: "RD No.", rowSpan: 2 },
+        { content: "Wheel Disc Particulars", colSpan: 2, rowSpan: 2 },
+      ],
 
-  //     [
-  //       { content: "Insp.", rowSpan: 1,colSpan: 1 },
-  //       { content: "X-axis", rowSpan: 1,colSpan: 1 },
-  //       { content: "Y-axis", rowSpan: 1 ,colSpan: 1},
-  //     ],
-  //     [
-  //       { content: "Top", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBTopXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBTopYAxis, rowSpan: 1 },
-  //       {
-  //         content: formDataPressOnLHB.WheelDiscBBWheelSeatSize,
-  //         colSpan: 2,
-  //         rowSpan: 4,
-  //       },
-  //       { content: formDataPressOnLHB.WheelDiscBAllow, rowSpan: 4 },
-  //       { content: formDataPressOnLHB.WheelDiscBPressOnPressure, rowSpan: 4 },
-  //       { content: formDataPressOnLHB.WheelDiscBRDNo, rowSpan: 4 },
-  //       {
-  //         content: formDataPressOnLHB.WheelDiscBWheelDiscParticulars,
-  //         colSpan: 2,
-  //         rowSpan: 4,
-  //       },
-  //     ],
-  //     [
-  //       { content: "Middle", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBMiddleXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBMiddleYAxis, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "Lower", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBLowerXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBLowerYAxis, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "Avg.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBAvgXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.WheelDiscBAvgYAxis, rowSpan: 1 },
-  //     ],
-  //     [{ content: "Brake Disc 'A' Side", colSpan: 10 }],
-  //     [
-  //       { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
-  //       { content: "B' BD Seat Size(199.230-199.260)mm", colSpan: 2, rowSpan: 3 },
-  //       { content: "C=B-A int Allow(0.230-0.260)mm", rowSpan: 3 },
-  //       { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 3 },
-  //       { content: "BD Thickness", rowSpan: 3 },
-  //       { content: "Brake Disc make & Particulars", colSpan: 2, rowSpan: 3 },
-  //     ],
+      [
+        { content: "Insp.", rowSpan: 1, colSpan: 1 },
+        { content: "X-axis", rowSpan: 1, colSpan: 1 },
+        { content: "Y-axis", rowSpan: 1, colSpan: 1 },
+      ],
+      [
+        { content: "Top", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBTopXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBTopYAxis, rowSpan: 1 },
+        {
+          content: formDataPressOnLHB.WheelDiscBBWheelSeatSize,
+          colSpan: 2,
+          rowSpan: 4,
+        },
+        { content: formDataPressOnLHB.WheelDiscBAllow, rowSpan: 4 },
+        { content: formDataPressOnLHB.WheelDiscBPressOnPressure, rowSpan: 4 },
+        { content: formDataPressOnLHB.WheelDiscBRDNo, rowSpan: 4 },
+        {
+          content: formDataPressOnLHB.WheelDiscBWheelDiscParticulars,
+          colSpan: 2,
+          rowSpan: 4,
+        },
+      ],
+      [
+        { content: "Middle", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBMiddleXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBMiddleYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Lower", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBLowerXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBLowerYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Avg.", rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBAvgXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.WheelDiscBAvgYAxis, rowSpan: 1 },
+      ],
+      [{ content: "Brake Disc 'A' Side", colSpan: 10 }],
+      [
+        { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
+        {
+          content: "B' BD Seat Size(199.230-199.260)mm",
+          colSpan: 2,
+          rowSpan: 2,
+        },
+        { content: "C=B-A int Allow(0.230-0.260)mm", rowSpan: 2 },
+        { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
+        { content: "BD Thickness", rowSpan: 2 },
+        { content: "Brake Disc make & Particulars", colSpan: 2, rowSpan: 2 },
+      ],
 
-  //     [
-  //       { content: "Insp.", rowSpan: 1 ,colSpan: 1},
-  //       { content: "X-axis", rowSpan: 1 ,colSpan: 1},
-  //       { content: "Y-axis", rowSpan: 1 ,colSpan: 1},
-  //     ],
-  //     [
-  //       { content: "Top", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscATopXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscATopYAxis, rowSpan: 1 },
-  //       {
-  //         content: formDataPressOnLHB.BrakeDiscABBDSeatSize,
-  //         colSpan: 2,
-  //         rowSpan: 4,
-  //       },
-  //       { content: formDataPressOnLHB.BrakeDiscAAllow, rowSpan: 4 },
-  //       { content: formDataPressOnLHB.BrakeDiscAPressOnPressure, rowSpan: 4 },
-  //       { content: formDataPressOnLHB.BrakeDiscABDThickness, rowSpan: 4 },
-  //       {
-  //         content: formDataPressOnLHB.BrakeDiscABrakeDiscParticulars,
-  //         colSpan: 2,
-  //         rowSpan: 4,
-  //       },
-  //     ],
-  //     [
-  //       { content: "Middle", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscAMiddleXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscAMiddleYAxis, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "Lower", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscALowerXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscALowerYAxis, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "Avg.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscAAvgXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscAAvgYAxis, rowSpan: 1 },
-  //     ],
-  //     [{ content: "Brake Disc 'B' Side", colSpan: 10 }],
-  //     [
-  //       { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
-  //       { content: "B' BD Seat Size(199.230-199.260)mm", colSpan: 2, rowSpan: 3 },
-  //       { content: "C=B-A int Allow(0.230-0.260)mm", rowSpan: 3 },
-  //       { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 3 },
-  //       { content: "BD Thickness", rowSpan: 3 },
-  //       { content: "Brake Disc make & Particulars", colSpan: 2, rowSpan: 3 },
-  //     ],
+      [
+        { content: "Insp.", rowSpan: 1, colSpan: 1 },
+        { content: "X-axis", rowSpan: 1, colSpan: 1 },
+        { content: "Y-axis", rowSpan: 1, colSpan: 1 },
+      ],
+      [
+        { content: "Top", rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscATopXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscATopYAxis, rowSpan: 1 },
+        {
+          content: formDataPressOnLHB.BrakeDiscABBDSeatSize,
+          colSpan: 2,
+          rowSpan: 4,
+        },
+        { content: formDataPressOnLHB.BrakeDiscAAllow, rowSpan: 4 },
+        { content: formDataPressOnLHB.BrakeDiscAPressOnPressure, rowSpan: 4 },
+        { content: formDataPressOnLHB.BrakeDiscABDThickness, rowSpan: 4 },
+        {
+          content: formDataPressOnLHB.BrakeDiscABrakeDiscParticulars,
+          colSpan: 2,
+          rowSpan: 4,
+        },
+      ],
+      [
+        { content: "Middle", rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscAMiddleXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscAMiddleYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Lower", rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscALowerXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscALowerYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Avg.", rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscAAvgXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscAAvgYAxis, rowSpan: 1 },
+      ],
+      [{ content: "Brake Disc 'B' Side", colSpan: 10 }],
+      [
+        { content: "A' Bore Size", colSpan: 3, rowSpan: 1 },
+        {
+          content: "B' BD Seat Size(199.230-199.260)mm",
+          colSpan: 2,
+          rowSpan: 2,
+        },
+        { content: "C=B-A int Allow(0.230-0.260)mm", rowSpan: 2 },
+        { content: "Press-On Pressure in Ton(69T-109T)", rowSpan: 2 },
+        { content: "BD Thickness", rowSpan: 2 },
+        { content: "Brake Disc make & Particulars", colSpan: 2, rowSpan: 2 },
+      ],
 
-  //     [
-  //       { content: "Insp.", rowSpan: 1, colSpan: 1 },
-  //       { content: "X-axis", rowSpan: 1 ,colSpan: 1},
-  //       { content: "Y-axis", rowSpan: 1 ,colSpan: 1},
-  //     ],
-  //     [
-  //       { content: "Top", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscBTopXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscBTopYAxis, rowSpan: 1 },
-  //       {
-  //         content: formDataPressOnLHB.BrakeDiscBBBDSeatSize,
-  //         colSpan: 2,
-  //         rowSpan: 4,
-  //       },
-  //       { content: formDataPressOnLHB.BrakeDiscBAllow, rowSpan: 4 },
-  //       { content: formDataPressOnLHB.BrakeDiscBPressOnPressure, rowSpan: 4 },
-  //       { content: formDataPressOnLHB.BrakeDiscBBDThickness, rowSpan: 4 },
-  //       {
-  //         content: formDataPressOnLHB.BrakeDiscBBrakeDiscParticulars,
-  //         colSpan: 2,
-  //         rowSpan: 4,
-  //       },
-  //     ],
-  //     [
-  //       { content: "Middle", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscBMiddleXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscBMiddleYAxis, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "Lower", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscBLowerXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscBLowerYAxis, rowSpan: 1 },
-  //     ],
-  //     [
-  //       { content: "Avg.", rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscBAvgXAxis, rowSpan: 1 },
-  //       { content: formDataPressOnLHB.BrakeDiscBAvgYAxis, rowSpan: 1 },
-  //     ],
-  //   ];
+      [
+        { content: "Insp.", rowSpan: 1, colSpan: 1 },
+        { content: "X-axis", rowSpan: 1, colSpan: 1 },
+        { content: "Y-axis", rowSpan: 1, colSpan: 1 },
+      ],
+      [
+        { content: "Top", rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscBTopXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscBTopYAxis, rowSpan: 1 },
+        {
+          content: formDataPressOnLHB.BrakeDiscBBBDSeatSize,
+          colSpan: 2,
+          rowSpan: 4,
+        },
+        { content: formDataPressOnLHB.BrakeDiscBAllow, rowSpan: 4 },
+        { content: formDataPressOnLHB.BrakeDiscBPressOnPressure, rowSpan: 4 },
+        { content: formDataPressOnLHB.BrakeDiscBBDThickness, rowSpan: 4 },
+        {
+          content: formDataPressOnLHB.BrakeDiscBBrakeDiscParticulars,
+          colSpan: 2,
+          rowSpan: 4,
+        },
+      ],
+      [
+        { content: "Middle", rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscBMiddleXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscBMiddleYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Lower", rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscBLowerXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscBLowerYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Avg.", rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscBAvgXAxis, rowSpan: 1 },
+        { content: formDataPressOnLHB.BrakeDiscBAvgYAxis, rowSpan: 1 },
+      ],
+      [
+        { content: "Machine No.", rowSpan: 1, colSpan: 1 },
+        {
+          content: formDataPressOnLHB.MCNo,
+          rowSpan: 1,
+          colSpan: 1,
+        },
+        { content: "Operator Name", rowSpan: 1, colSpan: 1 },
+        {
+          content: formDataPressOnLHB.OperatorNameFinal,
+          rowSpan: 1,
+          colSpan: 1,
+        },
+        { content: "Opertaor No.", rowSpan: 1, colSpan: 1 },
+        { content: formDataPressOnLHB.OperatorNo, rowSpan: 1, colSpan: 1 },
+        { content: "Inspector Name", rowSpan: 1, colSpan: 1 },
+        { content: formDataPressOnLHB.InspectorName, rowSpan: 1, colSpan: 1 },
+        { content: "Inspector No.", rowSpan: 1, colSpan: 1 },
+        { content: formDataPressOnLHB.InspectorNo, rowSpan: 1, colSpan: 1 },
+      ],
+    ];
 
-  //   // Generate the table
-  //   doc.autoTable({
-  //     head: tableColumn,
-  //       // body: tableRows,
-  //       // startX: 10,
-  //       // startY: 30,
-  //       tableWidth: "auto", // Automatically adjusts the width to fit the page
-  //       // tableHeight: doc.internal.pageSize.getHeight() - 20,
-  //       theme: "grid",
+    // Generate the table
+    doc.autoTable({
+      head: tableColumn,
+      body: [],
+      startX: 10,
+      startY: 30,
+      tableWidth: "auto", // Automatically adjusts the width to fit the page
+      tableHeight: doc.internal.pageSize.getHeight() - 20,
+      theme: "grid",
 
-  //       headStyles: {
-  //         fillColor: [0, 0, 0], // Color for the table header
-  //         halign: "center",
-  //         valign: "middle",
-  //         fontSize: 8, // Adjusted to fit more content
-  //         cellPadding: 3,
-  //       },
-  //       styles: {
-  //         overflow: "linebreak", // Wrap text in cells
-  //         fontSize: 7, // Adjust font size to reduce the table width
-  //         cellWidth: "wrap", // Allow cells to wrap text
-  //         halign: "center",
-  //         valign: "middle",
-  //         lineColor: [0, 0, 0], // Black borders
-  //       lineWidth: 1, // Border thickness
-  //       },
+      headStyles: {
+        fillColor: [255, 255, 255], // Light gray background for the header
+        textColor: [0, 0, 0], // Black text color for the header
+        halign: "center",
+        valign: "middle",
+        fontSize: 5, // Adjusted to fit more content
+        // cellPadding: 3,
+      },
+      styles: {
+        overflow: "linebreak", // Wrap text in cells
+        fontSize: 5, // Adjust font size to reduce the table width
+        cellWidth: "wrap", // Allow cells to wrap text
+        halign: "center",
+        valign: "middle",
+        lineColor: [0, 0, 0], // Set the border color to black
+        lineWidth: 0.1, // Adjust line thickness (optional)
+      },
+      pageBreak: "auto", // Add automatic page breaks
+      didParseCell: (data) => {
+        const hardcodedCells = [
+          [0, 0], // "Wheel No."
+          [0, 6], // "Axle No."
+          [1, 0], // "ATL No."
+          [1, 2], // "Wheel Seat Size"
+          [1, 4], // "BD Seat Size"
+          [1, 6], // "RA Value(1.6 Max)"
+          [1, 8], // "Operator Name"
+          [2, 0], // "Wheel Disc 'A' Side"
+          [3, 0], // "VTL No."
+          [3, 2], // "Bore Size By Operator"
+          [3, 5], // "RA Value"
+          [3, 7], // "Operator Name"
+          [4, 0], // "A' Bore Size"
+          [4, 3], // "B' Wheel Seat Size(192-195)mm"
+          [4, 5], // "C=B-A int Allow(0.240-0.300)mm"
+          [4, 6], // "Press-On Pressure in Ton(69T-109T)"
+          [4, 7], // "RD No."
+          [4, 8], // "Wheel Disc Particulars"
+          [5, 0], // "Insp."
+          [5, 1], // "X-axis"
+          [5, 2], // "Y-axis"
+          [6, 0], // "Top"
+          [7, 0], // "Middle"
+          [8, 0], // "Lower"
+          [9, 0], // "Avg."
+          [10, 0], // "Wheel Disc 'B' Side"
+          [11, 0], // "VTL No."
+          [11, 2], // "Bore Size By Operator"
+          [11, 5], // "RA Value"
+          [11, 7], // "Operator Name"
+          [12, 0], // "A' Bore Size"
+          [12, 3], // "B' Wheel Seat Size(192-195)mm"
+          [12, 5], // "C=B-A int Allow(0.240-0.300)mm"
+          [12, 6], // "Press-On Pressure in Ton(69T-109T)"
+          [12, 7], // "RD No."
+          [12, 8], // "Wheel Disc Particulars"
+          [13, 0], // "Insp."
+          [13, 1], // "X-axis"
+          [13, 2], // "Y-axis"
+          [14, 0], // "Top"
+          [15, 0], // "Middle"
+          [16, 0], // "Lower"
+          [17, 0], // "Avg."
+          [18, 0], // "Brake Disc 'A' Side"
+          [19, 0], // "A' Bore Size"
+          [19, 3], // "B' BD Seat Size(199.230-199.260)mm"
+          [19, 5], // "C=B-A int Allow(0.230-0.260)mm"
+          [19, 6], // "Press-On Pressure in Ton(69T-109T)"
+          [19, 7], // "BD Thickness"
+          [19, 8], // "Brake Disc make & Particulars"
+          [20, 0], // "Insp."
+          [20, 1], // "X-axis"
+          [20, 2], // "Y-axis"
+          [21, 0], // "Top"
+          [22, 0], // "Middle"
+          [23, 0], // "Lower"
+          [24, 0], // "Avg."
+          [25, 0], // "Brake Disc 'B' Side"
+          [26, 0], // "A' Bore Size"
+          [26, 3], // "B' BD Seat Size(199.230-199.260)mm"
+          [26, 5], // "C=B-A int Allow(0.230-0.260)mm"
+          [26, 6], // "Press-On Pressure in Ton(69T-109T)"
+          [26, 7], // "BD Thickness"
+          [26, 8], // "Brake Disc make & Particulars"
+          [27, 0], // "Insp."
+          [27, 1], // "X-axis"
+          [27, 2], // "Y-axis"
+          [28, 0], // "Top"
+          [29, 0], // "Middle"
+          [30, 0], // "Lower"
+          [31, 0], // "Avg."
+          [32, 0], // "Machine No."
+          [32, 2], // "Operator Name"
+          [32, 4], // "Opertaor No."
+          [32, 6], // "Inspector Name"
+          [32, 8], // "Inspector No."
+        ];
 
-  //       didParseCell: (data) => {
-  //         const whiteCells = [
-  //             [0, 1], [0, 4], [1, 1], [1, 3], [1, 5], [1, 7], [1, 9],
-  //             [3, 1], [3, 4], [3, 6], [3, 9], [6, 1],[7, 1], [7, 2], [7, 3],
-  //             [7, 4], [7, 5], [7, 6], [7, 7], [7, 8], [7, 9], [8, 1],
-  //             [8, 2], [9, 1], [9, 2], [10, 1], [10, 2], [12, 1], [12, 4],
-  //             [12, 6], [12, 8], [12, 9], [16, 1], [16, 2], [16, 3], [16, 4],
-  //             [16, 5], [16, 6], [16, 7], [16, 8], [17, 1], [17, 2], [18, 1],
-  //             [18, 2], [19, 1], [19, 2], [24, 1], [24, 2], [24, 3], [24, 4],
-  //             [24, 5], [24, 6], [24, 7], [24, 8], [25, 1], [25, 2], [26, 1],
-  //             [26, 2], [27, 1], [27, 2], [32, 1], [32, 2], [32, 3], [32, 4],
-  //             [32, 5], [32, 6], [32, 7], [32, 8], [33, 1], [33, 2], [34, 1],
-  //             [34, 2], [35, 1], [35, 2],[7, 0]
-  //         ];
+        if (
+          hardcodedCells.some(
+            ([row, col]) => data.row.index === row && data.column.index === col
+          )
+        ) {
+          data.cell.styles.fillColor = [240, 240, 240]; // White background
+          data.cell.styles.textColor = [0, 0, 0]; // Black text
+          data.cell.styles.fontStyle = "bold"; // Make text bold
+        }
+      },
 
-  //         const grayCell = (data.row.index === 2 && data.column.index === 1);
+      columnStyles: {
+        //   0: { cellWidth: 10 }, // White background for the first column
+        1: { cellWidth: 40 }, // White background for the second column
+        //   2: { cellWidth: 10 }, // Black background for the third column
+        3: { cellWidth: 50 },
+        //   4: { cellWidth: 10 },
+        //   5: { cellWidth: 10 },
+        //   6: { cellWidth: 10 },
+        //   7: { cellWidth: 10 },
+        //   8: { cellWidth: 10 },
+        9: { cellWidth: 40 },
+        //   10: { cellWidth: 10 },
+        //   11: { cellWidth: 10 },
+        //   12: { cellWidth: 10 },
+        //   13: { cellWidth: 10 },
+        //   14: { cellWidth: 10 },
+        //   15: { cellWidth: 10 },
+        //   16: { cellWidth: 10 },
+        //   17: { cellWidth: 10 },
+        //   18: { cellWidth: 10 },
+        //   19: { cellWidth: 10 },
+        //   20: { cellWidth: 10 },
+        //   21: { cellWidth: 10 },
+        //   22: { cellWidth: 10 },
+        //   23: { cellWidth: 10 },
+        //   24: { cellWidth: 10 },
+        //   25: { cellWidth: 10 },
+        //   26: { cellWidth: 10 },
+        //   27: { cellWidth: 10 },
+        //   28: { cellWidth: 10 },
+        //   29: { cellWidth: 10 },
+        //   30: { cellWidth: 10 },
+        //   31: { cellWidth: 10 },
+        //   32: { cellWidth: 10 },
+        //   33: { cellWidth: 10 },
+        //   34: { cellWidth: 10 },
+        //   35: { cellWidth: 10 },
+        //   36: { cellWidth: 10 },
+        //   37: { cellWidth: 10 },
+        //   38: { cellWidth: 10 },
+        //   39: { cellWidth: 10 },
+        //   40: { cellWidth: 10 },
+        //   41: { cellWidth: 10 },
+        //   42: { cellWidth: 10 },
+        //   43: { cellWidth: 10 },
+        //   44: { cellWidth: 10 },
+        //   45: { cellWidth: 10 },
+        //   46: { cellWidth: 10 },
+        //   47: { cellWidth: 10 },
+        //   48: { cellWidth: 10 },
+        //   49: { cellWidth: 10 },
+        //   50: { cellWidth: 10 },
+        //   51: { cellWidth: 10 },
+        //   52: { cellWidth: 10 },
+        //   53: { cellWidth: 10 },
+        //   54: { cellWidth: 10 },
+        //   55: { cellWidth: 10 },
+        //   56: { cellWidth: 10 },
+        //   57: { cellWidth: 10 },
+        //   58: { cellWidth: 10 },
+        //   59: { cellWidth: 10 },
+        //   60: { cellWidth: 10 },
+        //   61: { cellWidth: 10 },
+        //   62: { cellWidth: 10 },
+        //   63: { cellWidth: 10 },
+        //   64: { cellWidth: 10 },
+        //   65: { cellWidth: 10 },
+        //   66: { cellWidth: 10 },
+      },
+      margin: { top: 10 }, // Adjusted margins
+      didDrawPage: (data) => {
+        // Add a title on the first page
+        // if (data.pageNumber === 1) {
+        // doc.setFontSize(12);
+        // doc.text(
+        //   "LHB Final Inspection Report",
+        //   data.settings.margin.left,
+        //   20
+        // );
+        // }
+      },
+    });
+    const totalPages = doc.internal.getNumberOfPages();
 
-  //         if (grayCell) {
-  //             data.cell.styles.fillColor = [242, 242, 242]; // Gray background
-  //             data.cell.styles.textColor = [255, 255, 255]; // White text
-  //         } else if (whiteCells.some(([row, col]) => data.row.index === row && data.column.index === col)) {
-  //             data.cell.styles.fillColor = [255, 255, 255]; // White background
-  //             data.cell.styles.textColor = [0, 0, 0]; // Black text
-  //         }
-  //     },
-
-  //       columnStyles: {
-  //         0: {cellWidth: 10 }, // White background for the first column
-  //         1: { cellWidth: 10}, // White background for the second column
-  //         2: { cellWidth: 10}, // Black background for the third column
-
-  //         // 0:  { cellWidth: 10 },
-  //   // 1:  { cellWidth: 10 },
-  //   // 2:  { cellWidth: 10 },
-  //   3:  { cellWidth: 10 },
-  //   4:  { cellWidth: 10 },
-  //   5:  { cellWidth: 10 },
-  //   6:  { cellWidth: 10 },
-  //   7:  { cellWidth: 10 },
-  //   8:  { cellWidth: 10 },
-  //   9:  { cellWidth: 10 },
-  //   10: { cellWidth: 10 },
-  //   11: { cellWidth: 10 },
-  //   12: { cellWidth: 10 },
-  //   13: { cellWidth: 10 },
-  //   14: { cellWidth: 10 },
-  //   15: { cellWidth: 10 },
-  //   16: { cellWidth: 10 },
-  //   17: { cellWidth: 10 },
-  //   18: { cellWidth: 10 },
-  //   19: { cellWidth: 10 },
-  //   20: { cellWidth: 10 },
-  //   21: { cellWidth: 10 },
-  //   22: { cellWidth: 10 },
-  //   23: { cellWidth: 10 },
-  //   24: { cellWidth: 10 },
-  //   25: { cellWidth: 10 },
-  //   26: { cellWidth: 10 },
-  //   27: { cellWidth: 10 },
-  //   28: { cellWidth: 10 },
-  //   29: { cellWidth: 10 },
-  //   30: { cellWidth: 10 },
-  //   31: { cellWidth: 10 },
-  //   32: { cellWidth: 10 },
-  //   33: { cellWidth: 10 },
-  //   34: { cellWidth: 10 },
-  //   35: { cellWidth: 10 },
-  //   36: { cellWidth: 10 },
-  //   37: { cellWidth: 10 },
-  //   38: { cellWidth: 10 },
-  //   39: { cellWidth: 10 },
-  //   40: { cellWidth: 10 },
-  //   41: { cellWidth: 10 },
-  //   42: { cellWidth: 10 },
-  //   43: { cellWidth: 10 },
-  //   44: { cellWidth: 10 },
-  //   45: { cellWidth: 10 },
-  //   46: { cellWidth: 10 },
-  //   47: { cellWidth: 10 },
-  //   48: { cellWidth: 10 },
-  //   49: { cellWidth: 10 },
-  //   50: { cellWidth: 10 },
-  //   51: { cellWidth: 10 },
-  //   52: { cellWidth: 10 },
-  //   53: { cellWidth: 10 },
-  //   54: { cellWidth: 10 },
-  //   55: { cellWidth: 10 },
-  //   56: { cellWidth: 10 },
-  //   57: { cellWidth: 10 },
-  //   58: { cellWidth: 10 },
-  //   59: { cellWidth: 10 },
-  //   60: { cellWidth: 10 },
-  //   61: { cellWidth: 10 },
-  //   62: { cellWidth: 10 },
-  //   63: { cellWidth: 10 },
-  //   64: { cellWidth: 10 },
-  //   65: { cellWidth: 10 },
-  //   66: { cellWidth: 10 },
-
-  //       },
-  //     margin: { top: 10 }, // Adjusted margins
-  //       didDrawPage: (data) => {
-  //         // Add a title on the first page
-  //         // if (data.pageNumber === 1) {
-  //           // doc.setFontSize(12);
-
-  //           // doc.text(
-  //           //   "LHB Final Inspection Report",
-  //           //   data.settings.margin.left,
-  //           //   20
-  //           // );
-  //         // }
-  //       },
-  //   });
-  //   const totalPages = doc.internal.getNumberOfPages();
-
-  //   // Add page numbers
-  //   for (let i = 1; i <= totalPages; i++) {
-  //     doc.setPage(i);
-  //     const pageSize = doc.internal.pageSize;
-  //     const pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth();
-  //     const pageHeight = pageSize.height
-  //       ? pageSize.height
-  //       : pageSize.getHeight();
-  //     doc.setFontSize(10);
-  //     const pageNumber = `Page ${i} of ${totalPages}`;
-  //     doc.text(pageNumber, pageWidth - 50, pageHeight - 10);
-  //   }
-  //   doc.save("table.pdf");
-  // };
+    // Add page numbers
+    for (let i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      const pageSize = doc.internal.pageSize;
+      const pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth();
+      const pageHeight = pageSize.height
+        ? pageSize.height
+        : pageSize.getHeight();
+      doc.setFontSize(10);
+      const pageNumber = `Page ${i} of ${totalPages}`;
+      doc.text(pageNumber, pageWidth - 80, pageHeight - 20);
+    }
+    doc.save("LHB Press-On Form.pdf");
+  };
 
   const exportToCSV = () => {
     // Define headers and subheaders
@@ -1098,7 +1206,7 @@ const ProceedSubmitPressOn = ({
         <button className="green-button" onClick={exportToExcel}>
           Export To Excel
         </button>
-        <button className="green-button" onClick={""}>
+        <button className="green-button" onClick={exportToPDF}>
           Export To PDF
         </button>
         <button className="green-button" onClick={exportToCSV}>
