@@ -9,7 +9,7 @@ function PendingTasks() {
     "Pre-Inspection": true,
     "Press-Off": true,
     "Final Inspection": true,
-    Dispatch: true,
+    // Dispatch: true,
     "Press-On": true,
   });
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../resources/sidebar/sidebar.css";
 import { TbBrandGoogleHome } from "react-icons/tb";
 import { RiRecordCircleLine } from "react-icons/ri";
@@ -16,8 +16,13 @@ import { FaTrain } from "react-icons/fa";
 import { TbSteeringWheel } from "react-icons/tb";
 import { CiLogin } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
+import { RiLogoutCircleLine } from "react-icons/ri";
+import { useAuth } from "./AuthContext.jsx";
 
 function Sidebar() {
+  const {logout} = useAuth();
+
+  const navigate = useNavigate();
   return (
 
         <div className="sidebar">
@@ -37,6 +42,7 @@ function Sidebar() {
             {/* <IoMdTime /> */}
             <LuSlidersHorizontal />
             <TbCheckbox />
+            <RiLogoutCircleLine />
           </div>
           <div className="sidebar-content">
             {/* <div> */}
@@ -65,7 +71,7 @@ function Sidebar() {
             <div>
               <Link to="/pending_tasks">Pending Tasks</Link>
             </div>
-            {/* <div>Settings</div> */}
+            <div onClick={()=>{logout(); navigate("/login")}}>Log Out</div>
             {/* </div> */}
             {/* 
           <div>DASHBOARD</div>

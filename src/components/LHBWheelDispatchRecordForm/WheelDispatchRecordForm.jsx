@@ -6,10 +6,10 @@ import DivisionorCarshedDetails from "./DivisionorCarshedDetails.jsx";
 import WheelsDispatchBreadcrumbs from "./WheelsDispatchBreadcrumbs.jsx";
 import WheelsDispatchStepper from "./WheelsDispatchStepper.jsx";
 
-
-function Wheelsdispatchrecordform({ formDataWheelDispatch, setformDataWheelDispatch }) {
-
-
+function Wheelsdispatchrecordform({
+  formDataWheelDispatch,
+  setformDataWheelDispatch,
+}) {
   // State for stepper
   const [activeStep, setActiveStep] = useState(0);
 
@@ -23,7 +23,6 @@ function Wheelsdispatchrecordform({ formDataWheelDispatch, setformDataWheelDispa
     setActiveStep(0);
   };
 
-
   // Function to update form data
   const handleInputChange = (name, value) => {
     setformDataWheelDispatch((prevState) => ({
@@ -34,24 +33,16 @@ function Wheelsdispatchrecordform({ formDataWheelDispatch, setformDataWheelDispa
 
   return (
     <>
-      <h1 style={{ marginTop: "80px", textAlign: "left" }}></h1>
       <WheelsDispatchBreadcrumbs />
       <WheelsDispatchStepper activeStep={activeStep} />
       <hr></hr>
-
       <div className="containerLHB">
-
-
         <div>
           <SidebarLHB />
         </div>
         <div className="contentLHB">
-
           <div>
-
-
             <Routes>
-
               <Route
                 path="wheel_details"
                 element={
@@ -76,8 +67,6 @@ function Wheelsdispatchrecordform({ formDataWheelDispatch, setformDataWheelDispa
                   />
                 }
               />
-
-
             </Routes>
           </div>
         </div>

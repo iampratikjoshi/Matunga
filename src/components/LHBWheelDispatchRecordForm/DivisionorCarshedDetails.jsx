@@ -3,9 +3,13 @@ import { useDropzone } from "react-dropzone";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoCloudUploadOutline } from "react-icons/io5";
 
-function DivisionorCarshedDetails({ formDataWheelDispatch, setformDataWheelDispatch, onInputChange,
+function DivisionorCarshedDetails({
+  formDataWheelDispatch,
+  setformDataWheelDispatch,
+  onInputChange,
   onNextStep,
-  onResetStep, }) {
+  onResetStep,
+}) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
   const [errors, setErrors] = useState({}); // State for validation errors
@@ -18,26 +22,24 @@ function DivisionorCarshedDetails({ formDataWheelDispatch, setformDataWheelDispa
 
       // Manually validate if the file is an image
       if (file && file.type.startsWith("image/")) {
-        setFile(file);  // Set the single file to state
+        setFile(file); // Set the single file to state
       }
     },
   });
 
-  const location = useLocation(); 
-  const { WheelNo,wheelid } = location.state || {};
+  const location = useLocation();
+  const { WheelNo, wheelid } = location.state || {};
 
   useEffect(() => {
     console.log("working");
     if (WheelNo && wheelid) {
-      
       setformDataWheelDispatch((prevFormData) => ({
         ...prevFormData,
         WheelNo: WheelNo,
-        wheelid:wheelid
+        wheelid: wheelid,
       }));
     }
-  }, [WheelNo,wheelid, setformDataWheelDispatch]);
-
+  }, [WheelNo, wheelid, setformDataWheelDispatch]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -53,12 +55,9 @@ function DivisionorCarshedDetails({ formDataWheelDispatch, setformDataWheelDispa
       newErrors.AxleUSTCode = "Axle UST Code is required.";
     }
 
-
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -114,7 +113,10 @@ function DivisionorCarshedDetails({ formDataWheelDispatch, setformDataWheelDispa
       >
         DIVISION/CARSHED WHEELS DISPATCH RECORD FORM
       </h2>
-      <h2>DIVISION/CARSHED Details for  DIVISION/CARSHED WHEELS DISPATCH RECORD FORM</h2>
+      <h2>
+        DIVISION/CARSHED Details for DIVISION/CARSHED WHEELS DISPATCH RECORD
+        FORM
+      </h2>
 
       <div className="page-border">
         <div className="page-contentLHB">
@@ -131,7 +133,17 @@ function DivisionorCarshedDetails({ formDataWheelDispatch, setformDataWheelDispa
                   onChange={handleChange}
                 />
                 {errors.date && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.date}</p>
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.date}
+                  </p>
                 )}
               </div>
               <div>
@@ -146,17 +158,23 @@ function DivisionorCarshedDetails({ formDataWheelDispatch, setformDataWheelDispa
                   placeholder="Enter Division or Carshed"
                 />
                 {errors.DivisionCarshed && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.DivisionCarshed}</p>
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.DivisionCarshed}
+                  </p>
                 )}
               </div>
               <div>
-
-              </div>
-
-            </div>
-            <div className="row-2">
-              <div>
-                <label>Axle UST Code:<span className="required-asterisk">*</span></label>
+                <label>
+                  Axle UST Code:<span className="required-asterisk">*</span>
+                </label>
                 <input
                   type="text"
                   name="AxleUSTCode"
@@ -165,46 +183,26 @@ function DivisionorCarshedDetails({ formDataWheelDispatch, setformDataWheelDispa
                   placeholder="Enter Axle UST Code"
                 />
                 {errors.AxleUSTCode && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.AxleUSTCode}</p>
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.AxleUSTCode}
+                  </p>
                 )}
               </div>
-              <div className="file-container">
-                <span style={{ fontWeight: "bold", marginBottom: "5px" }}>
-                  Upload Image:
-                </span>
-                <div {...getRootProps({ className: "dropzone" })}>
-                  <input {...getInputProps()} />
-                  <span className="upload-icon">
-                    <IoCloudUploadOutline />
-                  </span>
-                  <span className="drag-drop" >Drag & drop files</span>
-                  <span className="drag-or">---------- or ----------</span>
-                  <button className="browse-button">Browse</button>
-                </div>
-                <div className="uploading-section">
-                  {file ? (
-                    <div className="file-row">
-                      <span>{file.name}</span>
-                    </div>
-                  ) : (
-                    <span style={{ marginTop: "5px" }}>
-                      No image uploaded yet.
-                    </span>
-                  )}
-                </div>
-              </div>
+            </div>
+            <div className="row-2">
+              <div></div>
+              <div></div>
             </div>
             <div className="row-3">
-              <div>
-                <label>Remark:</label>
-                <input
-                  type="text"
-                  name="remark"
-                  // value={formDataWheelDispatch.EndHole}
-                  // onChange={handleChange}
-                  placeholder="Enter Remark"
-                />
-              </div>
+              <div></div>
               <div></div>
             </div>
             <div className="btn-container">

@@ -116,7 +116,7 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
           opacity: 1,
         }}
       >
-        LHB FINAL INSPECTION FORM{" "}
+        LHB FINAL INSPECTION FORM
       </h2>
       <h2>Axle Details for LHB Final Inspection Form</h2>
 
