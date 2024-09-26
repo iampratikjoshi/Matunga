@@ -246,7 +246,7 @@ const ProceedSubmitDivision = ({ formDataDivision, setFormDataDivision }) => {
       "P.O.H Date",
       "Division Report",
       "Division Name",
-      "Matunga Report",
+      "Matunga Remark",
     ];
 
     // Construct the CSV rows with form data
@@ -315,7 +315,7 @@ const ProceedSubmitDivision = ({ formDataDivision, setFormDataDivision }) => {
               {/* <th rowSpan="2">Return Date</th> */}
               <th rowSpan="2">Division Report</th>
               <th rowSpan="2">Division Name</th>
-              <th rowSpan="2">Matunga Report</th>
+              <th rowSpan="2">Matunga Remark</th>
             </tr>
           </thead>
           <tbody>

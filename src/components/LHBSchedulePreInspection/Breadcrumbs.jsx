@@ -17,8 +17,8 @@ const Breadcrumbs = () => {
         if (name == "LHBSchedulePreInspection") {
           name = "LHB Pre-Inspection";
         }
-        if (name == "ctrbrodgaugeandsound_details") {
-          name = "CTRB and Sound Details";
+        if (name == "ctrbb_details") {
+          name = "CTRB B Details";
         }
         if (name == "repairandust_details") {
           name = "Repair and UST Details";
@@ -27,8 +27,8 @@ const Breadcrumbs = () => {
           name = "BD And Coach Details";
         }
 
-        if (name == "ctrb_details") {
-          name = "CTRB Details";
+        if (name == "ctrba_details") {
+          name = "CTRB A Details";
         }
         
         function formatName(name) {

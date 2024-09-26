@@ -12,7 +12,6 @@ function WheelDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -45,18 +44,7 @@ function WheelDetails({
     // console.log(formData);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataDivision.WheelNo) {
-      newErrors.WheelNo = "Wheel No is required.";
-    } 
-    if (!formDataDivision.LooryNo) {
-      newErrors.LooryNo = "Loory No is required.";
-    } 
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  
 
   const handleCancel = () => {
     setFormDataDivision((prevFormData) => ({
@@ -73,10 +61,10 @@ function WheelDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
+    
       onNextStep();
       navigate("/LHBDivisionPreInspectionForm/report_details");
-    }
+    
   };
 
   return (
@@ -99,7 +87,7 @@ function WheelDetails({
             <div className="row-1">
               <div>
                 <label>
-                  Wheel No:<span className="required-asterisk">*</span>
+                  Wheel No:
                 </label>
                 <input
                   type="text"
@@ -108,24 +96,12 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel No."
                 />
-                {errors.WheelNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelNo}
-                  </p>
-                )}
+                
               </div>
 
               <div>
                 <label>
-                  Loory No:<span className="required-asterisk">*</span>
+                  Loory No:
                 </label>
                 <input
                   type="text"
@@ -134,19 +110,7 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Loory No."
                 />
-                {errors.LooryNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.LooryNo}
-                  </p>
-                )}
+                
               </div>
 
               <div className="file-container">

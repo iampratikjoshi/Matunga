@@ -511,9 +511,7 @@ const ProceedSubmit = ({ formData, setFormData }) => {
       "Coach No.",
       "Diameter IN A",
       "Diameter IN B",
-      "Flage IN",
       "BD Make",
-      "BD Size IN",
       "BD Thickness A",
       "BD Thickness B",
       "BD Defect",
@@ -524,8 +522,10 @@ const ProceedSubmit = ({ formData, setFormData }) => {
       "Refurbishment Details A",
       "Refurbishment Details B",
       "Fitment Date",
-      "CTRB Defect",
-      "CTRB Defect Name",
+      "CTRB Defect A",
+      "CTRB Defect B",
+      "CTRB Defect Name A",
+      "CTRB Defect Name B",
       "CTRB Status A",
       "CTRB Status B",
       "CTRB Remaining Life A",
@@ -533,15 +533,14 @@ const ProceedSubmit = ({ formData, setFormData }) => {
       "CTRB Remark A",
       "CTRB Remark B",
       "Rod Gauge IN",
-      "Sound Test IN",
+      "Sound Test IN A",
+      "Sound Test IN B",
       "Type Of Repair",
       "Matunga Remark",
       "Insp. Name",
       "Insp. T.No.",
       "Disc Particular A",
       "Disc Particular B",
-      "CTRB A",
-      "CTRB B",
     ];
 
     // Construct the CSV rows with form data
@@ -554,9 +553,7 @@ const ProceedSubmit = ({ formData, setFormData }) => {
         formData.CoachNumber,
         formData.DiameterINA,
         formData.DiameterINB,
-        formData.FlageIN,
         formData.BDMakeIN,
-        formData.BDSizeIN,
         formData.BDThicknessA,
         formData.BDThicknessB,
         formData.BDDefect,
@@ -567,8 +564,10 @@ const ProceedSubmit = ({ formData, setFormData }) => {
         formData.RefurbishmentDetailsA,
         formData.RefurbishmentDetailsB,
         formData.FitmentDate,
-        formData.CTRBDefect,
-        formData.CTRBDefectName,
+        formData.CTRBDefectA,
+        formData.CTRBDefectB,
+        formData.CTRBDefectNameA,
+        formData.CTRBDefectNameB,
         formData.CTRBStatusA,
         formData.CTRBStatusB,
         formData.CTRBRemainingLifeA,
@@ -576,15 +575,15 @@ const ProceedSubmit = ({ formData, setFormData }) => {
         formData.CTRBRemarkA,
         formData.CTRBRemarkB,
         formData.RodGaugeIN,
-        formData.SoundTestIN,
+        formData.SoundTestINA,
+        formData.SoundTestINB,
         formData.TypeOfRepair,
         formData.MatungaRemark,
         formData.InspectorName,
         formData.InspectorTicketNo,
         formData.DiscParticularA,
         formData.DiscParticularB,
-        formData.CTRBA,
-        formData.CTRBB,
+       
       ],
     ];
 
@@ -634,23 +633,20 @@ const ProceedSubmit = ({ formData, setFormData }) => {
               <th rowSpan="2">Coach No.</th>
               <th rowSpan="2">Diameter IN A</th>
               <th rowSpan="2">Diameter IN B</th>
-              <th rowSpan="2">Flage IN</th>
-              <th rowSpan="2">BD No.</th>
               <th rowSpan="2">BD Make IN</th>
-              <th rowSpan="2">BD Size IN</th>
               <th rowSpan="2">BD Thickness A</th>
               <th rowSpan="2">BD Thickness B</th>
               <th rowSpan="2">BD Defect</th>
 
-              <th rowSpan="2">CTRB No. A</th>
-              <th rowSpan="2">CTRB No. B</th>
               <th rowSpan="2">CTRB Make A</th>
               <th rowSpan="2">CTRB Make B</th>
               <th rowSpan="2">Refurbishment Details A</th>
               <th rowSpan="2">Refurbishment Details B</th>
               <th rowSpan="2">Fitment Date</th>
-              <th rowSpan="2">CTRB Defect</th>
-              <th rowSpan="2">CTRB Defect NAME</th>
+              <th rowSpan="2">CTRB Defect A</th>
+              <th rowSpan="2">CTRB Defect NAME A</th>
+              <th rowSpan="2">CTRB Defect B</th>
+              <th rowSpan="2">CTRB Defect NAME B</th>
               <th rowSpan="2">CTRB Status A</th>
               <th rowSpan="2">CTRB Status B</th>
               <th rowSpan="2">CTRB Remaining Life A</th>
@@ -659,7 +655,8 @@ const ProceedSubmit = ({ formData, setFormData }) => {
               <th rowSpan="2">CTRB Remark B</th>
 
               <th rowSpan="2">Rod Gauge IN</th>
-              <th rowSpan="2">Sound Test IN</th>
+              <th rowSpan="2">Sound Test IN A</th>
+              <th rowSpan="2">Sound Test IN B</th>
               <th rowSpan="2">Type Of Repair</th>
               <th rowSpan="2">Matunga Remark</th>
               <th rowSpan="2">Inspector Name</th>
@@ -677,23 +674,20 @@ const ProceedSubmit = ({ formData, setFormData }) => {
               <td rowSpan="2">{formData.CoachNumber}</td>
               <td rowSpan="2">{formData.DiameterINA}</td>
               <td rowSpan="2">{formData.DiameterINB}</td>
-              <td rowSpan="2">{formData.FlageIN}</td>
-              <td rowSpan="2">{formData.BDNumber}</td>
               <td rowSpan="2">{formData.BDMakeIN}</td>
-              <td rowSpan="2">{formData.BDSizeIN}</td>
               <td rowSpan="2">{formData.BDThicknessA}</td>
               <td rowSpan="2">{formData.BDThicknessB}</td>
               <td rowSpan="2">{formData.BDDefect}</td>
 
-              <td rowSpan="2">{formData.CTRBNumberA}</td>
-              <td rowSpan="2">{formData.CTRBNumberB}</td>
               <td rowSpan="2">{formData.CTRBMakeA}</td>
               <td rowSpan="2">{formData.CTRBMakeB}</td>
               <td rowSpan="2">{formData.RefurbishmentDetailsA}</td>
               <td rowSpan="2">{formData.RefurbishmentDetailsB}</td>
               <td rowSpan="2">{formData.FitmentDate}</td>
-              <td rowSpan="2">{formData.CTRBDefect}</td>
-              <td rowSpan="2">{formData.CTRBDefectName}</td>
+              <td rowSpan="2">{formData.CTRBDefectA}</td>
+              <td rowSpan="2">{formData.CTRBDefectNameA}</td>
+              <td rowSpan="2">{formData.CTRBDefectB}</td>
+              <td rowSpan="2">{formData.CTRBDefectNameB}</td>
               <td rowSpan="2">{formData.CTRBStatusA}</td>
               <td rowSpan="2">{formData.CTRBStatusB}</td>
               <td rowSpan="2">{formData.CTRBRemainingLifeA}</td>
@@ -702,7 +696,8 @@ const ProceedSubmit = ({ formData, setFormData }) => {
               <td rowSpan="2">{formData.CTRBRemarkB}</td>
 
               <td rowSpan="2">{formData.RodGaugeIN}</td>
-              <td rowSpan="2">{formData.SoundTestIN}</td>
+              <td rowSpan="2">{formData.SoundTestINA}</td>
+              <td rowSpan="2">{formData.SoundTestINB}</td>
               <td rowSpan="2">{formData.TypeOfRepair}</td>
               <td rowSpan="2">{formData.MatungaRemark}</td>
               <td rowSpan="2">{formData.InspectorName}</td>
@@ -717,24 +712,24 @@ const ProceedSubmit = ({ formData, setFormData }) => {
                 Disc Particular
               </th>
               <th colSpan="">A</th>
-              <td colSpan="30">{formData.DiscParticularA}</td>
+              <td colSpan="28">{formData.DiscParticularA}</td>
             </tr>
             <tr>
               <th rowSpan="" colSpan="">
                 B
               </th>
-              <td colSpan="30">{formData.DiscParticularB}</td>
+              <td colSpan="28">{formData.DiscParticularB}</td>
             </tr>
             <tr>
               <th rowSpan="2" colSpan={2}>
                 CTRB
               </th>
               <th colSpan="">A</th>
-              <td colSpan="30">{formData.CTRBA}</td>
+              <td colSpan="28">{formData.CTRBNumberA}</td>
             </tr>
             <tr>
               <th rowSpan="">B</th>
-              <td colSpan="30">{formData.CTRBB}</td>
+              <td colSpan="28">{formData.CTRBNumberB}</td>
             </tr>
           </tbody>
         </table>

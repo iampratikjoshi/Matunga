@@ -21,7 +21,6 @@ function ReportDetails({
   const [otherDivisionReport, setotherDivisionReport] = useState(""); // State for other divisionreport input
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -125,37 +124,7 @@ function ReportDetails({
     // console.log(formDataDivision);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataDivision.POHDate) {
-      newErrors.POHDate = "POH Date is required.";
-    }
 
-    if (!formDataDivision.divisionreport) {
-      newErrors.divisionreport = "Division Report is required.";
-    } else if (
-      formDataDivision.divisionreport === "others" &&
-      !otherDivisionReport
-    ) {
-      newErrors.divisionreport = "Division Report is required.";
-    }
-
-    if (!formDataDivision.DivisionName) {
-      newErrors.DivisionName = "Division Name is required.";
-    } else if (
-      formDataDivision.DivisionName === "others" &&
-      !otherDivisionName
-    ) {
-      newErrors.DivisionName = "Division Name is required.";
-    }
-
-    if (!formDataDivision.matungareport) {
-      newErrors.matungareport = "Matunga Report is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
 
   const handleCancel = () => {
     setFormDataDivision((prevFormData) => ({
@@ -174,7 +143,7 @@ function ReportDetails({
   const handleSubmit = async (e) => {
     e.preventDefault();
     let wheelNo = formDataDivision.WheelNo;
-    if (validateForm()) {
+    
       try {
         const response = await postData("/inward/data", formDataDivision);
         console.log(response.AxleNo);
@@ -203,7 +172,7 @@ function ReportDetails({
       } catch (error) {
         console.error("Error submitting form:", error);
       }
-    }
+    
   };
 
   return (
@@ -226,7 +195,7 @@ function ReportDetails({
             <div className="row-1">
               <div>
                 <label>
-                  P.O.H Date:<span className="required-asterisk">*</span>
+                  P.O.H Date:
                 </label>
                 <input
                   type="date"
@@ -234,24 +203,12 @@ function ReportDetails({
                   value={formDataDivision.POHDate}
                   onChange={handleChange}
                 />
-                {errors.POHDate && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.POHDate}
-                  </p>
-                )}
+
               </div>
               <div>
                 <label>
                   Division Name:
-                  <span className="required-asterisk">*</span>
+
                 </label>
                 <select
                   name="DivisionName"
@@ -277,25 +234,13 @@ function ReportDetails({
                   <option value="others">Others</option>
                 </select>
 
-                {DivisionName !== "others" && errors.DivisionName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.DivisionName}
-                  </p>
-                )}
+
               </div>
               {DivisionName === "others" && (
                 <div>
                   <label>
                     Enter Specific Division Name:
-                    <span className="required-asterisk">*</span>
+
                   </label>
                   <input
                     type="text"
@@ -303,28 +248,16 @@ function ReportDetails({
                     value={otherDivisionName}
                     onChange={handleOtherDivisionNameChange}
                     placeholder="Enter Specific Remark"
-                    // Adjust spacing
+                  // Adjust spacing
                   />
-                  {DivisionName === "others" && errors.DivisionName && (
-                    <p
-                      style={{
-                        color: "red",
-                        fontSize: "small",
-                        margin: 0,
-                        marginTop: "2px",
-                        marginLeft: "2px",
-                      }}
-                    >
-                      {errors.DivisionName}
-                    </p>
-                  )}
+
                 </div>
               )}
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  Division Report:<span className="required-asterisk">*</span>
+                  Division Report:
                 </label>
                 <select
                   name="divisionreport"
@@ -346,27 +279,19 @@ function ReportDetails({
                   <option value="SEAL DENT">SEAL DENT</option>
                   <option value="SEAL DAMAGE">SEAL DAMAGE</option>
                   <option value="BEARING JAM">BEARING JAM</option>
+                  <option value="SPREAD RIM">SPREAD RIM</option>
+                  <option value="GREASE OOZING">GREASE OOZING</option>
+                  <option value="OMRS">OMRS</option>
+                  <option value="WILD">WILD</option>
                   <option value="others">Others</option>
                 </select>
-                {divisionreport !== "others" && errors.divisionreport && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.divisionreport}
-                  </p>
-                )}
+
               </div>
               {divisionreport === "others" && (
                 <div>
                   <label>
                     Enter Specific Division Report:
-                    <span className="required-asterisk">*</span>
+
                   </label>
                   <input
                     type="text"
@@ -374,48 +299,24 @@ function ReportDetails({
                     value={otherDivisionReport}
                     onChange={handleOtherDivisionReportChange}
                     placeholder="Enter Specific Remark"
-                    // Adjust spacing
+                  // Adjust spacing
                   />
-                  {divisionreport === "others" && errors.divisionreport && (
-                    <p
-                      style={{
-                        color: "red",
-                        fontSize: "small",
-                        margin: 0,
-                        marginTop: "2px",
-                        marginLeft: "2px",
-                      }}
-                    >
-                      {errors.divisionreport}
-                    </p>
-                  )}
+
                 </div>
               )}
 
               <div>
                 <label>
-                  Matunga Report:<span className="required-asterisk">*</span>
+                  Matunga Remark:
                 </label>
                 <input
                   type="text"
                   name="matungareport"
                   value={formDataDivision.matungareport}
                   onChange={handleChange}
-                  placeholder="Enter Matunga Report"
+                  placeholder="Enter Matunga Remark"
                 />
-                {errors.matungareport && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.matungareport}
-                  </p>
-                )}
+
               </div>
             </div>
             <div className="row-3">
@@ -464,17 +365,7 @@ function ReportDetails({
                   Next
                 </button>
               </div>
-              {/* <div>
-                <button
-                  onClick={() => {
-                    if (validateForm()) {
-                      navigate("/proceedsubmitLHBDivision");
-                    }
-                  }}
-                >
-                  Preview for Submission
-                </button>
-              </div> */}
+              
               <div>
                 <button
                   onClick={() => {

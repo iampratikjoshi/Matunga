@@ -13,7 +13,6 @@ function RepairDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
   const [file, setFile] = useState(null); // Single file state
   const [isBackNavigation, setIsBackNavigation] = useState(false); // State to track back navigation
   const { getRootProps, getInputProps } = useDropzone({
@@ -57,27 +56,7 @@ function RepairDetails({
     console.log(formData);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.TypeOfRepair) {
-      newErrors.TypeOfRepair = "Type Of Repair is required.";
-    }
-
-    if (!formData.MatungaRemark) {
-      newErrors.MatungaRemark = "Matunga Remark is required.";
-    }
-
-    if (!formData.InspectorName) {
-      newErrors.InspectorName = "Inspector Name is required.";
-    }
-
-    if (!formData.InspectorTicketNo) {
-      newErrors.InspectorTicketNo = "Inspector Ticket No. is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+ 
 
   const handleCancel = () => {
     setFormData((prevFormData) => ({
@@ -96,14 +75,14 @@ function RepairDetails({
 
   const handleBack = () => {
     setIsBackNavigation(true); // Set flag when navigating back
-    navigate("/LHBSchedulePreInspection/ctrb_details");
+    navigate("/LHBSchedulePreInspection/ctrbb_details");
   };
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
+   
       try {
         const response = await postData("/api/data", formData);
         console.log(response.AxleNumber);
@@ -128,7 +107,7 @@ function RepairDetails({
       } catch (error) {
         console.error("Error submitting form:", error);
       }
-    }
+    
   };
 
   return (
@@ -151,7 +130,7 @@ function RepairDetails({
             <div className="row-1" style={{ columnGap: "33px" }}>
               <div>
                 <label>
-                  Type of Repair:<span className="required-asterisk">*</span>
+                  Type of Repair:
                 </label>
                 <select
                   name="TypeOfRepair"
@@ -163,19 +142,7 @@ function RepairDetails({
                   <option value="NormalRepair">Normal Repair</option>
                   <option value="HeavyRepair">Heavy Repair</option>
                 </select>
-                {errors.TypeOfRepair && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.TypeOfRepair}
-                  </p>
-                )}
+               
               </div>
               {showHeavyRepairFields && (
                 <div className="row">
@@ -199,7 +166,7 @@ function RepairDetails({
 
               <div>
                 <label>
-                  Matunga Remark:<span className="required-asterisk">*</span>
+                  Matunga Remark:
                 </label>
                 <input
                   type="text"
@@ -208,23 +175,11 @@ function RepairDetails({
                   onChange={handleChange}
                   placeholder="Enter Matunga Remark"
                 />
-                {errors.MatungaRemark && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.MatungaRemark}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Inspector Name:<span className="required-asterisk">*</span>
+                  Inspector Name:
                 </label>
                 <input
                   type="text"
@@ -233,26 +188,15 @@ function RepairDetails({
                   onChange={handleChange}
                   placeholder="Enter Inspector Name"
                 />
-                {errors.InspectorName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.InspectorName}
-                  </p>
-                )}
+                
+                
               </div>
             </div>
             <div className="row-2">
               <div>
                 <label>
                   Inspector Ticket No.:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -261,19 +205,18 @@ function RepairDetails({
                   onChange={handleChange}
                   placeholder="Enter Inspector Ticket No."
                 />
-                {errors.InspectorTicketNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.InspectorTicketNo}
-                  </p>
-                )}
+                
+              </div>
+              <div>
+                <label>
+                  Fitment Date:
+                </label>
+                <input
+                  type="date"
+                  name="FitmentDate"
+                  value={formData.FitmentDate}
+                  onChange={handleChange}
+                />
               </div>
               <div className="file-container">
                 <span style={{ fontWeight: "bold", marginBottom: "5px" }}>
@@ -315,6 +258,7 @@ function RepairDetails({
             </div>
             <div className="row-3">
               <div></div>
+              <div></div>
             </div>
 
             <div className="btn-container">
@@ -326,9 +270,9 @@ function RepairDetails({
               <div>
                 <button
                   onClick={() => {
-                    if (validateForm()) {
+                    
                       navigate("/proceedsubmit");
-                    }
+                    
                   }}
                 >
                   Preview for Submission

@@ -137,7 +137,6 @@ function GeneralInspection({
   const validateForm = () => {
     const newErrors = {};
 
-
     if (!formDataFinal.USTName) {
       newErrors.USTName = "USTName is required.";
     }
@@ -186,7 +185,6 @@ function GeneralInspection({
         <div className="page-contentLHB">
           <div className="wheel-page-main-content">
             <div className="row-1">
-
               <div>
                 <label>
                   UST Name:<span className="required-asterisk">*</span>
@@ -298,7 +296,7 @@ function GeneralInspection({
                   </p>
                 )}
               </div>
-              
+
               <div>
                 <label>
                   Inspector Name:<span className="required-asterisk">*</span>
@@ -326,7 +324,8 @@ function GeneralInspection({
               </div>
               <div>
                 <label>
-                  Inspector Ticket No.:<span className="required-asterisk">*</span>
+                  Inspector Ticket No.:
+                  <span className="required-asterisk">*</span>
                 </label>
                 <input
                   type="text"
@@ -352,7 +351,9 @@ function GeneralInspection({
             </div>
             <div className="row-3">
               <div>
-                <label>Remark:<span className="required-asterisk">*</span></label>
+                <label>
+                  Remark:<span className="required-asterisk">*</span>
+                </label>
                 <select
                   name="FinalInspectionRemark"
                   value={remark}
@@ -390,7 +391,7 @@ function GeneralInspection({
                     // Adjust spacing
                   />
                 </div>
-              )}
+              )}
               <div className="file-container">
                 <span style={{ fontWeight: "bold", marginBottom: "5px" }}>
                   Upload Image:
@@ -416,7 +417,6 @@ function GeneralInspection({
                   )}
                 </div>
               </div>
-
             </div>
             <div className="row-3">
               <div></div>
@@ -440,7 +440,7 @@ function GeneralInspection({
                 </button>
               </div>
               <div>
-              <button onClick={handleBack}>Back</button>
+                <button onClick={handleBack}>Back</button>
               </div>
               <div>
                 <button className="red_btn" onClick={handleCancel}>

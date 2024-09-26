@@ -61,39 +61,13 @@ function Details({
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.RodGaugeIN) {
-      newErrors.RodGaugeIN = "Rod Gauge IN is required.";
-    } else if (
+    if (
       isNaN(formData.RodGaugeIN) ||
       formData.RodGaugeIN < 1599 ||
       formData.RodGaugeIN > 1602
     ) {
       newErrors.RodGaugeIN =
         "RodGaugeIN must be a number between 1599mm and 1602mm.";
-    }
-
-    if (!formData.ShopSrNumber) {
-      newErrors.ShopSrNumber = "Shop Sr. Number  is required.";
-    }
-
-    if (!formData.AxleNumber) {
-      newErrors.AxleNumber = "Axle Number is required.";
-    }
-
-    if (!formData.ReceiveDate) {
-      newErrors.ReceiveDate = "Receive Date is required.";
-    }
-
-    if (!formData.AxleCondition) {
-      newErrors.AxleCondition = "Axle Condition is required.";
-    }
-
-    if (!formData.DiscParticularA) {
-      newErrors.DiscParticularA = "Disc Particular A is required.";
-    }
-
-    if (!formData.DiscParticularB) {
-      newErrors.DiscParticularB = "Disc Particular B is required.";
     }
 
     setErrors(newErrors);
@@ -143,10 +117,7 @@ function Details({
           <div className="wheel-page-main-content">
             <div className="row-1">
               <div>
-                <label>
-                  Shop Sr. No. (Wheel No.):
-                  <span className="required-asterisk">*</span>
-                </label>
+                <label>Shop Sr. No. (Wheel No.):</label>
                 <input
                   type="text"
                   name="ShopSrNumber"
@@ -154,24 +125,9 @@ function Details({
                   onChange={handleChange}
                   placeholder="Enter Shop Sr. No."
                 />
-                {errors.ShopSrNumber && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.ShopSrNumber}
-                  </p>
-                )}
               </div>
               <div>
-                <label>
-                  Axle No:<span className="required-asterisk">*</span>
-                </label>
+                <label>Axle No:</label>
                 <input
                   type="text"
                   name="AxleNumber"
@@ -179,50 +135,20 @@ function Details({
                   onChange={handleChange}
                   placeholder="Enter Axle Number"
                 />
-                {errors.AxleNumber && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.AxleNumber}
-                  </p>
-                )}
               </div>
               <div>
-                <label>
-                  Receive Date:<span className="required-asterisk">*</span>
-                </label>
+                <label>Receive Date:</label>
                 <input
                   type="date"
                   name="ReceiveDate"
                   value={formData.ReceiveDate}
                   onChange={handleChange}
                 />
-                {errors.ReceiveDate && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.ReceiveDate}
-                  </p>
-                )}
               </div>
             </div>
             <div className="row-2">
               <div>
-                <label>
-                  Axle Condition:<span className="required-asterisk">*</span>
-                </label>
+                <label>Axle Condition:</label>
                 <input
                   type="text"
                   name="AxleCondition"
@@ -230,24 +156,9 @@ function Details({
                   onChange={handleChange}
                   placeholder="Enter Axle Condition"
                 />
-                {errors.AxleCondition && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.AxleCondition}
-                  </p>
-                )}
               </div>
               <div>
-                <label>
-                  Disc Particular A:<span className="required-asterisk">*</span>
-                </label>
+                <label>Disc Particular A:</label>
                 <input
                   type="text"
                   name="DiscParticularA"
@@ -255,24 +166,9 @@ function Details({
                   onChange={handleChange}
                   placeholder="Enter Disc Particular A"
                 />
-                {errors.DiscParticularA && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.DiscParticularA}
-                  </p>
-                )}
               </div>
               <div>
-                <label>
-                  Disc Particular B:<span className="required-asterisk">*</span>
-                </label>
+                <label>Disc Particular B:</label>
                 <input
                   type="text"
                   name="DiscParticularB"
@@ -280,26 +176,11 @@ function Details({
                   onChange={handleChange}
                   placeholder="Enter Disc Particular B"
                 />
-                {errors.DiscParticularB && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.DiscParticularB}
-                  </p>
-                )}
               </div>
             </div>
             <div className="row-3">
               <div>
-                <label>
-                  Rod Gauge IN:<span className="required-asterisk">*</span>
-                </label>
+                <label>Rod Gauge IN:</label>
                 <input
                   type="text"
                   name="RodGaugeIN"
@@ -320,6 +201,26 @@ function Details({
                     {errors.RodGaugeIN}
                   </p>
                 )}
+              </div>
+              <div>
+                <label>Diameter IN A:</label>
+                <input
+                  type="text"
+                  name="DiameterINA"
+                  value={formData.DiameterINA}
+                  onChange={handleChange}
+                  placeholder="Enter Diameter IN A"
+                />
+              </div>
+              <div>
+                <label>Diameter IN B:</label>
+                <input
+                  type="text"
+                  name="DiameterINB"
+                  value={formData.DiameterINB}
+                  onChange={handleChange}
+                  placeholder="Enter Diameter IN B"
+                />
               </div>
             </div>
             <div className="row-3">

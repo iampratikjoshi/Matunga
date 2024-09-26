@@ -12,9 +12,9 @@ function SidebarLHB() {
   const SidebarData = [
     { title: "Details", link: "details" },
     { title: "BD And Coach Details", link: "bdandcoach_details" },
-    { title: "CTRB And Sound Details", link: "ctrbrodgaugeandsound_details" },
-    { title: "CTRB Details", link: "ctrb_details" },
     
+    { title: "CTRB A Details", link: "ctrba_details" },
+    { title: "CTRB B Details", link: "ctrbb_details" },
     { title: "Repair Details", link: "repair_details" },
     
   ];

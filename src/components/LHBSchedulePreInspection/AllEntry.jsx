@@ -486,9 +486,7 @@ const AllEntry = () => {
       "Coach No.",
       "Diameter IN A",
       "Diameter IN B",
-      "Flage IN",
       "BD Make",
-      "BD Size IN",
       "BD Thickness A",
       "BD Thickness B",
       "BD Defect",
@@ -499,8 +497,10 @@ const AllEntry = () => {
       "Refurbishment Details A",
       "Refurbishment Details B",
       "Fitment Date",
-      "CTRB Defect",
-      "CTRB Defect Name",
+      "CTRB Defect A",
+      "CTRB Defect B",
+      "CTRB Defect Name A",
+      "CTRB Defect Name B",
       "CTRB Status A",
       "CTRB Status B",
       "CTRB Remaining Life A",
@@ -508,57 +508,56 @@ const AllEntry = () => {
       "CTRB Remark A",
       "CTRB Remark B",
       "Rod Gauge IN",
-      "Sound Test IN",
+      "Sound Test IN A",
+      "Sound Test IN B",
       "Type Of Repair",
       "Matunga Remark",
       "Insp. Name",
       "Insp. T.No.",
       "Disc Particular A",
       "Disc Particular B",
-      "CTRB A",
-      "CTRB B",
     ];
 
     // Construct the CSV rows with form data
     const rows = data.map((entry) => [
       entry.ShopSrNumber,
-      entry.AxleNumber,
-      entry.ReceiveDate,
-      entry.AxleCondition,
-      entry.CoachNumber,
-      entry.DiameterINA,
-      entry.DiameterINB,
-      entry.FlageIN,
-      entry.BDMakeIN,
-      entry.BDSizeIN,
-      entry.BDThicknessA,
-      entry.BDThicknessB,
-      entry.BDDefect,
-      entry.CTRBNumberA,
-      entry.CTRBNumberB,
-      entry.CTRBMakeA,
-      entry.CTRBMakeB,
-      entry.RefurbishmentDetailsA,
-      entry.RefurbishmentDetailsB,
-      entry.FitmentDate,
-      entry.CTRBDefect,
-      entry.CTRBDefectName,
-      entry.CTRBStatusA,
-      entry.CTRBStatusB,
-      entry.CTRBRemainingLifeA,
-      entry.CTRBRemainingLifeB,
-      entry.CTRBRemarkA,
-      entry.CTRBRemarkB,
-      entry.RodGaugeIN,
-      entry.SoundTestIN,
-      entry.TypeOfRepair,
-      entry.MatungaRemark,
-      entry.InspectorName,
-      entry.InspectorTicketNo,
-      entry.DiscParticularA,
-      entry.DiscParticularB,
-      entry.CTRBA,
-      entry.CTRBB,
+        entry.AxleNumber,
+        entry.ReceiveDate,
+        entry.AxleCondition,
+        entry.CoachNumber,
+        entry.DiameterINA,
+        entry.DiameterINB,
+        entry.BDMakeIN,
+        entry.BDThicknessA,
+        entry.BDThicknessB,
+        entry.BDDefect,
+        entry.CTRBNumberA,
+        entry.CTRBNumberB,
+        entry.CTRBMakeA,
+        entry.CTRBMakeB,
+        entry.RefurbishmentDetailsA,
+        entry.RefurbishmentDetailsB,
+        entry.FitmentDate,
+        entry.CTRBDefectA,
+        entry.CTRBDefectB,
+        entry.CTRBDefectNameA,
+        entry.CTRBDefectNameB,
+        entry.CTRBStatusA,
+        entry.CTRBStatusB,
+        entry.CTRBRemainingLifeA,
+        entry.CTRBRemainingLifeB,
+        entry.CTRBRemarkA,
+        entry.CTRBRemarkB,
+        entry.RodGaugeIN,
+        entry.SoundTestINA,
+        entry.SoundTestINB,
+        entry.TypeOfRepair,
+        entry.MatungaRemark,
+        entry.InspectorName,
+        entry.InspectorTicketNo,
+        entry.DiscParticularA,
+        entry.DiscParticularB,
+       
     ]);
     // Create CSV content
     let csvContent =
@@ -614,28 +613,25 @@ const AllEntry = () => {
         <table>
           <thead className="thead">
             <tr>
-              <th colSpan={1}>Shop Sr. No.</th>
+            <th colSpan={1}>Shop Sr. No.</th>
               <th colSpan={1}>Receive Date</th>
               <th rowSpan="2">Coach No.</th>
               <th rowSpan="2">Diameter IN A</th>
               <th rowSpan="2">Diameter IN B</th>
-              <th rowSpan="2">Flage IN</th>
-              <th rowSpan="2">BD No.</th>
               <th rowSpan="2">BD Make IN</th>
-              <th rowSpan="2">BD Size IN</th>
               <th rowSpan="2">BD Thickness A</th>
               <th rowSpan="2">BD Thickness B</th>
               <th rowSpan="2">BD Defect</th>
 
-              <th rowSpan="2">CTRB No. A</th>
-              <th rowSpan="2">CTRB No. B</th>
               <th rowSpan="2">CTRB Make A</th>
               <th rowSpan="2">CTRB Make B</th>
               <th rowSpan="2">Refurbishment Details A</th>
               <th rowSpan="2">Refurbishment Details B</th>
               <th rowSpan="2">Fitment Date</th>
-              <th rowSpan="2">CTRB Defect</th>
-              <th rowSpan="2">CTRB Defect NAME</th>
+              <th rowSpan="2">CTRB Defect A</th>
+              <th rowSpan="2">CTRB Defect NAME A</th>
+              <th rowSpan="2">CTRB Defect B</th>
+              <th rowSpan="2">CTRB Defect NAME B</th>
               <th rowSpan="2">CTRB Status A</th>
               <th rowSpan="2">CTRB Status B</th>
               <th rowSpan="2">CTRB Remaining Life A</th>
@@ -644,7 +640,8 @@ const AllEntry = () => {
               <th rowSpan="2">CTRB Remark B</th>
 
               <th rowSpan="2">Rod Gauge IN</th>
-              <th rowSpan="2">Sound Test IN</th>
+              <th rowSpan="2">Sound Test IN A</th>
+              <th rowSpan="2">Sound Test IN B</th>
               <th rowSpan="2">Type Of Repair</th>
               <th rowSpan="2">Matunga Remark</th>
               <th rowSpan="2">Inspector Name</th>
@@ -659,69 +656,67 @@ const AllEntry = () => {
           {data.map((res) => (
             <tbody name="tbody" key={`tbody-${res.id}`}>
               <tr name="tr" key={`tr-${res.id}`}>
-                <td rowSpan="">{res.ShopSrNumber}</td>
-                <td rowSpan="">{res.ReceiveDate}</td>
-                <td rowSpan="2">{res.CoachNumber}</td>
-                <td rowSpan="2">{res.DiameterINA}</td>
-                <td rowSpan="2">{res.DiameterINB}</td>
-                <td rowSpan="2">{res.FlageIN}</td>
-                <td rowSpan="2">{res.BDNumber}</td>
-                <td rowSpan="2">{res.BDMakeIN}</td>
-                <td rowSpan="2">{res.BDSizeIN}</td>
-                <td rowSpan="2">{res.BDThicknessA}</td>
-                <td rowSpan="2">{res.BDThicknessB}</td>
-                <td rowSpan="2">{res.BDDefect}</td>
+              <td rowSpan="">{res.ShopSrNumber}</td>
+              <td rowSpan="">{res.ReceiveDate}</td>
+              <td rowSpan="2">{res.CoachNumber}</td>
+              <td rowSpan="2">{res.DiameterINA}</td>
+              <td rowSpan="2">{res.DiameterINB}</td>
+              <td rowSpan="2">{res.BDMakeIN}</td>
+              <td rowSpan="2">{res.BDThicknessA}</td>
+              <td rowSpan="2">{res.BDThicknessB}</td>
+              <td rowSpan="2">{res.BDDefect}</td>
 
-                <td rowSpan="2">{res.CTRBNumberA}</td>
-                <td rowSpan="2">{res.CTRBNumberB}</td>
-                <td rowSpan="2">{res.CTRBMakeA}</td>
-                <td rowSpan="2">{res.CTRBMakeB}</td>
-                <td rowSpan="2">{res.RefurbishmentDetailsA}</td>
-                <td rowSpan="2">{res.RefurbishmentDetailsB}</td>
-                <td rowSpan="2">{res.FitmentDate}</td>
-                <td rowSpan="2">{res.CTRBDefect}</td>
-                <td rowSpan="2">{res.CTRBDefectName}</td>
-                <td rowSpan="2">{res.CTRBStatusA}</td>
-                <td rowSpan="2">{res.CTRBStatusB}</td>
-                <td rowSpan="2">{res.CTRBRemainingLifeA}</td>
-                <td rowSpan="2">{res.CTRBRemainingLifeB}</td>
-                <td rowSpan="2">{res.CTRBRemarkA}</td>
-                <td rowSpan="2">{res.CTRBRemarkB}</td>
+              <td rowSpan="2">{res.CTRBMakeA}</td>
+              <td rowSpan="2">{res.CTRBMakeB}</td>
+              <td rowSpan="2">{res.RefurbishmentDetailsA}</td>
+              <td rowSpan="2">{res.RefurbishmentDetailsB}</td>
+              <td rowSpan="2">{res.FitmentDate}</td>
+              <td rowSpan="2">{res.CTRBDefectA}</td>
+              <td rowSpan="2">{res.CTRBDefectNameA}</td>
+              <td rowSpan="2">{res.CTRBDefectB}</td>
+              <td rowSpan="2">{res.CTRBDefectNameB}</td>
+              <td rowSpan="2">{res.CTRBStatusA}</td>
+              <td rowSpan="2">{res.CTRBStatusB}</td>
+              <td rowSpan="2">{res.CTRBRemainingLifeA}</td>
+              <td rowSpan="2">{res.CTRBRemainingLifeB}</td>
+              <td rowSpan="2">{res.CTRBRemarkA}</td>
+              <td rowSpan="2">{res.CTRBRemarkB}</td>
 
-                <td rowSpan="2">{res.RodGaugeIN}</td>
-                <td rowSpan="2">{res.SoundTestIN}</td>
-                <td rowSpan="2">{res.TypeOfRepair}</td>
-                <td rowSpan="2">{res.MatungaRemark}</td>
-                <td rowSpan="2">{res.InspectorName}</td>
-                <td rowSpan="2">{res.InspectorTicketNo}</td>
-              </tr>
-              <tr>
-                <td rowSpan="">{res.AxleNumber}</td>
-                <td rowSpan="">{res.AxleCondition}</td>
-              </tr>
-              <tr>
-                <th rowSpan="2" colSpan={2}>
-                  Disc Particular
-                </th>
-                <th colSpan="">A</th>
-                <td colSpan="30">{res.DiscParticularA}</td>
-              </tr>
-              <tr>
-                <th rowSpan="" colSpan="">
-                  B
-                </th>
-                <td colSpan="30">{res.DiscParticularB}</td>
-              </tr>
-              <tr>
-                <th rowSpan="2" colSpan={2}>
-                  CTRB
-                </th>
-                <th colSpan="">A</th>
-                <td colSpan="30">{res.CTRBA}</td>
-              </tr>
-              <tr>
-                <th rowSpan="">B</th>
-                <td colSpan="30">{res.CTRBB}</td>
+              <td rowSpan="2">{res.RodGaugeIN}</td>
+              <td rowSpan="2">{res.SoundTestINA}</td>
+              <td rowSpan="2">{res.SoundTestINB}</td>
+              <td rowSpan="2">{res.TypeOfRepair}</td>
+              <td rowSpan="2">{res.MatungaRemark}</td>
+              <td rowSpan="2">{res.InspectorName}</td>
+              <td rowSpan="2">{res.InspectorTicketNo}</td>
+            </tr>
+            <tr>
+              <td rowSpan="">{res.AxleNumber}</td>
+              <td rowSpan="">{res.AxleCondition}</td>
+            </tr>
+            <tr>
+              <th rowSpan="2" colSpan={2}>
+                Disc Particular
+              </th>
+              <th colSpan="">A</th>
+              <td colSpan="28">{res.DiscParticularA}</td>
+            </tr>
+            <tr>
+              <th rowSpan="" colSpan="">
+                B
+              </th>
+              <td colSpan="28">{res.DiscParticularB}</td>
+            </tr>
+            <tr>
+              <th rowSpan="2" colSpan={2}>
+                CTRB
+              </th>
+              <th colSpan="">A</th>
+              <td colSpan="28">{res.CTRBNumberA}</td>
+            </tr>
+            <tr>
+              <th rowSpan="">B</th>
+              <td colSpan="28">{res.CTRBNumberB}</td>
               </tr>
             </tbody>
           ))}

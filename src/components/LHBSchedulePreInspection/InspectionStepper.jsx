@@ -7,8 +7,8 @@ function InspectionStepper({ activeStep }) {
   const steps = [
     "Details",
     "BD And Coach Details",
-    "CTRB Rod Gauge And Sound Details",
-    "CTRB Details",
+    "CTRB A Details",
+    "CTRB B Details",
     "Repair Details",
   ];
 

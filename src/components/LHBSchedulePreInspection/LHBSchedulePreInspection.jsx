@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Details from "./Details.jsx";
 import SidebarLHB from "./SidebarLHB.jsx";
-import CTRBDetails from "./CTRBDetails.jsx";
+import CTRBDetailsA from "./CTRBDetailsA.jsx";
 import BDAndCoachDetails from "./BDAndCoachDetails.jsx";
 import RepairDetails from "./RepairDetails.jsx";
-import CTRBRodGaugeAndSoundDetails from "./CTRBRodGaugeAndSoundDetails.jsx";
+import CTRBDetailsB from "./CTRBDetailsB.jsx";
 import Breadcrumbs from "./Breadcrumbs.jsx";
 import InspectionStepper from "./InspectionStepper.jsx";
 
@@ -59,9 +59,9 @@ function LHBSchedulePreInspection({ formData, setFormData }) {
               />
               
               <Route
-                path="ctrb_details"
+                path="ctrba_details"
                 element={
-                  <CTRBDetails
+                  <CTRBDetailsA
                     formData={formData}
                     setFormData={setFormData}
                     onInputChange={handleInputChange}
@@ -72,9 +72,9 @@ function LHBSchedulePreInspection({ formData, setFormData }) {
               />
               
               <Route
-                path="ctrbrodgaugeandsound_details"
+                path="ctrbb_details"
                 element={
-                  <CTRBRodGaugeAndSoundDetails
+                  <CTRBDetailsB
                     formData={formData}
                     setFormData={setFormData}
                     onInputChange={handleInputChange}
