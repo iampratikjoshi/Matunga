@@ -17,11 +17,11 @@ const Breadcrumbs = () => {
         if (name == "lhbfinalinspection") {
           name = "LHB Final Inspection";
         }
-        if (name == "ctrb_details") {
-          name = "CTRB Details";
+        if (name == "ctrba_details") {
+          name = "CTRB A Details";
         }
-        if (name == "ctrbremaininglife_details") {
-          name = "CTRB Remaining Life";
+        if (name == "ctrbb_details") {
+          name = "CTRB B Details";
         }
 
         function formatName(name) {
@@ -37,12 +37,10 @@ const Breadcrumbs = () => {
 
         return isLast ? (
           <span key={breadcrumbPath}>
-            {" "}
             <MdKeyboardArrowRight /> {name}
           </span>
         ) : (
           <span key={breadcrumbPath}>
-            {" "}
             <MdKeyboardArrowRight /> <Link to={breadcrumbPath}>{name}</Link>
           </span>
         );

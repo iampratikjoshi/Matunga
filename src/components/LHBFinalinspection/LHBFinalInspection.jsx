@@ -5,19 +5,18 @@ import SidebarLHB from "./SidebarLHB.jsx";
 import Wheeldetails from "./WheelDetails.jsx";
 import JournalDetails from "./JournalDetails.jsx";
 import BDDetails from "./BDDetails.jsx";
-import BRGDetails from "./BRGDetails.jsx";
 import GeneralInspection from "./GeneralInspection.jsx";
 import Breadcrumbs from "./Breadcrumbs.jsx";
 import InspectionStepper from "./InspectionStepper.jsx";
-import CTRBDetails from "./CTRBDetails.jsx";
-import CTRBRemainingLife from "./CTRBRemainingLife.jsx";
+import CTRBDetailsA from "./CTRBDetailsA.jsx";
+import CTRBDetailsB from "./CTRBDetailsB.jsx";
 
 function LHBFinalInspection({ formDataFinal, setFormDataFinal }) {
   const [activeStep, setActiveStep] = useState(0);
 
   // Function to move to the next step
   const handleNextStep = () => {
-    setActiveStep((prevStep) => Math.min(prevStep + 1, 7));
+    setActiveStep((prevStep) => Math.min(prevStep + 1, 6));
   };
 
   // Function to reset the step to the first step
@@ -105,9 +104,9 @@ function LHBFinalInspection({ formDataFinal, setFormDataFinal }) {
                 }
               />
               <Route
-                path="ctrb_details"
+                path="ctrba_details"
                 element={
-                  <CTRBDetails
+                  <CTRBDetailsA
                     formDataFinal={formDataFinal}
                     setFormDataFinal={setFormDataFinal}
                     onInputChange={handleInputChange}
@@ -117,9 +116,9 @@ function LHBFinalInspection({ formDataFinal, setFormDataFinal }) {
                 }
               />
               <Route
-                path="ctrbremaininglife_details"
+                path="ctrbb_details"
                 element={
-                  <CTRBRemainingLife
+                  <CTRBDetailsB
                     formDataFinal={formDataFinal}
                     setFormDataFinal={setFormDataFinal}
                     onInputChange={handleInputChange}
@@ -128,18 +127,7 @@ function LHBFinalInspection({ formDataFinal, setFormDataFinal }) {
                   />
                 }
               />
-              <Route
-                path="brg_details"
-                element={
-                  <BRGDetails
-                    formDataFinal={formDataFinal}
-                    setFormDataFinal={setFormDataFinal}
-                    onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep}
-                  />
-                }
-              />
+              
               <Route
                 path="general_details"
                 element={

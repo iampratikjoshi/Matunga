@@ -224,8 +224,26 @@ function Details({
               </div>
             </div>
             <div className="row-3">
-              <div></div>
-              <div></div>
+              <div>
+                <label>Sound Test IN A:</label>
+                <input
+                  type="text"
+                  name="SoundTestINA"
+                  value={formData.SoundTestINA}
+                  onChange={handleChange}
+                  placeholder="Enter Sound Test IN A"
+                />
+              </div>
+              <div>
+                <label>Sound Test IN B:</label>
+                <input
+                  type="text"
+                  name="SoundTestINB"
+                  value={formData.SoundTestINB}
+                  onChange={handleChange}
+                  placeholder="Enter Sound Test IN B"
+                />
+              </div>
             </div>
             <div className="btn-container">
               <button onClick={saveandcontinue}>Save & Continue</button>

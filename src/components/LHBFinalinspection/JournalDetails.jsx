@@ -62,33 +62,41 @@ function JournalDetails({
 
   const validateForm = () => {
     const newErrors = {};
-    
-    if (!formDataFinal.EndHole) {
-      newErrors.EndHole = "End Hole is required.";
+
+
+    if (isNaN(formDataFinal.ShoulderSizeA) || formDataFinal.ShoulderSizeA < 160.134 || formDataFinal.ShoulderSizeA > 160.174) {
+      newErrors.ShoulderSizeA = "Shoulder Size must be between 160.134 and 160.174.";
     }
 
-    if (!formDataFinal.Size) {
-      newErrors.Size = "Jr Size is required.";
-    }else if (isNaN(formDataFinal.Size) || formDataFinal.Size < 130.043 || formDataFinal.Size > 130.068) {
-      newErrors.Size = "Jr Size must be between 130.043 and 130.068.";
-    }
-
-    if (!formDataFinal.Oval) {
-      newErrors.Oval = "Jr Oval is required.";
-    }else if (isNaN(formDataFinal.Oval) || formDataFinal.Oval < 0 || formDataFinal.Oval > 0.015) {
-      newErrors.Oval = "Jr Tap must be between 0 and 0.015.";
-    }
-
-    if (!formDataFinal.Tap) {
-      newErrors.Tap = "Jr Tap is required.";
-    }else if (isNaN(formDataFinal.Tap) || formDataFinal.Tap < 0 || formDataFinal.Tap > 0.020) {
-      newErrors.Tap = "Jr Tap must be between 0 and 0.020.";
-    }
-
-    
-    if (!formDataFinal.JrWaiviness) {
-      newErrors.JrWaiviness = "Jr Waiviness is required.";
+    if (isNaN(formDataFinal.SizeA) || formDataFinal.SizeA < 130.043 || formDataFinal.SizeA > 130.068) {
+      newErrors.SizeA = "Jr Size must be between 130.043 and 130.068.";
     }
+
+    if (isNaN(formDataFinal.OvalA) || formDataFinal.OvalA < 0 || formDataFinal.OvalA > 0.015) {
+      newErrors.OvalA = "Jr Tap must be between 0 and 0.015.";
+    }
+
+    if (isNaN(formDataFinal.TapA) || formDataFinal.TapA < 0 || formDataFinal.TapA > 0.020) {
+      newErrors.TapA = "Jr Tap must be between 0 and 0.020.";
+    }
+
+    if (isNaN(formDataFinal.ShoulderSizeB) || formDataFinal.ShoulderSizeB < 160.134 || formDataFinal.ShoulderSizeB > 160.174) {
+      newErrors.ShoulderSizeB = "Shoulder Size must be between 160.134 and 160.174.";
+    }
+
+    if (isNaN(formDataFinal.SizeB) || formDataFinal.SizeB < 130.043 || formDataFinal.SizeB > 130.068) {
+      newErrors.SizeB = "Jr Size must be between 130.043 and 130.068.";
+    }
+
+    if (isNaN(formDataFinal.OvalB) || formDataFinal.OvalB < 0 || formDataFinal.OvalB > 0.015) {
+      newErrors.OvalB = "Jr Tap must be between 0 and 0.015.";
+    }
+
+    if (isNaN(formDataFinal.TapB) || formDataFinal.TapB < 0 || formDataFinal.TapB > 0.020) {
+      newErrors.TapB = "Jr Tap must be between 0 and 0.020.";
+    }
+
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -125,19 +133,19 @@ function JournalDetails({
         <div className="page-contentLHB">
           <div className="wheel-page-main-content">
             <div className="row-1">
-              
+
               <div>
                 <label>
-                  Jr. Size:<span className="required-asterisk">*</span>
+                  Jr. Size A:
                 </label>
                 <input
                   type="text"
-                  name="Size"
-                  value={formDataFinal.Size}
+                  name="SizeA"
+                  value={formDataFinal.SizeA}
                   onChange={handleChange}
-                  placeholder="Enter Size"
+                  placeholder="Enter Jr. Size A"
                 />
-                {errors.Size && (
+                {errors.SizeA && (
                   <p
                     style={{
                       color: "red",
@@ -147,22 +155,22 @@ function JournalDetails({
                       marginLeft: "2px",
                     }}
                   >
-                    {errors.Size}
+                    {errors.SizeA}
                   </p>
                 )}
               </div>
               <div>
                 <label>
-                  Jr. Oval:<span className="required-asterisk">*</span>
+                  Jr. Size B:
                 </label>
                 <input
                   type="text"
-                  name="Oval"
-                  value={formDataFinal.Oval}
+                  name="SizeB"
+                  value={formDataFinal.SizeB}
                   onChange={handleChange}
-                  placeholder="Enter Oval"
+                  placeholder="Enter Size Jr. B"
                 />
-                {errors.Oval && (
+                {errors.SizeB && (
                   <p
                     style={{
                       color: "red",
@@ -172,25 +180,22 @@ function JournalDetails({
                       marginLeft: "2px",
                     }}
                   >
-                    {errors.Oval}
+                    {errors.SizeB}
                   </p>
                 )}
               </div>
               <div>
-              <label>
-                  Jr. Waiviness:<span className="required-asterisk">*</span>
+                <label>
+                  Jr. Oval A:
                 </label>
-                <select
-                  name="JrWaiviness"
-                  value={formDataFinal.JrWaiviness}
+                <input
+                  type="text"
+                  name="OvalA"
+                  value={formDataFinal.OvalA}
                   onChange={handleChange}
-                  required
-                >
-                  <option value="">Select Jr. Waiviness</option>
-                  <option value="Ok">Ok</option>
-                  <option value="Not Ok">Not Ok</option>
-                </select>
-                {errors.JrWaiviness && (
+                  placeholder="Enter Jr. Oval A"
+                />
+                {errors.OvalA && (
                   <p
                     style={{
                       color: "red",
@@ -200,24 +205,25 @@ function JournalDetails({
                       marginLeft: "2px",
                     }}
                   >
-                    {errors.JrWaiviness}
+                    {errors.OvalA}
                   </p>
                 )}
               </div>
+
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  Jr. Tap:<span className="required-asterisk">*</span>
+                  Jr. Oval B:
                 </label>
                 <input
                   type="text"
-                  name="Tap"
-                  value={formDataFinal.Tap}
+                  name="OvalB"
+                  value={formDataFinal.OvalB}
                   onChange={handleChange}
-                  placeholder="Enter Tap"
+                  placeholder="Enter  Jr. Oval B"
                 />
-                {errors.Tap && (
+                {errors.OvalB && (
                   <p
                     style={{
                       color: "red",
@@ -227,51 +233,187 @@ function JournalDetails({
                       marginLeft: "2px",
                     }}
                   >
-                    {errors.Tap}
+                    {errors.OvalB}
                   </p>
                 )}
               </div>
-              
               <div>
                 <label>
-                  End Hole:<span className="required-asterisk">*</span>
+                  Jr. Waiviness A:
                 </label>
-                
                 <select
-                  name="EndHole"
-                  value={formDataFinal.EndHole}
+                  name="JrWaivinessA"
+                  value={formDataFinal.JrWaivinessA}
                   onChange={handleChange}
                   required
                 >
-                  <option value="">Select End Hole</option>
+                  <option value="">Select Jr. Waiviness A</option>
                   <option value="Ok">Ok</option>
                   <option value="Not Ok">Not Ok</option>
                 </select>
-                {errors.EndHole && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.EndHole}
-                  </p>
-                )}
+
               </div>
-              
+              <div>
+                <label>
+                  Jr. Waiviness B:
+                </label>
+                <select
+                  name="JrWaivinessB"
+                  value={formDataFinal.JrWaivinessB}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Jr. Waiviness B</option>
+                  <option value="Ok">Ok</option>
+                  <option value="Not Ok">Not Ok</option>
+                </select>
+
+              </div>
+
+
+
+
+
             </div>
             <div className="row-3">
-              <div></div>
-              <div></div>
+              <div>
+                <label>
+                  Jr. Tap A:
+                </label>
+                <input
+                  type="text"
+                  name="TapA"
+                  value={formDataFinal.TapA}
+                  onChange={handleChange}
+                  placeholder="Enter Jr. Tap A"
+                />
+                {errors.TapA && (
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.TapA}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label>
+                  Jr. Tap B:
+                </label>
+                <input
+                  type="text"
+                  name="TapB"
+                  value={formDataFinal.TapB}
+                  onChange={handleChange}
+                  placeholder="Enter  Jr. Tap B"
+                />
+                {errors.TapB && (
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.TapB}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label>
+                  End Hole A:
+                </label>
+
+                <select
+                  name="EndHoleA"
+                  value={formDataFinal.EndHoleA}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select End Hole A</option>
+                  <option value="Ok">Ok</option>
+                  <option value="Not Ok">Not Ok</option>
+                </select>
+                
+              </div>
             </div>
             <div className="row-2">
-              <div></div>
-              <div></div>
+              <div>
+                <label>
+                  End Hole B:
+                </label>
+
+                <select
+                  name="EndHoleB"
+                  value={formDataFinal.EndHoleB}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select End Hole B</option>
+                  <option value="Ok">Ok</option>
+                  <option value="Not Ok">Not Ok</option>
+                </select>
+                
+              </div>
+              <div>
+                <label>
+                  Shoulder Size A:
+                </label>
+                <input
+                  type="text"
+                  name="ShoulderSizeA"
+                  value={formDataFinal.ShoulderSizeA}
+                  onChange={handleChange}
+                  placeholder="Enter Shoulder Size A"
+                />
+                {errors.ShoulderSizeA && (
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.ShoulderSizeA}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label>
+                  Shoulder Size B:
+                </label>
+                <input
+                  type="text"
+                  name="ShoulderSizeB"
+                  value={formDataFinal.ShoulderSizeB}
+                  onChange={handleChange}
+                  placeholder="Enter Shoulder Size B"
+                />
+                {errors.ShoulderSizeB && (
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                      margin: 0,
+                      marginTop: "2px",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {errors.ShoulderSizeB}
+                  </p>
+                )}
+              </div>
             </div>
-            
+
             <div className="btn-container">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button onClick={handleBack}>Back</button>

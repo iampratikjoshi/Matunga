@@ -28,13 +28,12 @@ function SidebarLHB() {
       title: "Brake Disc A Side Bore Size",
       link: "brakediscABoresize_details",
     },
-    { title: "Brake Disc A Side", link: "brakediscA_details" },
+    { title: "Brake Disc A & B Side", link: "brakediscA_Bdetails" },
 
     {
       title: "Brake Disc B Side Bore Size",
       link: "brakediscBBoresize_details",
     },
-    { title: "Brake Disc B Side", link: "brakediscB_details" },
 
     { title: "Operator Details", link: "operator_details" },
   ];

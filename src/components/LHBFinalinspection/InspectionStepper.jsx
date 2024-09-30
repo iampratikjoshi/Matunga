@@ -9,9 +9,8 @@ function InspectionStepper({ activeStep }) {
     "Wheel Details",
     "Journal Details",
     "BD Details",
-    "CTRB Details",
-    "CTRB Remaining Life Details",
-    "BRG Details",
+    "CTRB A Details",
+    "CTRB B Details",
     "General Inspection",
   ];
 

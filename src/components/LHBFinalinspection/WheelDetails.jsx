@@ -70,32 +70,13 @@ function Wheeldetails({
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formDataFinal.WheelDiaA) {
-      newErrors.WheelDiaA = "Wheel Dia A is required.";
-    }
+    
 
-    if (!formDataFinal.WheelDiaB) {
-      newErrors.WheelDiaB = "Wheel Dia B is required.";
-    }
-
-    if (!formDataFinal.WheelRG) {
-      newErrors.WheelRG = "Wheel RG is required.";
-    }else if (isNaN(formDataFinal.WheelRG) || formDataFinal.WheelRG < 1599 || formDataFinal.WheelRG > 1602) {
+    if (isNaN(formDataFinal.WheelRG) || formDataFinal.WheelRG < 1599 || formDataFinal.WheelRG > 1602) {
       newErrors.WheelRG = "Wheel RG must be between 1599 and 1602.";
     }
 
-    if (!formDataFinal.WheelFLG) {
-      newErrors.WheelFLG = "Wheel FLG is required.";
-    }
-
-    if (!formDataFinal.DiscParticularA) {
-      newErrors.DiscParticularA = "Disc Particular A is required.";
-    }
-
-
-    if (!formDataFinal.DiscParticularB) {
-      newErrors.DiscParticularB = "Disc Particular B is required.";
-    }
+  
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -133,7 +114,7 @@ function Wheeldetails({
             <div className="row-1">
             <div>
                 <label>
-                  Wheel Dia A:<span className="required-asterisk">*</span>
+                  Wheel Dia A:
                 </label>
                 <input
                   type="text"
@@ -142,23 +123,11 @@ function Wheeldetails({
                   onChange={handleChange}
                   placeholder="Enter A/B Side"
                 />
-                {errors.WheelDiaA && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiaA}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Wheel Dia B:<span className="required-asterisk">*</span>
+                  Wheel Dia B:
                 </label>
                 <input
                   type="text"
@@ -167,23 +136,11 @@ function Wheeldetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel Dia"
                 />
-                {errors.WheelDiaB && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiaB}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Wheel RG:<span className="required-asterisk">*</span>
+                  Wheel RG:
                 </label>
                 <input
                   type="text"
@@ -210,7 +167,7 @@ function Wheeldetails({
             <div className="row-2">
               <div>
                 <label>
-                  Wheel FLG:<span className="required-asterisk">*</span>
+                  Wheel FLG:
                 </label>
                 <input
                   type="text"
@@ -219,23 +176,11 @@ function Wheeldetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel FLG"
                 />
-                {errors.WheelFLG && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelFLG}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Disc Particular A:<span className="required-asterisk">*</span>
+                  Disc Particular A:
                 </label>
                 <input
                   type="text"
@@ -244,23 +189,11 @@ function Wheeldetails({
                   onChange={handleChange}
                   placeholder="Enter Disc Particular A"
                 />
-                {errors.DiscParticularA && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.DiscParticularA}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Disc Particular B:<span className="required-asterisk">*</span>
+                  Disc Particular B:
                 </label>
                 <input
                   type="text"
@@ -269,19 +202,7 @@ function Wheeldetails({
                   onChange={handleChange}
                   placeholder="Enter Disc Particular B"
                 />
-                {errors.DiscParticularB && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.DiscParticularB}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">

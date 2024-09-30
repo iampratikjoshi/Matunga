@@ -15,9 +15,8 @@ function SidebarLHB() {
     { title: "Wheel Details", link: "wheel_details"},
     { title: "Journal Details", link: "journal_details"},
     { title: "BD Details", link: "bd_details"},
-    { title: "CTRB Details", link: "ctrb_details"},
-    { title: "CTRB Remaining Life", link: "ctrbremaininglife_details"},
-    { title: "BRG Details", link: "brg_details"},
+    { title: "CTRB A Details", link: "ctrba_details"},
+    { title: "CTRB B Details", link: "ctrbb_details"},
     { title: "General Inspection", link: "general_details"},
   ];
 

@@ -6,7 +6,7 @@ import WheelDetails from "./WheelDetails.jsx"
 import WheelDiscABoreSizeDetails from "./WheelDiscABoreSizeDetails.jsx"
 import WheelDiscBSideDetails from "./WheelDiscBSideDetails.jsx"
 import WheelDiscBBoreSizeDetails from "./WheelDiscBBoreSizeDetails.jsx"
-import BrakeDiscAsideDetails from  "./BrakeDiscASideDetails.jsx"
+import BrakeDiscABsideDetails from  "./BrakeDiscABSideDetails.jsx"
 import BrakeDiscASideBoreSizeDetails from"./BrakeDiscASideBoreSizeDetails.jsx"
 import BrakeDiscBSideBoreSizeDetails from "./BrakeDiscBSideBoreSizeDetails.jsx"
 import BrakeDiscBsideDetails from  "./BrakeDiscBsideDetails.jsx"
@@ -114,9 +114,9 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 }
               />
               <Route
-                path="brakediscA_details"
+                path="brakediscA_Bdetails"
                 element={
-                  <BrakeDiscAsideDetails
+                  <BrakeDiscABsideDetails
                   formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
@@ -137,7 +137,7 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                   />
                 }
               />
-              <Route
+              {/* <Route
                 path="brakediscB_details"
                 element={
                   <BrakeDiscBsideDetails
@@ -148,7 +148,7 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                     onResetStep={handleResetStep} 
                   />
                 }
-              />
+              /> */}
               <Route
                 path="brakediscBBoresize_details"
                 element={

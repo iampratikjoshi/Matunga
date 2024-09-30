@@ -151,7 +151,7 @@ function BrakeDiscASideBoreSizeDetails({
   const saveandcontinue = () => {
     if (validateForm()) {
       onNextStep();
-      navigate("/LHBPressOnForm/brakediscA_details");
+      navigate("/LHBPressOnForm/brakediscA_Bdetails");
     }
   };
 

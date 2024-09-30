@@ -41,6 +41,9 @@ const Breadcrumbs = () => {
         if(name=="brakediscBBoresize_details"){
           name = "Brake Disc B Side Bore Size";
         }
+        if(name=="brakediscA_Bdetails"){
+          name = "Brake Disc A & B Side Details";
+        }
 
         function formatName(name) {
             return name

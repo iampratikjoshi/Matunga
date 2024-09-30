@@ -504,19 +504,23 @@ const AllEntryFinal = () => {
       "Wheel Dia A",
       "RG",
       "FLG",
-      "Jr. Size",
-      "Jr. Oval",
-      "Jr. Tap",
-      "Shoulder Size",
-      "Jr. Waiviness",
+      "Jr. Size A",
+      "Jr. Size B",
+      "Jr. Oval A",
+      "Jr. Oval B",
+      "Jr. Tap A",
+      "Jr. Tap B",
+      "Shoulder Size A",
+      "Shoulder Size B",
+      "Jr. Waiviness A",
+      "Jr. Waiviness B",
       "Disc Particular A",
       "Disc Particular B",
       "BD Make",
-      "BD Size",
-      "End Hole",
-      "BRG Remain Life",
-      "BRG Make",
-      "BRG No.",
+      "BD Size A",
+      "BD Size B",
+      "End Hole A",
+      "End Hole B",
       "MEP A",
       "MEP B",
       "UST Name",
@@ -537,7 +541,6 @@ const AllEntryFinal = () => {
       "CTRB Remaining Life A",
       "CTRB Remaining Life B",
       "Wheel Tread UST",
-      "Remark",
     ];
 
     // Construct the CSV rows with form data
@@ -547,19 +550,23 @@ const AllEntryFinal = () => {
       entry.WheelDiaB,
       entry.WheelRG,
       entry.WheelFLG,
-      entry.Size,
-      entry.Oval,
-      entry.Tap,
-      entry.ShoulderSize,
-      entry.JrWaiviness,
+      entry.SizeA,
+      entry.SizeB,
+      entry.OvalA,
+      entry.OvalB,
+      entry.TapA,
+      entry.TapB,
+      entry.ShoulderSizeA,
+      entry.ShoulderSizeB,
+      entry.JrWaivinessA,
+      entry.JrWaivinessB,
       entry.DiscParticularA,
       entry.DiscParticularB,
       entry.BDMake,
-      entry.BDSize,
-      entry.EndHole,
-      entry.BRGRemainLife,
-      entry.BRGMake,
-      entry.BRGNo,
+      entry.BDSizeA,
+      entry.BDSizeB,
+      entry.EndHoleA,
+      entry.EndHoleB,
       entry.MEPA,
       entry.MEPB,
       entry.USTName,
@@ -580,7 +587,6 @@ const AllEntryFinal = () => {
       entry.CTRBRemainingLifeA,
       entry.CTRBRemainingLifeB,
       entry.WheelTreadUST,
-      entry.FinalInspectionRemark,
     ]);
     // Create CSV content
     let csvContent =
@@ -638,19 +644,20 @@ const AllEntryFinal = () => {
           <thead className="thead">
             <tr>
               <th rowSpan="2">Axle No.</th>
-              <th rowSpan="2">A/B Side</th>
-              <th colSpan={3}>Wheel Size</th>
-              <th colSpan={3}>Journal Size</th>
-              <th rowSpan="2">Shoulder Size</th>
-              <th rowSpan="2">Jr. Waiviness</th>
+              <th colSpan={4}>Wheel Size</th>
+              <th colSpan={6}>Journal Size</th>
+              <th rowSpan="2">Shoulder Size A</th>
+              <th rowSpan="2">Shoulder Size B</th>
+              <th rowSpan="2">Jr. Waiviness A</th>
+              <th rowSpan="2">Jr. Waiviness B</th>
               <th rowSpan="2">Disc Particular A</th>
               <th rowSpan="2">Disc Particular B</th>
               <th rowSpan="2">BD Make</th>
-              <th rowSpan="2">BD Size</th>
-              <th rowSpan="2">End Hole</th>
-              <th rowSpan="2">Brg Remain Life</th>
-              <th rowSpan="2">Brg Make</th>
-              <th rowSpan="2">Brg No.</th>
+              <th rowSpan="2">BD Size A</th>
+              <th rowSpan="2">BD Size B</th>
+              <th rowSpan="2">End Hole A</th>
+              <th rowSpan="2">End Hole B</th>
+
               <th rowSpan="2">MEP A</th>
               <th rowSpan="2">MEP B</th>
               <th rowSpan="2">UST Name</th>
@@ -671,15 +678,18 @@ const AllEntryFinal = () => {
               <th rowSpan="2">CTRB Remaining Life A</th>
               <th rowSpan="2">CTRB Remaining Life B</th>
               <th rowSpan="2">Wheel Tread UST</th>
-              <th rowSpan="2">Remark</th>
             </tr>
             <tr>
-              <th>Dia</th>
+              <th>Wheel Dia A</th>
+              <th>Wheel Dia B</th>
               <th>RG</th>
               <th>FLG</th>
-              <th>Jr. Size</th>
-              <th>Jr. Oval</th>
-              <th>Jr. Tap</th>
+              <th>Jr. Size A</th>
+              <th>Jr. Size B</th>
+              <th>Jr. Oval A</th>
+              <th>Jr. Oval B</th>
+              <th>Jr. Tap A</th>
+              <th>Jr. Tap B</th>
             </tr>
           </thead>
 
@@ -687,23 +697,28 @@ const AllEntryFinal = () => {
             <tbody name="tbody" key={`tbody-${res.id}`}>
               <tr name="tr" key={`tr-${res.id}`}>
                 <td rowSpan="2">{res.AxleNo}</td>
-                <td rowSpan="2">{res.ABSide}</td>
-                <td colSpan={1}>{res.WheelDia}</td>
                 <td colSpan={1}>{res.WheelRG}</td>
+                <td colSpan={1}>{res.WheelDiaA}</td>
+                <td colSpan={1}>{res.WheelDiaB}</td>
                 <td colSpan={1}>{res.WheelFLG}</td>
-                <td colSpan={1}>{res.Size}</td>
-                <td colSpan={1}>{res.Oval}</td>
-                <td colSpan={1}>{res.Tap}</td>
-                <td rowSpan="2">{res.ShoulderSize}</td>
-                <td rowSpan="2">{res.JrWaiviness}</td>
+                <td colSpan={1}>{res.SizeA}</td>
+                <td colSpan={1}>{res.SizeB}</td>
+                <td colSpan={1}>{res.OvalA}</td>
+                <td colSpan={1}>{res.OvalB}</td>
+                <td colSpan={1}>{res.TapA}</td>
+                <td colSpan={1}>{res.TapB}</td>
+                <td rowSpan="2">{res.ShoulderSizeA}</td>
+                <td rowSpan="2">{res.ShoulderSizeB}</td>
+                <td rowSpan="2">{res.JrWaivinessA}</td>
+                <td rowSpan="2">{res.JrWaivinessB}</td>
                 <td rowSpan="2">{res.DiscParticularA}</td>
                 <td rowSpan="2">{res.DiscParticularB}</td>
                 <td rowSpan="2">{res.BDMake}</td>
-                <td rowSpan="2">{res.BDSize}</td>
-                <td rowSpan="2">{res.EndHole}</td>
-                <td rowSpan="2">{res.BRGRemainLife}</td>
-                <td rowSpan="2">{res.BRGMake}</td>
-                <td rowSpan="2">{res.BRGNo}</td>
+                <td rowSpan="2">{res.BDSizeA}</td>
+                <td rowSpan="2">{res.BDSizeB}</td>
+                <td rowSpan="2">{res.EndHoleA}</td>
+                <td rowSpan="2">{res.EndHoleB}</td>
+
                 <td rowSpan="2">{res.MEPA}</td>
                 <td rowSpan="2">{res.MEPB}</td>
                 <td rowSpan="2">{res.USTName}</td>
@@ -724,7 +739,6 @@ const AllEntryFinal = () => {
                 <td rowSpan="2">{res.CTRBRemainingLifeA}</td>
                 <td rowSpan="2">{res.CTRBRemainingLifeB}</td>
                 <td rowSpan="2">{res.WheelTreadUST}</td>
-                <td rowSpan="2">{res.FinalInspectionRemark}</td>
               </tr>
             </tbody>
           ))}

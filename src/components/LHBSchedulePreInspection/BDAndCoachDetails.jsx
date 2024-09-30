@@ -203,27 +203,40 @@ function BDAndCoachDetails({
                 </div>
               )}
               <div>
-                <label>Sound Test IN A:</label>
+                <label>Coach No.:</label>
                 <input
                   type="text"
-                  name="SoundTestINA"
-                  value={formData.SoundTestINA}
+                  name="CoachNumber"
+                  value={formData.CoachNumber}
                   onChange={handleChange}
-                  placeholder="Enter Sound Test IN A"
+                  placeholder="Enter Coach No."
                 />
               </div>
             </div>
             <div className="row-2">
               <div>
-                <label>Sound Test IN B:</label>
+                <label>BD Thickness A:</label>
                 <input
                   type="text"
-                  name="SoundTestINB"
-                  value={formData.SoundTestINB}
+                  name="BDThicknessA"
+                  value={formData.BDThicknessA}
                   onChange={handleChange}
-                  placeholder="Enter Sound Test IN B"
+                  placeholder="Enter BD Thickness A"
                 />
               </div>
+              <div>
+                <label>BD Thickness B:</label>
+                <input
+                  type="text"
+                  name="BDThicknessB"
+                  value={formData.BDThicknessB}
+                  onChange={handleChange}
+                  placeholder="Enter BD Thickness B"
+                />
+              </div>
+            </div>
+
+            <div className="row-3">
               <div>
                 <label>BD Defect:</label>
                 <select
@@ -233,23 +246,17 @@ function BDAndCoachDetails({
                   required
                 >
                   <option value="">Choose BD Defect</option>
-                  <option value="ShelledTreadORMetalChippedOff">
-                    Shelled Tread/Metal chipped off
+                  <option value="ThermalCrack">Thermal Crack</option>
+                  <option value="IncipientCrack">Incipient Crack</option>
+                  <option value="ConcaveWear/HollowWear">
+                    Concave Wear/ Hollow Wear
                   </option>
-                  <option value="SpreadRim">Spread Rim</option>
-                  <option value="HeatCheck">Heat Check</option>
-                  <option value="ThermalCrack">Thermal crack</option>
-                  <option value="ShatteredRim">Shattered rim</option>
-                  <option value="FlatPlacesOrFlatTyre">
-                    Flat Places/ Flat tyre
-                  </option>
-                  <option value="RootRadiusTooSmall">
-                    Root radius too small
-                  </option>
-                  <option value="DeepFlange">Deep Flange</option>
-                  <option value="ThinFlange">Thin Flange</option>
-                  <option value="SharpFlange">Sharp Flange</option>
-                  <option value="WidthLess">Width-less</option>
+                  <option value="FinsBroken">Fins Broken</option>
+                  <option value="EdgeBroken">Edge Broken</option>
+                  <option value="Scoring">Scoring</option>
+                  <option value="SharpEdge">Sharp Edge</option>
+                  <option value="BlackSpot">Black Spot</option>
+                  <option value="HairLineCrack">Hair Line Crack</option>
                   <option value="others">Others</option>
                   {/* <input
                   type="text"
@@ -273,39 +280,6 @@ function BDAndCoachDetails({
                   />
                 </div>
               )}
-            </div>
-
-            <div className="row-3">
-              <div>
-                <label>Coach No.:</label>
-                <input
-                  type="text"
-                  name="CoachNumber"
-                  value={formData.CoachNumber}
-                  onChange={handleChange}
-                  placeholder="Enter Coach No."
-                />
-              </div>
-              <div>
-                <label>BD Thickness A:</label>
-                <input
-                  type="text"
-                  name="BDThicknessA"
-                  value={formData.BDThicknessA}
-                  onChange={handleChange}
-                  placeholder="Enter BD Thickness A"
-                />
-              </div>
-              <div>
-                <label>BD Thickness B:</label>
-                <input
-                  type="text"
-                  name="BDThicknessB"
-                  value={formData.BDThicknessB}
-                  onChange={handleChange}
-                  placeholder="Enter BD Thickness B"
-                />
-              </div>
             </div>
             <div className="row-3">
               <div></div>

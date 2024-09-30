@@ -82,7 +82,7 @@ function OperatorDetails({
   };
 
   const handleBack = () => {
-    navigate("/LHBPressOnForm/brakediscB_details");
+    navigate("/LHBPressOnForm/brakediscBBoresize_details");
   };
 
   const navigate = useNavigate();

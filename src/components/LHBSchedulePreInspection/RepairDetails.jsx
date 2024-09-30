@@ -56,8 +56,6 @@ function RepairDetails({
     console.log(formData);
   };
 
- 
-
   const handleCancel = () => {
     setFormData((prevFormData) => ({
       ...Object.keys(prevFormData).reduce((acc, key) => {
@@ -82,32 +80,31 @@ function RepairDetails({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
-      try {
-        const response = await postData("/api/data", formData);
-        console.log(response.AxleNumber);
-        if (response) {
-          const data = await response; // Get JSON from the response
-          console.log("Form submitted successfully:", data);
-          setFormData((prevFormData) => ({
-            ...Object.keys(prevFormData).reduce((acc, key) => {
-              acc[key] = null;
-              return acc;
-            }, {}),
-            createdBy: "ADMIN",
-            SectionId: 1,
-            DepartmentId: 2,
-            WheeltypeId: 1,
-          }));
 
-          navigate("/LHBSchedulePreInspection/axle_details");
-        } else {
-          console.error("Error submitting form:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
+    try {
+      const response = await postData("/api/data", formData);
+      console.log(response.AxleNumber);
+      if (response) {
+        const data = await response; // Get JSON from the response
+        console.log("Form submitted successfully:", data);
+        setFormData((prevFormData) => ({
+          ...Object.keys(prevFormData).reduce((acc, key) => {
+            acc[key] = null;
+            return acc;
+          }, {}),
+          createdBy: "ADMIN",
+          SectionId: 1,
+          DepartmentId: 2,
+          WheeltypeId: 1,
+        }));
+
+        navigate("/LHBSchedulePreInspection/axle_details");
+      } else {
+        console.error("Error submitting form:", response.statusText);
       }
-    
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
@@ -129,9 +126,7 @@ function RepairDetails({
           <div className="wheel-page-main-content">
             <div className="row-1" style={{ columnGap: "33px" }}>
               <div>
-                <label>
-                  Type of Repair:
-                </label>
+                <label>Type of Repair:</label>
                 <select
                   name="TypeOfRepair"
                   value={formData.TypeOfRepair}
@@ -142,7 +137,6 @@ function RepairDetails({
                   <option value="NormalRepair">Normal Repair</option>
                   <option value="HeavyRepair">Heavy Repair</option>
                 </select>
-               
               </div>
               {showHeavyRepairFields && (
                 <div className="row">
@@ -165,9 +159,7 @@ function RepairDetails({
               )}
 
               <div>
-                <label>
-                  Matunga Remark:
-                </label>
+                <label>Matunga Remark:</label>
                 <input
                   type="text"
                   name="MatungaRemark"
@@ -175,29 +167,11 @@ function RepairDetails({
                   onChange={handleChange}
                   placeholder="Enter Matunga Remark"
                 />
-                
-              </div>
-              <div>
-                <label>
-                  Inspector Name:
-                </label>
-                <input
-                  type="text"
-                  name="InspectorName"
-                  value={formData.InspectorName}
-                  onChange={handleChange}
-                  placeholder="Enter Inspector Name"
-                />
-                
-                
               </div>
             </div>
             <div className="row-2">
               <div>
-                <label>
-                  Inspector Ticket No.:
-                  
-                </label>
+                <label>Inspector Ticket No.:</label>
                 <input
                   type="text"
                   name="InspectorTicketNo"
@@ -205,12 +179,9 @@ function RepairDetails({
                   onChange={handleChange}
                   placeholder="Enter Inspector Ticket No."
                 />
-                
               </div>
               <div>
-                <label>
-                  Fitment Date:
-                </label>
+                <label>Fitment Date:</label>
                 <input
                   type="date"
                   name="FitmentDate"
@@ -246,6 +217,16 @@ function RepairDetails({
             </div>
             <div className="row-3">
               <div>
+                <label>Inspector Name:</label>
+                <input
+                  type="text"
+                  name="InspectorName"
+                  value={formData.InspectorName}
+                  onChange={handleChange}
+                  placeholder="Enter Inspector Name"
+                />
+              </div>
+              <div>
                 <label>Remark:</label>
                 <input
                   type="text"
@@ -270,9 +251,7 @@ function RepairDetails({
               <div>
                 <button
                   onClick={() => {
-                    
-                      navigate("/proceedsubmit");
-                    
+                    navigate("/proceedsubmit");
                   }}
                 >
                   Preview for Submission

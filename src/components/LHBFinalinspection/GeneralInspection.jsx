@@ -11,8 +11,6 @@ function GeneralInspection({
   onNextStep,
   onResetStep,
 }) {
-  const [remark, setRemark] = useState(""); // State for remark dropdown
-  const [otherRemark, setOtherRemark] = useState(""); // State for other remark input
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
   const [errors, setErrors] = useState({});
@@ -29,39 +27,6 @@ function GeneralInspection({
       }
     },
   });
-
-  const handleRemarkChange = (event) => {
-    const selectedRemark = event.target.value;
-    setRemark(selectedRemark);
-
-    // If "Others" is selected, we use OtherRemark, otherwise, we set Remark
-    if (selectedRemark !== "others") {
-      // console.log(selectedRemark);
-      // console.log(remark);
-
-      setFormDataFinal((prevData) => ({
-        ...prevData,
-        FinalInspectionRemark: selectedRemark,
-        // OtherRemark: "", // Clear out the OtherRemark field
-      }));
-    } else {
-      setFormDataFinal((prevData) => ({
-        ...prevData,
-        FinalInspectionRemark: "", // Clear out the Remark field
-      }));
-    }
-  };
-
-  const handleOtherRemarkChange = (event) => {
-    const { value } = event.target;
-    setOtherRemark(value);
-    setFormDataFinal((prevData) => ({
-      ...prevData,
-      FinalInspectionRemark: value,
-    }));
-
-    console.log(formDataFinal.FinalInspectionRemark);
-  };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -82,33 +47,31 @@ function GeneralInspection({
   };
 
   const handleSubmit = async (e) => {
-    if (validateForm()) {
-      e.preventDefault();
+    e.preventDefault();
 
-      try {
-        const response = await postData("/api/data", formDataFinal);
-        console.log(response.AxleNo);
-        if (response) {
-          const data = await response; // Get JSON from the response
-          console.log("Form submitted successfully:", data);
-          setFormDataFinal((prevFormData) => ({
-            ...Object.keys(prevFormData).reduce((acc, key) => {
-              acc[key] = null;
-              return acc;
-            }, {}),
-            createdBy: "ADMIN",
-            SectionId: 1,
-            DepartmentId: 4,
-            WheeltypeId: 1,
-          }));
+    try {
+      const response = await postData("/api/data", formDataFinal);
+      console.log(response.AxleNo);
+      if (response) {
+        const data = await response; // Get JSON from the response
+        console.log("Form submitted successfully:", data);
+        setFormDataFinal((prevFormData) => ({
+          ...Object.keys(prevFormData).reduce((acc, key) => {
+            acc[key] = null;
+            return acc;
+          }, {}),
+          createdBy: "ADMIN",
+          SectionId: 1,
+          DepartmentId: 4,
+          WheeltypeId: 1,
+        }));
 
-          navigate("/lhbfinalinspection/axle_details");
-        } else {
-          console.error("Error submitting form:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
+        navigate("/lhbfinalinspection/axle_details");
+      } else {
+        console.error("Error submitting form:", response.statusText);
       }
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -129,44 +92,11 @@ function GeneralInspection({
 
   const handleBack = () => {
     // Set flag when navigating back
-    navigate("/lhbfinalinspection/brg_details");
+    navigate("/lhbfinalinspection/ctrbb_details");
   };
 
   const navigate = useNavigate();
 
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formDataFinal.USTName) {
-      newErrors.USTName = "USTName is required.";
-    }
-
-    if (!formDataFinal.WheelTreadUST) {
-      newErrors.WheelTreadUST = "Wheel Tread UST is required.";
-    }
-
-    if (!formDataFinal.FittingDt) {
-      newErrors.FittingDt = "Fitting Date is required.";
-    }
-
-    if (!formDataFinal.ECATest) {
-      newErrors.ECATest = "ECA Test is required.";
-    }
-
-    if (!formDataFinal.InspectorName) {
-      newErrors.InspectorName = "Inspector Name is required.";
-    }
-    if (!formDataFinal.InspectorTicketNo) {
-      newErrors.InspectorTicketNo = "Inspector Ticket No. is required.";
-    }
-
-    if (!formDataFinal.FinalInspectionRemark) {
-      newErrors.FinalInspectionRemark = "Remark is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
   return (
     <div className="component">
       <h2
@@ -186,9 +116,7 @@ function GeneralInspection({
           <div className="wheel-page-main-content">
             <div className="row-1">
               <div>
-                <label>
-                  UST Name:<span className="required-asterisk">*</span>
-                </label>
+                <label>UST Name:</label>
                 <input
                   type="text"
                   name="USTName"
@@ -196,24 +124,9 @@ function GeneralInspection({
                   onChange={handleChange}
                   placeholder="Enter UST Name"
                 />
-                {errors.USTName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.USTName}
-                  </p>
-                )}
               </div>
               <div>
-                <label>
-                  Wheel Tread UST:<span className="required-asterisk">*</span>
-                </label>
+                <label>Wheel Tread UST:</label>
                 <input
                   type="text"
                   name="WheelTreadUST"
@@ -221,50 +134,20 @@ function GeneralInspection({
                   onChange={handleChange}
                   placeholder="Enter Wheel Tread UST"
                 />
-                {errors.WheelTreadUST && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelTreadUST}
-                  </p>
-                )}
               </div>
               <div>
-                <label>
-                  Fitting Date:<span className="required-asterisk">*</span>
-                </label>
+                <label>Fitting Date:</label>
                 <input
                   type="date"
                   name="FittingDt"
                   value={formDataFinal.FittingDt}
                   onChange={handleChange}
                 />
-                {errors.FittingDt && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.FittingDt}
-                  </p>
-                )}
               </div>
             </div>
             <div className="row-2">
               <div>
-                <label>
-                  ECA Test:<span className="required-asterisk">*</span>
-                </label>
+                <label>ECA Test:</label>
                 {/* <input
                   type="text"
                   name="ECATest"
@@ -282,25 +165,10 @@ function GeneralInspection({
                   <option value="Ok">Ok</option>
                   <option value="Not Ok">Not Ok</option>
                 </select>
-                {errors.ECATest && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.ECATest}
-                  </p>
-                )}
               </div>
 
               <div>
-                <label>
-                  Inspector Name:<span className="required-asterisk">*</span>
-                </label>
+                <label>Inspector Name:</label>
                 <input
                   type="text"
                   name="InspectorName"
@@ -308,25 +176,9 @@ function GeneralInspection({
                   onChange={handleChange}
                   placeholder="Enter Inspector Name"
                 />
-                {errors.InspectorName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.InspectorName}
-                  </p>
-                )}
               </div>
               <div>
-                <label>
-                  Inspector Ticket No.:
-                  <span className="required-asterisk">*</span>
-                </label>
+                <label>Inspector Ticket No.:</label>
                 <input
                   type="text"
                   name="InspectorTicketNo"
@@ -334,64 +186,9 @@ function GeneralInspection({
                   onChange={handleChange}
                   placeholder="Enter Inspector Ticket No."
                 />
-                {errors.InspectorTicketNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.InspectorTicketNo}
-                  </p>
-                )}
               </div>
             </div>
             <div className="row-3">
-              <div>
-                <label>
-                  Remark:<span className="required-asterisk">*</span>
-                </label>
-                <select
-                  name="FinalInspectionRemark"
-                  value={remark}
-                  onChange={handleRemarkChange}
-                  required
-                >
-                  <option value="">Select Remark</option>
-                  <option value="JUS">JUS</option>
-                  <option value="SUS">SUS</option>
-                  <option value="others">OTHERS</option>
-                </select>
-                {errors.FinalInspectionRemark && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.FinalInspectionRemark}
-                  </p>
-                )}
-              </div>
-              {remark === "others" && (
-                <div>
-                  <label>Enter Specific Remark:</label>
-                  <input
-                    type="text"
-                    name="OtherRemark"
-                    value={otherRemark}
-                    onChange={handleOtherRemarkChange}
-                    placeholder="Enter Specific Remark"
-                    // Adjust spacing
-                  />
-                </div>
-              )}
               <div className="file-container">
                 <span style={{ fontWeight: "bold", marginBottom: "5px" }}>
                   Upload Image:
@@ -431,9 +228,7 @@ function GeneralInspection({
               <div>
                 <button
                   onClick={() => {
-                    if (validateForm()) {
-                      navigate("/proceedsubmitFinal");
-                    }
+                    navigate("/proceedsubmitFinal");
                   }}
                 >
                   Preview for Submission

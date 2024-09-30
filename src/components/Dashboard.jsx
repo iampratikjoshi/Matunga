@@ -13,8 +13,10 @@ function Dashboard() {
   const [data, setData] = useState(null);
   const [rangeDataPreInspection, setRangeDataPreInspection] = useState([]);
   const [rangeDataFinalInspection, setRangeDataFinalInspection] = useState([]);
-  const [filteredCountPreInspection, setFilteredCountPreInspection] = useState(0);
-  const [filteredCountFinalInspection, setFilteredCountFinalInspection] = useState(0);
+  const [filteredCountPreInspection, setFilteredCountPreInspection] =
+    useState(0);
+  const [filteredCountFinalInspection, setFilteredCountFinalInspection] =
+    useState(0);
   const [dateRange, setDateRange] = useState("7-days");
 
   useEffect(() => {
@@ -123,7 +125,10 @@ function Dashboard() {
 
   // Filter data by date range
   useEffect(() => {
-    const filterDataByDateRange = (startDate,endDate,rangeDataPreInspection,
+    const filterDataByDateRange = (
+      startDate,
+      endDate,
+      rangeDataPreInspection,
       rangeDataFinalInspection
     ) => {
       let filteredDataPreInspection = [];
@@ -145,16 +150,18 @@ function Dashboard() {
         // Filter data between selected 'from' and 'to' dates
         filteredDataPreInspection = rangeDataPreInspection.filter((item) => {
           const createddate = parseDateWithoutTimezone(item.createdDate);
-          return (createddate >= normalizedStartDate &&
-                  createddate <= normalizedEndDate
+          return (
+            createddate >= normalizedStartDate &&
+            createddate <= normalizedEndDate
           );
         });
 
         filteredDataFinalInspection = rangeDataFinalInspection.filter(
           (item) => {
             const createddate = parseDateWithoutTimezone(item.createdDate);
-            return (createddate >= normalizedStartDate &&
-                    createddate <= normalizedEndDate
+            return (
+              createddate >= normalizedStartDate &&
+              createddate <= normalizedEndDate
             );
           }
         );
@@ -164,7 +171,10 @@ function Dashboard() {
       setFilteredCountFinalInspection(filteredDataFinalInspection.length);
     };
 
-    filterDataByDateRange(startDate,endDate,rangeDataPreInspection,
+    filterDataByDateRange(
+      startDate,
+      endDate,
+      rangeDataPreInspection,
       rangeDataFinalInspection
     );
   }, [startDate, endDate]);
@@ -473,11 +483,9 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Multi-select dropdown for Department */}
-        <div
-          className="filter"
-          style={{ position: "relative", display: "inline-block" }}
-        >
+        {/* Multi-select dropdown for Department //, display: "inline-block" */}
+        <div className="filter"  style={{ position: "relative" }}>
+        {/* <div className="filter" > */}
           <label htmlFor="department">DEPARTMENT</label>
           <button id="department" onClick={() => toggleDropdown("department")}>
             {selectedOptions.department.length
@@ -651,4 +659,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-

@@ -640,17 +640,17 @@ const ProceedSubmit = ({ formData, setFormData }) => {
 
               <th rowSpan="2">CTRB Make A</th>
               <th rowSpan="2">CTRB Make B</th>
-              <th rowSpan="2">Refurbishment Details A</th>
-              <th rowSpan="2">Refurbishment Details B</th>
+              {/* <th rowSpan="2">Refurbishment Details A</th>
+              <th rowSpan="2">Refurbishment Details B</th> */}
               <th rowSpan="2">Fitment Date</th>
               <th rowSpan="2">CTRB Defect A</th>
               <th rowSpan="2">CTRB Defect NAME A</th>
               <th rowSpan="2">CTRB Defect B</th>
               <th rowSpan="2">CTRB Defect NAME B</th>
-              <th rowSpan="2">CTRB Status A</th>
-              <th rowSpan="2">CTRB Status B</th>
-              <th rowSpan="2">CTRB Remaining Life A</th>
-              <th rowSpan="2">CTRB Remaining Life B</th>
+              {/* <th rowSpan="2">CTRB Status A</th>
+              <th rowSpan="2">CTRB Status B</th> */}
+              <th rowSpan="2" colSpan={3}>CTRB Remaining Life A</th>
+              <th rowSpan="2" colSpan={3}>CTRB Remaining Life B</th>
               <th rowSpan="2">CTRB Remark A</th>
               <th rowSpan="2">CTRB Remark B</th>
 
@@ -681,17 +681,17 @@ const ProceedSubmit = ({ formData, setFormData }) => {
 
               <td rowSpan="2">{formData.CTRBMakeA}</td>
               <td rowSpan="2">{formData.CTRBMakeB}</td>
-              <td rowSpan="2">{formData.RefurbishmentDetailsA}</td>
-              <td rowSpan="2">{formData.RefurbishmentDetailsB}</td>
+              {/* <td rowSpan="2">{formData.RefurbishmentDetailsA}</td>
+              <td rowSpan="2">{formData.RefurbishmentDetailsB}</td> */}
               <td rowSpan="2">{formData.FitmentDate}</td>
               <td rowSpan="2">{formData.CTRBDefectA}</td>
               <td rowSpan="2">{formData.CTRBDefectNameA}</td>
               <td rowSpan="2">{formData.CTRBDefectB}</td>
               <td rowSpan="2">{formData.CTRBDefectNameB}</td>
-              <td rowSpan="2">{formData.CTRBStatusA}</td>
-              <td rowSpan="2">{formData.CTRBStatusB}</td>
-              <td rowSpan="2">{formData.CTRBRemainingLifeA}</td>
-              <td rowSpan="2">{formData.CTRBRemainingLifeB}</td>
+              {/* <td rowSpan="2">{formData.CTRBStatusA}</td>
+              <td rowSpan="2">{formData.CTRBStatusB}</td> */}
+              <td rowSpan="2" colSpan={3}>{formData.CTRBRemainingLifeA}</td>
+              <td rowSpan="2" colSpan={3}>{formData.CTRBRemainingLifeB}</td>
               <td rowSpan="2">{formData.CTRBRemarkA}</td>
               <td rowSpan="2">{formData.CTRBRemarkB}</td>
 

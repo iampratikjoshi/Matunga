@@ -198,8 +198,8 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "",
       "",
       "",
-      
-      
+
+
     ];
 
     // Define the main headers and subheaders (optional for visual layout)
@@ -310,25 +310,25 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       BRGMake: formDataFinal.MEPA,
       BRGNo: formDataFinal.MEPB,
       MEPA: formDataFinal.USTName,
-      MEPB:formDataFinal.FittingDt,
-      USTName:formDataFinal.ECATest,
-      FittingDt:formDataFinal.InspectorName,
-      ECATest:formDataFinal.InspectorTicketNo,
-      InspectorName:formDataFinal.Shift,
-      InspectorTicketNo:formDataFinal.WheelNo,
-      Shift:formDataFinal.CTRBNumberA,
-      WheelNo:formDataFinal.CTRBNumberB,
-      CTRBNumberA:formDataFinal.CTRBMakeA,
-      CTRBNumberB:formDataFinal.CTRBMakeB,
-      CTRBMakeA:formDataFinal.CTRBStatusA,
-      CTRBMakeB:formDataFinal.CTRBStatusB,
-      CTRBStatusA:formDataFinal.RefurbishmentDetailsA,
-      CTRBStatusB:formDataFinal.RefurbishmentDetailsB,
-      RefurbishmentDetailsA:formDataFinal.CTRBRemainingLifeA,
-      RefurbishmentDetailsB:formDataFinal.CTRBRemainingLifeB,
-      CTRBRemainingLifeA:formDataFinal.WheelTreadUST,
-      CTRBRemainingLifeB:formDataFinal.FinalInspectionRemark,
-     
+      MEPB: formDataFinal.FittingDt,
+      USTName: formDataFinal.ECATest,
+      FittingDt: formDataFinal.InspectorName,
+      ECATest: formDataFinal.InspectorTicketNo,
+      InspectorName: formDataFinal.Shift,
+      InspectorTicketNo: formDataFinal.WheelNo,
+      Shift: formDataFinal.CTRBNumberA,
+      WheelNo: formDataFinal.CTRBNumberB,
+      CTRBNumberA: formDataFinal.CTRBMakeA,
+      CTRBNumberB: formDataFinal.CTRBMakeB,
+      CTRBMakeA: formDataFinal.CTRBStatusA,
+      CTRBMakeB: formDataFinal.CTRBStatusB,
+      CTRBStatusA: formDataFinal.RefurbishmentDetailsA,
+      CTRBStatusB: formDataFinal.RefurbishmentDetailsB,
+      RefurbishmentDetailsA: formDataFinal.CTRBRemainingLifeA,
+      RefurbishmentDetailsB: formDataFinal.CTRBRemainingLifeB,
+      CTRBRemainingLifeA: formDataFinal.WheelTreadUST,
+      CTRBRemainingLifeB: formDataFinal.FinalInspectionRemark,
+
     });
 
     // Generate Excel file
@@ -549,19 +549,23 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "Wheel Dia A",
       "RG",
       "FLG",
-      "Jr. Size",
-      "Jr. Oval",
-      "Jr. Tap",
-      "Shoulder Size",
-      "Jr. Waiviness",
+      "Jr. Size A",
+      "Jr. Size B",
+      "Jr. Oval A",
+      "Jr. Oval B",
+      "Jr. Tap A",
+      "Jr. Tap B",
+      "Shoulder Size A",
+      "Shoulder Size B",
+      "Jr. Waiviness A",
+      "Jr. Waiviness B",
       "Disc Particular A",
       "Disc Particular B",
       "BD Make",
-      "BD Size",
-      "End Hole",
-      "BRG Remain Life",
-      "BRG Make",
-      "BRG No.",
+      "BD Size A",
+      "BD Size B",
+      "End Hole A",
+      "End Hole B",
       "MEP A",
       "MEP B",
       "UST Name",
@@ -582,7 +586,6 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "CTRB Remaining Life A",
       "CTRB Remaining Life B",
       "Wheel Tread UST",
-      "Remark",
     ];
 
     // Construct the CSV rows with form data
@@ -593,19 +596,23 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         formDataFinal.WheelDiaB,
         formDataFinal.WheelRG,
         formDataFinal.WheelFLG,
-        formDataFinal.Size,
-        formDataFinal.Oval,
-        formDataFinal.Tap,
-        formDataFinal.ShoulderSize,
-        formDataFinal.JrWaiviness,
+        formDataFinal.SizeA,
+        formDataFinal.SizeB,
+        formDataFinal.OvalA,
+        formDataFinal.OvalB,
+        formDataFinal.TapA,
+        formDataFinal.TapB,
+        formDataFinal.ShoulderSizeA,
+        formDataFinal.ShoulderSizeB,
+        formDataFinal.JrWaivinessA,
+        formDataFinal.JrWaivinessB,
         formDataFinal.DiscParticularA,
         formDataFinal.DiscParticularB,
         formDataFinal.BDMake,
-        formDataFinal.BDSize,
-        formDataFinal.EndHole,
-        formDataFinal.BRGRemainLife,
-        formDataFinal.BRGMake,
-        formDataFinal.BRGNo,
+        formDataFinal.BDSizeA,
+        formDataFinal.BDSizeB,
+        formDataFinal.EndHoleA,
+        formDataFinal.EndHoleB,
         formDataFinal.MEPA,
         formDataFinal.MEPB,
         formDataFinal.USTName,
@@ -626,7 +633,6 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         formDataFinal.CTRBRemainingLifeA,
         formDataFinal.CTRBRemainingLifeB,
         formDataFinal.WheelTreadUST,
-        formDataFinal.FinalInspectionRemark,
       ],
     ];
 
@@ -674,17 +680,19 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
             <tr>
               <th rowSpan="2">Axle No.</th>
               <th colSpan={4}>Wheel Size</th>
-              <th colSpan={3}>Journal Size</th>
-              <th rowSpan="2">Shoulder Size</th>
-              <th rowSpan="2">Jr. Waiviness</th>
+              <th colSpan={6}>Journal Size</th>
+              <th rowSpan="2">Shoulder Size A</th>
+              <th rowSpan="2">Shoulder Size B</th>
+              <th rowSpan="2">Jr. Waiviness A</th>
+              <th rowSpan="2">Jr. Waiviness B</th>
               <th rowSpan="2">Disc Particular A</th>
               <th rowSpan="2">Disc Particular B</th>
               <th rowSpan="2">BD Make</th>
-              <th rowSpan="2">BD Size</th>
-              <th rowSpan="2">End Hole</th>
-              <th rowSpan="2">Brg Remain Life</th>
-              <th rowSpan="2">Brg Make</th>
-              <th rowSpan="2">Brg No.</th>
+              <th rowSpan="2">BD Size A</th>
+              <th rowSpan="2">BD Size B</th>
+              <th rowSpan="2">End Hole A</th>
+              <th rowSpan="2">End Hole B</th>
+
               <th rowSpan="2">MEP A</th>
               <th rowSpan="2">MEP B</th>
               <th rowSpan="2">UST Name</th>
@@ -705,16 +713,18 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
               <th rowSpan="2">CTRB Remaining Life A</th>
               <th rowSpan="2">CTRB Remaining Life B</th>
               <th rowSpan="2">Wheel Tread UST</th>
-              <th rowSpan="2">Remark</th>
             </tr>
             <tr>
               <th>Wheel Dia A</th>
               <th>Wheel Dia B</th>
               <th>RG</th>
               <th>FLG</th>
-              <th>Jr. Size</th>
-              <th>Jr. Oval</th>
-              <th>Jr. Tap</th>
+              <th>Jr. Size A</th>
+              <th>Jr. Size B</th>
+              <th>Jr. Oval A</th>
+              <th>Jr. Oval B</th>
+              <th>Jr. Tap A</th>
+              <th>Jr. Tap B</th>
             </tr>
           </thead>
           <tbody>
@@ -724,19 +734,24 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
               <td colSpan={1}>{formDataFinal.WheelDiaA}</td>
               <td colSpan={1}>{formDataFinal.WheelDiaB}</td>
               <td colSpan={1}>{formDataFinal.WheelFLG}</td>
-              <td colSpan={1}>{formDataFinal.Size}</td>
-              <td colSpan={1}>{formDataFinal.Oval}</td>
-              <td colSpan={1}>{formDataFinal.Tap}</td>
-              <td rowSpan="2">{formDataFinal.ShoulderSize}</td>
-              <td rowSpan="2">{formDataFinal.JrWaiviness}</td>
+              <td colSpan={1}>{formDataFinal.SizeA}</td>
+              <td colSpan={1}>{formDataFinal.SizeB}</td>
+              <td colSpan={1}>{formDataFinal.OvalA}</td>
+              <td colSpan={1}>{formDataFinal.OvalB}</td>
+              <td colSpan={1}>{formDataFinal.TapA}</td>
+              <td colSpan={1}>{formDataFinal.TapB}</td>
+              <td rowSpan="2">{formDataFinal.ShoulderSizeA}</td>
+              <td rowSpan="2">{formDataFinal.ShoulderSizeB}</td>
+              <td rowSpan="2">{formDataFinal.JrWaivinessA}</td>
+              <td rowSpan="2">{formDataFinal.JrWaivinessB}</td>
               <td rowSpan="2">{formDataFinal.DiscParticularA}</td>
               <td rowSpan="2">{formDataFinal.DiscParticularB}</td>
               <td rowSpan="2">{formDataFinal.BDMake}</td>
-              <td rowSpan="2">{formDataFinal.BDSize}</td>
-              <td rowSpan="2">{formDataFinal.EndHole}</td>
-              <td rowSpan="2">{formDataFinal.BRGRemainLife}</td>
-              <td rowSpan="2">{formDataFinal.BRGMake}</td>
-              <td rowSpan="2">{formDataFinal.BRGNo}</td>
+              <td rowSpan="2">{formDataFinal.BDSizeA}</td>
+              <td rowSpan="2">{formDataFinal.BDSizeB}</td>
+              <td rowSpan="2">{formDataFinal.EndHoleA}</td>
+              <td rowSpan="2">{formDataFinal.EndHoleB}</td>
+
               <td rowSpan="2">{formDataFinal.MEPA}</td>
               <td rowSpan="2">{formDataFinal.MEPB}</td>
               <td rowSpan="2">{formDataFinal.USTName}</td>
@@ -757,7 +772,6 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
               <td rowSpan="2">{formDataFinal.CTRBRemainingLifeA}</td>
               <td rowSpan="2">{formDataFinal.CTRBRemainingLifeB}</td>
               <td rowSpan="2">{formDataFinal.WheelTreadUST}</td>
-              <td rowSpan="2">{formDataFinal.FinalInspectionRemark}</td>
             </tr>
           </tbody>
         </table>

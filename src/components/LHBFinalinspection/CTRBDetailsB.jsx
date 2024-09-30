@@ -4,25 +4,23 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { useDropzone } from "react-dropzone";
 
 function CTRBDetailsB({
-  formData,
-  setFormData,
+  formDataFinal,
+  setFormDataFinal,
   onInputChange,
   onNextStep,
   onResetStep,
 }) {
-  const [CTRBStatusB, setCTRBStatusB] = useState(formData.CTRBStatusB);
+  const [CTRBStatusB, setCTRBStatusB] = useState(formDataFinal.CTRBStatusB);
   const [RefurbishmentDetailsB, setRefurbishmentDetailsB] = useState(
-    formData.RefurbishmentDetailsB
+    formDataFinal.RefurbishmentDetailsB
   );
 
-  const [CTRBMakeB, setCTRBMakeB] = useState(formData.CTRBMakeB); // State for CTRBMakeB dropdown
+  const [CTRBMakeB, setCTRBMakeB] = useState(formDataFinal.CTRBMakeB); // State for CTRBMakeB dropdown
   const [OtherCTRBMakeB, setOtherCTRBMakeB] = useState(""); // State for other CTRBMakeB input
-  const [CTRBRemarkB, setRemarkB] = useState(formData.CTRBRemarkB);
+  const [CTRBRemarkB, setRemarkB] = useState(formDataFinal.CTRBRemarkB);
   const [otherRemarkB, setOtherRemarkB] = useState("");
-  const [ctrbdefectB, setctrbdefectB] = useState(formData.CTRBDefectB);
-  const [CTRBDefectNameB, setCTRBDefectNameB] = useState(
-    formData.CTRBDefectNameB
-  );
+  const [ctrbdefectB, setctrbdefectB] = useState(formDataFinal.CTRBDefectB);
+  const [CTRBDefectNameB, setCTRBDefectNameB] = useState(formDataFinal.CTRBDefectNameB);
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
   const [file, setFile] = useState(null);
@@ -46,13 +44,13 @@ function CTRBDetailsB({
 
     // If "Others" is selected, we use OtherRemark, otherwise, we set Remark
     if (selectedRemark !== "others") {
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBStatusB: selectedRemark,
         // OtherRemark: "", // Clear out the OtherRemark field
       }));
     } else {
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBStatusB: "", // Clear out the Remark field
       }));
@@ -62,12 +60,12 @@ function CTRBDetailsB({
   const handleRefurbishmentDetails = (event) => {
     const { value } = event.target;
     setRefurbishmentDetailsB(value);
-    setFormData((prevData) => ({
+    setFormDataFinal((prevData) => ({
       ...prevData,
       RefurbishmentDetailsB: value,
     }));
 
-    console.log(formData.RefurbishmentDetailsB);
+    console.log(formDataFinal.RefurbishmentDetailsB);
   };
 
   const handleCTRBMakeChange = (event) => {
@@ -76,13 +74,13 @@ function CTRBDetailsB({
 
     // If "Others" is selected, we use OtherRemark, otherwise, we set Remark
     if (selectedRemark !== "others") {
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBMakeB: selectedRemark,
         // OtherRemark: "", // Clear out the OtherRemark field
       }));
     } else {
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBMakeB: "", // Clear out the Remark field
       }));
@@ -92,23 +90,24 @@ function CTRBDetailsB({
   const handleOtherCTRBMakeChange = (event) => {
     const { value } = event.target;
     setOtherCTRBMakeB(value);
-    setFormData((prevData) => ({
+    setFormDataFinal((prevData) => ({
       ...prevData,
       CTRBMakeB: value,
     }));
 
-    console.log(formData.CTRBMakeB);
+    console.log(formDataFinal.CTRBMakeB);
   };
+ 
 
   const CTRBRemainingLifehandleChangeB = (event) => {
     const { name, value } = event.target;
     onInputChange(name, value);
-    console.log(formData);
+    console.log(formDataFinal);
 
     if (name === "CTRBRemainingLifeB") {
       const updatedValue = parseFloat(value); // Ensure it's treated as a number
 
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBRemarkB: updatedValue < 4 ? "PRESS-OFF" : "",
       }));
@@ -116,6 +115,7 @@ function CTRBDetailsB({
     }
   };
 
+  
   const handleRemarkChangeB = (event) => {
     const selectedRemark = event.target.value;
     setRemarkB(selectedRemark);
@@ -125,28 +125,29 @@ function CTRBDetailsB({
       // console.log(selectedRemark);
       // console.log(CTRBRemarkB);
 
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBRemarkB: selectedRemark,
         // OtherRemark: "", // Clear out the OtherRemark field
       }));
     } else {
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBRemarkB: "", // Clear out the Remark field
       }));
     }
   };
 
+ 
   const handleOtherRemarkChangeB = (event) => {
     const { value } = event.target;
     setOtherRemarkB(value);
-    setFormData((prevData) => ({
+    setFormDataFinal((prevData) => ({
       ...prevData,
       CTRBRemarkB: value,
     }));
 
-    console.log(formData.Remark);
+    console.log(formDataFinal.Remark);
   };
 
   const handleCTRBDefectBChange = (event) => {
@@ -158,7 +159,7 @@ function CTRBDetailsB({
       // console.log(selectedRemark);
       // console.log(ctrbdefectB);
 
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBDefectB: selectedRemark,
         CTRBDefectNameB: "",
@@ -166,7 +167,7 @@ function CTRBDetailsB({
       }));
       setCTRBDefectNameB("");
     } else {
-      setFormData((prevData) => ({
+      setFormDataFinal((prevData) => ({
         ...prevData,
         CTRBDefectB: "yes", // Clear out the Remark field
       }));
@@ -176,12 +177,12 @@ function CTRBDetailsB({
   const handleCTRBDefectBNameChange = (event) => {
     const { value } = event.target;
     setCTRBDefectNameB(value);
-    setFormData((prevData) => ({
+    setFormDataFinal((prevData) => ({
       ...prevData,
       CTRBDefectNameB: value,
     }));
 
-    console.log(formData.CTRBDefectNameB);
+    console.log(formDataFinal.CTRBDefectNameB);
   };
 
   const handleFileChange = (event) => {
@@ -199,11 +200,13 @@ function CTRBDetailsB({
   const handleChange = (event) => {
     const { name, value } = event.target;
     onInputChange(name, value);
-    console.log(formData);
+    console.log(formDataFinal);
   };
 
+  
+
   const handleCancel = () => {
-    setFormData((prevFormData) => ({
+    setFormDataFinal((prevFormData) => ({
       ...Object.keys(prevFormData).reduce((acc, key) => {
         acc[key] = null;
         return acc;
@@ -214,23 +217,25 @@ function CTRBDetailsB({
       WheeltypeId: 1,
     }));
     onResetStep();
-    navigate("/LHBSchedulePreInspection/details");
+    navigate("/lhbfinalinspection/axle_details");
   };
 
   const handleBack = () => {
     setIsBackNavigation(true); // Set flag when navigating back
-    navigate("/LHBSchedulePreInspection/ctrba_details");
+    navigate("/lhbfinalinspection/ctrba_details");
   };
 
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (!isBackNavigation) {
-      onNextStep();
-      setIsBackNavigation(false);
-    }
-    // Reset flag after proceeding to next step
-    navigate("/LHBSchedulePreInspection/repair_details");
+    
+      if (!isBackNavigation) {
+        onNextStep();
+        setIsBackNavigation(false);
+      }
+      // Reset flag after proceeding to next step
+      navigate("/lhbfinalinspection/general_details");
+    
   };
 
   return (
@@ -243,29 +248,35 @@ function CTRBDetailsB({
           opacity: 1,
         }}
       >
-        LHB PRE INSPECTION FORM{" "}
+        LHB Final INSPECTION FORM{" "}
       </h2>
-      <h2>CTRB B Details for LHB PRE Inspection Form</h2>
+      <h2>CTRB B Details for LHB Final Inspection Form</h2>
 
       <div className="page-border">
         <div className="page-contentLHB">
           <div className="wheel-page-main-content">
             <div className="row-1">
-              <div>
-                <label>CTRB No. B:</label>
+             
+            <div>
+                <label>
+                  CTRB No. B:
+                </label>
                 <input
                   type="text"
                   name="CTRBNumberB"
-                  value={formData.CTRBNumberB}
+                  value={formDataFinal.CTRBNumberB}
                   onChange={handleChange}
                   placeholder="Enter CTRB No. B"
                 />
+                
               </div>
-              {/* <div>
-                <label>CTRB Status B:</label>
+              <div>
+                <label>
+                  CTRB Status B:
+                </label>
                 <select
                   name="CTRBStatusB"
-                  value={formData.CTRBStatusB}
+                  value={formDataFinal.CTRBStatusB}
                   onChange={handleCTRBStatusB}
                   required
                 >
@@ -273,10 +284,15 @@ function CTRBDetailsB({
                   <option value="NEW">NEW</option>
                   <option value="REFURBISHED">REFURBISHED</option>
                 </select>
+
+                
               </div>
               {CTRBStatusB === "REFURBISHED" && (
                 <div>
-                  <label>Refurbishment Details B:</label>
+                  <label>
+                    Refurbishment Details B:
+                    
+                  </label>
                   <input
                     type="text"
                     name="RefurbishmentDetailsB"
@@ -284,12 +300,16 @@ function CTRBDetailsB({
                     onChange={handleRefurbishmentDetails}
                     placeholder="Enter Refurbishment Details B"
                   />
+                  
                 </div>
-              )} */}
+              )}
+              
             </div>
             <div className="row-2">
-              <div>
-                <label>CTRB Make B:</label>
+            <div>
+                <label>
+                  CTRB Make B:
+                </label>
                 <select
                   name="CTRBMakeB"
                   value={CTRBMakeB}
@@ -302,10 +322,15 @@ function CTRBDetailsB({
                   <option value="NBC">NBC</option>
                   <option value="others">Others</option>
                 </select>
+
+                
               </div>
               {CTRBMakeB === "others" && (
                 <div>
-                  <label>Enter Specific CTRB Make B:</label>
+                  <label>
+                    Enter Specific CTRB Make B:
+                    
+                  </label>
                   <input
                     type="text"
                     name="OtherRemark"
@@ -314,22 +339,32 @@ function CTRBDetailsB({
                     placeholder="Enter Specific Remark"
                     // Adjust spacing
                   />
+                  
                 </div>
               )}
-              <div>
-                <label>CTRB Remaining Life B(Months):</label>
+               <div>
+                <label>
+                  MEP B:
+                </label>
                 <input
                   type="text"
-                  name="CTRBRemainingLifeB"
-                  value={formData.CTRBRemainingLifeB}
-                  onChange={CTRBRemainingLifehandleChangeB}
-                  placeholder="Enter CTRB Remaining Life B"
+                  name="MEPB"
+                  value={formDataFinal.MEPB}
+                  onChange={handleChange}
+                  placeholder="Enter MEP B"
                 />
-              </div>
+                
+              </div> 
+              
+              
+
+              
             </div>
             <div className="row-3">
               <div>
-                <label>CTRB Remark B:</label>
+                <label>
+                  CTRB Remark B:
+                </label>
                 <select
                   name="CTRBRemarkB"
                   value={CTRBRemarkB}
@@ -341,10 +376,15 @@ function CTRBDetailsB({
                   <option value="IN POSITION">IN POSITION</option>
                   <option value="others">OTHERS</option>
                 </select>
+
+                
               </div>
               {CTRBRemarkB === "others" && (
                 <div>
-                  <label>Enter Specific Remark B:</label>
+                  <label>
+                    Enter Specific Remark B:
+                    
+                  </label>
                   <input
                     type="text"
                     name="OtherRemarkB"
@@ -353,10 +393,13 @@ function CTRBDetailsB({
                     placeholder="Enter Specific Remark B"
                     // Adjust spacing
                   />
+                  
                 </div>
               )}
               <div>
-                <label>CTRB Defect B:</label>
+                <label>
+                  CTRB Defect B:
+                </label>
                 <select
                   name="CTRBDefectB"
                   value={ctrbdefectB}
@@ -364,16 +407,22 @@ function CTRBDetailsB({
                   required
                 >
                   <option value="">Choose CTRB Defect B</option>
-
+                  
                   <option value="NO">NO</option>
                   <option value="yes">YES</option>
                 </select>
+               
+                
               </div>
+              
             </div>
             <div className="row-3">
               {ctrbdefectB === "yes" && (
                 <div>
-                  <label>Choose CTRB Defect Name B:</label>
+                  <label>
+                    Choose CTRB Defect Name B:
+                    
+                  </label>
                   <select
                     name="CTRBDefectNameB"
                     value={CTRBDefectNameB}
@@ -394,8 +443,26 @@ function CTRBDetailsB({
                       Outer Cup Pitted/Corroded
                     </option>
                   </select>
+                  
+                  
                 </div>
               )}
+              
+              <div>
+                <label>
+                  CTRB Remaining Life B(Months):
+                  
+                </label>
+                <input
+                  type="text"
+                  name="CTRBRemainingLifeB"
+                  value={formDataFinal.CTRBRemainingLifeB}
+                  onChange={CTRBRemainingLifehandleChangeB}
+                  placeholder="Enter CTRB Remaining Life B"
+                />
+               
+              </div>
+             
             </div>
 
             <div className="btn-container">

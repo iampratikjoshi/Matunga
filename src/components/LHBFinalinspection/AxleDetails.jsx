@@ -41,23 +41,7 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
     }
   }, [WheelNo,wheelid, setFormDataFinal]);
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataFinal.WheelNo) {
-      newErrors.WheelNo = "Wheel No is required.";
-    } 
-
-    if (!formDataFinal.AxleNo) {
-      newErrors.AxleNo = "Axle No is required.";
-    }
-
-    if (!formDataFinal.Shift) {
-      newErrors.Shift = "Shift is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+ 
 
   const removeFile = () => {
     setFile(null); // Remove the file from state
@@ -99,10 +83,10 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
+    
     onNextStep();
     navigate("/lhbfinalinspection/wheel_details");
-    }
+    
   };
 
   return (
@@ -126,7 +110,7 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
             <div className="row-1">
               <div>
                 <label>
-                  Wheel No:<span className="required-asterisk">*</span>
+                  Wheel No:
                 </label>
                 <input
                   type="text"
@@ -135,13 +119,11 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
                   onChange={handleChange}
                   placeholder="Enter Wheel Number"
                 />
-                {errors.WheelNo && (
-                  <p style={{ color: "red",fontSize:"small",margin:0, marginTop:"2px" , marginLeft:"2px" }}>{errors.WheelNo}</p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Axle No:<span className="required-asterisk">*</span>
+                  Axle No:
                 </label>
                 <input
                   type="text"
@@ -151,13 +133,11 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
                   placeholder="Enter Axle Number"
                  
                 />
-                {errors.AxleNo && (
-                  <p style={{ color: "red",fontSize:"small",margin:0, marginTop:"2px", marginLeft:"2px"  }}>{errors.AxleNo}</p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Shift:<span className="required-asterisk">*</span>
+                  Shift:
                 </label>
                 <select
                   id="dropdown"
@@ -171,9 +151,7 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
                   <option value="Shift 2">Shift 2</option>
                   <option value="Shift 3">Shift 3</option>
                 </select>
-                {errors.Shift && (
-                  <p style={{ color: "red",fontSize:"small",margin:0, marginTop:"2px", marginLeft:"2px" }}>{errors.Shift}</p>
-                )}
+                
               </div>
             </div>
             <div className="row-2">
