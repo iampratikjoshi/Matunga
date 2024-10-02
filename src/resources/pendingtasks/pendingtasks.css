@@ -112,3 +112,35 @@ button:hover {
   padding-bottom: 10px;
   padding-left: 20px;
 }
+
+.search-div{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.search-container > input[type="text"] {
+  margin-top: 2px;
+  /* width: 30%; */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+.search-container > select {
+  margin-top: 2px;
+  /* width: 30%; */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
