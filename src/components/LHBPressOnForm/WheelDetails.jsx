@@ -12,7 +12,7 @@ function WheelDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
+  
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -58,39 +58,7 @@ function WheelDetails({
     console.log(formDataPressOnLHB);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataPressOnLHB.WheelNo) {
-      newErrors.WheelNo = "Wheel No is required.";
-    } 
-
-    if (!formDataPressOnLHB.AxleNo) {
-      newErrors.AxleNo = "Axle No is required.";
-    }
-
-    if (!formDataPressOnLHB.ATLNo) {
-      newErrors.ATLNo = "ATL No is required.";
-    }
-
-    if (!formDataPressOnLHB.WheelSeatSize) {
-      newErrors.WheelSeatSize = "Wheel Seat Size No is required.";
-    }
-
-    if (!formDataPressOnLHB.BDSeatSize) {
-      newErrors.BDSeatSize = "BD Seat Size No is required.";
-    }
-
-    if (!formDataPressOnLHB.RAValue) {
-      newErrors.RAValue = "RA Value is required.";
-    }
-
-    if (!formDataPressOnLHB.OperatorName) {
-      newErrors.OperatorName = "Operator Name is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+ 
 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
@@ -107,10 +75,10 @@ function WheelDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
+    
       onNextStep();
-      navigate("/LHBPressOnForm/wheeldiscABoresize_details");
-    }
+      navigate("/LHBPressOnForm/wheelactivities_details");
+    
   };
 
   return (
@@ -133,7 +101,7 @@ function WheelDetails({
             <div className="row-1">
               <div>
                 <label>
-                  Wheel No.:<span className="required-asterisk">*</span>
+                  Wheel No.:
                 </label>
                 <input
                   type="text"
@@ -142,23 +110,11 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel No."
                 />
-                {errors.WheelNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelNo}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Axle No:<span className="required-asterisk">*</span>
+                  Axle No:
                 </label>
                 <input
                   type="text"
@@ -167,23 +123,11 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Axle No"
                 />
-                {errors.AxleNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.AxleNo}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  ATL No.:<span className="required-asterisk">*</span>
+                  ATL No.:
                 </label>
                 <input
                   type="text"
@@ -192,25 +136,13 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter ATL No."
                 />
-                {errors.ATLNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.ATLNo}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  Wheel Seat Size:<span className="required-asterisk">*</span>
+                  Wheel Seat Size:
                 </label>
                 <input
                   type="text"
@@ -219,23 +151,11 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel Seat Size"
                 />
-                {errors.WheelSeatSize && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelSeatSize}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  BD Seat Size:<span className="required-asterisk">*</span>
+                  BD Seat Size:
                 </label>
                 <input
                   type="text"
@@ -244,24 +164,12 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter BD Seat Size"
                 />
-                {errors.BDSeatSize && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BDSeatSize}
-                  </p>
-                )}
+                
               </div>
 
               <div>
                 <label>
-                  RA Value(1.6 Max):<span className="required-asterisk">*</span>
+                  RA Value(1.6 Max):
                 </label>
                 <input
                   type="text"
@@ -270,25 +178,13 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter RA Value"
                 />
-                {errors.RAValue && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.RAValue}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">
               <div>
                 <label>
-                  Operator Name:<span className="required-asterisk">*</span>
+                  Operator Name:
                 </label>
                 <input
                   type="text"
@@ -297,19 +193,7 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Operator Name"
                 />
-                {errors.OperatorName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.OperatorName}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">

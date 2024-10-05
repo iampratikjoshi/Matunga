@@ -13,7 +13,7 @@ function OperatorDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
+  
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -46,29 +46,7 @@ function OperatorDetails({
     console.log(formDataPressOnLHB);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataPressOnLHB.MCNo) {
-      newErrors.MCNo = "MC No is required.";
-    }
-    if (!formDataPressOnLHB.OperatorNameFinal) {
-      newErrors.OperatorNameFinal = "Operator Name is required.";
-    }
-
-    if (!formDataPressOnLHB.InspectorName) {
-      newErrors.InspectorName = "Inspector Name is required.";
-    }
-    if (!formDataPressOnLHB.OperatorNo) {
-      newErrors.OperatorName = "Operator No is required.";
-    }
-
-    if (!formDataPressOnLHB.InspectorNo) {
-      newErrors.InspectorName = "Inspector No is required.";
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
+ 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
       ...Object.keys(prevFormData).reduce((acc, key) => {
@@ -78,7 +56,7 @@ function OperatorDetails({
       createdBy: "ADMIN",
     }));
     onResetStep();
-    navigate("/LHBPressOnForm/details");
+    navigate("/LHBPressOnForm/wheel_details");
   };
 
   const handleBack = () => {
@@ -89,7 +67,7 @@ function OperatorDetails({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
+    
       try {
         const response = await postData("/api/data", formDataPressOnLHB);
         console.log(response.AxleNumber);
@@ -114,7 +92,7 @@ function OperatorDetails({
       } catch (error) {
         console.error("Error submitting form:", error);
       }
-    }
+    
   };
 
   return (
@@ -137,7 +115,7 @@ function OperatorDetails({
             <div className="row-1">
               <div>
                 <label>
-                  M/C No.:<span className="required-asterisk">*</span>
+                  M/C No.:
                 </label>
                 <input
                   type="text"
@@ -146,23 +124,11 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter M/C No."
                 />
-                {errors.MCNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.MCNo}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Operator Name:<span className="required-asterisk">*</span>
+                  Operator Name:
                 </label>
                 <input
                   type="text"
@@ -171,23 +137,11 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter Operator"
                 />
-                {errors.OperatorNameFinal && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.OperatorNameFinal}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Operator No.:<span className="required-asterisk">*</span>
+                  Operator No.:
                 </label>
                 <input
                   type="text"
@@ -196,25 +150,13 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter Operator"
                 />
-                {errors.OperatorNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.OperatorNo}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">
               <div>
                 <label>
-                  Inspector Name:<span className="required-asterisk">*</span>
+                  Inspector Name:
                 </label>
                 <input
                   type="text"
@@ -223,23 +165,11 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter Inspector Name"
                 />
-                {errors.InspectorName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.InspectorName}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Inspector No:<span className="required-asterisk">*</span>
+                  Inspector No:
                 </label>
                 <input
                   type="text"
@@ -248,19 +178,7 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter Inspector No."
                 />
-                {errors.InspectorNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.InspectorNo}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-2">
@@ -315,9 +233,9 @@ function OperatorDetails({
               <div>
                 <button
                   onClick={() => {
-                    if (validateForm()) {
+                   
                       navigate("/proceedsubmitlhbpresson");
-                    }
+                    
                   }}
                 >
                   Preview for Submission

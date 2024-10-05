@@ -1192,6 +1192,25 @@ const AllEntryPressOn = () => {
             <thead className="thead">
               <tbody name="tbody" key={`tbody-${res.id}+${index}`}>
                 <tr name="tr" key={`tr-${res.id}`}>
+
+                  <th>Wheel Activities</th>
+                  <th colSpan={2}>Axle Wheel Seat Size</th>
+                  <th colSpan={2}>Wheel Disc Bore Size</th>
+                  <th colSpan={2}>Wheel Disc Stamping Particulars</th>
+                  <th>Press-On No.</th>
+                  <th>BD Thickness</th>
+                  <th>BD Make</th>
+                </tr>
+                <tr>
+                  <td>{res.WheelActivities}</td>
+                  <td colSpan={2}>{res.AxleWheelSeatSize}</td>
+                  <td colSpan={2}>{res.WheelDiscBoreSize}</td>
+                  <td colSpan={2}>{res.wheelDiscStampingParticulars}</td>
+                  <td>{res.PressOnNumber}</td>
+                  <td>{res.WheelActivityBDThickness}</td>
+                  <td>{res.WheelActivityBDMake}</td>
+                </tr>
+                <tr>
                   <th>Wheel No.</th>
                   <td colSpan={2}>{res.WheelNo}</td>
                   <th>Axle No.</th>

@@ -72,9 +72,456 @@ const ProceedSubmitPressOn = ({
     }
   };
 
+  // const exportToExcel = async () => {
+  //   const workbook = new ExcelJS.Workbook();
+  //   const worksheet = workbook.addWorksheet("LHBPressOnForm");
+
+  //   worksheet.getColumn("A").width = 20;
+  //   worksheet.getColumn("B").width = 20;
+  //   worksheet.getColumn("C").width = 20;
+  //   worksheet.getColumn("D").width = 20;
+  //   worksheet.getColumn("E").width = 20;
+  //   worksheet.getColumn("F").width = 20;
+  //   worksheet.getColumn("G").width = 20;
+  //   worksheet.getColumn("H").width = 20;
+  //   worksheet.getColumn("I").width = 20;
+  //   worksheet.getColumn("J").width = 20;
+  //   worksheet.getColumn("K").width = 20;
+  //   worksheet.getColumn("L").width = 20;
+  //   worksheet.getColumn("M").width = 20;
+  //   worksheet.getColumn("N").width = 20;
+
+  //   // Headers for Wheel Details
+  //   worksheet.mergeCells("A1:A2");
+  //   worksheet.mergeCells("B1:B2");
+  //   worksheet.mergeCells("C1:C2");
+
+  //   worksheet.mergeCells("A3:A4");
+  //   worksheet.mergeCells("B3:B4");
+  //   worksheet.mergeCells("C3:C4");
+  //   worksheet.mergeCells("D3:D4");
+  //   worksheet.mergeCells("E3:E4");
+  //   worksheet.mergeCells("F3:F4");
+  //   worksheet.mergeCells("G3:G4");
+  //   worksheet.mergeCells("H3:H4");
+  //   worksheet.mergeCells("I3:I4");
+  //   worksheet.mergeCells("J3:J4");
+
+  //   worksheet.mergeCells("D9:D10");
+  //   worksheet.mergeCells("E9:E10");
+  //   worksheet.mergeCells("F9:F10");
+  //   worksheet.mergeCells("G9:G10");
+  //   worksheet.mergeCells("H9:H10");
+  //   worksheet.mergeCells(9, 1, 10, 3);
+
+  //   worksheet.getRow(1).values = [
+  //     "Wheel No.",
+  //     formDataPressOnLHB.WheelNo,
+  //     "Axle No.",
+  //     formDataPressOnLHB.AxleNo,
+  //   ];
+  //   worksheet.mergeCells(1, 4, 2, 10);
+  //   worksheet.getRow(3).values = [
+  //     "ATL No.",
+  //     formDataPressOnLHB.ATLNo,
+  //     "Wheel Seat Size",
+  //     formDataPressOnLHB.WheelSeatSize,
+  //     "BD Seat Size",
+  //     formDataPressOnLHB.BDSeatSize,
+  //     "RA Value",
+  //     formDataPressOnLHB.RAValue,
+  //     "Operator Name",
+  //     formDataPressOnLHB.OperatorName,
+  //   ];
+  //   // Section for Wheel Disc 'A' Side
+  //   worksheet.addRow([]);
+  //   worksheet.getRow(6).values = ["Wheel Disc 'A' Side"];
+  //   worksheet.mergeCells("A6:J6");
+  //   worksheet.getRow(6).alignment = {
+  //     horizontal: "center",
+  //     vertical: "middle",
+  //   };
+  //   worksheet.getRow(1, 2).alignment = {
+  //     horizontal: "center",
+  //     vertical: "middle",
+  //   };
+  //   worksheet.getRow(3, 4).alignment = {
+  //     horizontal: "center",
+  //     vertical: "middle",
+  //   };
+  //   worksheet.getRow(7, 8).alignment = {
+  //     horizontal: "center",
+  //     vertical: "middle",
+  //   };
+  //   worksheet.getRow(9, 10).alignment = {
+  //     horizontal: "center",
+  //     vertical: "middle",
+  //   };
+  //   worksheet.getRow(6).font = { bold: true };
+  //   worksheet.getRow(7).values = [
+  //     "VTL No.",
+  //     formDataPressOnLHB.WheelDiscAVTLNO,
+  //     "Bore Size By Operator",
+  //     formDataPressOnLHB.WheelDiscABoreSizeByOperator,
+  //     "RA Value",
+  //     formDataPressOnLHB.WheelDiscARAValue,
+  //     "Operator Name",
+  //     formDataPressOnLHB.WheelDiscAOperatorName,
+  //   ];
+  //   worksheet.mergeCells("A7:A8");
+  //   worksheet.mergeCells("B7:B8");
+  //   worksheet.mergeCells("C7:C8");
+  //   worksheet.mergeCells("D7:D8");
+  //   worksheet.mergeCells("E7:E8");
+  //   worksheet.mergeCells("F7:F8");
+  //   worksheet.mergeCells("G7:G8");
+  //   worksheet.mergeCells("H7:H8");
+  //   worksheet.getRow(9).values = [
+  //     "A' Bore Size",
+  //     "",
+  //     "",
+  //     "B' Wheel Seat Size (192-195mm)",
+  //     "C=B-A int Allow (0.240-0.300mm)",
+  //     "Press-On Pressure (69T-109T)",
+  //     "RD No.",
+  //     "Wheel Disc Particulars",
+  //   ];
+
+  //   worksheet.getRow(11).values = [
+  //     "Insp.",
+  //     "X-axis",
+  //     "Y-axis",
+  //     formDataPressOnLHB.WheelDiscABWheelSeatSize,
+  //     formDataPressOnLHB.WheelDiscAAllow,
+  //     formDataPressOnLHB.WheelDiscAPressOnPressure,
+  //     formDataPressOnLHB.WheelDiscARDNo,
+  //     formDataPressOnLHB.WheelDiscAWheelDiscParticulars,
+  //   ];
+
+  //   worksheet.getRow(12).values = [
+  //     "Top",
+  //     formDataPressOnLHB.WheelDiscATopXAxis,
+  //     formDataPressOnLHB.WheelDiscATopYAxis,
+  //   ];
+  //   worksheet.getRow(13).values = [
+  //     "Middle",
+  //     formDataPressOnLHB.WheelDiscAMiddleXAxis,
+  //     formDataPressOnLHB.WheelDiscAMiddleYAxis,
+  //   ];
+  //   worksheet.getRow(14).values = [
+  //     "Lower",
+  //     formDataPressOnLHB.WheelDiscALowerXAxis,
+  //     formDataPressOnLHB.WheelDiscALowerYAxis,
+  //   ];
+  //   worksheet.getRow(15).values = [
+  //     "Avg.",
+  //     formDataPressOnLHB.WheelDiscAAvgXAxis,
+  //     formDataPressOnLHB.WheelDiscAAvgYAxis,
+  //   ];
+  //   worksheet.mergeCells("D11:D15");
+  //   worksheet.mergeCells("E11:E15");
+  //   worksheet.mergeCells("F11:F15");
+  //   worksheet.mergeCells("G11:G15");
+  //   worksheet.mergeCells("H11:H15");
+  //   // Section for Wheel Disc 'B' Side
+  //   worksheet.addRow([]);
+  //   worksheet.mergeCells("A17:J17");
+  //   worksheet.getCell("A17").value = "Wheel Disc 'B' Side";
+  //   worksheet.getCell("A17").font = { bold: true };
+
+  //   worksheet.getRow(18).values = [
+  //     "VTL No.",
+  //     formDataPressOnLHB.WheelDiscBVTLNo,
+  //     "Bore Size By Operator",
+  //     formDataPressOnLHB.WheelDiscBBoreSizeByOperator,
+  //     "RA Value",
+  //     formDataPressOnLHB.WheelDiscBRAValue,
+  //     "Operator Name",
+  //     formDataPressOnLHB.WheelDiscBOperatorName,
+  //   ];
+  //   worksheet.mergeCells("A18:A19");
+  //   worksheet.mergeCells("B18:B19");
+  //   worksheet.mergeCells("C18:C19");
+  //   worksheet.mergeCells("D18:D19");
+  //   worksheet.mergeCells("E18:E19");
+  //   worksheet.mergeCells("F18:F19");
+  //   worksheet.mergeCells("G18:G19");
+  //   worksheet.mergeCells("H18:H19");
+
+  //   worksheet.getRow(20).values = [
+  //     "A' Bore Size",
+  //     "",
+  //     "",
+  //     "B' Wheel Seat Size (192-195mm)",
+  //     "C=B-A int Allow (0.240-0.300mm)",
+  //     "Press-On Pressure (69T-109T)",
+  //     "RD No.",
+  //     "Wheel Disc Particulars",
+  //   ];
+  //   // worksheet.mergeCells('D6:D10');
+  //   worksheet.getRow(21).values = [
+  //     "Insp.",
+  //     "X-axis",
+  //     "Y-axis",
+  //     formDataPressOnLHB.WheelDiscBBWheelSeatSize,
+  //     formDataPressOnLHB.WheelDiscBAllow,
+  //     formDataPressOnLHB.WheelDiscBPressOnPressure,
+  //     formDataPressOnLHB.WheelDiscBPressOnPressure,
+  //     formDataPressOnLHB.WheelDiscBRDNo,
+  //     formDataPressOnLHB.WheelDiscBWheelDiscParticulars,
+  //   ];
+
+  //   worksheet.getRow(22).values = [
+  //     "Top",
+  //     formDataPressOnLHB.WheelDiscBTopXAxis,
+  //     formDataPressOnLHB.WheelDiscBTopYAxis,
+  //   ];
+  //   worksheet.getRow(23).values = [
+  //     "Middle",
+  //     formDataPressOnLHB.WheelDiscBMiddleXAxis,
+  //     formDataPressOnLHB.WheelDiscBMiddleYAxis,
+  //   ];
+  //   worksheet.getRow(24).values = [
+  //     "Lower",
+  //     formDataPressOnLHB.WheelDiscBLowerXAxis,
+  //     formDataPressOnLHB.WheelDiscBLowerYAxis,
+  //   ];
+  //   worksheet.getRow(25).values = [
+  //     "Avg.",
+  //     formDataPressOnLHB.WheelDiscBAvgXAxis,
+  //     formDataPressOnLHB.WheelDiscBAvgYAxis,
+  //   ];
+  //   worksheet.mergeCells("D21:D25");
+  //   worksheet.mergeCells("E21:E25");
+  //   worksheet.mergeCells("F21:F25");
+  //   worksheet.mergeCells("G21:G25");
+  //   worksheet.mergeCells("H21:H25");
+  //   // Section for Brake Disc 'A' Side
+  //   worksheet.addRow([]);
+  //   worksheet.mergeCells("A27:J27");
+  //   worksheet.getCell("A27").value = "Brake Disc 'A' Side";
+  //   worksheet.getCell("A27").font = { bold: true };
+
+  //   worksheet.getRow(28).values = [
+  //     "A' Bore Size",
+  //     "",
+  //     "",
+  //     "B' BD Seat Size (199.230-199.260mm)",
+  //     "C=B-A int Allow (0.230-0.260mm)",
+  //     "Press-On Pressure (69T-109T)",
+  //     "BD Thickness",
+  //     "Brake Disc make & Particulars",
+  //   ];
+  //   worksheet.mergeCells("A20:C20");
+  //   worksheet.getRow(29).values = [
+  //     "Insp.",
+  //     "X-axis",
+  //     "Y-axis",
+  //     formDataPressOnLHB.BrakeDiscABBDSeatSize,
+  //     formDataPressOnLHB.BrakeDiscAAllow,
+  //     formDataPressOnLHB.BrakeDiscAPressOnPressure,
+  //     formDataPressOnLHB.BrakeDiscABDThickness,
+  //     formDataPressOnLHB.BrakeDiscABrakeDiscParticulars,
+  //   ];
+  //   // worksheet.mergeCells('D21:D25');
+
+  //   worksheet.getRow(30).values = [
+  //     "Top",
+  //     formDataPressOnLHB.BrakeDiscATopXAxis,
+  //     formDataPressOnLHB.BrakeDiscATopYAxis,
+  //   ];
+  //   worksheet.getRow(31).values = [
+  //     "Middle",
+  //     formDataPressOnLHB.BrakeDiscAMiddleXAxis,
+  //     formDataPressOnLHB.BrakeDiscAMiddleYAxis,
+  //   ];
+  //   worksheet.getRow(32).values = [
+  //     "Lower",
+  //     formDataPressOnLHB.BrakeDiscALowerXAxis,
+  //     formDataPressOnLHB.BrakeDiscALowerYAxis,
+  //   ];
+  //   worksheet.getRow(33).values = [
+  //     "Avg.",
+  //     formDataPressOnLHB.BrakeDiscAAvgXAxis,
+  //     formDataPressOnLHB.BrakeDiscAAvgYAxis,
+  //   ];
+  //   worksheet.mergeCells("A28:C28");
+  //   worksheet.mergeCells("D29:D33");
+  //   worksheet.mergeCells("E29:E33");
+  //   worksheet.mergeCells("F29:F33");
+  //   worksheet.mergeCells("G29:G33");
+  //   worksheet.mergeCells("H29:H33");
+  //   // Section for Brake Disc 'B' Side
+  //   worksheet.addRow([]);
+  //   worksheet.mergeCells("A35:J35");
+  //   worksheet.getCell("A35").value = "Brake Disc 'B' Side";
+  //   worksheet.getCell("A35").font = { bold: true };
+
+  //   worksheet.getRow(36).values = [
+  //     "A' Bore Size",
+  //     "",
+  //     "",
+  //     "B' BD Seat Size (199.230-199.260mm)",
+  //     "C=B-A int Allow (0.230-0.260mm)",
+  //     "Press-On Pressure (69T-109T)",
+  //     "BD Thickness",
+  //     "Brake Disc make & Particulars",
+  //   ];
+  //   worksheet.getRow(37).values = [
+  //     "Insp.",
+  //     "X-axis",
+  //     "Y-axis",
+  //     formDataPressOnLHB.BrakeDiscBBBDSeatSize,
+  //     formDataPressOnLHB.BrakeDiscBAllow,
+  //     formDataPressOnLHB.BrakeDiscBPressOnPressure,
+  //     formDataPressOnLHB.BrakeDiscBBDThickness,
+  //     formDataPressOnLHB.BrakeDiscBBrakeDiscParticulars,
+  //   ];
+  //   worksheet.getRow(38).values = [
+  //     "Top",
+  //     formDataPressOnLHB.BrakeDiscBTopXAxis,
+  //     formDataPressOnLHB.BrakeDiscBTopYAxis,
+  //   ];
+  //   worksheet.getRow(39).values = [
+  //     "Middle",
+  //     formDataPressOnLHB.BrakeDiscBMiddleXAxis,
+  //     formDataPressOnLHB.BrakeDiscBMiddleYAxis,
+  //   ];
+  //   worksheet.getRow(40).values = [
+  //     "Lower",
+  //     formDataPressOnLHB.BrakeDiscBLowerXAxis,
+  //     formDataPressOnLHB.BrakeDiscBLowerYAxis,
+  //   ];
+  //   worksheet.getRow(41).values = [
+  //     "Avg.",
+  //     formDataPressOnLHB.BrakeDiscBAvgXAxis,
+  //     formDataPressOnLHB.BrakeDiscBAvgYAxis,
+  //   ];
+  //   worksheet.mergeCells("A36:C36");
+  //   worksheet.mergeCells("D37:D41");
+  //   worksheet.mergeCells("E37:E41");
+  //   worksheet.mergeCells("F37:F41");
+  //   worksheet.mergeCells("G37:G41");
+  //   worksheet.mergeCells("H37:H41");
+
+  //   worksheet.getRow(45).values = [
+  //     "M/C No.",
+  //     formDataPressOnLHB.MCNo,
+  //     "Operator Name",
+  //     formDataPressOnLHB.OperatorNameFinal,
+  //     "Operator No.",
+  //     formDataPressOnLHB.OperatorNo,
+  //     "Inspector Name",
+  //     formDataPressOnLHB.InspectorName,
+  //     "Inspector No.",
+  //     formDataPressOnLHB.InspectorNo,
+  //   ];
+
+  //   worksheet.eachRow({ includeEmpty: true }, (row) => {
+  //     row.eachCell({ includeEmpty: true }, (cell) => {
+  //       cell.alignment = {
+  //         wrapText: true,
+  //         horizontal: "center",
+  //         vertical: "middle",
+  //       };
+  //     });
+  //   });
+
+  //   //Bold Text
+  //   worksheet.getCell("A1").font = { bold: true };
+  //   worksheet.getCell("C1").font = { bold: true };
+  //   worksheet.getCell("A3").font = { bold: true };
+  //   worksheet.getCell("C3").font = { bold: true };
+  //   worksheet.getCell("E3").font = { bold: true };
+  //   worksheet.getCell("G3").font = { bold: true };
+  //   worksheet.getCell("I3").font = { bold: true };
+  //   worksheet.getCell("A7").font = { bold: true };
+  //   worksheet.getCell("C7").font = { bold: true };
+  //   worksheet.getCell("E7").font = { bold: true };
+  //   worksheet.getCell("G7").font = { bold: true };
+  //   worksheet.getCell("A9").font = { bold: true };
+  //   worksheet.getCell("D9").font = { bold: true };
+  //   worksheet.getCell("E9").font = { bold: true };
+  //   worksheet.getCell("F9").font = { bold: true };
+  //   worksheet.getCell("G9").font = { bold: true };
+  //   worksheet.getCell("H9").font = { bold: true };
+  //   worksheet.getCell("A11").font = { bold: true };
+  //   worksheet.getCell("B11").font = { bold: true };
+  //   worksheet.getCell("C11").font = { bold: true };
+  //   worksheet.getCell("A12").font = { bold: true };
+  //   worksheet.getCell("A13").font = { bold: true };
+  //   worksheet.getCell("A14").font = { bold: true };
+  //   worksheet.getCell("A15").font = { bold: true };
+  //   worksheet.getCell("A17").font = { bold: true };
+  //   worksheet.getCell("A18").font = { bold: true };
+  //   worksheet.getCell("C18").font = { bold: true };
+  //   worksheet.getCell("E18").font = { bold: true };
+  //   worksheet.getCell("G18").font = { bold: true };
+  //   worksheet.getCell("A20").font = { bold: true };
+  //   worksheet.getCell("D20").font = { bold: true };
+  //   worksheet.getCell("E20").font = { bold: true };
+  //   worksheet.getCell("F20").font = { bold: true };
+  //   worksheet.getCell("G20").font = { bold: true };
+  //   worksheet.getCell("H20").font = { bold: true };
+  //   worksheet.getCell("A21").font = { bold: true };
+  //   worksheet.getCell("B21").font = { bold: true };
+  //   worksheet.getCell("C21").font = { bold: true };
+  //   worksheet.getCell("A22").font = { bold: true };
+  //   worksheet.getCell("A23").font = { bold: true };
+  //   worksheet.getCell("A24").font = { bold: true };
+  //   worksheet.getCell("A25").font = { bold: true };
+  //   worksheet.getCell("A27").font = { bold: true };
+  //   worksheet.getCell("A28").font = { bold: true };
+  //   worksheet.getCell("D28").font = { bold: true };
+  //   worksheet.getCell("E28").font = { bold: true };
+  //   worksheet.getCell("F28").font = { bold: true };
+  //   worksheet.getCell("G28").font = { bold: true };
+  //   worksheet.getCell("H28").font = { bold: true };
+  //   worksheet.getCell("A29").font = { bold: true };
+  //   worksheet.getCell("B29").font = { bold: true };
+  //   worksheet.getCell("C29").font = { bold: true };
+  //   worksheet.getCell("A30").font = { bold: true };
+  //   worksheet.getCell("A31").font = { bold: true };
+  //   worksheet.getCell("A32").font = { bold: true };
+  //   worksheet.getCell("A33").font = { bold: true };
+  //   worksheet.getCell("A35").font = { bold: true };
+  //   worksheet.getCell("A36").font = { bold: true };
+  //   worksheet.getCell("D36").font = { bold: true };
+  //   worksheet.getCell("E36").font = { bold: true };
+  //   worksheet.getCell("F36").font = { bold: true };
+  //   worksheet.getCell("G36").font = { bold: true };
+  //   worksheet.getCell("H36").font = { bold: true };
+  //   worksheet.getCell("A37").font = { bold: true };
+  //   worksheet.getCell("B37").font = { bold: true };
+  //   worksheet.getCell("C37").font = { bold: true };
+  //   worksheet.getCell("A38").font = { bold: true };
+  //   worksheet.getCell("A39").font = { bold: true };
+  //   worksheet.getCell("A40").font = { bold: true };
+  //   worksheet.getCell("A41").font = { bold: true };
+  //   worksheet.getCell("A45").font = { bold: true };
+  //   worksheet.getCell("G45").font = { bold: true };
+  //   worksheet.getCell("I45").font = { bold: true };
+  //   worksheet.getCell("C45").font = { bold: true };
+  //   worksheet.getCell("E45").font = { bold: true };
+
+  //   // Save Excel file
+  //   const uint8Array = await workbook.xlsx.writeBuffer();
+  //   const blob = new Blob([uint8Array], {
+  //     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  //   });
+  //   saveAs(blob, "LHBPressOnForm.xlsx");
+  // };
+
+
   const exportToExcel = async () => {
+    
+
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet("LHBPressOnForm");
+
+    
+
+
 
     worksheet.getColumn("A").width = 20;
     worksheet.getColumn("B").width = 20;
@@ -92,36 +539,84 @@ const ProceedSubmitPressOn = ({
     worksheet.getColumn("N").width = 20;
 
     // Headers for Wheel Details
+    worksheet.mergeCells(1,2,2,3);
+    worksheet.mergeCells(1,4,2,5);
+    worksheet.mergeCells(1,6,2,7);
     worksheet.mergeCells("A1:A2");
-    worksheet.mergeCells("B1:B2");
-    worksheet.mergeCells("C1:C2");
-
     worksheet.mergeCells("A3:A4");
-    worksheet.mergeCells("B3:B4");
-    worksheet.mergeCells("C3:C4");
-    worksheet.mergeCells("D3:D4");
-    worksheet.mergeCells("E3:E4");
-    worksheet.mergeCells("F3:F4");
-    worksheet.mergeCells("G3:G4");
     worksheet.mergeCells("H3:H4");
     worksheet.mergeCells("I3:I4");
     worksheet.mergeCells("J3:J4");
+  
+    worksheet.mergeCells(3,2,4,3);
+    worksheet.mergeCells(3,4,4,5);
+    worksheet.mergeCells(3,6,4,7);
+    
+    worksheet.mergeCells("H1:H2");
+    worksheet.mergeCells("I1:I2");
+    worksheet.mergeCells("J1:J2");
+    worksheet.mergeCells("A5:A6");
+    worksheet.mergeCells("B5:B6");
+    worksheet.mergeCells("C5:C6");
 
-    worksheet.mergeCells("D9:D10");
-    worksheet.mergeCells("E9:E10");
-    worksheet.mergeCells("F9:F10");
-    worksheet.mergeCells("G9:G10");
-    worksheet.mergeCells("H9:H10");
-    worksheet.mergeCells(9, 1, 10, 3);
+    worksheet.mergeCells("A7:A8");
+    worksheet.mergeCells("B7:B8");
+    worksheet.mergeCells("C7:C8");
+    worksheet.mergeCells("D7:D8");
+    worksheet.mergeCells("E7:E8");
+    worksheet.mergeCells("F7:F8");
+    worksheet.mergeCells("G7:G8");
+    worksheet.mergeCells("H7:H8");
+    worksheet.mergeCells("I7:I8");
+    worksheet.mergeCells("J7:J8");
+
+    worksheet.mergeCells("D13:D14");
+    worksheet.mergeCells("E13:E14");
+    worksheet.mergeCells("F13:F14");
+    worksheet.mergeCells("G13:G14");
+    worksheet.mergeCells("H13:H14");
+    worksheet.mergeCells(13, 1, 14, 3);
+
 
     worksheet.getRow(1).values = [
+
+      "Wheel Activities",
+      "Axle Wheel Seat Size",
+      "",
+      "Wheel Disc Bore Size",
+      "",
+      "Wheel Disc Stamping Particulars",
+      "",
+      "Press-On No.",
+      "BD Thickness	",
+      "BD Make",
+
+
+    ]
+
+    worksheet.getRow(3).values = [
+
+      formDataPressOnLHB.WheelActivities,
+      formDataPressOnLHB.AxleWheelSeatSize,
+      "",
+      formDataPressOnLHB.WheelDiscBoreSize,
+      "",
+      formDataPressOnLHB.wheelDiscStampingParticulars,
+      "",
+      formDataPressOnLHB.PressOnNumber,
+      formDataPressOnLHB.WheelActivityBDThickness,
+      formDataPressOnLHB.WheelActivityBDMake,
+
+    ]
+
+    worksheet.getRow(5).values = [
       "Wheel No.",
       formDataPressOnLHB.WheelNo,
       "Axle No.",
       formDataPressOnLHB.AxleNo,
     ];
-    worksheet.mergeCells(1, 4, 2, 10);
-    worksheet.getRow(3).values = [
+    worksheet.mergeCells(5, 4, 6, 10);
+    worksheet.getRow(7).values = [
       "ATL No.",
       formDataPressOnLHB.ATLNo,
       "Wheel Seat Size",
@@ -133,32 +628,29 @@ const ProceedSubmitPressOn = ({
       "Operator Name",
       formDataPressOnLHB.OperatorName,
     ];
+
     // Section for Wheel Disc 'A' Side
     worksheet.addRow([]);
-    worksheet.getRow(6).values = ["Wheel Disc 'A' Side"];
-    worksheet.mergeCells("A6:J6");
-    worksheet.getRow(6).alignment = {
+    worksheet.getRow(10).values = ["Wheel Disc 'A' Side"];
+    worksheet.mergeCells("A10:J10");
+    worksheet.getRow(10).alignment = {
       horizontal: "center",
       vertical: "middle",
     };
-    worksheet.getRow(1, 2).alignment = {
+    worksheet.getRow(5, 6).alignment = {
       horizontal: "center",
       vertical: "middle",
     };
-    worksheet.getRow(3, 4).alignment = {
+    worksheet.getRow(8, 9).alignment = {
       horizontal: "center",
       vertical: "middle",
     };
-    worksheet.getRow(7, 8).alignment = {
+    worksheet.getRow(13, 14).alignment = {
       horizontal: "center",
       vertical: "middle",
     };
-    worksheet.getRow(9, 10).alignment = {
-      horizontal: "center",
-      vertical: "middle",
-    };
-    worksheet.getRow(6).font = { bold: true };
-    worksheet.getRow(7).values = [
+    worksheet.getRow(10).font = { bold: true };
+    worksheet.getRow(11).values = [
       "VTL No.",
       formDataPressOnLHB.WheelDiscAVTLNO,
       "Bore Size By Operator",
@@ -168,15 +660,15 @@ const ProceedSubmitPressOn = ({
       "Operator Name",
       formDataPressOnLHB.WheelDiscAOperatorName,
     ];
-    worksheet.mergeCells("A7:A8");
-    worksheet.mergeCells("B7:B8");
-    worksheet.mergeCells("C7:C8");
-    worksheet.mergeCells("D7:D8");
-    worksheet.mergeCells("E7:E8");
-    worksheet.mergeCells("F7:F8");
-    worksheet.mergeCells("G7:G8");
-    worksheet.mergeCells("H7:H8");
-    worksheet.getRow(9).values = [
+    worksheet.mergeCells("A11:A12");
+    worksheet.mergeCells("B11:B12");
+    worksheet.mergeCells("C11:C12");
+    worksheet.mergeCells("D11:D12");
+    worksheet.mergeCells("E11:E12");
+    worksheet.mergeCells("F11:F12");
+    worksheet.mergeCells("G11:G12");
+    worksheet.mergeCells("H11:H12");
+    worksheet.getRow(13).values = [
       "A' Bore Size",
       "",
       "",
@@ -187,7 +679,7 @@ const ProceedSubmitPressOn = ({
       "Wheel Disc Particulars",
     ];
 
-    worksheet.getRow(11).values = [
+    worksheet.getRow(15).values = [
       "Insp.",
       "X-axis",
       "Y-axis",
@@ -198,38 +690,39 @@ const ProceedSubmitPressOn = ({
       formDataPressOnLHB.WheelDiscAWheelDiscParticulars,
     ];
 
-    worksheet.getRow(12).values = [
+    worksheet.getRow(16).values = [
       "Top",
       formDataPressOnLHB.WheelDiscATopXAxis,
-      formDataPressOnLHB.WheelDiscATopYAXis,
+      formDataPressOnLHB.WheelDiscATopYAxis,
     ];
-    worksheet.getRow(13).values = [
+    worksheet.getRow(17).values = [
       "Middle",
       formDataPressOnLHB.WheelDiscAMiddleXAxis,
       formDataPressOnLHB.WheelDiscAMiddleYAxis,
     ];
-    worksheet.getRow(14).values = [
+    worksheet.getRow(18).values = [
       "Lower",
       formDataPressOnLHB.WheelDiscALowerXAxis,
       formDataPressOnLHB.WheelDiscALowerYAxis,
     ];
-    worksheet.getRow(15).values = [
+    worksheet.getRow(19).values = [
       "Avg.",
       formDataPressOnLHB.WheelDiscAAvgXAxis,
       formDataPressOnLHB.WheelDiscAAvgYAxis,
     ];
-    worksheet.mergeCells("D11:D15");
-    worksheet.mergeCells("E11:E15");
-    worksheet.mergeCells("F11:F15");
-    worksheet.mergeCells("G11:G15");
-    worksheet.mergeCells("H11:H15");
+    worksheet.mergeCells("D15:D19");
+    worksheet.mergeCells("E15:E19");
+    worksheet.mergeCells("F15:F19");
+    worksheet.mergeCells("G15:G19");
+    worksheet.mergeCells("H15:H19");
+
     // Section for Wheel Disc 'B' Side
     worksheet.addRow([]);
-    worksheet.mergeCells("A17:J17");
-    worksheet.getCell("A17").value = "Wheel Disc 'B' Side";
-    worksheet.getCell("A17").font = { bold: true };
+    worksheet.mergeCells("A21:J21");
+    worksheet.getCell("A21").value = "Wheel Disc 'B' Side";
+    worksheet.getCell("A21").font = { bold: true };
 
-    worksheet.getRow(18).values = [
+    worksheet.getRow(22).values = [
       "VTL No.",
       formDataPressOnLHB.WheelDiscBVTLNo,
       "Bore Size By Operator",
@@ -239,16 +732,16 @@ const ProceedSubmitPressOn = ({
       "Operator Name",
       formDataPressOnLHB.WheelDiscBOperatorName,
     ];
-    worksheet.mergeCells("A18:A19");
-    worksheet.mergeCells("B18:B19");
-    worksheet.mergeCells("C18:C19");
-    worksheet.mergeCells("D18:D19");
-    worksheet.mergeCells("E18:E19");
-    worksheet.mergeCells("F18:F19");
-    worksheet.mergeCells("G18:G19");
-    worksheet.mergeCells("H18:H19");
+    worksheet.mergeCells("A22:A23");
+    worksheet.mergeCells("B22:B23");
+    worksheet.mergeCells("C22:C23");
+    worksheet.mergeCells("D22:D23");
+    worksheet.mergeCells("E22:E23");
+    worksheet.mergeCells("F22:F23");
+    worksheet.mergeCells("G22:G23");
+    worksheet.mergeCells("H22:H23");
 
-    worksheet.getRow(20).values = [
+    worksheet.getRow(24).values = [
       "A' Bore Size",
       "",
       "",
@@ -258,51 +751,55 @@ const ProceedSubmitPressOn = ({
       "RD No.",
       "Wheel Disc Particulars",
     ];
-    // worksheet.mergeCells('D6:D10');
-    worksheet.getRow(21).values = [
+    worksheet.mergeCells("A24:C24");
+
+    worksheet.getRow(25).values = [
       "Insp.",
       "X-axis",
       "Y-axis",
       formDataPressOnLHB.WheelDiscBBWheelSeatSize,
       formDataPressOnLHB.WheelDiscBAllow,
       formDataPressOnLHB.WheelDiscBPressOnPressure,
-      formDataPressOnLHB.WheelDiscBPressOnPressure,
       formDataPressOnLHB.WheelDiscBRDNo,
       formDataPressOnLHB.WheelDiscBWheelDiscParticulars,
     ];
 
-    worksheet.getRow(22).values = [
+    worksheet.getRow(26).values = [
       "Top",
       formDataPressOnLHB.WheelDiscBTopXAxis,
       formDataPressOnLHB.WheelDiscBTopYAxis,
     ];
-    worksheet.getRow(23).values = [
+    worksheet.getRow(27).values = [
       "Middle",
       formDataPressOnLHB.WheelDiscBMiddleXAxis,
       formDataPressOnLHB.WheelDiscBMiddleYAxis,
     ];
-    worksheet.getRow(24).values = [
+    worksheet.getRow(28).values = [
       "Lower",
       formDataPressOnLHB.WheelDiscBLowerXAxis,
       formDataPressOnLHB.WheelDiscBLowerYAxis,
     ];
-    worksheet.getRow(25).values = [
+    worksheet.getRow(29).values = [
       "Avg.",
       formDataPressOnLHB.WheelDiscBAvgXAxis,
       formDataPressOnLHB.WheelDiscBAvgYAxis,
     ];
-    worksheet.mergeCells("D21:D25");
-    worksheet.mergeCells("E21:E25");
-    worksheet.mergeCells("F21:F25");
-    worksheet.mergeCells("G21:G25");
-    worksheet.mergeCells("H21:H25");
+    worksheet.mergeCells("D25:D29");
+    worksheet.mergeCells("E25:E29");
+    worksheet.mergeCells("F25:F29");
+    worksheet.mergeCells("G25:G29");
+    worksheet.mergeCells("H25:H29");
+
     // Section for Brake Disc 'A' Side
     worksheet.addRow([]);
-    worksheet.mergeCells("A27:J27");
-    worksheet.getCell("A27").value = "Brake Disc 'A' Side";
-    worksheet.getCell("A27").font = { bold: true };
+    worksheet.mergeCells("A31:J31");
+    worksheet.getCell("A31").value = "Brake Disc 'A' Side";
+    worksheet.getCell("A31").font = { bold: true };
 
-    worksheet.getRow(28).values = [
+
+
+
+    worksheet.getRow(32).values = [
       "A' Bore Size",
       "",
       "",
@@ -312,8 +809,9 @@ const ProceedSubmitPressOn = ({
       "BD Thickness",
       "Brake Disc make & Particulars",
     ];
-    worksheet.mergeCells("A20:C20");
-    worksheet.getRow(29).values = [
+    worksheet.mergeCells("A32:C32");
+
+    worksheet.getRow(33).values = [
       "Insp.",
       "X-axis",
       "Y-axis",
@@ -323,41 +821,44 @@ const ProceedSubmitPressOn = ({
       formDataPressOnLHB.BrakeDiscABDThickness,
       formDataPressOnLHB.BrakeDiscABrakeDiscParticulars,
     ];
-    // worksheet.mergeCells('D21:D25');
 
-    worksheet.getRow(30).values = [
+    worksheet.getRow(34).values = [
       "Top",
       formDataPressOnLHB.BrakeDiscATopXAxis,
       formDataPressOnLHB.BrakeDiscATopYAxis,
     ];
-    worksheet.getRow(31).values = [
+    worksheet.getRow(35).values = [
       "Middle",
       formDataPressOnLHB.BrakeDiscAMiddleXAxis,
       formDataPressOnLHB.BrakeDiscAMiddleYAxis,
     ];
-    worksheet.getRow(32).values = [
+    worksheet.getRow(36).values = [
       "Lower",
       formDataPressOnLHB.BrakeDiscALowerXAxis,
       formDataPressOnLHB.BrakeDiscALowerYAxis,
     ];
-    worksheet.getRow(33).values = [
+    worksheet.getRow(37).values = [
       "Avg.",
       formDataPressOnLHB.BrakeDiscAAvgXAxis,
       formDataPressOnLHB.BrakeDiscAAvgYAxis,
     ];
-    worksheet.mergeCells("A28:C28");
-    worksheet.mergeCells("D29:D33");
-    worksheet.mergeCells("E29:E33");
-    worksheet.mergeCells("F29:F33");
-    worksheet.mergeCells("G29:G33");
-    worksheet.mergeCells("H29:H33");
+    worksheet.mergeCells("D33:D37");
+    worksheet.mergeCells("E33:E37");
+    worksheet.mergeCells("F33:F37");
+    worksheet.mergeCells("G33:G37");
+    worksheet.mergeCells("H33:H37");
+
     // Section for Brake Disc 'B' Side
     worksheet.addRow([]);
-    worksheet.mergeCells("A35:J35");
-    worksheet.getCell("A35").value = "Brake Disc 'B' Side";
-    worksheet.getCell("A35").font = { bold: true };
+    worksheet.mergeCells("A39:J39");
+    worksheet.getCell("A39").value = "Brake Disc 'B' Side";
+    worksheet.getCell("A39").font = { bold: true };
 
-    worksheet.getRow(36).values = [
+
+
+
+
+    worksheet.getRow(40).values = [
       "A' Bore Size",
       "",
       "",
@@ -367,7 +868,9 @@ const ProceedSubmitPressOn = ({
       "BD Thickness",
       "Brake Disc make & Particulars",
     ];
-    worksheet.getRow(37).values = [
+    worksheet.mergeCells("A40:C40");
+
+    worksheet.getRow(41).values = [
       "Insp.",
       "X-axis",
       "Y-axis",
@@ -377,34 +880,35 @@ const ProceedSubmitPressOn = ({
       formDataPressOnLHB.BrakeDiscBBDThickness,
       formDataPressOnLHB.BrakeDiscBBrakeDiscParticulars,
     ];
-    worksheet.getRow(38).values = [
+
+    worksheet.getRow(42).values = [
       "Top",
       formDataPressOnLHB.BrakeDiscBTopXAxis,
       formDataPressOnLHB.BrakeDiscBTopYAxis,
     ];
-    worksheet.getRow(39).values = [
+    worksheet.getRow(43).values = [
       "Middle",
       formDataPressOnLHB.BrakeDiscBMiddleXAxis,
       formDataPressOnLHB.BrakeDiscBMiddleYAxis,
     ];
-    worksheet.getRow(40).values = [
+    worksheet.getRow(44).values = [
       "Lower",
       formDataPressOnLHB.BrakeDiscBLowerXAxis,
       formDataPressOnLHB.BrakeDiscBLowerYAxis,
     ];
-    worksheet.getRow(41).values = [
+    worksheet.getRow(45).values = [
       "Avg.",
       formDataPressOnLHB.BrakeDiscBAvgXAxis,
       formDataPressOnLHB.BrakeDiscBAvgYAxis,
     ];
-    worksheet.mergeCells("A36:C36");
-    worksheet.mergeCells("D37:D41");
-    worksheet.mergeCells("E37:E41");
-    worksheet.mergeCells("F37:F41");
-    worksheet.mergeCells("G37:G41");
-    worksheet.mergeCells("H37:H41");
+    worksheet.mergeCells("D41:D45");
+    worksheet.mergeCells("E41:E45");
+    worksheet.mergeCells("F41:F45");
+    worksheet.mergeCells("G41:G45");
+    worksheet.mergeCells("H41:H45");
 
-    worksheet.getRow(45).values = [
+
+    worksheet.getRow(49).values = [
       "M/C No.",
       formDataPressOnLHB.MCNo,
       "Operator Name",
@@ -417,25 +921,22 @@ const ProceedSubmitPressOn = ({
       formDataPressOnLHB.InspectorNo,
     ];
 
-    worksheet.eachRow({ includeEmpty: true }, (row) => {
-      row.eachCell({ includeEmpty: true }, (cell) => {
-        cell.alignment = {
-          wrapText: true,
-          horizontal: "center",
-          vertical: "middle",
-        };
-      });
-    });
-
-    //Bold Text
     worksheet.getCell("A1").font = { bold: true };
+    worksheet.getCell("A5").font = { bold: true };
+    worksheet.getCell("C5").font = { bold: true };
+    worksheet.getCell("B1").font = { bold: true };
     worksheet.getCell("C1").font = { bold: true };
-    worksheet.getCell("A3").font = { bold: true };
+    worksheet.getCell("D1").font = { bold: true };
+    worksheet.getCell("E1").font = { bold: true };
+    worksheet.getCell("F1").font = { bold: true };
+    worksheet.getCell("G1").font = { bold: true };
+    worksheet.getCell("H1").font = { bold: true };
+    worksheet.getCell("I1").font = { bold: true };
+    worksheet.getCell("J1").font = { bold: true };
     worksheet.getCell("C3").font = { bold: true };
     worksheet.getCell("E3").font = { bold: true };
-    worksheet.getCell("G3").font = { bold: true };
-    worksheet.getCell("I3").font = { bold: true };
     worksheet.getCell("A7").font = { bold: true };
+    worksheet.getCell("I7").font = { bold: true };
     worksheet.getCell("C7").font = { bold: true };
     worksheet.getCell("E7").font = { bold: true };
     worksheet.getCell("G7").font = { bold: true };
@@ -446,17 +947,24 @@ const ProceedSubmitPressOn = ({
     worksheet.getCell("G9").font = { bold: true };
     worksheet.getCell("H9").font = { bold: true };
     worksheet.getCell("A11").font = { bold: true };
-    worksheet.getCell("B11").font = { bold: true };
     worksheet.getCell("C11").font = { bold: true };
+    worksheet.getCell("E11").font = { bold: true };
+    worksheet.getCell("G11").font = { bold: true };
     worksheet.getCell("A12").font = { bold: true };
     worksheet.getCell("A13").font = { bold: true };
+    worksheet.getCell("D13").font = { bold: true };
+    worksheet.getCell("E13").font = { bold: true };
+    worksheet.getCell("F13").font = { bold: true };
+    worksheet.getCell("G13").font = { bold: true };
+    worksheet.getCell("H13").font = { bold: true };
     worksheet.getCell("A14").font = { bold: true };
     worksheet.getCell("A15").font = { bold: true };
+    worksheet.getCell("B15").font = { bold: true };
+    worksheet.getCell("C15").font = { bold: true };
     worksheet.getCell("A17").font = { bold: true };
+    worksheet.getCell("A16").font = { bold: true };
+    worksheet.getCell("A19").font = { bold: true };
     worksheet.getCell("A18").font = { bold: true };
-    worksheet.getCell("C18").font = { bold: true };
-    worksheet.getCell("E18").font = { bold: true };
-    worksheet.getCell("G18").font = { bold: true };
     worksheet.getCell("A20").font = { bold: true };
     worksheet.getCell("D20").font = { bold: true };
     worksheet.getCell("E20").font = { bold: true };
@@ -467,60 +975,127 @@ const ProceedSubmitPressOn = ({
     worksheet.getCell("B21").font = { bold: true };
     worksheet.getCell("C21").font = { bold: true };
     worksheet.getCell("A22").font = { bold: true };
+    worksheet.getCell("C22").font = { bold: true };
+    worksheet.getCell("E22").font = { bold: true };
+    worksheet.getCell("G22").font = { bold: true };
     worksheet.getCell("A23").font = { bold: true };
     worksheet.getCell("A24").font = { bold: true };
+    worksheet.getCell("D24").font = { bold: true };
+    worksheet.getCell("E24").font = { bold: true };
+    worksheet.getCell("F24").font = { bold: true };
+    worksheet.getCell("G24").font = { bold: true };
+    worksheet.getCell("H24").font = { bold: true };
     worksheet.getCell("A25").font = { bold: true };
+    worksheet.getCell("B25").font = { bold: true };
+    worksheet.getCell("C25").font = { bold: true };
+    worksheet.getCell("A26").font = { bold: true };
     worksheet.getCell("A27").font = { bold: true };
     worksheet.getCell("A28").font = { bold: true };
-    worksheet.getCell("D28").font = { bold: true };
-    worksheet.getCell("E28").font = { bold: true };
-    worksheet.getCell("F28").font = { bold: true };
-    worksheet.getCell("G28").font = { bold: true };
-    worksheet.getCell("H28").font = { bold: true };
     worksheet.getCell("A29").font = { bold: true };
-    worksheet.getCell("B29").font = { bold: true };
-    worksheet.getCell("C29").font = { bold: true };
     worksheet.getCell("A30").font = { bold: true };
     worksheet.getCell("A31").font = { bold: true };
     worksheet.getCell("A32").font = { bold: true };
+    worksheet.getCell("D32").font = { bold: true };
+    worksheet.getCell("E32").font = { bold: true };
+    worksheet.getCell("F32").font = { bold: true };
+    worksheet.getCell("G32").font = { bold: true };
+    worksheet.getCell("H32").font = { bold: true };
     worksheet.getCell("A33").font = { bold: true };
+    worksheet.getCell("B33").font = { bold: true };
+    worksheet.getCell("C33").font = { bold: true };
     worksheet.getCell("A35").font = { bold: true };
+    worksheet.getCell("A34").font = { bold: true };
     worksheet.getCell("A36").font = { bold: true };
-    worksheet.getCell("D36").font = { bold: true };
-    worksheet.getCell("E36").font = { bold: true };
-    worksheet.getCell("F36").font = { bold: true };
-    worksheet.getCell("G36").font = { bold: true };
-    worksheet.getCell("H36").font = { bold: true };
     worksheet.getCell("A37").font = { bold: true };
-    worksheet.getCell("B37").font = { bold: true };
-    worksheet.getCell("C37").font = { bold: true };
     worksheet.getCell("A38").font = { bold: true };
     worksheet.getCell("A39").font = { bold: true };
     worksheet.getCell("A40").font = { bold: true };
+    worksheet.getCell("D40").font = { bold: true };
+    worksheet.getCell("E40").font = { bold: true };
+    worksheet.getCell("F40").font = { bold: true };
+    worksheet.getCell("G40").font = { bold: true };
+    worksheet.getCell("H40").font = { bold: true };
     worksheet.getCell("A41").font = { bold: true };
+    worksheet.getCell("B41").font = { bold: true };
+    worksheet.getCell("C41").font = { bold: true };
     worksheet.getCell("A45").font = { bold: true };
-    worksheet.getCell("G45").font = { bold: true };
-    worksheet.getCell("I45").font = { bold: true };
-    worksheet.getCell("C45").font = { bold: true };
-    worksheet.getCell("E45").font = { bold: true };
+    worksheet.getCell("A43").font = { bold: true };
+    worksheet.getCell("A42").font = { bold: true };
+    worksheet.getCell("A44").font = { bold: true };
+    worksheet.getCell("A49").font = { bold: true };
+    worksheet.getCell("C49").font = { bold: true };
+    worksheet.getCell("E49").font = { bold: true };
+    worksheet.getCell("G49").font = { bold: true };
+    worksheet.getCell("I49").font = { bold: true };
+
+    // const cellsToFormat = [
+    //   'A1', 'A5', 'C5', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1', 'J1',
+    //   'C3', 'E3', 'A7', 'I7', 'C7', 'E7', 'G7', 'A9', 'D9', 'E9', 'F9', 'G9',
+    //   'H9', 'A11', 'C11', 'E11', 'G11', 'A12', 'A13', 'D13', 'E13', 'F13', 'G13',
+    //   'H13', 'A14', 'A15', 'B15', 'C15', 'A17', 'A16', 'A19', 'A18', 'A20', 'D20',
+    //   'E20', 'F20', 'G20', 'H20', 'A21', 'B21', 'C21', 'A22', 'C22', 'E22', 'G22',
+    //   'A23', 'A24', 'D24', 'E24', 'F24', 'G24', 'H24', 'A25', 'B25', 'C25', 'A26',
+    //   'A27', 'A28', 'A29', 'A30', 'A31', 'A32', 'D32', 'E32', 'F32', 'G32', 'H32',
+    //   'A33', 'B33', 'C33', 'A35', 'A34', 'A36', 'A37', 'A38', 'A39', 'A40', 'D40',
+    //   'E40', 'F40', 'G40', 'H40', 'A41', 'B41', 'C41', 'A45', 'A43', 'A42', 'A44',
+    //   'A49', 'C49', 'E49', 'G49', 'I49'
+    // ];
+    
+    // cellsToFormat.forEach(cell => {
+    //   setFaintGreyBackground(worksheet.getCell(cell));
+    // });
+
+    worksheet.eachRow({ includeEmpty: true }, (row) => {
+      row.eachCell({ includeEmpty: true }, (cell) => {
+        cell.alignment = {
+          wrapText: true,
+          horizontal: "center",
+          vertical: "middle",
+        };
+      });
+    });
 
     // Save Excel file
-    const uint8Array = await workbook.xlsx.writeBuffer();
-    const blob = new Blob([uint8Array], {
-      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    workbook.xlsx.writeBuffer().then((buffer) => {
+      const blob = new Blob([buffer], { type: "application/octet-stream" });
+      saveAs(blob, "LHBPressOnForm.xlsx");
     });
-    saveAs(blob, "LHBPressOnForm.xlsx");
   };
+
+
 
   const exportToPDF = () => {
     const doc = new jsPDF({
       orientation: "portrait",
       unit: "pt",
       format: "a4",
+      // putOnlyUsedFonts: true,
+
     });
+
+    
 
     // Table headers
     const tableColumn = [
+      [
+        
+        { content: "Wheel Activities", rowSpan: 1, colSpan: 1},
+        { content: "Axle Wheel Seat Size", rowSpan: 1, colSpan: 2 },
+        { content: "Wheel Disc Bore Size", rowSpan: 1, colSpan: 2 },
+        { content: "Wheel Disc Stamping Particulars", rowSpan: 1, colSpan: 2 },
+        { content: "Press-On No.", rowSpan: 1, colSpan: 1 },
+        { content: "BD Thickness", rowSpan: 1, colSpan: 1 },
+        { content: "BD Make", rowSpan: 1, colSpan: 1 },
+      ],
+      [
+        { content: formDataPressOnLHB.WheelActivities, colSpan: 1 },
+        { content: formDataPressOnLHB.AxleWheelSeatSize, colSpan: 2 },
+        { content: formDataPressOnLHB.WheelDiscBoreSize, colSpan: 2 },
+        { content: formDataPressOnLHB.wheelDiscStampingParticulars, colSpan: 2 },
+        { content: formDataPressOnLHB.PressOnNumber, colSpan: 1 },
+        { content: formDataPressOnLHB.WheelActivityBDThickness, colSpan: 1 },
+        { content: formDataPressOnLHB.WheelActivityBDMake, colSpan: 1 },
+      ],
       [
         { content: "Wheel No.", rowSpan: 1, colSpan: 3 },
         { content: formDataPressOnLHB.WheelNo, colSpan: 3 },
@@ -804,6 +1379,7 @@ const ProceedSubmitPressOn = ({
 
     // Generate the table
     doc.autoTable({
+
       head: tableColumn,
       body: [],
       startX: 10,
@@ -925,7 +1501,7 @@ const ProceedSubmitPressOn = ({
         //   0: { cellWidth: 10 }, // White background for the first column
         1: { cellWidth: 40 }, // White background for the second column
         //   2: { cellWidth: 10 }, // Black background for the third column
-        3: { cellWidth: 50 },
+        3: { cellWidth: 40 },
         //   4: { cellWidth: 10 },
         //   5: { cellWidth: 10 },
         //   6: { cellWidth: 10 },
@@ -1017,12 +1593,20 @@ const ProceedSubmitPressOn = ({
       const pageNumber = `Page ${i} of ${totalPages}`;
       doc.text(pageNumber, pageWidth - 80, pageHeight - 20);
     }
+    
     doc.save("LHB Press-On Form.pdf");
   };
 
   const exportToCSV = () => {
     // Define headers and subheaders
     const headers = [
+      "Wheel Activities",
+      "Axle Wheel Seat Size",
+      "Wheel Disc Bore Size",
+      "Wheel Disc Stamping Particulars",
+      "Press-On No.",
+      "BD Thickness",
+      "BD Make",
       "Wheel No",
       "Axle No",
       "ATL No",
@@ -1101,6 +1685,13 @@ const ProceedSubmitPressOn = ({
     // Construct the CSV rows with form data
     const rows = [
       [
+        formDataPressOnLHB.WheelActivities,
+        formDataPressOnLHB.AxleWheelSeatSize,
+        formDataPressOnLHB.WheelDiscBoreSize,
+        formDataPressOnLHB.wheelDiscStampingParticulars,
+        formDataPressOnLHB.PressOnNumber,
+        formDataPressOnLHB.WheelActivityBDThickness,
+        formDataPressOnLHB.WheelActivityBDMake,
         formDataPressOnLHB.WheelNo,
         formDataPressOnLHB.AxleNo,
         formDataPressOnLHB.ATLNo,
@@ -1118,7 +1709,7 @@ const ProceedSubmitPressOn = ({
         formDataPressOnLHB.WheelDiscARDNo,
         formDataPressOnLHB.WheelDiscAWheelDiscParticulars,
         formDataPressOnLHB.WheelDiscATopXAxis,
-        formDataPressOnLHB.WheelDiscATopYAXis,
+        formDataPressOnLHB.WheelDiscATopYAxis,
         formDataPressOnLHB.WheelDiscAMiddleXAxis,
         formDataPressOnLHB.WheelDiscAMiddleYAxis,
         formDataPressOnLHB.WheelDiscALowerXAxis,
@@ -1216,6 +1807,24 @@ const ProceedSubmitPressOn = ({
       <div id="table-container">
         <table>
           <thead>
+            <tr>
+              <th>Wheel Activities</th>
+              <th colSpan={2}>Axle Wheel Seat Size</th>
+              <th colSpan={2}>Wheel Disc Bore Size</th>
+              <th colSpan={2}>Wheel Disc Stamping Particulars</th>
+              <th>Press-On No.</th>
+              <th>BD Thickness</th>
+              <th>BD Make</th>
+            </tr>
+            <tr>
+              <td>{formDataPressOnLHB.WheelActivities}</td>
+              <td colSpan={2}>{formDataPressOnLHB.AxleWheelSeatSize}</td>
+              <td colSpan={2}>{formDataPressOnLHB.WheelDiscBoreSize}</td>
+              <td colSpan={2}>{formDataPressOnLHB.wheelDiscStampingParticulars}</td>
+              <td>{formDataPressOnLHB.PressOnNumber}</td>
+              <td>{formDataPressOnLHB.WheelActivityBDThickness}</td>
+              <td>{formDataPressOnLHB.WheelActivityBDMake}</td>
+            </tr>
             <tr>
               <th>Wheel No.</th>
               <td colSpan={2}>{formDataPressOnLHB.WheelNo}</td>

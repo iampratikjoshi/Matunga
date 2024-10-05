@@ -12,6 +12,7 @@ function SidebarLHB() {
   const [errors, setErrors] = useState({}); // State for validation errors
   const SidebarData = [
     { title: "Wheel Details", link: "wheel_details" },
+    { title: "Wheel Activities", link: "wheelactivities_details" },
     {
       title: "Wheel Disc A Side Bore Size",
       link: "wheeldiscABoresize_details",

@@ -1,10 +1,16 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoCloudUploadOutline } from "react-icons/io5";
+import api from "../Axios/AxiosConnection";
 
-function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep,
-  onResetStep, }) {
+function AxleDetails({
+  formDataFinal,
+  setFormDataFinal,
+  onInputChange,
+  onNextStep,
+  onResetStep,
+}) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
   const [errors, setErrors] = useState({});
@@ -28,20 +34,51 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
   });
 
   const location = useLocation();
-  const { WheelNo,wheelid } = location.state || {};
+  const { WheelNo, wheelid } = location.state || {};
 
-  // Set the WheelNo in ShopSNo when the component loads
   useEffect(() => {
     if (WheelNo && wheelid) {
       setFormDataFinal((prevFormData) => ({
         ...prevFormData,
         WheelNo: WheelNo,
-        wheelid:wheelid
+        wheelid: wheelid,
       }));
     }
-  }, [WheelNo,wheelid, setFormDataFinal]);
+  }, [wheelid, WheelNo]);
 
- 
+  // Set the WheelNo in ShopSNo when the component loads
+  useEffect(() => {
+    if (wheelid) {
+      // Fetch data from the Schedule Pre Inspection API using wheelid
+      api
+        .get("/prelhb/getdata/" + wheelid)
+        .then((response) => {
+          const data = response.data;
+          console.log("Pre LHB Data", data);
+
+          // Check the type of repair
+          // if (data[0].TypeOfRepair === "NormalRepair") {
+            // Update the common fields in formDataFinal for Normal Repair
+            setFormDataFinal((prevFormData) => ({
+              ...prevFormData,
+              CTRBMakeA: data[0].CTRBMakeA,
+              CTRBMakeB: data[0].CTRBMakeB,
+              CTRBRemainingLifeA: data[0].CTRBRemainingLifeA,
+              CTRBRemainingLifeB: data[0].CTRBRemainingLifeB,
+              CTRBRemarkA: data[0].CTRBRemarkA,
+              CTRBRemarkB: data[0].CTRBRemarkB,
+            }));
+          // } else {
+          //   console.log(
+          //     "TypeOfRepair is neither NormalRepair nor HeavyRepair."
+          //   );
+          // }
+        })
+        .catch((error) => {
+          console.error("Error fetching Schedule Pre Inspection data", error);
+        });
+    }
+  }, [wheelid]); // Updated dependency to wheelid
 
   const removeFile = () => {
     setFile(null); // Remove the file from state
@@ -83,10 +120,8 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    
     onNextStep();
     navigate("/lhbfinalinspection/wheel_details");
-    
   };
 
   return (
@@ -109,9 +144,7 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
           <div className="wheel-page-main-content">
             <div className="row-1">
               <div>
-                <label>
-                  Wheel No:
-                </label>
+                <label>Wheel No:</label>
                 <input
                   type="text"
                   name="WheelNo"
@@ -119,26 +152,19 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
                   onChange={handleChange}
                   placeholder="Enter Wheel Number"
                 />
-                
               </div>
               <div>
-                <label>
-                  Axle No:
-                </label>
+                <label>Axle No:</label>
                 <input
                   type="text"
                   name="AxleNo"
                   value={formDataFinal.AxleNo}
                   onChange={handleChange}
                   placeholder="Enter Axle Number"
-                 
                 />
-                
               </div>
               <div>
-                <label>
-                  Shift:
-                </label>
+                <label>Shift:</label>
                 <select
                   id="dropdown"
                   name="Shift"
@@ -151,7 +177,6 @@ function AxleDetails({ formDataFinal, setFormDataFinal, onInputChange,onNextStep
                   <option value="Shift 2">Shift 2</option>
                   <option value="Shift 3">Shift 3</option>
                 </select>
-                
               </div>
             </div>
             <div className="row-2">

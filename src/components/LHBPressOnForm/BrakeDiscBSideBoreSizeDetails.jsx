@@ -12,7 +12,7 @@ function BrakeDiscBSideBoreSizeDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
+  
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -89,44 +89,7 @@ function BrakeDiscBSideBoreSizeDetails({
     setFormDataPressOnLHB,
   ]);
 
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formDataPressOnLHB.BrakeDiscBTopXAxis) {
-      newErrors.BrakeDiscBTopXAxis = "Top X-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.BrakeDiscBTopYAxis) {
-      newErrors.BrakeDiscBTopYAxis = "Top Y-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.BrakeDiscBMiddleXAxis) {
-      newErrors.BrakeDiscBMiddleXAxis = "Middle X-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.BrakeDiscBMiddleYAxis) {
-      newErrors.BrakeDiscBMiddleYAxis = "Middle Y-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.BrakeDiscBLowerXAxis) {
-      newErrors.BrakeDiscBLowerXAxis = "Lower X-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.BrakeDiscBLowerYAxis) {
-      newErrors.BrakeDiscBLowerYAxis = "Lower Y-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.BrakeDiscBAvgXAxis) {
-      newErrors.BrakeDiscBAvgXAxis = "Average X-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.BrakeDiscBAvgYAxis) {
-      newErrors.BrakeDiscBAvgYAxis = "Average Y-Axis is required.";
-    } 
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  
 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
@@ -143,10 +106,10 @@ function BrakeDiscBSideBoreSizeDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
+   
       onNextStep();
       navigate("/LHBPressOnForm/operator_details");
-    }
+    
   };
 
   const handleBack = () => {
@@ -173,7 +136,7 @@ function BrakeDiscBSideBoreSizeDetails({
             <div className="row-1">
               <div>
                 <label>
-                  Top X-axis:<span className="required-asterisk">*</span>
+                  Top X-axis:
                 </label>
                 <input
                   type="text"
@@ -182,23 +145,11 @@ function BrakeDiscBSideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Top X-axis"
                 />
-                {errors.BrakeDiscBTopXAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBTopXAxis}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Top Y-axis:<span className="required-asterisk">*</span>
+                  Top Y-axis:
                 </label>
                 <input
                   type="text"
@@ -207,25 +158,13 @@ function BrakeDiscBSideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Top Y-axis"
                 />
-                {errors.BrakeDiscBTopYAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBTopYAxis}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  Middle X-axis:<span className="required-asterisk">*</span>
+                  Middle X-axis:
                 </label>
                 <input
                   type="text"
@@ -234,23 +173,11 @@ function BrakeDiscBSideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Middle X-axis"
                 />
-                {errors.BrakeDiscBMiddleXAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBMiddleXAxis}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Middle Y-axis:<span className="required-asterisk">*</span>
+                  Middle Y-axis:
                 </label>
                 <input
                   type="text"
@@ -259,25 +186,13 @@ function BrakeDiscBSideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Middle Y-axis"
                 />
-                {errors.BrakeDiscBMiddleYAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBMiddleYAxis}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">
               <div>
                 <label>
-                  Lower X-axis:<span className="required-asterisk">*</span>
+                  Lower X-axis:
                 </label>
                 <input
                   type="text"
@@ -286,24 +201,12 @@ function BrakeDiscBSideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Lower X-axis"
                 />
-                {errors.BrakeDiscBLowerXAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBLowerXAxis}
-                  </p>
-                )}
+                
               </div>
 
               <div>
                 <label>
-                  Lower Y-axis:<span className="required-asterisk">*</span>
+                  Lower Y-axis:
                 </label>
                 <input
                   type="text"
@@ -312,25 +215,13 @@ function BrakeDiscBSideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Lower Y-axis"
                 />
-                {errors.BrakeDiscBLowerYAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBLowerYAxis}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">
               <div>
                 <label>
-                  Avg X-axis:<span className="required-asterisk">*</span>
+                  Avg X-axis:
                 </label>
                 <input
                   type="text"
@@ -340,23 +231,11 @@ function BrakeDiscBSideBoreSizeDetails({
                   placeholder="Enter Avg X-axis"
                   disabled
                 />
-                {errors.BrakeDiscBAvgXAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBAvgXAxis}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Avg Y-axis:<span className="required-asterisk">*</span>
+                  Avg Y-axis:
                 </label>
                 <input
                   type="text"
@@ -366,19 +245,7 @@ function BrakeDiscBSideBoreSizeDetails({
                   placeholder="Enter Avg Y-axis"
                   disabled
                 />
-                {errors.BrakeDiscBAvgYAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBAvgYAxis}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="btn-container">

@@ -12,7 +12,7 @@ function WheelDiscABoreSizeDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
+  
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -82,43 +82,7 @@ function WheelDiscABoreSizeDetails({
     onInputChange(name, value);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataPressOnLHB.WheelDiscATopXAxis) {
-      newErrors.WheelDiscATopXAxis = "Top X-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscATopYAxis) {
-      newErrors.WheelDiscATopYAxis = "Top Y-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscAMiddleXAxis) {
-      newErrors.WheelDiscAMiddleXAxis = "Middle X-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscAMiddleYAxis) {
-      newErrors.WheelDiscAMiddleYAxis = "Middle Y-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscALowerXAxis) {
-      newErrors.WheelDiscALowerXAxis = "Lower X-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscALowerYAxis) {
-      newErrors.WheelDiscALowerYAxis = "Lower Y-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscAAvgXAxis) {
-      newErrors.WheelDiscAAvgXAxis = "Average X-Axis is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscAAvgYAxis) {
-      newErrors.WheelDiscAAvgYAxis = "Average Y-Axis is required.";
-    } 
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+ 
 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
@@ -135,15 +99,15 @@ function WheelDiscABoreSizeDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
+    
       onNextStep();
       navigate("/LHBPressOnForm/wheeldiscA_details");
       // navigate("/LHBPressOnForm/wheeldiscB_details");
-    }
+    
   };
 
   const handleBack = () => {
-    navigate("/LHBPressOnForm/wheel_details");
+    navigate("/LHBPressOnForm/wheelactivities_details");
   };
 
   return (
@@ -166,7 +130,7 @@ function WheelDiscABoreSizeDetails({
             <div className="row-1">
               <div>
                 <label>
-                  Top X-axis:<span className="required-asterisk">*</span>
+                  Top X-axis:
                 </label>
                 <input
                   type="text"
@@ -175,23 +139,11 @@ function WheelDiscABoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Top X-axis"
                 />
-                {errors.WheelDiscATopXAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscATopXAxis}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Top Y-axis:<span className="required-asterisk">*</span>
+                  Top Y-axis:
                 </label>
                 <input
                   type="text"
@@ -200,25 +152,13 @@ function WheelDiscABoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Top Y-axis"
                 />
-                {errors.WheelDiscATopYAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscATopYAxis}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  Middle X-axis:<span className="required-asterisk">*</span>
+                  Middle X-axis:
                 </label>
                 <input
                   type="text"
@@ -227,23 +167,11 @@ function WheelDiscABoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Middle X-axis"
                 />
-                {errors.WheelDiscAMiddleXAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscAMiddleXAxis}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Middle Y-axis:<span className="required-asterisk">*</span>
+                  Middle Y-axis:
                 </label>
                 <input
                   type="text"
@@ -252,26 +180,14 @@ function WheelDiscABoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Middle Y-axis"
                 />
-                {errors.WheelDiscAMiddleYAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscAMiddleYAxis}
-                  </p>
-                )}
+                
               </div>
             </div>
 
             <div className="row-3">
               <div>
                 <label>
-                  Lower X-axis:<span className="required-asterisk">*</span>
+                  Lower X-axis:
                 </label>
                 <input
                   type="text"
@@ -280,24 +196,12 @@ function WheelDiscABoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Lower X-axis"
                 />
-                {errors.WheelDiscALowerXAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscALowerXAxis}
-                  </p>
-                )}
+                
               </div>
 
               <div>
                 <label>
-                  Lower Y-axis:<span className="required-asterisk">*</span>
+                  Lower Y-axis:
                 </label>
                 <input
                   type="text"
@@ -306,25 +210,13 @@ function WheelDiscABoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Lower Y-axis"
                 />
-                {errors.WheelDiscALowerYAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscALowerYAxis}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">
               <div>
                 <label>
-                  Avg X-axis:<span className="required-asterisk">*</span>
+                  Avg X-axis:
                 </label>
                 <input
                   type="text"
@@ -334,23 +226,11 @@ function WheelDiscABoreSizeDetails({
                   placeholder="Enter Avg X-axis"
                   disabled
                 />
-                {errors.WheelDiscAAvgXAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscAAvgXAxis}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Avg Y-axis:<span className="required-asterisk">*</span>
+                  Avg Y-axis:
                 </label>
                 <input
                   type="text"
@@ -360,19 +240,7 @@ function WheelDiscABoreSizeDetails({
                   placeholder="Enter Avg Y-axis"
                   disabled
                 />
-                {errors.WheelDiscAAvgYAxis && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscAAvgYAxis}
-                  </p>
-                )}
+                
               </div>
             </div>
             

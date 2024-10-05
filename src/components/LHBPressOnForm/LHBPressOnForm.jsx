@@ -14,6 +14,7 @@ import OperatorDetails from "./OperatorDetails.jsx"
 import LHBPressOnBreadcrumbs from "./LHBPressOnBreadcrumbs.jsx"
 import LHBPressOnStepper from "./LHBPressOnStepper.jsx"
 import "../../resources/LHB/preInspectionform/preInspectionform.css"
+import WheelActivities from "./WheelActivities.jsx"
 
 function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
    // State for stepper
@@ -21,7 +22,7 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
 
    // Function to move to the next step
    const handleNextStep = () => {
-     setActiveStep((prevStep) => Math.min(prevStep + 1, 9));
+     setActiveStep((prevStep) => Math.min(prevStep + 1, 10));
    };
  
    // Function to reset the step to the first step
@@ -57,6 +58,18 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="wheel_details"
                 element={
                   <WheelDetails
+                  formDataPressOnLHB={formDataPressOnLHB}
+                    setFormDataPressOnLHB={setFormDataPressOnLHB}
+                    onInputChange={handleInputChange}
+                    onNextStep={handleNextStep} 
+                    onResetStep={handleResetStep} 
+                  />
+                }
+              />
+            <Route
+                path="wheelactivities_details"
+                element={
+                  <WheelActivities
                   formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}

@@ -373,12 +373,9 @@ function Dashboard() {
   ];
 
   const [selectedOptions, setSelectedOptions] = useState({
-    // department: departmentOptions,
-    // section: sectionOptions,
-    // stage: stageOptions,
-    department: ["Select"],
-    section: ["Select"],
-    stage: ["Select"],
+    department: ["Pre-Inspection", "Final Inspection"],  // Default selections
+    section: ["Wheel Shop"],  // Default selection
+    stage: ["Pre-Inspection", "Final Inspection"],  // Default selections
   });
 
   const toggleDropdown = (key) => {

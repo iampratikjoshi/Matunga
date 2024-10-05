@@ -17,6 +17,9 @@ const Breadcrumbs = () => {
         if (name == "LHBPressOnForm") {
           name = "LHB Press-On Form ";
         }
+        if (name == "wheelactivities_details") {
+          name = "Wheel Activities";
+        }
         if(name=="wheeldiscA_details"){
           name = "Wheel Disc A Side";
         }

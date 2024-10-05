@@ -12,7 +12,7 @@ function WheelDiscBSideDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
+  
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -97,57 +97,15 @@ function WheelDiscBSideDetails({
     navigate("/LHBPressOnForm/wheel_details");
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataPressOnLHB.WheelDiscBVTLNo) {
-      newErrors.WheelDiscBVTLNo = "VTL No is required.";
-    }
-
-    if (!formDataPressOnLHB.WheelDiscBBoreSizeByOperator) {
-      newErrors.WheelDiscBBoreSizeByOperator =
-        "Bore Size By Operator is required.";
-    }
-
-    if (!formDataPressOnLHB.WheelDiscBRAValue) {
-      newErrors.WheelDiscBRAValue = "RA Value is required.";
-    }
-
-    if (!formDataPressOnLHB.WheelDiscBOperatorName) {
-      newErrors.WheelDiscBOperatorName = "Operator Name is required.";
-    }
-
-    if (!formDataPressOnLHB.WheelDiscBBWheelSeatSize) {
-      newErrors.WheelDiscBBWheelSeatSize = "B' Wheel Seat Size is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscBAllow) {
-      newErrors.WheelDiscBAllow = "Allow is required.";
-    } 
-
-    if (!formDataPressOnLHB.WheelDiscBPressOnPressure) {
-      newErrors.WheelDiscBPressOnPressure = "Press-On Pressure is required.";
-    }
-
-    if (!formDataPressOnLHB.WheelDiscBRDNo) {
-      newErrors.WheelDiscBRDNo = "RD No is required.";
-    }
-
-    if (!formDataPressOnLHB.WheelDiscBWheelDiscParticulars) {
-      newErrors.WheelDiscBWheelDiscParticulars =
-        "Wheel Disc Particulars is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+ 
 
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
+    
       onNextStep();
       navigate("/LHBPressOnForm/brakediscABoresize_details");
-    }
+    
   };
 
   return (
@@ -170,7 +128,7 @@ function WheelDiscBSideDetails({
             <div className="row-1">
               <div>
                 <label>
-                  VTL No.:<span className="required-asterisk">*</span>
+                  VTL No.:
                 </label>
                 <input
                   type="text"
@@ -179,24 +137,12 @@ function WheelDiscBSideDetails({
                   onChange={handleChange}
                   placeholder="Enter VTL No."
                 />
-                {errors.WheelDiscBVTLNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBVTLNo}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
                   Bore Size By Operator:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -205,23 +151,11 @@ function WheelDiscBSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Bore Size By Operator"
                 />
-                {errors.WheelDiscBBoreSizeByOperator && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBBoreSizeByOperator}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  RA Value:<span className="required-asterisk">*</span>
+                  RA Value:
                 </label>
                 <input
                   type="text"
@@ -230,25 +164,13 @@ function WheelDiscBSideDetails({
                   onChange={handleChange}
                   placeholder="Enter RA Value"
                 />
-                {errors.WheelDiscBRAValue && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBRAValue}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  Operator Name:<span className="required-asterisk">*</span>
+                  Operator Name:
                 </label>
                 <input
                   type="text"
@@ -257,24 +179,12 @@ function WheelDiscBSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Operator Name"
                 />
-                {errors.WheelDiscBOperatorName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBOperatorName}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
                   B' Wheel Seat Size:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -283,24 +193,12 @@ function WheelDiscBSideDetails({
                   onChange={handleChange}
                   placeholder="Enter B' Wheel Seat Size"
                 />
-                {errors.WheelDiscBBWheelSeatSize && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBBWheelSeatSize}
-                  </p>
-                )}
+               
               </div>
 
               <div>
                 <label>
-                  Allow:<span className="required-asterisk">*</span>
+                  Allow:
                 </label>
                 <input
                   type="text"
@@ -310,26 +208,14 @@ function WheelDiscBSideDetails({
                   placeholder="Enter Allow"
                   disabled
                 />
-                {errors.WheelDiscBAllow && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBAllow}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">
               <div>
                 <label>
                   Press-On Pressure in Ton:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -338,23 +224,11 @@ function WheelDiscBSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Press-On Pressure in Ton"
                 />
-                {errors.WheelDiscBPressOnPressure && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBPressOnPressure}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  RD No.:<span className="required-asterisk">*</span>
+                  RD No.:
                 </label>
                 <input
                   type="text"
@@ -363,24 +237,12 @@ function WheelDiscBSideDetails({
                   onChange={handleChange}
                   placeholder="Enter RD No."
                 />
-                {errors.WheelDiscBRDNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBRDNo}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
                   Wheel Disc Particulars:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -389,19 +251,7 @@ function WheelDiscBSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel Disc Particulars"
                 />
-                {errors.WheelDiscBWheelDiscParticulars && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelDiscBWheelDiscParticulars}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">

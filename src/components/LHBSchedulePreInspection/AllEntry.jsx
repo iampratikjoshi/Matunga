@@ -60,12 +60,7 @@ const AllEntry = () => {
     worksheet.getColumn("Y").width = 15;
     worksheet.getColumn("Z").width = 15;
     worksheet.getColumn("AA").width = 15;
-    worksheet.getColumn("AB").width = 15;
-    worksheet.getColumn("AC").width = 15;
-    worksheet.getColumn("AD").width = 15;
-    worksheet.getColumn("AE").width = 15;
-    worksheet.getColumn("AF").width = 15;
-    worksheet.getColumn("AG").width = 15;
+   
 
     // Start row index
     let currentRow = 1;
@@ -77,12 +72,6 @@ const AllEntry = () => {
       worksheet.mergeCells(`Y${currentRow}:Y${currentRow + 3}`);
       worksheet.mergeCells(`Z${currentRow}:Z${currentRow + 3}`);
       worksheet.mergeCells(`AA${currentRow}:AA${currentRow + 3}`);
-      worksheet.mergeCells(`AB${currentRow}:AB${currentRow + 3}`);
-      worksheet.mergeCells(`AC${currentRow}:AC${currentRow + 3}`);
-      worksheet.mergeCells(`AD${currentRow}:AD${currentRow + 3}`);
-      worksheet.mergeCells(`AE${currentRow}:AE${currentRow + 3}`);
-      worksheet.mergeCells(`AF${currentRow}:AF${currentRow + 3}`);
-      worksheet.mergeCells(`AG${currentRow}:AG${currentRow + 3}`);
       worksheet.mergeCells(`M${currentRow}:M${currentRow + 3}`);
       worksheet.mergeCells(`N${currentRow}:N${currentRow + 3}`);
       worksheet.mergeCells(`O${currentRow}:O${currentRow + 3}`);
@@ -93,7 +82,6 @@ const AllEntry = () => {
       worksheet.mergeCells(`T${currentRow}:T${currentRow + 3}`);
       worksheet.mergeCells(`U${currentRow}:U${currentRow + 3}`);
       worksheet.mergeCells(`V${currentRow}:V${currentRow + 3}`);
-
       worksheet.mergeCells(`I${currentRow}:I${currentRow + 3}`);
       worksheet.mergeCells(`J${currentRow}:J${currentRow + 3}`);
       worksheet.mergeCells(`K${currentRow}:K${currentRow + 3}`);
@@ -108,7 +96,6 @@ const AllEntry = () => {
       worksheet.mergeCells(`C${currentRow}:C${currentRow + 3}`);
       worksheet.mergeCells(`A${currentRow + 2}:A${currentRow + 3}`);
       worksheet.mergeCells(`B${currentRow + 2}:B${currentRow + 3}`);
-
       worksheet.mergeCells(`A${currentRow + 4}:A${currentRow + 5}`);
       worksheet.mergeCells(`B${currentRow + 4}:B${currentRow + 5}`);
       worksheet.mergeCells(`C${currentRow + 4}:C${currentRow + 7}`);
@@ -136,12 +123,7 @@ const AllEntry = () => {
       worksheet.mergeCells(`Y${currentRow + 4}:Y${currentRow + 7}`);
       worksheet.mergeCells(`Z${currentRow + 4}:Z${currentRow + 7}`);
       worksheet.mergeCells(`AA${currentRow + 4}:AA${currentRow + 7}`);
-      worksheet.mergeCells(`AB${currentRow + 4}:AB${currentRow + 7}`);
-      worksheet.mergeCells(`AC${currentRow + 4}:AC${currentRow + 7}`);
-      worksheet.mergeCells(`AD${currentRow + 4}:AD${currentRow + 7}`);
-      worksheet.mergeCells(`AE${currentRow + 4}:AE${currentRow + 7}`);
-      worksheet.mergeCells(`AF${currentRow + 4}:AF${currentRow + 7}`);
-      worksheet.mergeCells(`AG${currentRow + 4}:AG${currentRow + 7}`);
+      
 
       // worksheet.mergeCells(`F${currentRow + 4}:F${currentRow + 7}`);
       // worksheet.mergeCells(`I${currentRow + 2}:I${currentRow + 3}`);
@@ -158,10 +140,10 @@ const AllEntry = () => {
 
       worksheet.mergeCells(currentRow + 8, 1, currentRow + 11, 2);
       worksheet.mergeCells(currentRow + 12, 1, currentRow + 15, 2);
-      worksheet.mergeCells(currentRow + 8, 4, currentRow + 9, 12);
-      worksheet.mergeCells(currentRow + 10, 4, currentRow + 11, 12);
-      worksheet.mergeCells(currentRow + 12, 4, currentRow + 13, 12);
-      worksheet.mergeCells(currentRow + 14, 4, currentRow + 15, 12);
+      worksheet.mergeCells(currentRow + 8, 4, currentRow + 9, 27);
+      worksheet.mergeCells(currentRow + 10, 4, currentRow + 11, 27);
+      worksheet.mergeCells(currentRow + 12, 4, currentRow + 13, 27);
+      worksheet.mergeCells(currentRow + 14, 4, currentRow + 15, 27);
 
       worksheet.getRow(currentRow).values = [
         "Shop Sr. No.",
@@ -169,30 +151,24 @@ const AllEntry = () => {
         "Coach No.",
         "Diameter IN A",
         "Diameter IN B",
-        "Flage IN",
-        "BD No.",
         "BD Make IN",
-        "BD Size IN",
         "BD Thickness A",
         "BD Thickness B",
         "BD Defect",
-        "CTRB No. A",
-        "CTRB No. B",
         "CTRB Make A",
         "CTRB Make B",
-        "Refurbishment Details A",
-        "Refurbishment Details B",
         "Fitment Date",
-        "CTRB Defect",
-        "CTRB Defect Name",
-        "CTRB Status A",
-        "CTRB Status B",
+        "CTRB Defect A",
+        "CTRB Defect Name A",
+        "CTRB Defect B",
+        "CTRB Defect Name B",
         "CTRB Remaining Life A",
         "CTRB Remaining Life B",
         "CTRB Remark A",
         "CTRB Remark B",
         "Rod Gauge IN",
-        "Sound Test IN",
+        "Sound Test IN A",
+        "Sound Test IN B",
         "Type Of Repair",
         "Matunga Remark",
         "Inspector Name",
@@ -206,30 +182,24 @@ const AllEntry = () => {
         res.CoachNumber,
         res.DiameterINA,
         res.DiameterINB,
-        res.FlageIN,
-        res.BDNumber,
         res.BDMakeIN,
-        res.BDSizeIN,
         res.BDThicknessA,
         res.BDThicknessB,
         res.BDDefect,
-        res.CTRBNumberA,
-        res.CTRBNumberB,
         res.CTRBMakeA,
         res.CTRBMakeB,
-        res.RefurbishmentDetailsA,
-        res.RefurbishmentDetailsB,
         res.FitmentDate,
-        res.CTRBDefect,
-        res.CTRBDefectName,
-        res.CTRBStatusA,
-        res.CTRBStatusB,
+        res.CTRBDefectA,
+        res.CTRBDefectNameA,
+        res.CTRBDefectB,
+        res.CTRBDefectNameB,
         res.CTRBRemainingLifeA,
         res.CTRBRemainingLifeB,
         res.CTRBRemarkA,
         res.CTRBRemarkB,
         res.RodGaugeIN,
-        res.SoundTestIN,
+        res.SoundTestINA,
+        res.SoundTestINB,
         res.TypeOfRepair,
         res.MatungaRemark,
         res.InspectorName,
@@ -253,8 +223,8 @@ const AllEntry = () => {
         "B",
         res.DiscParticularB,
       ];
-      worksheet.getRow(currentRow + 12).values = ["CTRB", "", "A", res.CTRBA];
-      worksheet.getRow(currentRow + 14).values = ["", "", "B", res.CTRBB];
+      worksheet.getRow(currentRow + 12).values = ["CTRB", "", "A", res.CTRBNumberA];
+      worksheet.getRow(currentRow + 14).values = ["", "", "B", res.CTRBNumberB];
       //Bold Text Headers
 
       worksheet.getCell(`A${currentRow}`).font = { bold: true };
@@ -285,12 +255,7 @@ const AllEntry = () => {
       worksheet.getCell(`Y${currentRow}`).font = { bold: true };
       worksheet.getCell(`Z${currentRow}`).font = { bold: true };
       worksheet.getCell(`AA${currentRow}`).font = { bold: true };
-      worksheet.getCell(`AB${currentRow}`).font = { bold: true };
-      worksheet.getCell(`AC${currentRow}`).font = { bold: true };
-      worksheet.getCell(`AD${currentRow}`).font = { bold: true };
-      worksheet.getCell(`AE${currentRow}`).font = { bold: true };
-      worksheet.getCell(`AF${currentRow}`).font = { bold: true };
-      worksheet.getCell(`AG${currentRow}`).font = { bold: true };
+     
 
       worksheet.getCell(`A${currentRow + 2}`).font = { bold: true };
       worksheet.getCell(`B${currentRow + 2}`).font = { bold: true };
@@ -345,30 +310,24 @@ const AllEntry = () => {
         { content: "Coach No.", rowSpan: 2 },
         { content: "Diameter IN A", rowSpan: 2 },
         { content: "Diameter IN B", rowSpan: 2 },
-        { content: "Flage IN", rowSpan: 2 },
-        { content: "BD No.", rowSpan: 2 },
         { content: "BD Make IN", rowSpan: 2 },
-        { content: "BD Size IN", rowSpan: 2 },
         { content: "BD Thickness A", rowSpan: 2 },
         { content: "BD Thickness B", rowSpan: 2 },
         { content: "BD Defect", rowSpan: 2 },
-        { content: "CTRB No. A", rowSpan: 2 },
-        { content: "CTRB No. B", rowSpan: 2 },
         { content: "CTRB Make A", rowSpan: 2 },
         { content: "CTRB Make B", rowSpan: 2 },
-        { content: "Refurbishment Details A", rowSpan: 2 },
-        { content: "Refurbishment Details B", rowSpan: 2 },
         { content: "Fitment Date", rowSpan: 2 },
-        { content: "CTRB Defect", rowSpan: 2 },
-        { content: "CTRB Defect NAME", rowSpan: 2 },
-        { content: "CTRB Status A", rowSpan: 2 },
-        { content: "CTRB Status B", rowSpan: 2 },
+        { content: "CTRB Defect A", rowSpan: 2 },
+        { content: "CTRB Defect NAME A", rowSpan: 2 },
+        { content: "CTRB Defect B", rowSpan: 2 },
+        { content: "CTRB Defect NAME B", rowSpan: 2 },
         { content: "CTRB Remaining Life A", rowSpan: 2 },
         { content: "CTRB Remaining Life B", rowSpan: 2 },
         { content: "CTRB Remark A", rowSpan: 2 },
         { content: "CTRB Remark B", rowSpan: 2 },
         { content: "Rod Gauge IN", rowSpan: 2 },
-        { content: "Sound Test IN", rowSpan: 2 },
+        { content: "Sound Test IN A", rowSpan: 2 },
+        { content: "Sound Test IN B", rowSpan: 2 },
         { content: "Type Of Repair", rowSpan: 2 },
         { content: "Matunga Remark", rowSpan: 2 },
         { content: "Inspector Name", rowSpan: 2 },
@@ -386,38 +345,32 @@ const AllEntry = () => {
       body.push(
         [
           { content: handleNullValue(row.ShopSrNumber), rowSpan: 1 }, // Data for Shop Sr. No.
-          { content: handleNullValue(row.ReceiveDate), rowSpan: 1 }, // All other data with rowSpan 2
-          { content: handleNullValue(row.CoachNumber), rowSpan: 2 },
-          { content: handleNullValue(row.DiameterINA), rowSpan: 2 },
-          { content: handleNullValue(row.DiameterINB), rowSpan: 2 },
-          { content: handleNullValue(row.FlageIN), rowSpan: 2 },
-          { content: handleNullValue(row.BDNumber), rowSpan: 2 },
-          { content: handleNullValue(row.BDMakeIN), rowSpan: 2 },
-          { content: handleNullValue(row.BDSizeIN), rowSpan: 2 },
-          { content: handleNullValue(row.BDThicknessA), rowSpan: 2 },
-          { content: handleNullValue(row.BDThicknessB), rowSpan: 2 },
-          { content: handleNullValue(row.BDDefect), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBNumberA), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBNumberB), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBMakeA), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBMakeB), rowSpan: 2 },
-          { content: handleNullValue(row.RefurbishmentDetailsA), rowSpan: 2 },
-          { content: handleNullValue(row.RefurbishmentDetailsB), rowSpan: 2 },
-          { content: handleNullValue(row.FitmentDate), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBDefect), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBDefectName), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBStatusA), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBStatusB), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBRemainingLifeA), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBRemainingLifeB), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBRemarkA), rowSpan: 2 },
-          { content: handleNullValue(row.CTRBRemarkB), rowSpan: 2 },
-          { content: handleNullValue(row.RodGaugeIN), rowSpan: 2 },
-          { content: handleNullValue(row.SoundTestIN), rowSpan: 2 },
-          { content: handleNullValue(row.TypeOfRepair), rowSpan: 2 },
-          { content: handleNullValue(row.MatungaRemark), rowSpan: 2 },
-          { content: handleNullValue(row.InspectorName), rowSpan: 2 },
-          { content: handleNullValue(row.InspectorTicketNo), rowSpan: 2 },
+        { content: handleNullValue(row.ReceiveDate), rowSpan: 1 }, // All other data with rowSpan 2
+        { content: handleNullValue(row.CoachNumber), rowSpan: 2 },
+        { content: handleNullValue(row.DiameterINA), rowSpan: 2 },
+        { content: handleNullValue(row.DiameterINB), rowSpan: 2 },
+        { content: handleNullValue(row.BDMakeIN), rowSpan: 2 },
+        { content: handleNullValue(row.BDThicknessA), rowSpan: 2 },
+        { content: handleNullValue(row.BDThicknessB), rowSpan: 2 },
+        { content: handleNullValue(row.BDDefect), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBMakeA), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBMakeB), rowSpan: 2 },
+        { content: handleNullValue(row.FitmentDate), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBDefectA), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBDefectNameA), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBDefectB), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBDefectNameB), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBRemainingLifeA), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBRemainingLifeB), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBRemarkA), rowSpan: 2 },
+        { content: handleNullValue(row.CTRBRemarkB), rowSpan: 2 },
+        { content: handleNullValue(row.RodGaugeIN), rowSpan: 2 },
+        { content: handleNullValue(row.SoundTestINA), rowSpan: 2 },
+        { content: handleNullValue(row.SoundTestINB), rowSpan: 2 },
+        { content: handleNullValue(row.TypeOfRepair), rowSpan: 2 },
+        { content: handleNullValue(row.MatungaRemark), rowSpan: 2 },
+        { content: handleNullValue(row.InspectorName), rowSpan: 2 },
+        { content: handleNullValue(row.InspectorTicketNo), rowSpan: 2 },
         ],
         [
           { content: handleNullValue(row.AxleNumber), rowSpan: 1 }, // Data for Shop Sr. No.
@@ -443,11 +396,11 @@ const AllEntry = () => {
             colSpan: 2,
           }, // Main Header for CTRB
           { content: "A" }, // Subheader A
-          { content: handleNullValue(row.CTRBA), colSpan: 30 }, // Data for CTRB A
+          { content: handleNullValue(row.CTRBNumberA), colSpan: 30 }, // Data for CTRB A
         ],
         [
           { content: "B" }, // Subheader B
-          { content: handleNullValue(row.CTRBB), colSpan: 30 }, // Data for CTRB B
+          { content: handleNullValue(row.CTRBNumberB), colSpan: 30 }, // Data for CTRB B
         ]
       );
     });
@@ -479,7 +432,7 @@ const AllEntry = () => {
   const exportToCSV = () => {
     // Define headers and subheaders
     const headers = [
-      "Shop Sr. No.",
+     "Shop Sr. No.",
       "Axle No.",
       "Receive Date",
       "Axle Condition",
@@ -494,15 +447,11 @@ const AllEntry = () => {
       "CTRB No B",
       "CTRB Make A",
       "CTRB Make B",
-      "Refurbishment Details A",
-      "Refurbishment Details B",
       "Fitment Date",
       "CTRB Defect A",
       "CTRB Defect B",
       "CTRB Defect Name A",
       "CTRB Defect Name B",
-      "CTRB Status A",
-      "CTRB Status B",
       "CTRB Remaining Life A",
       "CTRB Remaining Life B",
       "CTRB Remark A",
@@ -535,15 +484,11 @@ const AllEntry = () => {
         entry.CTRBNumberB,
         entry.CTRBMakeA,
         entry.CTRBMakeB,
-        entry.RefurbishmentDetailsA,
-        entry.RefurbishmentDetailsB,
         entry.FitmentDate,
         entry.CTRBDefectA,
         entry.CTRBDefectB,
         entry.CTRBDefectNameA,
         entry.CTRBDefectNameB,
-        entry.CTRBStatusA,
-        entry.CTRBStatusB,
         entry.CTRBRemainingLifeA,
         entry.CTRBRemainingLifeB,
         entry.CTRBRemarkA,
@@ -625,17 +570,13 @@ const AllEntry = () => {
 
               <th rowSpan="2">CTRB Make A</th>
               <th rowSpan="2">CTRB Make B</th>
-              <th rowSpan="2">Refurbishment Details A</th>
-              <th rowSpan="2">Refurbishment Details B</th>
               <th rowSpan="2">Fitment Date</th>
               <th rowSpan="2">CTRB Defect A</th>
               <th rowSpan="2">CTRB Defect NAME A</th>
               <th rowSpan="2">CTRB Defect B</th>
               <th rowSpan="2">CTRB Defect NAME B</th>
-              <th rowSpan="2">CTRB Status A</th>
-              <th rowSpan="2">CTRB Status B</th>
-              <th rowSpan="2">CTRB Remaining Life A</th>
-              <th rowSpan="2">CTRB Remaining Life B</th>
+              <th rowSpan="2" colSpan={3}>CTRB Remaining Life A</th>
+              <th rowSpan="2" colSpan={3}>CTRB Remaining Life B</th>
               <th rowSpan="2">CTRB Remark A</th>
               <th rowSpan="2">CTRB Remark B</th>
 
@@ -668,17 +609,13 @@ const AllEntry = () => {
 
               <td rowSpan="2">{res.CTRBMakeA}</td>
               <td rowSpan="2">{res.CTRBMakeB}</td>
-              <td rowSpan="2">{res.RefurbishmentDetailsA}</td>
-              <td rowSpan="2">{res.RefurbishmentDetailsB}</td>
               <td rowSpan="2">{res.FitmentDate}</td>
               <td rowSpan="2">{res.CTRBDefectA}</td>
               <td rowSpan="2">{res.CTRBDefectNameA}</td>
               <td rowSpan="2">{res.CTRBDefectB}</td>
               <td rowSpan="2">{res.CTRBDefectNameB}</td>
-              <td rowSpan="2">{res.CTRBStatusA}</td>
-              <td rowSpan="2">{res.CTRBStatusB}</td>
-              <td rowSpan="2">{res.CTRBRemainingLifeA}</td>
-              <td rowSpan="2">{res.CTRBRemainingLifeB}</td>
+              <td rowSpan="2" colSpan={3}>{res.CTRBRemainingLifeA}</td>
+              <td rowSpan="2" colSpan={3}>{res.CTRBRemainingLifeB}</td>
               <td rowSpan="2">{res.CTRBRemarkA}</td>
               <td rowSpan="2">{res.CTRBRemarkB}</td>
 

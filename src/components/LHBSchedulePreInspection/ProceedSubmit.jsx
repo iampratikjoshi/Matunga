@@ -102,12 +102,7 @@ const ProceedSubmit = ({ formData, setFormData }) => {
     worksheet.getColumn("Y").width = 15;
     worksheet.getColumn("Z").width = 15;
     worksheet.getColumn("AA").width = 15;
-    worksheet.getColumn("AB").width = 15;
-    worksheet.getColumn("AC").width = 15;
-    worksheet.getColumn("AD").width = 15;
-    worksheet.getColumn("AE").width = 15;
-    worksheet.getColumn("AF").width = 15;
-    worksheet.getColumn("AG").width = 15;
+   
 
     // Headers for Wheel Details
     worksheet.mergeCells("A1:A2");
@@ -138,12 +133,7 @@ const ProceedSubmit = ({ formData, setFormData }) => {
     worksheet.mergeCells("Y1:Y4");
     worksheet.mergeCells("Z1:Z4");
     worksheet.mergeCells("AA1:AA4");
-    worksheet.mergeCells("AB1:AB4");
-    worksheet.mergeCells("AC1:AC4");
-    worksheet.mergeCells("AD1:AD4");
-    worksheet.mergeCells("AE1:AE4");
-    worksheet.mergeCells("AF1:AF4");
-    worksheet.mergeCells("AG1:AG4");
+    
 
     worksheet.mergeCells("M5:M8");
     worksheet.mergeCells("N5:N8");
@@ -160,12 +150,7 @@ const ProceedSubmit = ({ formData, setFormData }) => {
     worksheet.mergeCells("Y5:Y8");
     worksheet.mergeCells("Z5:Z8");
     worksheet.mergeCells("AA5:AA8");
-    worksheet.mergeCells("AB5:AB8");
-    worksheet.mergeCells("AC5:AC8");
-    worksheet.mergeCells("AD5:AD8");
-    worksheet.mergeCells("AE5:AE8");
-    worksheet.mergeCells("AF5:AF8");
-    worksheet.mergeCells("AG5:AG8");
+   
 
     worksheet.mergeCells("A3:A4");
     worksheet.mergeCells("B3:B4");
@@ -186,13 +171,13 @@ const ProceedSubmit = ({ formData, setFormData }) => {
     worksheet.mergeCells(9, 1, 12, 2);
     worksheet.mergeCells("C9:C10");
     worksheet.mergeCells("C11:C12");
-    worksheet.mergeCells(9, 4, 10, 32);
-    worksheet.mergeCells(11, 4, 12, 32);
+    worksheet.mergeCells(9, 4, 10, 27);
+    worksheet.mergeCells(11, 4, 12, 27);
     worksheet.mergeCells(13, 1, 16, 2);
-    worksheet.mergeCells(13, 4, 14, 32);
+    worksheet.mergeCells(13, 4, 14, 27);
     worksheet.mergeCells("C13:C14");
     worksheet.mergeCells("C15:C16");
-    worksheet.mergeCells(15, 4, 16, 32);
+    worksheet.mergeCells(15, 4, 16, 27);
 
     worksheet.getRow(1).values = [
       "Shop Sr. No.",
@@ -200,30 +185,24 @@ const ProceedSubmit = ({ formData, setFormData }) => {
       "Coach No.",
       "Diameter IN A",
       "Diameter IN B",
-      "Flage IN",
-      "BD No.",
       "BD Make IN",
-      "BD Size IN",
       "BD Thickness A",
       "BD Thickness B",
       "BD Defect",
-      "CTRB No. A",
-      "CTRB No. B",
       "CTRB Make A",
       "CTRB Make B",
-      "Refurbishment Details A",
-      "Refurbishment Details B",
       "Fitment Date",
-      "CTRB Defect",
-      "CTRB Defect Name",
-      "CTRB Status A",
-      "CTRB Status B",
+      "CTRB Defect A",
+      "CTRB Defect Name A",
+      "CTRB Defect B",
+      "CTRB Defect Name B",
       "CTRB Remaining Life A",
       "CTRB Remaining Life B",
       "CTRB Remark A",
       "CTRB Remark B",
       "Rod Gauge IN",
-      "Sound Test IN",
+      "Sound Test IN A",
+      "Sound Test IN B",
       "Type Of Repair",
       "Matunga Remark",
       "Inspector Name",
@@ -236,30 +215,24 @@ const ProceedSubmit = ({ formData, setFormData }) => {
       formData.CoachNumber,
       formData.DiameterINA,
       formData.DiameterINB,
-      formData.FlageIN,
-      formData.BDNumber,
       formData.BDMakeIN,
-      formData.BDSizeIN,
       formData.BDThicknessA,
       formData.BDThicknessB,
       formData.BDDefect,
-      formData.CTRBNumberA,
-      formData.CTRBNumberB,
       formData.CTRBMakeA,
       formData.CTRBMakeB,
-      formData.RefurbishmentDetailsA,
-      formData.RefurbishmentDetailsB,
       formData.FitmentDate,
-      formData.CTRBDefect,
-      formData.CTRBDefectName,
-      formData.CTRBStatusA,
-      formData.CTRBStatusB,
+      formData.CTRBDefectA,
+      formData.CTRBDefectNameA,
+      formData.CTRBDefectB,
+      formData.CTRBDefectNameB,
       formData.CTRBRemainingLifeA,
       formData.CTRBRemainingLifeB,
       formData.CTRBRemarkA,
       formData.CTRBRemarkB,
       formData.RodGaugeIN,
-      formData.SoundTestIN,
+      formData.SoundTestINA,
+      formData.SoundTestINB,
       formData.TypeOfRepair,
       formData.MatungaRemark,
       formData.InspectorName,
@@ -274,8 +247,8 @@ const ProceedSubmit = ({ formData, setFormData }) => {
     ];
 
     worksheet.getRow(11).values = ["", "", "B", formData.DiscParticularB];
-    worksheet.getRow(13).values = ["CTRB", "", "A", formData.CTRBA];
-    worksheet.getRow(15).values = ["", "", "B", formData.CTRBB];
+    worksheet.getRow(13).values = ["CTRB", "", "A", formData.CTRBNumberA];
+    worksheet.getRow(15).values = ["", "", "B", formData.CTRBNumberB];
     worksheet.eachRow({ includeEmpty: true }, (row) => {
       row.eachCell({ includeEmpty: true }, (cell) => {
         cell.alignment = {
@@ -335,12 +308,7 @@ const ProceedSubmit = ({ formData, setFormData }) => {
     worksheet.getCell("Y1").font = { bold: true };
     worksheet.getCell("Z1").font = { bold: true };
     worksheet.getCell("AA1").font = { bold: true };
-    worksheet.getCell("AB1").font = { bold: true };
-    worksheet.getCell("AC1").font = { bold: true };
-    worksheet.getCell("AD1").font = { bold: true };
-    worksheet.getCell("AE1").font = { bold: true };
-    worksheet.getCell("AF1").font = { bold: true };
-    worksheet.getCell("AG1").font = { bold: true };
+    
 
     // Save Excel file
     const uint8Array = await workbook.xlsx.writeBuffer();
@@ -365,30 +333,24 @@ const ProceedSubmit = ({ formData, setFormData }) => {
         { content: "Coach No.", rowSpan: 2 },
         { content: "Diameter IN A", rowSpan: 2 },
         { content: "Diameter IN B", rowSpan: 2 },
-        { content: "Flage IN", rowSpan: 2 },
-        { content: "BD No.", rowSpan: 2 },
         { content: "BD Make IN", rowSpan: 2 },
-        { content: "BD Size IN", rowSpan: 2 },
         { content: "BD Thickness A", rowSpan: 2 },
         { content: "BD Thickness B", rowSpan: 2 },
         { content: "BD Defect", rowSpan: 2 },
-        { content: "CTRB No. A", rowSpan: 2 },
-        { content: "CTRB No. B", rowSpan: 2 },
         { content: "CTRB Make A", rowSpan: 2 },
         { content: "CTRB Make B", rowSpan: 2 },
-        { content: "Refurbishment Details A", rowSpan: 2 },
-        { content: "Refurbishment Details B", rowSpan: 2 },
         { content: "Fitment Date", rowSpan: 2 },
-        { content: "CTRB Defect", rowSpan: 2 },
-        { content: "CTRB Defect NAME", rowSpan: 2 },
-        { content: "CTRB Status A", rowSpan: 2 },
-        { content: "CTRB Status B", rowSpan: 2 },
+        { content: "CTRB Defect A", rowSpan: 2 },
+        { content: "CTRB Defect NAME A", rowSpan: 2 },
+        { content: "CTRB Defect B", rowSpan: 2 },
+        { content: "CTRB Defect NAME B", rowSpan: 2 },
         { content: "CTRB Remaining Life A", rowSpan: 2 },
         { content: "CTRB Remaining Life B", rowSpan: 2 },
         { content: "CTRB Remark A", rowSpan: 2 },
         { content: "CTRB Remark B", rowSpan: 2 },
         { content: "Rod Gauge IN", rowSpan: 2 },
-        { content: "Sound Test IN", rowSpan: 2 },
+        { content: "Sound Test IN A", rowSpan: 2 },
+        { content: "Sound Test IN B", rowSpan: 2 },
         { content: "Type Of Repair", rowSpan: 2 },
         { content: "Matunga Remark", rowSpan: 2 },
         { content: "Inspector Name", rowSpan: 2 },
@@ -407,36 +369,24 @@ const ProceedSubmit = ({ formData, setFormData }) => {
         { content: handleNullValue(formData.CoachNumber), rowSpan: 2 },
         { content: handleNullValue(formData.DiameterINA), rowSpan: 2 },
         { content: handleNullValue(formData.DiameterINB), rowSpan: 2 },
-        { content: handleNullValue(formData.FlageIN), rowSpan: 2 },
-        { content: handleNullValue(formData.BDNumber), rowSpan: 2 },
         { content: handleNullValue(formData.BDMakeIN), rowSpan: 2 },
-        { content: handleNullValue(formData.BDSizeIN), rowSpan: 2 },
         { content: handleNullValue(formData.BDThicknessA), rowSpan: 2 },
         { content: handleNullValue(formData.BDThicknessB), rowSpan: 2 },
         { content: handleNullValue(formData.BDDefect), rowSpan: 2 },
-        { content: handleNullValue(formData.CTRBNumberA), rowSpan: 2 },
-        { content: handleNullValue(formData.CTRBNumberB), rowSpan: 2 },
         { content: handleNullValue(formData.CTRBMakeA), rowSpan: 2 },
         { content: handleNullValue(formData.CTRBMakeB), rowSpan: 2 },
-        {
-          content: handleNullValue(formData.RefurbishmentDetailsA),
-          rowSpan: 2,
-        },
-        {
-          content: handleNullValue(formData.RefurbishmentDetailsB),
-          rowSpan: 2,
-        },
         { content: handleNullValue(formData.FitmentDate), rowSpan: 2 },
-        { content: handleNullValue(formData.CTRBDefect), rowSpan: 2 },
-        { content: handleNullValue(formData.CTRBDefectName), rowSpan: 2 },
-        { content: handleNullValue(formData.CTRBStatusA), rowSpan: 2 },
-        { content: handleNullValue(formData.CTRBStatusB), rowSpan: 2 },
+        { content: handleNullValue(formData.CTRBDefectA), rowSpan: 2 },
+        { content: handleNullValue(formData.CTRBDefectNameA), rowSpan: 2 },
+        { content: handleNullValue(formData.CTRBDefectB), rowSpan: 2 },
+        { content: handleNullValue(formData.CTRBDefectNameB), rowSpan: 2 },
         { content: handleNullValue(formData.CTRBRemainingLifeA), rowSpan: 2 },
         { content: handleNullValue(formData.CTRBRemainingLifeB), rowSpan: 2 },
         { content: handleNullValue(formData.CTRBRemarkA), rowSpan: 2 },
         { content: handleNullValue(formData.CTRBRemarkB), rowSpan: 2 },
         { content: handleNullValue(formData.RodGaugeIN), rowSpan: 2 },
-        { content: handleNullValue(formData.SoundTestIN), rowSpan: 2 },
+        { content: handleNullValue(formData.SoundTestINA), rowSpan: 2 },
+        { content: handleNullValue(formData.SoundTestINB), rowSpan: 2 },
         { content: handleNullValue(formData.TypeOfRepair), rowSpan: 2 },
         { content: handleNullValue(formData.MatungaRemark), rowSpan: 2 },
         { content: handleNullValue(formData.InspectorName), rowSpan: 2 },
@@ -469,11 +419,11 @@ const ProceedSubmit = ({ formData, setFormData }) => {
           colSpan: 2,
         }, // Main Header for CTRB
         { content: "A" }, // Subheader A
-        { content: handleNullValue(formData.CTRBA), colSpan: 30 }, // Data for CTRB A
+        { content: handleNullValue(formData.CTRBNumberA), colSpan: 30 }, // Data for CTRB A
       ],
       [
         { content: "B" }, // Subheader B
-        { content: handleNullValue(formData.CTRBB), colSpan: 30 }, // Data for CTRB B
+        { content: handleNullValue(formData.CTRBNumberB), colSpan: 30 }, // Data for CTRB B
       ],
     ];
 
@@ -519,15 +469,11 @@ const ProceedSubmit = ({ formData, setFormData }) => {
       "CTRB No B",
       "CTRB Make A",
       "CTRB Make B",
-      "Refurbishment Details A",
-      "Refurbishment Details B",
       "Fitment Date",
       "CTRB Defect A",
       "CTRB Defect B",
       "CTRB Defect Name A",
       "CTRB Defect Name B",
-      "CTRB Status A",
-      "CTRB Status B",
       "CTRB Remaining Life A",
       "CTRB Remaining Life B",
       "CTRB Remark A",
@@ -561,15 +507,11 @@ const ProceedSubmit = ({ formData, setFormData }) => {
         formData.CTRBNumberB,
         formData.CTRBMakeA,
         formData.CTRBMakeB,
-        formData.RefurbishmentDetailsA,
-        formData.RefurbishmentDetailsB,
         formData.FitmentDate,
         formData.CTRBDefectA,
         formData.CTRBDefectB,
         formData.CTRBDefectNameA,
         formData.CTRBDefectNameB,
-        formData.CTRBStatusA,
-        formData.CTRBStatusB,
         formData.CTRBRemainingLifeA,
         formData.CTRBRemainingLifeB,
         formData.CTRBRemarkA,
@@ -640,15 +582,11 @@ const ProceedSubmit = ({ formData, setFormData }) => {
 
               <th rowSpan="2">CTRB Make A</th>
               <th rowSpan="2">CTRB Make B</th>
-              {/* <th rowSpan="2">Refurbishment Details A</th>
-              <th rowSpan="2">Refurbishment Details B</th> */}
               <th rowSpan="2">Fitment Date</th>
               <th rowSpan="2">CTRB Defect A</th>
               <th rowSpan="2">CTRB Defect NAME A</th>
               <th rowSpan="2">CTRB Defect B</th>
               <th rowSpan="2">CTRB Defect NAME B</th>
-              {/* <th rowSpan="2">CTRB Status A</th>
-              <th rowSpan="2">CTRB Status B</th> */}
               <th rowSpan="2" colSpan={3}>CTRB Remaining Life A</th>
               <th rowSpan="2" colSpan={3}>CTRB Remaining Life B</th>
               <th rowSpan="2">CTRB Remark A</th>

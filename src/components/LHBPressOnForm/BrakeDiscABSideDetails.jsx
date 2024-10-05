@@ -12,7 +12,7 @@ function BrakeDiscABSideDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
+  
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -45,32 +45,7 @@ function BrakeDiscABSideDetails({
     console.log(formDataPressOnLHB);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataPressOnLHB.BrakeDiscABBDSeatSize) {
-      newErrors.BrakeDiscABBDSeatSize = "B' BD Seat Size is required.";
-    }
-
-    if (!formDataPressOnLHB.BrakeDiscAAllow) {
-      newErrors.BrakeDiscAAllow = "Allow is required.";
-    }
-
-    if (!formDataPressOnLHB.BrakeDiscAPressOnPressure) {
-      newErrors.BrakeDiscAPressOnPressure = "Press-On Pressure is required.";
-    }
-
-    if (!formDataPressOnLHB.BrakeDiscABDThickness) {
-      newErrors.BrakeDiscABDThickness = "BD Thickness is required.";
-    }
-
-    if (!formDataPressOnLHB.BrakeDiscABrakeDiscParticulars) {
-      newErrors.BrakeDiscABrakeDiscParticulars =
-        "Brake Disc make & Particulars is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+ 
 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
@@ -153,10 +128,10 @@ function BrakeDiscABSideDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
+    
       onNextStep();
       navigate("/LHBPressOnForm/brakediscBBoresize_details");
-    }
+    
   };
 
   const handleBack = () => {
@@ -183,7 +158,7 @@ function BrakeDiscABSideDetails({
             <div className="row-1">
               <div>
                 <label>
-                  A B' BD Seat Size:<span className="required-asterisk">*</span>
+                  A B' BD Seat Size:
                 </label>
                 <input
                   type="text"
@@ -192,23 +167,11 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter B' BD Seat Size"
                 />
-                {errors.BrakeDiscABBDSeatSize && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscABBDSeatSize}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  A Allow:<span className="required-asterisk">*</span>
+                  A Allow:
                 </label>
                 <input
                   type="text"
@@ -218,24 +181,12 @@ function BrakeDiscABSideDetails({
                   placeholder="Enter Allow"
                   disabled
                 />
-                {errors.BrakeDiscAAllow && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscAAllow}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
                   A Press-On Pressure in Ton:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -244,25 +195,13 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Press-On Pressure in Ton"
                 />
-                {errors.BrakeDiscAPressOnPressure && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscAPressOnPressure}
-                  </p>
-                )}
+               
               </div>
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  A BD Thickness:<span className="required-asterisk">*</span>
+                  A BD Thickness:
                 </label>
                 <input
                   type="text"
@@ -271,24 +210,12 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter BD Thickness"
                 />
-                {errors.BrakeDiscABDThickness && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscABDThickness}
-                  </p>
-                )}
+               
               </div>
               <div>
                 <label>
                   A Brake Disc make & Particulars:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -297,25 +224,13 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Brake Disc make & Particulars"
                 />
-                {errors.BrakeDiscABrakeDiscParticulars && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscABrakeDiscParticulars}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-1">
               <div>
                 <label>
-                  B B' BD Seat Size:<span className="required-asterisk">*</span>
+                  B B' BD Seat Size:
                 </label>
                 <input
                   type="text"
@@ -324,23 +239,11 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter B' BD Seat Size"
                 />
-                {errors.BrakeDiscBBBDSeatSize && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBBBDSeatSize}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  B Allow:<span className="required-asterisk">*</span>
+                  B Allow:
                 </label>
                 <input
                   type="text"
@@ -350,24 +253,12 @@ function BrakeDiscABSideDetails({
                   placeholder="Enter Allow"
                   disabled
                 />
-                {errors.BrakeDiscBAllow && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBAllow}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
                   B Press-On Pressure in Ton:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -376,25 +267,13 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Press-On Pressure in Ton"
                 />
-                {errors.BrakeDiscBPressOnPressure && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBPressOnPressure}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  B BD Thickness:<span className="required-asterisk">*</span>
+                  B BD Thickness:
                 </label>
                 <input
                   type="text"
@@ -403,24 +282,12 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter BD Thickness"
                 />
-                {errors.BrakeDiscBBDThickness && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBBDThickness}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
                   B Brake Disc make & Particulars:
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -429,19 +296,7 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Brake Disc make & Particulars"
                 />
-                {errors.BrakeDiscBBrakeDiscParticulars && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscBBrakeDiscParticulars}
-                  </p>
-                )}
+               
               </div>
             </div>
             <div className="btn-container">

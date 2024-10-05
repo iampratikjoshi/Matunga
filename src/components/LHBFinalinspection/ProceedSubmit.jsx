@@ -80,19 +80,23 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       { header: "RG", key: "WheelRG", width: 10 },
       { header: "FLG", key: "WheelFLG", width: 10 },
       { header: "Journal Size", key: "JournalSize", width: 30 },
-      { header: "Jr.Size", key: "Size", width: 10 },
-      { header: "Jr.Oval", key: "Oval", width: 10 },
-      { header: "Jr.Tap", key: "Tap", width: 10 },
-      { header: "Shoulder Size", key: "ShoulderSize", width: 15 },
-      { header: "Jr. Waiviness", key: "JrWaiviness", width: 15 },
+      { header: "Jr.Size A", key: "SizeA", width: 10 },
+      { header: "Jr.Size B", key: "SizeB", width: 10 },
+      { header: "Jr.Oval A", key: "OvalA", width: 10 },
+      { header: "Jr.Oval B", key: "OvalB", width: 10 },
+      { header: "Jr.Tap A", key: "TapA", width: 10 },
+      { header: "Jr.Tap B", key: "TapB", width: 10 },
+      { header: "Shoulder Size A", key: "ShoulderSizeA", width: 15 },
+      { header: "Shoulder Size B", key: "ShoulderSizeB", width: 15 },
+      { header: "Jr. Waiviness A", key: "JrWaivinessA", width: 15 },
+      { header: "Jr. Waiviness A", key: "JrWaivinessB", width: 15 },
       { header: "Disc Particular A", key: "DiscParticularA", width: 10 },
       { header: "Disc Particular B", key: "DiscParticularB", width: 10 },
       { header: "BD Make", key: "BDMake", width: 15 },
-      { header: "BD Size", key: "BDSize", width: 10 },
-      { header: "End Hole", key: "EndHole", width: 10 },
-      { header: "BRG Remain Life", key: "BRGRemainLife", width: 15 },
-      { header: "BRG Make", key: "BRGMake", width: 10 },
-      { header: "BRG No.", key: "BRGNo", width: 10 },
+      { header: "BD Size A", key: "BDSizeA", width: 10 },
+      { header: "BD Size B", key: "BDSizeB", width: 10 },
+      { header: "End Hole A", key: "EndHoleA", width: 10 },
+      { header: "End Hole B", key: "EndHoleB", width: 10 },
       { header: "MEP A", key: "MEPA", width: 10 },
       { header: "MEP B", key: "MEPB", width: 10 },
       { header: "UST Name", key: "USTName", width: 15 },
@@ -100,7 +104,6 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       { header: "ECA Test", key: "ECATest", width: 10 },
       { header: "Insp. Name", key: "InspectorName", width: 15 },
       { header: "Insp. Ticket No", key: "InspectorTicketNo", width: 15 },
-
       { header: "Shift", key: "Shift", width: 10 },
       { header: "Wheel No.", key: "WheelNo", width: 10 },
       { header: "CTRB No. A", key: "CTRBNumberA", width: 10 },
@@ -114,7 +117,7 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       { header: "CTRB Remaining Life A", key: "CTRBRemainingLifeA", width: 10 },
       { header: "CTRB Remaining Life B", key: "CTRBRemainingLifeB", width: 10 },
       { header: "Wheel Tread UST", key: "WheelTreadUST", width: 10 },
-      { header: "Remark", key: "FinalInspectionRemark", width: 10 },
+
     ];
 
     // Add the header rows
@@ -127,16 +130,20 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "Journal Size",
       "",
       "",
-      "Shoulder Size",
-      "Jr. Waiviness",
+      "",
+      "",
+      "",
+      "Shoulder Size A",
+      "Shoulder Size B",
+      "Jr. Waiviness A",
+      "Jr. Waiviness B",
       "Disc Particular A",
       "Disc Particular B",
       "BD Make",
-      "BD Size",
-      "End Hole",
-      "BRG Remain Life",
-      "BRG Make",
-      "BRG No.",
+      "BD Size A",
+      "BD Size B",
+      "End Hole A",
+      "End Hole B",
       "MEP A",
       "MEP B",
       "UST Name",
@@ -157,7 +164,6 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "CTRB Remaining Life A",
       "CTRB Remaining Life B",
       "Wheel Tread UST",
-      "Remark",
     ];
 
     worksheet.getRow(2).values = [
@@ -166,9 +172,12 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "Wheel Dia B",
       "RG",
       "FLG",
-      "Jr. Size",
-      "Jr. Oval",
-      "Jr. Tap",
+      "Jr. Size A",
+      "Jr. Size B",
+      "Jr. Oval A",
+      "Jr. Oval B",
+      "Jr. Tap A",
+      "Jr. Tap B",
       "",
       "",
       "",
@@ -194,32 +203,23 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "",
       "",
       "",
-      "",
-      "",
-      "",
-      "",
-
-
     ];
 
     // Define the main headers and subheaders (optional for visual layout)
     worksheet.mergeCells("A1:A2");
-    worksheet.mergeCells("B1:E1"); // Wheel Size
-    worksheet.mergeCells("F1:H1"); // Journal Size
-    worksheet.mergeCells("I1:I2"); // Shoulder Size
-    worksheet.mergeCells("J1:J2"); // Shoulder Size
-    worksheet.mergeCells("K1:K2"); // Jr. Waiviness
-    worksheet.mergeCells("L1:L2"); // BD Make
-    worksheet.mergeCells("M1:M2"); // BD Size
-    worksheet.mergeCells("N1:N2"); // End Hole
-    worksheet.mergeCells("O1:O2"); // BRG Remain Life
-    worksheet.mergeCells("P1:P2"); // BRG Make
-    worksheet.mergeCells("Q1:Q2"); // BRG No.
-    worksheet.mergeCells("R1:R2"); // MEPA
-    worksheet.mergeCells("S1:S2"); // UST Name
-    worksheet.mergeCells("T1:T2"); // Fitting Dt.
-    worksheet.mergeCells("U1:U2"); // ECA Test
-    worksheet.mergeCells("V1:V2"); // Insp. Sign
+    worksheet.mergeCells("B1:E1");
+    worksheet.mergeCells("F1:K1");
+    worksheet.mergeCells("L1:L2");
+    worksheet.mergeCells("M1:M2");
+    worksheet.mergeCells("N1:N2");
+    worksheet.mergeCells("O1:O2");
+    worksheet.mergeCells("P1:P2");
+    worksheet.mergeCells("Q1:Q2");
+    worksheet.mergeCells("R1:R2");
+    worksheet.mergeCells("S1:S2");
+    worksheet.mergeCells("T1:T2");
+    worksheet.mergeCells("U1:U2");
+    worksheet.mergeCells("V1:V2");
     worksheet.mergeCells("W1:W2");
     worksheet.mergeCells("X1:X2");
     worksheet.mergeCells("Y1:Y2");
@@ -238,6 +238,8 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
     worksheet.mergeCells("AL1:AL2");
     worksheet.mergeCells("AM1:AM2");
     worksheet.mergeCells("AN1:AN2");
+    worksheet.mergeCells("AO1:AO2");
+    worksheet.mergeCells("AP1:AP2");
 
     // Apply styles to headers
     worksheet.getRow(1).font = { bold: true };
@@ -294,24 +296,27 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       WheelDiaB: formDataFinal.WheelRG,
       WheelRG: formDataFinal.WheelFLG,
       // JournalSize: "", // Not used but included for layout
-      WheelFLG: formDataFinal.Size,
-      JournalSize: formDataFinal.Oval,
-      Size: formDataFinal.Tap,
-      Oval: formDataFinal.ShoulderSize,
-      Tap: formDataFinal.JrWaiviness,
-      ShoulderSize: formDataFinal.DiscParticularA,
-      JrWaiviness: formDataFinal.DiscParticularB,
+      WheelFLG: formDataFinal.SizeA,
+      JournalSize: formDataFinal.SizeB,
+      SizeA: formDataFinal.OvalA,
+      SizeB: formDataFinal.OvalB,
+      OvalA: formDataFinal.TapA,
+      OvalB: formDataFinal.TapB,
+      TapA: formDataFinal.ShoulderSizeA,
+      TapB: formDataFinal.ShoulderSizeB,
+      ShoulderSizeA: formDataFinal.JrWaivinessA,
+      ShoulderSizeB: formDataFinal.JrWaivinessB,
+      JrWaivinessA: formDataFinal.DiscParticularA,
+      JrWaivinessB: formDataFinal.DiscParticularB,
       DiscParticularA: formDataFinal.BDMake,
-      DiscParticularB: formDataFinal.BDSize,
-      BDMake: formDataFinal.EndHole,
-      BDSize: formDataFinal.BRGRemainLife,
-      EndHole: formDataFinal.BRGMake,
-      BRGRemainLife: formDataFinal.BRGNo,
-      BRGMake: formDataFinal.MEPA,
-      BRGNo: formDataFinal.MEPB,
-      MEPA: formDataFinal.USTName,
-      MEPB: formDataFinal.FittingDt,
-      USTName: formDataFinal.ECATest,
+      DiscParticularB: formDataFinal.BDSizeA,
+      BDMake: formDataFinal.BDSizeB,
+      BDSizeA: formDataFinal.EndHoleA,
+      BDSizeB: formDataFinal.EndHoleB,
+      EndHoleA: formDataFinal.MEPA,
+      EndHoleB: formDataFinal.MEPB,
+      MEPA: formDataFinal.FittingDt,
+      MEPB: formDataFinal.ECATest,
       FittingDt: formDataFinal.InspectorName,
       ECATest: formDataFinal.InspectorTicketNo,
       InspectorName: formDataFinal.Shift,
@@ -327,8 +332,6 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       RefurbishmentDetailsA: formDataFinal.CTRBRemainingLifeA,
       RefurbishmentDetailsB: formDataFinal.CTRBRemainingLifeB,
       CTRBRemainingLifeA: formDataFinal.WheelTreadUST,
-      CTRBRemainingLifeB: formDataFinal.FinalInspectionRemark,
-
     });
 
     // Generate Excel file
@@ -352,17 +355,18 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         { content: "Wheel No.", rowSpan: 2 },
         { content: "Axle No.", rowSpan: 2 },
         { content: "Wheel Size", colSpan: 4 },
-        { content: "Journal Size", colSpan: 3 },
-        { content: "Shoulder Size", rowSpan: 2 },
-        { content: "Jr. Waiviness", rowSpan: 2 },
+        { content: "Journal Size", colSpan: 6 },
+        { content: "Shoulder Size A", rowSpan: 2 },
+        { content: "Shoulder Size B", rowSpan: 2 },
+        { content: "Jr. Waiviness A", rowSpan: 2 },
+        { content: "Jr. Waiviness B", rowSpan: 2 },
         { content: "Disc Particular A", rowSpan: 2 },
         { content: "Disc Particular B", rowSpan: 2 },
         { content: "BD Make", rowSpan: 2 },
-        { content: "BD Size", rowSpan: 2 },
-        { content: "End Hole", rowSpan: 2 },
-        { content: "BRG Remain Life", rowSpan: 2 },
-        { content: "BRG Make", rowSpan: 2 },
-        { content: "BRG No.", rowSpan: 2 },
+        { content: "BD Size A", rowSpan: 2 },
+        { content: "BD Size B", rowSpan: 2 },
+        { content: "End Hole A", rowSpan: 2 },
+        { content: "End Hole B", rowSpan: 2 },
         { content: "MEP A", rowSpan: 2 },
         { content: "MEP B", rowSpan: 2 },
         { content: "UST Name", rowSpan: 2 },
@@ -382,16 +386,19 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         { content: "CTRB Remaining Life A", rowSpan: 2 },
         { content: "CTRB Remaining Life B", rowSpan: 2 },
         { content: "Wheel Tread UST", rowSpan: 2 },
-        { content: "Remark", rowSpan: 2 },
+
       ],
       [
         { content: "Dia A" },
         { content: "Dia B" },
         { content: "RG" },
         { content: "FLG" },
-        { content: "Jr. Size" },
-        { content: "Jr. Oval" },
-        { content: "Jr. Tap" },
+        { content: "Jr. Size A" },
+        { content: "Jr. Size B" },
+        { content: "Jr. Oval A" },
+        { content: "Jr. Oval B" },
+        { content: "Jr. Tap A" },
+        { content: "Jr. Tap B" },
       ],
     ];
 
@@ -404,19 +411,23 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         formDataFinal.WheelDiaB,
         formDataFinal.WheelRG,
         formDataFinal.WheelFLG,
-        formDataFinal.Size,
-        formDataFinal.Oval,
-        formDataFinal.Tap,
-        formDataFinal.ShoulderSize,
-        formDataFinal.JrWaiviness,
+        formDataFinal.SizeA,
+        formDataFinal.SizeB,
+        formDataFinal.OvalA,
+        formDataFinal.OvalB,
+        formDataFinal.TapA,
+        formDataFinal.TapB,
+        formDataFinal.ShoulderSizeA,
+        formDataFinal.ShoulderSizeB,
+        formDataFinal.JrWaivinessA,
+        formDataFinal.JrWaivinessB,
         formDataFinal.DiscParticularA,
         formDataFinal.DiscParticularB,
         formDataFinal.BDMake,
-        formDataFinal.BDSize,
-        formDataFinal.EndHole,
-        formDataFinal.BRGRemainLife,
-        formDataFinal.BRGMake,
-        formDataFinal.BRGNo,
+        formDataFinal.BDSizeA,
+        formDataFinal.BDSizeB,
+        formDataFinal.EndHoleA,
+        formDataFinal.EndHoleB,
         formDataFinal.MEPA,
         formDataFinal.MEPB,
         formDataFinal.USTName,
@@ -436,7 +447,7 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         formDataFinal.CTRBRemainingLifeA,
         formDataFinal.CTRBRemainingLifeB,
         formDataFinal.WheelTreadUST,
-        formDataFinal.FinalInspectionRemark,
+
       ],
     ];
 
@@ -469,45 +480,48 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       },
       columnStyles: {
         //   // Adjusting column widths to ensure the table fits on the page
-        0: { cellWidth: 22 }, // AxleNo
-        1: { cellWidth: 18 }, // ABSide
-        2: { cellWidth: 18 }, // WheelDia
-        3: { cellWidth: 18 }, // WheelRG
-        4: { cellWidth: 20 }, // WheelFLG
-        5: { cellWidth: 20 }, // FC
-        6: { cellWidth: 20 }, // JournalSize
-        7: { cellWidth: 20 }, // Oval
-        8: { cellWidth: 20 }, // Tap
-        9: { cellWidth: 20 }, // ShoulderSize
-        10: { cellWidth: 20 }, // JrWaiviness
-        11: { cellWidth: 20 }, // BDMake
-        12: { cellWidth: 20 }, // BDSize
-        13: { cellWidth: 20 }, // EndHole
-        14: { cellWidth: 18 }, // BRGRemainLife
-        15: { cellWidth: 18 }, // BRGMake
-        16: { cellWidth: 18 }, // BRGNo
-        17: { cellWidth: 20 }, // MEPA
-        18: { cellWidth: 20 }, // USTName
-        19: { cellWidth: 20 }, // FittingDt
-        20: { cellWidth: 18 }, // ECATest
-        21: { cellWidth: 18 }, // InspectorSign
-        22: { cellWidth: 20 }, // InspectorSign
-        23: { cellWidth: 22 }, // InspectorSign
-        24: { cellWidth: 20 }, // InspectorSign
-        25: { cellWidth: 22 }, // InspectorSign
-        26: { cellWidth: 18 }, // InspectorSign
-        27: { cellWidth: 22 }, // InspectorSign
-        28: { cellWidth: 22 }, // InspectorSign
-        29: { cellWidth: 22 }, // InspectorSign
-        30: { cellWidth: 22 }, // InspectorSign
-        31: { cellWidth: 22 }, // InspectorSign
-        32: { cellWidth: 22 }, // InspectorSign
-        33: { cellWidth: 30 }, // InspectorSign
-        34: { cellWidth: 30 }, // InspectorSign
-        35: { cellWidth: 30 }, // InspectorSign
-        36: { cellWidth: 30 }, // InspectorSign
-        37: { cellWidth: 22 }, // InspectorSign
-        38: { cellWidth: 24 }, // InspectorSign
+        0: { cellWidth: 22 },
+        1: { cellWidth: 18 },
+        2: { cellWidth: 18 },
+        3: { cellWidth: 18 },
+        4: { cellWidth: 20 },
+        5: { cellWidth: 20 },
+        6: { cellWidth: 20 },
+        7: { cellWidth: 20 },
+        8: { cellWidth: 20 },
+        9: { cellWidth: 20 },
+        10: { cellWidth: 20 },
+        11: { cellWidth: 20 },
+        12: { cellWidth: 20 },
+        13: { cellWidth: 20 },
+        14: { cellWidth: 18 },
+        15: { cellWidth: 18 },
+        16: { cellWidth: 18 },
+        17: { cellWidth: 20 },
+        18: { cellWidth: 20 },
+        19: { cellWidth: 20 },
+        20: { cellWidth: 18 },
+        21: { cellWidth: 18 },
+        22: { cellWidth: 20 },
+        23: { cellWidth: 22 },
+        24: { cellWidth: 20 },
+        25: { cellWidth: 22 },
+        26: { cellWidth: 18 },
+        27: { cellWidth: 20 },
+        28: { cellWidth: 20 },
+        29: { cellWidth: 20 },
+        30: { cellWidth: 20 },
+        31: { cellWidth: 20 },
+        32: { cellWidth: 20 },
+        33: { cellWidth: 20 },
+        34: { cellWidth: 20 },
+        35: { cellWidth: 20 },
+        36: { cellWidth: 20 },
+        37: { cellWidth: 20 },
+        38: { cellWidth: 20 },
+        39: { cellWidth: 20 },
+        40: { cellWidth: 20 },
+        41: { cellWidth: 20 },
       },
       margin: { top: 20, left: 10, right: 10 }, // Adjusted margins
       didDrawPage: (data) => {
@@ -730,9 +744,9 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
           <tbody>
             <tr>
               <td rowSpan="2">{formDataFinal.AxleNo}</td>
-              <td colSpan={1}>{formDataFinal.WheelRG}</td>
               <td colSpan={1}>{formDataFinal.WheelDiaA}</td>
               <td colSpan={1}>{formDataFinal.WheelDiaB}</td>
+              <td colSpan={1}>{formDataFinal.WheelRG}</td>
               <td colSpan={1}>{formDataFinal.WheelFLG}</td>
               <td colSpan={1}>{formDataFinal.SizeA}</td>
               <td colSpan={1}>{formDataFinal.SizeB}</td>

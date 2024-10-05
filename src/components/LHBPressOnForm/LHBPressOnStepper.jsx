@@ -6,6 +6,7 @@ import StepLabel from "@mui/material/StepLabel";
 function InspectionStepper({ activeStep }) {
   const steps = [
     "Wheel Details",
+    "Wheel Activities",
     "Wheel Disc A Side Bore Size",
     "Wheel Disc A Side",
     "Wheel Disc B Side Bore Size",
