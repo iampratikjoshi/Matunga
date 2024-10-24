@@ -71,6 +71,7 @@
 .left-section h1 {
     margin: 0;
     font-size: 25px;
+    background-color: transparent;
     /* margin-top: 65px; */
 }
 .left-section h2 {

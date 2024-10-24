@@ -46,9 +46,16 @@
   display: flex;
   flex-direction: column;
   height: 175vh;
-  /* height: auto; */
-  /* overflow: scroll; */
+  /* height: auto;  */
+  overflow-x: hidden; 
 }
+
+/* .layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden; 
+} */
 
 .content {
   display: flex;

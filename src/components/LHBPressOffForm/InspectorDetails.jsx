@@ -9,7 +9,6 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
   onResetStep, }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -51,32 +50,7 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
   };
 
 
-  const validateForm = () => {
-    const newErrors = {};
 
-    if (!formDataPressOffLHB.OperatorTNo) {
-      newErrors.OperatorTNo = "Operator T.No. is required.";
-    }
-
-    if (!formDataPressOffLHB.InspectorTNo) {
-      newErrors.InspectorTNo = "Inspector T.No. is required.";
-    }
-
-    if (!formDataPressOffLHB.OperatorName) {
-      newErrors.OperatorName = "Inspector Name is required.";
-    }
-
-    if (!formDataPressOffLHB.InspectorName) {
-      newErrors.InspectorName = "Inspector Name is required.";
-    }
-
-    if (!formDataPressOffLHB.MachineNumber) {
-      newErrors.MachineNumber = "Machine No. is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
 
   const handleCancel = () => {
     setFormDataPressOffLHB((prevFormData) => ({
@@ -97,30 +71,30 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
 
-      try {
-        const response = await postData("/api/data", formDataPressOffLHB);
-        console.log(response.AxleNo);
-        if (response) {
-          const data = await response; // Get JSON from the response
-          console.log("Form submitted successfully:", data);
-          setFormDataPressOffLHB((prevFormData) => ({
-            ...Object.keys(prevFormData).reduce((acc, key) => {
-              acc[key] = null;
-              return acc;
-            }, {}),
-            createdBy: "ADMIN",
-          }));
 
-          navigate("/LHBPressOffForm/identification_details");
-        } else {
-          console.error("Error submitting form:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
+    try {
+      const response = await postData("/api/data", formDataPressOffLHB);
+      console.log(response.AxleNo);
+      if (response) {
+        const data = await response; // Get JSON from the response
+        console.log("Form submitted successfully:", data);
+        setFormDataPressOffLHB((prevFormData) => ({
+          ...Object.keys(prevFormData).reduce((acc, key) => {
+            acc[key] = null;
+            return acc;
+          }, {}),
+          createdBy: "ADMIN",
+        }));
+
+        navigate("/LHBPressOffForm/identification_details");
+      } else {
+        console.error("Error submitting form:", response.statusText);
       }
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
+
   };
 
   return (
@@ -143,7 +117,7 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
             <div className="row-1">
 
               <div>
-                <label>Operator T.No.<span className="required-asterisk">*</span></label>
+                <label>Operator T.No.</label>
                 <input
                   type="text"
                   name="OperatorTNo"
@@ -151,13 +125,11 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
                   onChange={handleChange}
                   placeholder="Enter Operator T.No."
                 />
-                {errors.OperatorTNo && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.OperatorTNo}</p>
-                )}
+
               </div>
               <div>
                 <label>
-                  Operator Name:<span className="required-asterisk">*</span>
+                  Operator Name:
                 </label>
                 <input
                   type="text"
@@ -166,22 +138,10 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
                   onChange={handleChange}
                   placeholder="Enter Operator Name"
                 />
-                {errors.OperatorName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.OperatorName}
-                  </p>
-                )}
+
               </div>
               <div>
-                <label>Inspector T.No.<span className="required-asterisk">*</span></label>
+                <label>Inspector T.No.</label>
                 <input
                   type="text"
                   name="InspectorTNo"
@@ -189,9 +149,7 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
                   onChange={handleChange}
                   placeholder="Enter Inspector T.No."
                 />
-                {errors.InspectorTNo && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.InspectorTNo}</p>
-                )}
+
               </div>
 
 
@@ -200,7 +158,7 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
             <div className="row-2">
               <div>
                 <label>
-                  Inspector Name:<span className="required-asterisk">*</span>
+                  Inspector Name:
                 </label>
                 <input
                   type="text"
@@ -209,24 +167,12 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
                   onChange={handleChange}
                   placeholder="Enter Inspector Name"
                 />
-                {errors.InspectorName && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.InspectorName}
-                  </p>
-                )}
+
               </div>
 
               <div>
-              <label>
-                  Machine No.<span className="required-asterisk">*</span>
+                <label>
+                  Machine No.
                 </label>
                 <input
                   type="text"
@@ -235,24 +181,12 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
                   onChange={handleChange}
                   placeholder="Enter Machine No."
                 />
-                {errors.MachineNumber && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.MachineNumber}
-                  </p>
-                )}
+
               </div>
 
 
-             
-              
+
+
               <div className="file-container">
                 <span style={{ fontWeight: "bold", marginBottom: "5px" }}>
                   Upload Image:
@@ -299,7 +233,7 @@ function InspectorDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInput
                 </button>
               </div>
               <div>
-                <button onClick={() => { if (validateForm()) { navigate("/proceedsubmitpressoff") } }}>
+                <button onClick={() => { navigate("/proceedsubmitpressoff") }}>
                   Preview for Submission
                 </button>
               </div>

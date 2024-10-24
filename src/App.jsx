@@ -32,6 +32,16 @@ import AllEntryPressOn from "./components/LHBPressOnForm/AllEntryPressOn";
 import ProceedSubmitWheelDispatch from "./components/LHBWheelDispatchRecordForm/ProceedSubmitWheelDispatch";
 import AllEntryWheelDispatch from "./components/LHBWheelDispatchRecordForm/AllEntryWheelDispatch";
 import Wheelsdispatchrecordform from "./components/LHBWheelDispatchRecordForm/WheelDispatchRecordForm";
+import Search from "./components/Search";
+import UpdateProceedSubmit from "./components/UpdateForm/LHBSchedulePreInspection/ProceedSubmit";
+import UpdateLHBPressOffForm from "./components/UpdateForm/LHBPressOffForm/LHBPressOffForm";
+import Updateproceedsubmitpressoff from "./components/UpdateForm/LHBPressOffForm/ProceedSubmitPressOff";
+import UpdateLHBPressOnForm from "./components/UpdateForm/LHBPressOnForm/LHBPressOnForm";
+import UpdateProceedSubmitPressOn from "./components/UpdateForm/LHBPressOnForm/ProceedSubmitPressOn";
+import Updatelhbfinalinspection from "./components/UpdateForm/LHBFinalinspection/LHBFinalInspection";
+import UpdateProceedSubmitFinal from "./components/UpdateForm/LHBFinalinspection/ProceedSubmit";
+import Edit from "./components/Edit/Edit";
+import ParentEdit from "./components/Edit/ParentEdit";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -86,13 +96,13 @@ function App() {
     POHDate: "",
     divisionreport: "",
     DivisionName: "",
-    matungareport:"",
+    matungareport: "",
     SectionId: 1,
-    DepartmentId:1,
-    WheeltypeId:1,
+    DepartmentId: 1,
+    WheeltypeId: 1,
     createdBy: "ADMIN",
     modifiedBy: "admin",
-    modifiedDate:"",
+    modifiedDate: "",
   });
 
   const [formDataFinal, setFormDataFinal] = useState({
@@ -152,7 +162,6 @@ function App() {
     WheeltypeID: 1,
     createdBy: "ADMIN",
     modifiedBy: "admin",
-    modifiedDate: "",
   });
 
   const [formDataPressOnLHB, setFormDataPressOnLHB] = useState({
@@ -238,7 +247,6 @@ function App() {
     WheeltypeId: 1,
     createdBy: "ADMIN",
     modifiedBy: "admin",
-    modifiedDate: "",
   });
 
   const [formDataWheelDispatch, setformDataWheelDispatch] = useState({
@@ -294,6 +302,56 @@ function App() {
             }
           />
           <Route
+            path="/search"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Search />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
+
+          {/* <Route
+            path="/UpdateLHBSchedulePreInspection/*"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <UpdateLHBSchedulePreInspection
+                    formData={formData}
+                    setFormData={setFormData}
+                  />
+                </Layout>
+              </ProtectedRoute>
+            }
+          /> */}
+          <Route
+            path="/editproceedsubmit"
+            element={
+              <ProtectedRoute>
+              <Layout>
+                <UpdateProceedSubmit formData={formData} setFormData={setFormData} />
+              </Layout>
+              </ProtectedRoute>
+
+            }
+          />
+          
+          <Route
+            path="/parentedit/*"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ParentEdit 
+                  
+                  />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
             path="/LHBSchedulePreInspection/*"
             element={
               <ProtectedRoute>
@@ -319,6 +377,17 @@ function App() {
               </ProtectedRoute>
             }
           />
+          
+          <Route
+            path="/updateproceedsubmitpressoff"
+            element={
+
+              <Layout>
+                <Updateproceedsubmitpressoff formDataPressOffLHB={formDataPressOffLHB} setFormDataPressOffLHB={setFormDataPressOffLHB} />
+              </Layout>
+
+            }
+          />
           <Route
             path="/LHBPressOffForm/*"
             element={
@@ -332,6 +401,8 @@ function App() {
               </ProtectedRoute>
             }
           />
+          
+
           <Route
             path="/proceedsubmitpressoff"
             element={
@@ -392,6 +463,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/viewallentryLHBDivision"
             element={
@@ -402,7 +474,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* <Route path="/lhbfinalinspection/*" element={<Layout> </Layout>} /> */}
+
           <Route
             path="/lhbfinalinspection/*"
             element={
@@ -416,6 +488,8 @@ function App() {
               </ProtectedRoute>
             }
           />
+         
+
           <Route
             path="/proceedsubmitFinal"
             element={
@@ -430,6 +504,20 @@ function App() {
             }
           />
           <Route
+            path="/updateproceedsubmitFinal"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <UpdateProceedSubmitFinal
+                    formDataFinal={formDataFinal}
+                    setFormDataFinal={setFormDataFinal}
+                  />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
             path="/viewallentryFinal"
             element={
               <ProtectedRoute>
@@ -439,6 +527,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/LHBPressOnForm/*"
             element={
@@ -450,11 +539,24 @@ function App() {
               </Layout>
             }
           />
+          
+
           <Route
             path="/proceedsubmitlhbpresson"
             element={
               <Layout>
                 <ProceedSubmitPressOn
+                  formDataPressOnLHB={formDataPressOnLHB}
+                  setFormDataPressOnLHB={setFormDataPressOnLHB}
+                />
+              </Layout>
+            }
+          />
+          <Route
+            path="/updateproceedsubmitlhbpresson"
+            element={
+              <Layout>
+                <UpdateProceedSubmitPressOn
                   formDataPressOnLHB={formDataPressOnLHB}
                   setFormDataPressOnLHB={setFormDataPressOnLHB}
                 />
@@ -481,6 +583,7 @@ function App() {
               </Layout>
             }
           />
+
           <Route
             path="/proceedsubmitlhbwheelsdispatch"
             element={
@@ -492,6 +595,7 @@ function App() {
               </Layout>
             }
           />
+
           <Route
             path="/viewallentrylhbwheelsdispatch"
             element={

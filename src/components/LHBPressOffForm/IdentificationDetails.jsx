@@ -13,7 +13,6 @@ function IdentificationDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -60,26 +59,7 @@ function IdentificationDetails({
     console.log(formDataPressOffLHB);
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formDataPressOffLHB.Date) {
-      newErrors.Date = "Date is required.";
-    }
-
-    if (!formDataPressOffLHB.ShopSNo) {
-      newErrors.ShopSNo = "Shop Sr.No. is required.";
-    }
-
-    if (!formDataPressOffLHB.DiscSrNo) {
-      newErrors.DiscSrNo = "Disc Sr.No. is required.";
-    }
-    if (!formDataPressOffLHB.ShiftNumber) {
-      newErrors.ShiftNumber = "Shift No. is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  
 
   const handleCancel = () => {
     setFormDataPressOffLHB((prevFormData) => ({
@@ -99,10 +79,10 @@ function IdentificationDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
+    
       onNextStep();
       navigate("/LHBPressOffForm/wheelcondition_details");
-    }
+    
   };
 
   return (
@@ -126,7 +106,7 @@ function IdentificationDetails({
               <div>
                 <label>
                   Shop Sr.No. (Wheel No.):
-                  <span className="required-asterisk">*</span>
+                  
                 </label>
                 <input
                   type="text"
@@ -135,23 +115,11 @@ function IdentificationDetails({
                   onChange={handleChange}
                   placeholder="Enter Shop Sr.No."
                 />
-                {errors.ShopSNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.ShopSNo}
-                  </p>
-                )}
+               
               </div>
               <div>
                 <label>
-                  Axle No.:<span className="required-asterisk">*</span>
+                  Axle No.:
                 </label>
                 <input
                   type="text"
@@ -160,23 +128,11 @@ function IdentificationDetails({
                   onChange={handleChange}
                   placeholder="Enter Axle No."
                 />
-                {errors.AxleNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.AxleNo}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Disc Sr.No.:<span className="required-asterisk">*</span>
+                  Disc Sr.No.:
                 </label>
                 <input
                   type="text"
@@ -185,25 +141,13 @@ function IdentificationDetails({
                   onChange={handleChange}
                   placeholder="Enter Disc Sr.No."
                 />
-                {errors.DiscSrNo && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.DiscSrNo}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-2">
               <div>
                 <label>
-                  Date:<span className="required-asterisk">*</span>
+                  Date:
                 </label>
                 <input
                   type="date"
@@ -211,23 +155,11 @@ function IdentificationDetails({
                   value={formDataPressOffLHB.Date}
                   onChange={handleChange}
                 />
-                {errors.Date && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.Date}
-                  </p>
-                )}
+                
               </div>
               <div>
                 <label>
-                  Shift No.:<span className="required-asterisk">*</span>
+                  Shift No.:
                 </label>
                 <select
                   id="dropdown"
@@ -241,19 +173,7 @@ function IdentificationDetails({
                   <option value="Shift 2">Shift 2</option>
                   <option value="Shift 3">Shift 3</option>
                 </select>
-                {errors.ShiftNumber && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.ShiftNumber}
-                  </p>
-                )}
+                
               </div>
             </div>
             <div className="row-3">

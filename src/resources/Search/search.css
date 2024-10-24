@@ -1,0 +1,52 @@
+
+
+.icon-hover {
+  cursor: pointer;
+  
+}
+
+.icon-hover:hover {
+  color: rgb(61, 61, 255); /* Change color on hover (optional) */
+}
+
+
+
+
+.search-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container > input[type="text"] {
+  margin-top: 2px;
+  width: 75%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+.search-container > select {
+  margin-top: 2px;
+  width: 75%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+h1 {
+  text-align: center;
+  background-color: #2f2f2f;
+  color: #fcfcfc;
+  font-weight: 800;
+  padding: 5px;
+}
+
+.search-btn{
+  margin-top: 25px;
+  width: 100%;
+}

@@ -21,6 +21,10 @@ const LoginForm = () => {
       
       const response = await postData('/api/login', data);
       console.log("Login successful:", response);
+
+      // Save the username in localStorage (or you can use context)
+      localStorage.setItem('loggedInUser', username);
+      
       // handleLogin(); 
       login();
       navigate("/dashboard");

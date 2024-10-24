@@ -10,6 +10,7 @@ function Header() {
   const [selectedWorkshop, setSelectedWorkshop] = useState("");
   const handleOnChange = (e) => {
     setSelectedWorkshop(e.target.value);
+    localStorage.setItem("selectedWorkshop", e.target.value); // Store the workshop name in localStorage
   };
   return (
     <header className="header">
@@ -19,7 +20,7 @@ function Header() {
           <div className="mid-content-A">
             <div>
               <span>CR Carriage Repair Workshop - Matunga</span>
-              <br/>
+              <br />
               <span>Wheel Inspection Shop</span>
               <br />
               NOVIUS RAILWAY WORKSHOP MANAGEMENT SYSTEM

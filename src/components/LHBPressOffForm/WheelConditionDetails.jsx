@@ -18,7 +18,6 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
   const [AxleConditionCause, setAxleConditionCause] = useState(formDataPressOffLHB.AxleConditionCause);
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  const [errors, setErrors] = useState({}); // State for validation errors
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -45,7 +44,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
       setFormDataPressOffLHB((prevData) => ({
         ...prevData,
         AxleConditionReason: selectedRemark,
-        AxleConditionCause:"",
+        AxleConditionCause: "",
         // OtherRemark: "", // Clear out the OtherRemark field
       }));
       setAxleConditionCause("");
@@ -70,7 +69,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
       setFormDataPressOffLHB((prevData) => ({
         ...prevData,
         BrakeDiscConditionReason: selectedRemark,
-        BrakeDiscConditionCause:""
+        BrakeDiscConditionCause: ""
         // OtherRemark: "", // Clear out the OtherRemark field
       }));
       setBrakeDiscConditionCause("");
@@ -126,15 +125,15 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
       setFormDataPressOffLHB((prevData) => ({
         ...prevData,
         WheelConditionReason: selectedRemark,
-        WheelDiscConditionCause:""
+        WheelDiscConditionCause: ""
         // OtherRemark: "", // Clear out the OtherRemark field
       }));
       setserviceablediscidnumber("");
-    } else if(selectedRemark==="CONDEMN"){
+    } else if (selectedRemark === "CONDEMN") {
       setFormDataPressOffLHB((prevData) => ({
         ...prevData,
         WheelConditionReason: "CONDEMN", // Clear out the Remark field
-        serviceablediscidnumber:""
+        serviceablediscidnumber: ""
       }));
       setWheelDiscConditionCause("");
     }
@@ -186,50 +185,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
   };
 
 
-  const validateForm = () => {
-    const newErrors = {};
 
-
-    if (!formDataPressOffLHB.AxleCondition) {
-      newErrors.AxleCondition = "Axle Condition is required.";
-    }
-
-    if (!formDataPressOffLHB.BrakeDiscCondition) {
-      newErrors.BrakeDiscCondition = "Brake Disc Condition is required.";
-    }
-
-    if (!formDataPressOffLHB.WheelDiscCondition) {
-      newErrors.WheelDiscCondition = "Wheel Disc Condition is required.";
-    }
-
-    if (!formDataPressOffLHB.AxleConditionReason) {
-      newErrors.AxleConditionReason = "Axle Condition Reason is required.";
-    } else if (formDataPressOffLHB.AxleConditionReason === "CONDEMN" && !formDataPressOffLHB.AxleConditionCause) {
-      newErrors.AxleConditionCause = "Axle Cause is required.";
-    }
-
-    if (!formDataPressOffLHB.BrakeDiscConditionReason) {
-      newErrors.BrakeDiscConditionReason = "Brake Disc Condition Reason is required.";
-    } else if (formDataPressOffLHB.BrakeDiscConditionReason === "CONDEMN" && !formDataPressOffLHB.BrakeDiscConditionCause) {
-      newErrors.BrakeDiscConditionCause = "Brake Disc Cause is required.";
-    }
-
-    if (!formDataPressOffLHB.WheelConditionReason) {
-      newErrors.WheelConditionReason = "Wheel Disc Condition Reason is required.";
-    } else if (formDataPressOffLHB.WheelConditionReason === "CONDEMN" && !formDataPressOffLHB.WheelDiscConditionCause) {
-      newErrors.WheelDiscConditionCause = "Wheel Disc Cause is required.";
-    }
-     else if (formDataPressOffLHB.WheelConditionReason === "SERVICEABLE" && !formDataPressOffLHB.serviceablediscidnumber) {
-      newErrors.serviceablediscidnumber = "Serviceable Disc ID No. is required.";
-    }
-
-    if (!formDataPressOffLHB.AxleNo) {
-      newErrors.AxleNo = "Axle No is required.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
 
 
   const handleBack = () => {
@@ -254,10 +210,10 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    if (validateForm()) {
-      onNextStep();
-      navigate("/LHBPressOffForm/wheel_details");
-    }
+
+    onNextStep();
+    navigate("/LHBPressOffForm/wheel_details");
+
   };
 
   return (
@@ -273,7 +229,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
 
 
               <div>
-                <label>Axle Condition<span className="required-asterisk">*</span></label>
+                <label>Axle Condition</label>
                 <input
                   type="text"
                   name="AxleCondition"
@@ -281,13 +237,11 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   onChange={handleChange}
                   placeholder="Enter Axle Condition"
                 />
-                {errors.AxleCondition && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.AxleCondition}</p>
-                )}
+
               </div>
               <div>
                 <label>
-                  Axle Condition Reason:<span className="required-asterisk">*</span>
+                  Axle Condition Reason:
                 </label>
                 <select
                   name="AxleConditionReason"
@@ -300,23 +254,11 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   <option value="CONDEMN">CONDEMN</option>
                 </select>
 
-                {errors.AxleConditionReason && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.AxleConditionReason}
-                  </p>
-                )}
+
               </div>
               {AxleConditionReason === "CONDEMN" && (
                 <div>
-                  <label>Axle Cause Of Condemn:<span className="required-asterisk">*</span></label>
+                  <label>Axle Cause Of Condemn:</label>
                   <select
                     name="AxleConditionCause"
                     value={AxleConditionCause}
@@ -337,26 +279,14 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                     <option value="JOURNAL OUT">JOURNAL OUT</option>
                     <option value="AXLE BEND">AXLE BEND</option>
                   </select>
-                  {errors.AxleConditionCause && (
-                    <p
-                      style={{
-                        color: "red",
-                        fontSize: "small",
-                        margin: 0,
-                        marginTop: "2px",
-                        marginLeft: "2px",
-                      }}
-                    >
-                      {errors.AxleConditionCause}
-                    </p>
-                  )}
+
                 </div>
               )}
 
             </div>
             <div className="row-2">
               <div>
-                <label>Brake Disc Condition<span className="required-asterisk">*</span></label>
+                <label>Brake Disc Condition</label>
                 <input
                   type="text"
                   name="BrakeDiscCondition"
@@ -364,13 +294,11 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   onChange={handleChange}
                   placeholder="Enter Brake Disc Condition"
                 />
-                {errors.BrakeDiscCondition && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.BrakeDiscCondition}</p>
-                )}
+
               </div>
               <div>
                 <label>
-                  Brake Disc Condition Reason:<span className="required-asterisk">*</span>
+                  Brake Disc Condition Reason:
                 </label>
                 <select
                   name="BrakeDiscConditionReason"
@@ -383,24 +311,12 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   <option value="CONDEMN">CONDEMN</option>
                 </select>
 
-                {errors.BrakeDiscConditionReason && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.BrakeDiscConditionReason}
-                  </p>
-                )}
+
               </div>
 
               {BrakeDiscConditionReason === "CONDEMN" && (
                 <div>
-                  <label>Brake Disc Cause Of Condemn:<span className="required-asterisk">*</span></label>
+                  <label>Brake Disc Cause Of Condemn:</label>
                   <input
                     type="text"
                     name="BrakeDiscConditionCause"
@@ -408,19 +324,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                     onChange={handleBrakeDiscConditionCause}
                     placeholder="Enter Brake Disc Cause Of Condemn"
                   />
-                  {errors.BrakeDiscConditionCause && (
-                    <p
-                      style={{
-                        color: "red",
-                        fontSize: "small",
-                        margin: 0,
-                        marginTop: "2px",
-                        marginLeft: "2px",
-                      }}
-                    >
-                      {errors.BrakeDiscConditionCause}
-                    </p>
-                  )}
+
                 </div>
               )}
 
@@ -431,7 +335,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
             <div className="row-3">
 
               <div>
-                <label>Wheel Disc Condition:<span className="required-asterisk">*</span></label>
+                <label>Wheel Disc Condition:</label>
                 <input
                   type="text"
                   name="WheelDiscCondition"
@@ -439,14 +343,12 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   onChange={handleChange}
                   placeholder="Enter Wheel Disc Condition"
                 />
-                {errors.WheelDiscCondition && (
-                  <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.WheelDiscCondition}</p>
-                )}
+
               </div>
 
               <div>
                 <label>
-                  Wheel Condition Reason:<span className="required-asterisk">*</span>
+                  Wheel Condition Reason:
                 </label>
                 <select
                   name="WheelConditionReason"
@@ -459,23 +361,11 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                   <option value="CONDEMN">CONDEMN</option>
                 </select>
 
-                {errors.WheelConditionReason && (
-                  <p
-                    style={{
-                      color: "red",
-                      fontSize: "small",
-                      margin: 0,
-                      marginTop: "2px",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    {errors.WheelConditionReason}
-                  </p>
-                )}
+
               </div>
               {WheelConditionReason === "SERVICEABLE" && (
                 <div>
-                  <label>Serviceable Disc ID No.:<span className="required-asterisk">*</span></label>
+                  <label>Serviceable Disc ID No.:</label>
                   <input
                     type="text"
                     name="serviceablediscidnumber"
@@ -483,25 +373,13 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                     onChange={handleserviceablediscidnumber}
                     placeholder="Enter Serviceable Disc ID No."
                   />
-                  {errors.serviceablediscidnumber && (
-                    <p
-                      style={{
-                        color: "red",
-                        fontSize: "small",
-                        margin: 0,
-                        marginTop: "2px",
-                        marginLeft: "2px",
-                      }}
-                    >
-                      {errors.serviceablediscidnumber}
-                    </p>
-                  )}
+
                 </div>
               )}
 
               {WheelConditionReason === "CONDEMN" && (
                 <div>
-                  <label>Wheel Disc Cause Of Condemn:<span className="required-asterisk">*</span></label>
+                  <label>Wheel Disc Cause Of Condemn:</label>
                   <select
                     name="WheelDiscConditionCause"
                     value={WheelDiscConditionCause}
@@ -516,16 +394,8 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                     <option value="ScoringOfHubBore">SCORING OF HUB BORE</option>
 
                   </select>
-                  {/* <input
-                  type="text"
-                  name="WheelDiscConditionCause"
-                  value={formDataPressOffLHB.WheelDiscConditionCause}
-                  onChange={handleWheelDiscConditionCause}
-                  placeholder="Enter Wheel Disc Cause Of Condemn"
-                /> */}
-                  {errors.WheelDiscConditionCause && (
-                    <p style={{ color: "red", fontSize: "small", margin: 0, marginTop: "2px", marginLeft: "2px" }}>{errors.WheelDiscConditionCause}</p>
-                  )}
+
+
                 </div>
               )}
             </div>

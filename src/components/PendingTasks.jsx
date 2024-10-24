@@ -224,7 +224,7 @@ function PendingTasks() {
   };
 
   // Helper function to filter data based on search term
-  const filteredDataBySearch = (data) => {
+   const filteredDataBySearch = (data) => {
     return data.filter((item) => {
       // Check if search term matches
       const matchesSearchTerm = searchTerm
@@ -420,7 +420,7 @@ function PendingTasks() {
             {selectedFields["Final Inspection"] &&
               (filteredDataBySearch(filteredfinalInspectionData).length > 0 ||
                 filteredDataBySearch(filteredfinalInspectionData2).length >
-                  0) && (
+                0) && (
                 <div className="wheel-assembly">
                   <h3>Wheels Pending for Final Inspection</h3>
                   <table>

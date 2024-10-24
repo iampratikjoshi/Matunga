@@ -2,34 +2,33 @@ import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import SidebarLHB from "./SidebarLHB.jsx";
 import WheelDiscAsideDetails from "./WheelsDiscAsideDetails.jsx";
-import WheelDetails from "./WheelDetails.jsx"
-import WheelDiscABoreSizeDetails from "./WheelDiscABoreSizeDetails.jsx"
-import WheelDiscBSideDetails from "./WheelDiscBSideDetails.jsx"
-import WheelDiscBBoreSizeDetails from "./WheelDiscBBoreSizeDetails.jsx"
-import BrakeDiscABsideDetails from  "./BrakeDiscABSideDetails.jsx"
-import BrakeDiscASideBoreSizeDetails from"./BrakeDiscASideBoreSizeDetails.jsx"
-import BrakeDiscBSideBoreSizeDetails from "./BrakeDiscBSideBoreSizeDetails.jsx"
-import BrakeDiscBsideDetails from  "./BrakeDiscBsideDetails.jsx"
-import OperatorDetails from "./OperatorDetails.jsx"
-import LHBPressOnBreadcrumbs from "./LHBPressOnBreadcrumbs.jsx"
-import LHBPressOnStepper from "./LHBPressOnStepper.jsx"
-import "../../resources/LHB/preInspectionform/preInspectionform.css"
-import WheelActivities from "./WheelActivities.jsx"
+import WheelDetails from "./WheelDetails.jsx";
+import WheelDiscABoreSizeDetails from "./WheelDiscABoreSizeDetails.jsx";
+import WheelDiscBSideDetails from "./WheelDiscBSideDetails.jsx";
+import WheelDiscBBoreSizeDetails from "./WheelDiscBBoreSizeDetails.jsx";
+import BrakeDiscABsideDetails from "./BrakeDiscABSideDetails.jsx";
+import BrakeDiscASideBoreSizeDetails from "./BrakeDiscASideBoreSizeDetails.jsx";
+import BrakeDiscBSideBoreSizeDetails from "./BrakeDiscBSideBoreSizeDetails.jsx";
+import BrakeDiscBsideDetails from "./BrakeDiscBsideDetails.jsx";
+import OperatorDetails from "./OperatorDetails.jsx";
+import LHBPressOnBreadcrumbs from "./LHBPressOnBreadcrumbs.jsx";
+import LHBPressOnStepper from "./LHBPressOnStepper.jsx";
+import "../../resources/LHB/preInspectionform/preInspectionform.css";
+import WheelActivities from "./WheelActivities.jsx";
 
 function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
-   // State for stepper
-   const [activeStep, setActiveStep] = useState(0);
+  // State for stepper
+  const [activeStep, setActiveStep] = useState(0);
 
-   // Function to move to the next step
-   const handleNextStep = () => {
-     setActiveStep((prevStep) => Math.min(prevStep + 1, 10));
-   };
- 
-   // Function to reset the step to the first step
-   const handleResetStep = () => {
-     setActiveStep(0);
-   };
+  // Function to move to the next step
+  const handleNextStep = () => {
+    setActiveStep((prevStep) => Math.min(prevStep + 1, 10));
+  };
 
+  // Function to reset the step to the first step
+  const handleResetStep = () => {
+    setActiveStep(0);
+  };
 
   // Function to update form data
   const handleInputChange = (name, value) => {
@@ -41,8 +40,7 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
 
   return (
     <>
-      <h1 style={{marginTop:"10px", textAlign:"left"}}></h1>
-      <LHBPressOnBreadcrumbs/>
+      <LHBPressOnBreadcrumbs />
       <LHBPressOnStepper activeStep={activeStep} />
       <hr></hr>
       <div className="containerLHB">
@@ -50,31 +48,30 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
           <SidebarLHB />
         </div>
         <div className="contentLHB">
-          <div>
-          </div>
+          <div></div>
           <div>
             <Routes>
-            <Route
+              <Route
                 path="wheel_details"
                 element={
                   <WheelDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
-            <Route
+              <Route
                 path="wheelactivities_details"
                 element={
                   <WheelActivities
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
@@ -82,11 +79,11 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="wheeldiscA_details"
                 element={
                   <WheelDiscAsideDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
@@ -94,11 +91,11 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="wheeldiscABoresize_details"
                 element={
                   <WheelDiscABoreSizeDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
@@ -106,11 +103,11 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="wheeldiscB_details"
                 element={
                   <WheelDiscBSideDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
@@ -118,11 +115,11 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="wheeldiscBBoresize_details"
                 element={
                   <WheelDiscBBoreSizeDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
@@ -130,11 +127,11 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="brakediscA_Bdetails"
                 element={
                   <BrakeDiscABsideDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
@@ -142,11 +139,11 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="brakediscABoresize_details"
                 element={
                   <BrakeDiscASideBoreSizeDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
@@ -166,11 +163,11 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="brakediscBBoresize_details"
                 element={
                   <BrakeDiscBSideBoreSizeDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
@@ -178,11 +175,11 @@ function LHBPressOnForm({ formDataPressOnLHB, setFormDataPressOnLHB }) {
                 path="operator_details"
                 element={
                   <OperatorDetails
-                  formDataPressOnLHB={formDataPressOnLHB}
+                    formDataPressOnLHB={formDataPressOnLHB}
                     setFormDataPressOnLHB={setFormDataPressOnLHB}
                     onInputChange={handleInputChange}
-                    onNextStep={handleNextStep} 
-                    onResetStep={handleResetStep} 
+                    onNextStep={handleNextStep}
+                    onResetStep={handleResetStep}
                   />
                 }
               />
