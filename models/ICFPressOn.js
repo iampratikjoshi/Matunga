@@ -1,21 +1,13 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database.js"); // Import your Sequelize instance
 
-const LHBFinalInspection = sequelize.define(
-  "LHBFinalInspection",
+const ICFPressOn = sequelize.define(
+  "ICFPressOn",
   {
     wheelid: {
       type: DataTypes.INTEGER,
-      // autoIncrement: true,
+      autoIncrement: true,
       primaryKey: true,
-    },
-    WheelNo: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    Shift:{
-      type:DataTypes.STRING(255),
-      allowNull:false
     },
     SectionId: {
       type: DataTypes.INTEGER,
@@ -29,203 +21,219 @@ const LHBFinalInspection = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    WheelNo: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    WheelType: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
     AxleNo: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelDiaA : {
+    ATLNo: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelDiaB : {
+    AWheelSide: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelRG: {
+    BWheelSide: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelFLG: {
+    ARASide: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BRASide: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    OperatorNamePrimary: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    VTLNo: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BoreSize: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    RAValue: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    OperatorNameA: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    TopX: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    TopY: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    MiddleX: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    MiddleY: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    LowerX: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    LowerY: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    AvgX: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    AvgY: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BWheelSeatSize: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    CBAIntAllow: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    PressureInTon: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    RDNo: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    WheelDiscAParticulars: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    VTLNoB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BoreSizeB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    RAValueB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    OperatorNameB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BTopX: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BTopY: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BMiddleX: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BMiddleY: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BLowerX: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BLowerY: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BAvgX: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BAvgY: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BWheelSeatSizeB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    CBAIntAllowB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    PressureInTonB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    RDNoB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    WheelDiscAParticularsB: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    MCNo: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    OperatorNameFinal: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    InspectorNameFinal: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    AxleWheelSeatSize: {
+      type: DataTypes.STRING(255),
+      allowNull: true, // Default to true, as it's not mentioned as required
+    },
+    WheelDiscBoreSize: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    SizeA: {
+    wheelDiscStampingParticulars: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    SizeB: {
+    PressOnNumber: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    OvalA: {
+    InspectorNameActivities: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    OvalB: {
+    TicketNo: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    TapA: {
+    OperatorNo: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    TapB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    ShoulderSizeA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    ShoulderSizeB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    JrWaivinessA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    JrWaivinessB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    BDMake: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    BDSizeA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    BDSizeB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    EndHoleA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    EndHoleB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    // BRGRemainLife: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: true,
-    // },
-    // BRGMake: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: true,
-    // },
-    // BRGNo: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: true,
-    // },
-    MEPA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    MEPB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    USTName: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    FittingDt: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    ECATest: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    // FinalInspectionRemark: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: true,
-    // },
-    RefurbishmentDetailsA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    RefurbishmentDetailsB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBNumberA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBNumberB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBRemarkA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBRemarkB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBDefectA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBDefectB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBMakeA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBMakeB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBDefectNameA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBDefectNameB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBStatusA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBStatusB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBRemainingLifeA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBRemainingLifeB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    DiscParticularA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    DiscParticularB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    WheelTreadUST: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    InspectorName: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    InspectorTicketNo: {
+    WheelActivities: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
@@ -251,9 +259,9 @@ const LHBFinalInspection = sequelize.define(
     },
   },
   {
-    tableName: "LHBFinalInspection",
+    tableName: "ICFPressOn",
     timestamps: false, // To manage createdDate and modifiedDate manually
   }
 );
 
-module.exports = LHBFinalInspection;
+module.exports = ICFPressOn;

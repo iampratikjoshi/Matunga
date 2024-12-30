@@ -1,8 +1,8 @@
 // const { DataTypes } = require("sequelize");
 // const sequelize = require("../config/database.js"); // Import your Sequelize instance
 
-// const EMUFinalInspection = sequelize.define(
-//   "EMUFinalInspection",
+// const ICFFinalInspection = sequelize.define(
+//   "ICFFinalInspection",
 //   {
 //     wheelid: {
 //       type: DataTypes.INTEGER,
@@ -210,18 +210,18 @@
 //     },
 //   },
 //   {
-//     tableName: "EMUFinalInspection",
+//     tableName: "ICFFinalInspection",
 //     timestamps: false, // To manage createdDate and modifiedDate manually
 //   }
 // );
 
-// module.exports = EMUFinalInspection;
+// module.exports = ICFFinalInspection;
 
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database.js"); // Import your Sequelize instance
 
-const EMUFinalInspection = sequelize.define(
-  "EMUFinalInspection",
+const ICFFinalInspection = sequelize.define(
+  "ICFFinalInspection",
   {
     wheelid: {
       type: DataTypes.INTEGER,
@@ -449,10 +449,10 @@ const EMUFinalInspection = sequelize.define(
     },
   },
   {
-    tableName: "EMUFinalInspection", // Change table name here
+    tableName: "ICFFinalInspection",
     timestamps: false, // To manage createdDate and modifiedDate manually
   }
 );
 
-module.exports = EMUFinalInspection;
+module.exports = ICFFinalInspection;
 

@@ -1,10 +1,10 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database.js"); // Import your Sequelize instance
 
-const EMUPressOn = sequelize.define(
-  "EMUPressOn",
+const VBScheduledPreIinspection = sequelize.define(
+  "VBPreIinspection",
   {
-    wheelid: {
+    WheelId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -21,221 +21,157 @@ const EMUPressOn = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    WheelNo: {
+    ShopSrNumber: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelType: {
+    AxleNumber: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    AxleNo: {
+    ReceiveDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    AxleCondition: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    ATLNo: {
+    CoachNumber: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    AWheelSide: {
+    DiameterINA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BWheelSide: {
+    DiameterINB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    ARASide: {
+    CTRBDefectNameA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BRASide: {
+    CTRBDefectNameB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    OperatorNamePrimary: {
+    
+    BDDefect: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    VTLNo: {
+    BDMakeIN: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BoreSize: {
+    
+    RodGaugeIN: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    RAValue: {
+    SoundTestINA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    OperatorNameA: {
+    SoundTestINB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    TopX: {
+    TypeOfRepair: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    TopY: {
+    MatungaRemark: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    MiddleX: {
+    DiscParticularA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    MiddleY: {
+    DiscParticularB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    LowerX: {
+
+    
+    CTRBNumberA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    LowerY: {
+    CTRBNumberB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    AvgX: {
+    CTRBMakeA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    AvgY: {
+    CTRBMakeB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BWheelSeatSize: {
+    CTRBStatusA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    CBAIntAllow: {
+    CTRBStatusB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    PressureInTon: {
+    BDThicknessA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    RDNo: {
+    BDThicknessB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelDiscAParticulars: {
+    RefurbishmentDetailsA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    VTLNoB: {
+    RefurbishmentDetailsB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BoreSizeB: {
+    CTRBDefectA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    RAValueB: {
+    CTRBDefectB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    OperatorNameB: {
+    CTRBRemarkA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BTopX: {
+    CTRBRemarkB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BTopY: {
+    FitmentDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    CTRBRemainingLifeA: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BMiddleX: {
+    CTRBRemainingLifeB: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BMiddleY: {
+    InspectorName: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BLowerX: {
+    InspectorTicketNo: {
       type: DataTypes.STRING(255),
       allowNull: false,
-    },
-    BLowerY: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    BAvgX: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    BAvgY: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    BWheelSeatSizeB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CBAIntAllowB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    PressureInTonB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    RDNoB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    WheelDiscAParticularsB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    MCNo: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    OperatorNameFinal: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    InspectorNameFinal: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    AxleWheelSeatSize: {
-      type: DataTypes.STRING(255),
-      allowNull: true, // Default to true, as it's not mentioned as required
-    },
-    WheelDiscBoreSize: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    wheelDiscStampingParticulars: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    PressOnNumber: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    InspectorNameActivities: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    TicketNo: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    OperatorNo: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    WheelActivities: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
     },
     createdBy: {
       type: DataTypes.STRING(255),
@@ -259,9 +195,9 @@ const EMUPressOn = sequelize.define(
     },
   },
   {
-    tableName: "EMUPressOn",
+    tableName: "VBPreIinspection",
     timestamps: false, // To manage createdDate and modifiedDate manually
   }
 );
 
-module.exports = EMUPressOn;
+module.exports = VBScheduledPreIinspection;

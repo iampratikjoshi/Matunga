@@ -1,12 +1,13 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database.js"); // Import your Sequelize instance
 
-const EMUPressOn = sequelize.define(
-  "EMUPressOn",
+const VBPressON = sequelize.define(
+  "VBPressON",
   {
     wheelid: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
+      allowNull: false,
+      // autoIncrement: false,
       primaryKey: true,
     },
     SectionId: {
@@ -25,10 +26,6 @@ const EMUPressOn = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelType: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
     AxleNo: {
       type: DataTypes.STRING(255),
       allowNull: false,
@@ -37,31 +34,11 @@ const EMUPressOn = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    AWheelSide: {
+    WheelSeatSize: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BWheelSide: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    ARASide: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    BRASide: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    OperatorNamePrimary: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    VTLNo: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    BoreSize: {
+    BDSeatSize: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
@@ -69,127 +46,247 @@ const EMUPressOn = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    OperatorNameA: {
+    OperatorName: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    TopX: {
+    WheelDiscAVTLNO: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    TopY: {
+    WheelDiscABoreSizeByOperator: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    MiddleX: {
+    WheelDiscARAValue: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    MiddleY: {
+    WheelDiscAOperatorName: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    LowerX: {
+    WheelDiscABWheelSeatSize: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    LowerY: {
+    WheelDiscAAllow: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    AvgX: {
+    WheelDiscAPressOnPressure: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    AvgY: {
+    WheelDiscARDNo: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BWheelSeatSize: {
+    WheelDiscAWheelDiscParticulars: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    CBAIntAllow: {
+    WheelDiscATopXAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    PressureInTon: {
+    WheelDiscATopYAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    RDNo: {
+    WheelDiscAMiddleXAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelDiscAParticulars: {
+    WheelDiscAMiddleYAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    VTLNoB: {
+    WheelDiscALowerXAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BoreSizeB: {
+    WheelDiscALowerYAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    RAValueB: {
+    WheelDiscAAvgXAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    OperatorNameB: {
+    WheelDiscAAvgYAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BTopX: {
+    WheelDiscBVTLNo: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BTopY: {
+    WheelDiscBBoreSizeByOperator: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BMiddleX: {
+    WheelDiscBRAValue: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BMiddleY: {
+    WheelDiscBOperatorName: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BLowerX: {
+    WheelDiscBBWheelSeatSize: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BLowerY: {
+    WheelDiscBAllow: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BAvgX: {
+    WheelDiscBPressOnPressure: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BAvgY: {
+    WheelDiscBRDNo: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    BWheelSeatSizeB: {
+    WheelDiscBWheelDiscParticulars: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    CBAIntAllowB: {
+    WheelDiscBTopXAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    PressureInTonB: {
+    WheelDiscBTopYAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    RDNoB: {
+    WheelDiscBMiddleXAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    WheelDiscAParticularsB: {
+    WheelDiscBMiddleYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    WheelDiscBLowerXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    WheelDiscBLowerYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    WheelDiscBAvgXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    WheelDiscBAvgYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscABBDSeatSize: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscAAllow: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscAPressOnPressure: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscABDThickness: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscABrakeDiscParticulars: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscATopXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscATopYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscAMiddleXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscAMiddleYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscALowerXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscALowerYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscAAvgXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscAAvgYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBBBDSeatSize: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBAllow: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBPressOnPressure: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBBDThickness: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBBrakeDiscParticulars: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBTopXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBTopYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBMiddleXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBMiddleYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBLowerXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBLowerYAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBAvgXAxis: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    BrakeDiscBAvgYAxis: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
@@ -201,41 +298,45 @@ const EMUPressOn = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    InspectorNameFinal: {
+    InspectorName: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    OperatorNo: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    InspectorNo: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    WheelActivities: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
     AxleWheelSeatSize: {
       type: DataTypes.STRING(255),
-      allowNull: true, // Default to true, as it's not mentioned as required
+      allowNull: false,
     },
     WheelDiscBoreSize: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: false,
     },
     wheelDiscStampingParticulars: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: false,
     },
     PressOnNumber: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: false,
     },
-    InspectorNameActivities: {
+    WheelActivityBDThickness: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: false,
     },
-    TicketNo: {
+    WheelActivityBDMake: {
       type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    OperatorNo: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    WheelActivities: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: false,
     },
     createdBy: {
       type: DataTypes.STRING(255),
@@ -246,7 +347,7 @@ const EMUPressOn = sequelize.define(
       allowNull: true,
     },
     createdDate: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
     modifiedDate: {
@@ -259,9 +360,9 @@ const EMUPressOn = sequelize.define(
     },
   },
   {
-    tableName: "EMUPressOn",
+    tableName: "VBPressON",
     timestamps: false, // To manage createdDate and modifiedDate manually
   }
 );
 
-module.exports = EMUPressOn;
+module.exports = VBPressON;

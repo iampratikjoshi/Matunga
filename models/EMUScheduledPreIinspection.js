@@ -23,173 +23,134 @@ const EMUScheduledPreIinspection = sequelize.define(
     },
     ShopSrNumber: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     AxleNumber: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     ReceiveDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
     },
     AxleCondition: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     CoachNumber: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     DiameterINA: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     DiameterINB: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
-    CTRBDefectNameA: {
+    BrgCodeA: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true, // Can be adjusted if required
     },
-    CTRBDefectNameB: {
+    BrgCodeB: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
-    // FlageIN: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: false,
-    // },
-    // BDNumber: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: false,
-    // },
-    BDDefect: {
+    BrgYearA: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
-    BDMakeIN: {
+    BrgYearB: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
-    // BDSizeIN: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: false,
-    // },
-    RodGaugeIN: {
+    BrgMakeA: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
-    SoundTestINA: {
+    BrgMakeB: {
       type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    SoundTestINB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    TypeOfRepair: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    MatungaRemark: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    DiscParticularA: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    DiscParticularB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-
-    // CTRBA: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: false,
-    // },
-    // CTRBB: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: false,
-    // },
-    CTRBNumberA: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBNumberB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBMakeA: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBMakeB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBStatusA: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBStatusB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    BDThicknessA: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    BDThicknessB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    RefurbishmentDetailsA: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    RefurbishmentDetailsB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBDefectA: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBDefectB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBRemarkA: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    CTRBRemarkB: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     FitmentDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true, // Can be adjusted if required
     },
-    CTRBRemainingLifeA: {
+    BrgFitmentA: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
-    CTRBRemainingLifeB: {
+    BrgFitmentB: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
+    },
+    BrgServiceA: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    BrgServiceB: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    MTNBrgSideA: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    MTNBrgSideB: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    WheelType: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    Shift: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    GNameAside: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    GNameBside: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    RodGaugeIN: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    RodGaugeDefect: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+
+    TypeOfRepair: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    MatungaRemark: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
     },
     InspectorName: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     InspectorTicketNo: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
+    DiscParticularA: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    DiscParticularB: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+
     createdBy: {
       type: DataTypes.STRING(255),
       allowNull: false,
@@ -203,7 +164,7 @@ const EMUScheduledPreIinspection = sequelize.define(
       defaultValue: DataTypes.NOW,
     },
     modifiedDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: true,
     },
     isActive: {

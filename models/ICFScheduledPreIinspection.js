@@ -1,21 +1,13 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database.js"); // Import your Sequelize instance
 
-const LHBFinalInspection = sequelize.define(
-  "LHBFinalInspection",
+const ICFScheduledPreIinspection = sequelize.define(
+  "ICFScheduledPreIinspection",
   {
-    wheelid: {
+    WheelId: {
       type: DataTypes.INTEGER,
-      // autoIncrement: true,
+      autoIncrement: true,
       primaryKey: true,
-    },
-    WheelNo: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    Shift:{
-      type:DataTypes.STRING(255),
-      allowNull:false
     },
     SectionId: {
       type: DataTypes.INTEGER,
@@ -29,183 +21,127 @@ const LHBFinalInspection = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    AxleNo: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    WheelDiaA : {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    WheelDiaB : {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    WheelRG: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    WheelFLG: {
+    ShopSrNumber: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    SizeA: {
+    AxleNumber: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    SizeB: {
+    ReceiveDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: true,
+    },
+    AxleCondition: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    OvalA: {
+    CoachNumber: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    OvalB: {
+    DiameterINA: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    TapA: {
+    DiameterINB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    TapB: {
+    BrgCodeA: {
+      type: DataTypes.STRING(255),
+      allowNull: true, // Can be adjusted if required
+    },
+    BrgCodeB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    ShoulderSizeA: {
+    BrgYearA: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    ShoulderSizeB: {
+    BrgYearB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    JrWaivinessA: {
+    BrgMakeA: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    JrWaivinessB: {
+    BrgMakeB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    BDMake: {
+    FitmentDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: true, // Can be adjusted if required
+    },
+    BrgFitmentA: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    BDSizeA: {
+    BrgFitmentB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    BDSizeB: {
+    BrgServiceA: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    EndHoleA: {
+    BrgServiceB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    EndHoleB: {
+    MTNBrgSideA: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    // BRGRemainLife: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: true,
-    // },
-    // BRGMake: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: true,
-    // },
-    // BRGNo: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: true,
-    // },
-    MEPA: {
+    MTNBrgSideB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    MEPB: {
+    WheelType: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    USTName: {
+    Shift: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    FittingDt: {
+    GNameAside: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    ECATest: {
+    GNameBside: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    // FinalInspectionRemark: {
-    //   type: DataTypes.STRING(255),
-    //   allowNull: true,
-    // },
-    RefurbishmentDetailsA: {
+    RodGaugeIN: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    RefurbishmentDetailsB: {
+    SoundTestINA: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    CTRBNumberA: {
+    SoundTestINB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    CTRBNumberB: {
+    TypeOfRepair: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    CTRBRemarkA: {
+    MatungaRemark: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    CTRBRemarkB: {
+    InspectorName: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    CTRBDefectA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBDefectB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBMakeA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBMakeB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBDefectNameA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBDefectNameB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBStatusA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBStatusB: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBRemainingLifeA: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    CTRBRemainingLifeB: {
+    InspectorTicketNo: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
@@ -217,15 +153,19 @@ const LHBFinalInspection = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    WheelTreadUST: {
+    RCDMA: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    InspectorName: {
+    RCDMB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    InspectorTicketNo: {
+    RCMA: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    RCMB: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
@@ -242,7 +182,7 @@ const LHBFinalInspection = sequelize.define(
       defaultValue: DataTypes.NOW,
     },
     modifiedDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: true,
     },
     isActive: {
@@ -251,9 +191,9 @@ const LHBFinalInspection = sequelize.define(
     },
   },
   {
-    tableName: "LHBFinalInspection",
+    tableName: "ICFPreIinspection",
     timestamps: false, // To manage createdDate and modifiedDate manually
   }
 );
 
-module.exports = LHBFinalInspection;
+module.exports = ICFScheduledPreIinspection;

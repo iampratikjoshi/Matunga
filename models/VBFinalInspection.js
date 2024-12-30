@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database.js"); // Import your Sequelize instance
 
-const LHBFinalInspection = sequelize.define(
-  "LHBFinalInspection",
+const VBFinalInspection = sequelize.define(
+  "VBFinalInspection",
   {
     wheelid: {
       type: DataTypes.INTEGER,
@@ -251,9 +251,9 @@ const LHBFinalInspection = sequelize.define(
     },
   },
   {
-    tableName: "LHBFinalInspection",
+    tableName: "VBFinalInspection",
     timestamps: false, // To manage createdDate and modifiedDate manually
   }
 );
 
-module.exports = LHBFinalInspection;
+module.exports = VBFinalInspection;
