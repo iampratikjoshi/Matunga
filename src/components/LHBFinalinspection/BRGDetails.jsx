@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useNavigate } from "react-router-dom";
 import { IoCloudUploadOutline } from "react-icons/io5";
+import "../../resources/LHB/FinalInspectionForm/FinalInspection.css";
 
 function BRGDetails({
   formDataFinal,
@@ -94,7 +95,7 @@ function BRGDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentFinal">
       <h2
         style={{
           textAlign: "center",
@@ -107,10 +108,10 @@ function BRGDetails({
       </h2>
       <h2>BRG Details for LHB Final Inspection Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderFinal">
+        <div className="page-contentFinal">
+          <div className="wheel-page-main-final-content">
+            <div className="Finalrow-1">
               <div>
                 <label>
                   BRG No.:<span className="required-asterisk">*</span>
@@ -193,19 +194,19 @@ function BRGDetails({
               </div>
 
             </div>
-            <div className="row-2">
+            <div className="Finalrow-2">
               <div></div>
               <div></div>
             </div>
-            <div className="row-3">
+            <div className="Finalrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="row-3">
+            <div className="Finalrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+            <div className="btn-containerFinal">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button onClick={handleBack}>Back</button>
               <button className="red_btn" onClick={handleCancel}>

@@ -28,7 +28,7 @@ function SidebarLHB() {
   return (
     <div>
       <div className="sidebar1">
-        <ul className="sidebarlist">
+        <ul className="sidebarlistPressonoff">
           {SidebarData.map((val, key) => {
             return (
               <li

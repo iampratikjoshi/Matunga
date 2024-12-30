@@ -12,7 +12,7 @@ function WheeldiscBBoresizeDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  
+
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -48,13 +48,13 @@ function WheeldiscBBoresizeDetails({
   // Use useEffect to recalculate the average whenever any relevant X-axis value changes
   useEffect(() => {
     const calculateAverageXAxis = () => {
-      const { WheelDiscBTopXAxis, WheelDiscBMiddleXAxis, WheelDiscBLowerXAxis, WheelDiscBTopYAxis,WheelDiscBMiddleYAxis,WheelDiscBLowerYAxis  } =
+      const { WheelDiscBTopXAxis, WheelDiscBMiddleXAxis, WheelDiscBLowerXAxis, WheelDiscBTopYAxis, WheelDiscBMiddleYAxis, WheelDiscBLowerYAxis } =
         formDataPressOnLHB;
 
       const topX = parseFloat(WheelDiscBTopXAxis) || 0;
       const middleX = parseFloat(WheelDiscBMiddleXAxis) || 0;
       const lowerX = parseFloat(WheelDiscBLowerXAxis) || 0;
-      
+
       const topY = parseFloat(WheelDiscBTopYAxis) || 0;
       const middleY = parseFloat(WheelDiscBMiddleYAxis) || 0;
       const lowerY = parseFloat(WheelDiscBLowerYAxis) || 0;
@@ -67,7 +67,7 @@ function WheeldiscBBoresizeDetails({
       setFormDataPressOnLHB((prevData) => ({
         ...prevData,
         WheelDiscBAvgXAxis: avgX,
-        WheelDiscBAvgYAxis:avgY,
+        WheelDiscBAvgYAxis: avgY,
       }));
     };
 
@@ -83,7 +83,7 @@ function WheeldiscBBoresizeDetails({
     setFormDataPressOnLHB,
   ]);
 
-  
+
 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
@@ -92,6 +92,9 @@ function WheeldiscBBoresizeDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 3,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/LHBPressOnForm/wheel_details");
@@ -104,19 +107,19 @@ function WheeldiscBBoresizeDetails({
   };
 
   const saveandcontinue = () => {
-    
-      onNextStep();
-      navigate("/LHBPressOnForm/wheeldiscB_details");
-    
+
+    onNextStep();
+    navigate("/LHBPressOnForm/wheeldiscB_details");
+
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -124,10 +127,10 @@ function WheeldiscBBoresizeDetails({
       </h2>
       <h2>Wheel Disc B Bore Size Details for PRESS-ON OF LHB WHEEL Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   Top X-axis:
@@ -139,7 +142,7 @@ function WheeldiscBBoresizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Top X-axis"
                 />
-              
+
               </div>
               <div>
                 <label>
@@ -152,10 +155,10 @@ function WheeldiscBBoresizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Top Y-axis"
                 />
-               
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>
                   Middle X-axis:
@@ -167,7 +170,7 @@ function WheeldiscBBoresizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Middle X-axis"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -180,11 +183,11 @@ function WheeldiscBBoresizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Middle Y-axis"
                 />
-                
+
               </div>
             </div>
 
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Lower X-axis:
@@ -196,7 +199,7 @@ function WheeldiscBBoresizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Lower X-axis"
                 />
-                
+
               </div>
 
               <div>
@@ -210,10 +213,10 @@ function WheeldiscBBoresizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Lower Y-axis"
                 />
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Avg X-axis:
@@ -226,7 +229,7 @@ function WheeldiscBBoresizeDetails({
                   placeholder="Enter Avg X-axis"
                   disabled
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -240,10 +243,13 @@ function WheeldiscBBoresizeDetails({
                   placeholder="Enter Avg Y-axis"
                   disabled
                 />
-                
+
               </div>
             </div>
-            <div className="btn-container">
+             <div></div>
+            <div></div>
+            <div></div>
+            <div className="btn-containerPressonoff">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <div>
                 <button className="back_btn" onClick={handleBack}>

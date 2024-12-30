@@ -1,0 +1,248 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { postData } from "../Axios/AxiosConnection";
+import { useDropzone } from "react-dropzone";
+import { IoCloudUploadOutline } from "react-icons/io5";
+import "../../resources/LHB/FinalInspectionForm/FinalInspection.css";
+
+function CollerCondition({
+  formDataFinalICF,
+  setFormDataFinalICF,
+  onInputChange,
+  onNextStep,
+  onResetStep,
+}) {
+  const [fileName, setFileName] = useState("No file chosen");
+  const [preview, setPreview] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [file, setFile] = useState(null); // Single file state
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/*", // Accept only image files
+    multiple: false, // Allow only one file
+    onDrop: (acceptedFiles) => {
+      const file = acceptedFiles[0];
+
+      // Manually validate if the file is an image
+      if (file && file.type.startsWith("image/")) {
+        setFile(file); // Set the single file to state
+      }
+    },
+  });
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setFileName(file.name);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    onInputChange(name, value);
+    // console.log(formDataFinalICF);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await postData("/icf/finalinspection/data", formDataFinalICF);
+      console.log(response.AxleNo);
+      if (response) {
+        const data = await response; // Get JSON from the response
+        console.log("Form submitted successfully:", data);
+        setFormDataFinalICF((prevFormData) => ({
+          ...Object.keys(prevFormData).reduce((acc, key) => {
+            acc[key] = null;
+            return acc;
+          }, {}),
+          createdBy: "ADMIN",
+          SectionId: 1,
+          DepartmentId: 4,
+          WheeltypeId: 2,
+        }));
+
+        navigate("/icffinalinspection/wheel_details");
+      } else {
+        console.error("Error submitting form:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
+  const handleCancel = () => {
+    setFormDataFinalICF((prevFormData) => ({
+      ...Object.keys(prevFormData).reduce((acc, key) => {
+        acc[key] = null;
+        return acc;
+      }, {}),
+      createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 4,
+      WheeltypeId: 2,
+    }));
+    onResetStep();
+    navigate("/icffinalinspection/wheel_details");
+  };
+
+  const handleBack = () => {
+    // Set flag when navigating back
+    navigate("/icffinalinspection/details");
+  };
+
+  const navigate = useNavigate();
+
+  return (
+    <div className="componentFinal">
+      <h2
+        style={{
+          textAlign: "center",
+          backgroundColor: "black",
+          color: "white",
+          opacity: 1,
+        }}
+      >
+        ICF FINAL INSPECTION FORM{" "}
+      </h2>
+      <h2>General Inspection for ICF Final Inspection Form</h2>
+
+     <div className="page-borderFinal">
+        <div className="page-contentFinal">
+          <div className="wheel-page-main-final-content">
+            <div className="Finalrow-1">
+              <div>
+                <label>Wear And Tear:</label>
+                <input
+                  type="text"
+                  name="WearTear"
+                  value={formDataFinalICF.WearTear}
+                  onChange={handleChange}
+                  placeholder="Enter Wear And Tear"
+                />
+              </div>
+              <div>
+                <label>Bend:</label>
+                <input
+                  type="text"
+                  name="Bend"
+                  value={formDataFinalICF.Bend}
+                  onChange={handleChange}
+                  placeholder="Enter Bend"
+                />
+              </div>
+              <div>
+                <label>Axle End Hole:</label>
+                <input
+                  type="text"
+                  name="AxleEndHole"
+                  value={formDataFinalICF.AxleEndHole}
+                  onChange={handleChange}
+                  placeholder="Enter Axle End Hole"
+                />
+              </div>
+              
+            </div>
+            
+            <div className="Finalrow-3">
+            <div>
+                <label>Remark:</label>
+                <input
+                  type="text"
+                  name="Remark"
+                  // value={formDataPressOffLHB.EndHole}
+                  // onChange={handleChange}
+                  placeholder="Enter Remark"
+                />
+              </div>
+              <div className="file-container">
+                <span style={{ fontWeight: "bold", marginBottom: "5px" }}>
+                  Upload Image:
+                </span>
+                <div {...getRootProps({ className: "dropzone" })}>
+                  <input {...getInputProps()} />
+                  <span className="upload-icon">
+                    <IoCloudUploadOutline />
+                  </span>
+                  <span className="drag-drop">Drag & drop files</span>
+                  <span className="drag-or">---------- or ----------</span>
+                  <button className="browse-button">Browse</button>
+                </div>
+                <div className="uploading-section">
+                  {file ? (
+                    <div className="file-row">
+                      <span>{file.name}</span>
+                    </div>
+                  ) : (
+                    <span style={{ marginTop: "5px" }}>
+                      No image uploaded yet.
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="Finalrow-3">
+             <div>
+                <label>In Date:</label>
+                <input
+                  type="date"
+                  name="createdDate"
+                  value={
+                    formDataFinalICF.createdDate
+                      ? formDataFinalICF.createdDate
+                      : new Date().toISOString().split("T")[0]
+                  } // Default to current date if null
+                  onChange={(e) => {
+                    const { name, value } = e.target;
+                    setFormDataFinalICF((prev) => ({
+                      ...prev,
+                      [name]: value ? value : new Date().toISOString().split("T")[0],
+                    }));
+                  }}
+                />
+              </div>
+              <div></div>
+              <div></div>
+            </div>
+            <div className="Finalrow-3">
+            
+              <div></div>
+              <div></div>
+            </div>
+            <div className="btn-containerFinal">
+              <div>
+                <button type="submit" onClick={handleSubmit}>
+                  Submit
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={() => {
+                    navigate("/proceedsubmitFinalicf");
+                  }}
+                >
+                  Preview for Submission
+                </button>
+              </div>
+              <div>
+                <button onClick={handleBack}>Back</button>
+              </div>
+              <div>
+                <button className="red_btn" onClick={handleCancel}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CollerCondition;

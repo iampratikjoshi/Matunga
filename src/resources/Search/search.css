@@ -1,26 +1,33 @@
-
-
 .icon-hover {
   cursor: pointer;
-  
 }
 
 .icon-hover:hover {
   color: rgb(61, 61, 255); /* Change color on hover (optional) */
 }
 
+.search-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
 
-
+.search-div-edit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
 .search-container {
-  width: 100%;
+  width: 20%;
   display: flex;
   flex-direction: column;
 }
 
 .search-container > input[type="text"] {
   margin-top: 2px;
-  width: 75%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -30,7 +37,7 @@
 
 .search-container > select {
   margin-top: 2px;
-  width: 75%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -46,7 +53,55 @@ h1 {
   padding: 5px;
 }
 
-.search-btn{
+.search-btn {
   margin-top: 25px;
   width: 100%;
+}
+
+.table-container {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  max-width: 100%; /* Optional: Set max width of the container */
+}
+
+.results-table {
+  /* align-self: center; */
+  width: max-content; /* Adjusts the table width according to the content */
+  border-collapse: collapse; /* Optional: Improves table appearance */
+}
+
+.results-table th,
+.results-table td {
+  padding: 10px; /* Adds some padding for better spacing */
+  border: 1px solid #0a0202; /* Optional: Adds borders to table cells */
+  text-align: center;
+}
+
+.results-table th {
+  background-color: #3e3e3e; /* Optional: Adds background color to header */
+}
+
+.export-btn {
+  margin-bottom: 10px;
+  width: 200px;
+  align-self: center;
+}
+
+.table_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.chart-box {
+  text-align: center;
+  background-color: #fff;
+  padding-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

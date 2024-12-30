@@ -93,7 +93,7 @@ function WheelDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInputChan
             }, {}),
             createdBy: "ADMIN",
             SectionID: 1,
-            DepartmentID: 2,
+            DepartmentID: 5,
             WheeltypeID: 1,
         }));
         onResetStep();
@@ -110,15 +110,14 @@ function WheelDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInputChan
     };
 
     return (
-        <div className="component">
-            <h2 style={{ textAlign: "center", backgroundColor: "black", color: "white", opacity: 1 }}>PRESS-OFF OF LHB WHEEL FORM </h2>
+        <div className="componentPressonoff">
+            <h2 style={{ textAlign: "center", backgroundColor: "black", color: "black", opacity: 1 }}>PRESS-OFF OF LHB WHEEL FORM </h2>
             <h2> Wheel Details For PRESS-OFF OF LHB WHEEL FORM</h2>
 
-            <div className="page-border">
-                <div className="page-contentLHB">
-
-                    <div className="wheel-page-main-content">
-                        <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
                         <div>
                 <label>Type Of Wheel:<span className="required-asterisk">*</span></label>
                 <input
@@ -161,7 +160,7 @@ function WheelDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInputChan
                 )}
               </div>
                         </div>
-                        <div className="row-2">
+                        <div className="Pressonoffrow-2">
                         <div>
                 <label>
                 Pressed Off Remark:<span className="required-asterisk">*</span>
@@ -184,7 +183,7 @@ function WheelDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInputChan
 
                             </div>
                         </div>
-                        <div className="row-3">
+                        <div className="Pressonoffrow-3">
 
 
 
@@ -192,7 +191,7 @@ function WheelDetails({ formDataPressOffLHB, setFormDataPressOffLHB, onInputChan
 
                             </div>
                         </div>
-                        <div className="btn-container">
+                        <div className="btn-containerPressonoff">
                             <button onClick={saveandcontinue}>Save & Continue</button>
                             <button className="back_btn" onClick={handleBack}>Back</button>
                             <button className="red_btn" onClick={handleCancel}>

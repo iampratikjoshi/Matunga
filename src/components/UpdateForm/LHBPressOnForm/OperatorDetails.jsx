@@ -54,6 +54,9 @@ function OperatorDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 3,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/parentedit/UpdateLHBPressOnForm/wheel_details");
@@ -84,7 +87,7 @@ function OperatorDetails({
           }, {}),
           createdBy: "ADMIN",
           SectionId: 1,
-          DepartmentId: 2,
+          DepartmentId: 3,
           WheeltypeId: 1,
         }));
   
@@ -99,12 +102,12 @@ function OperatorDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -112,10 +115,10 @@ function OperatorDetails({
       </h2>
       <h2>Operator Details for PRESS-ON OF LHB WHEEL FORM</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   M/C No.:
@@ -156,7 +159,7 @@ function OperatorDetails({
                 
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Inspector Name:
@@ -184,7 +187,7 @@ function OperatorDetails({
                 
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>Remark:</label>
                 <input
@@ -223,11 +226,14 @@ function OperatorDetails({
               </div>
             </div>
 
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+             <div></div>
+                        <div></div>
+                        <div></div>
+            <div className="btn-containerPressonoff">
               <div>
                 <button type="submit" onClick={handleSubmit}>
                   Update

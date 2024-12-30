@@ -13,7 +13,7 @@ function OperatorDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  
+
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -46,7 +46,7 @@ function OperatorDetails({
     console.log(formDataPressOnLHB);
   };
 
- 
+
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
       ...Object.keys(prevFormData).reduce((acc, key) => {
@@ -54,6 +54,9 @@ function OperatorDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 3,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/LHBPressOnForm/wheel_details");
@@ -67,41 +70,41 @@ function OperatorDetails({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-      try {
-        const response = await postData("/api/data", formDataPressOnLHB);
-        console.log(response.AxleNumber);
-        if (response) {
-          const data = await response; // Get JSON from the response
-          console.log("Form submitted successfully:", data);
-          setFormDataPressOnLHB((prevFormData) => ({
-            ...Object.keys(prevFormData).reduce((acc, key) => {
-              acc[key] = null;
-              return acc;
-            }, {}),
-            createdBy: "ADMIN",
-            SectionId: 1,
-            DepartmentId: 2,
-            WheeltypeId: 1,
-          }));
 
-          navigate("/LHBPressOnForm/axle_details");
-        } else {
-          console.error("Error submitting form:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
+    try {
+      const response = await postData("/api/data", formDataPressOnLHB);
+      console.log(response.AxleNumber);
+      if (response) {
+        const data = await response; // Get JSON from the response
+        console.log("Form submitted successfully:", data);
+        setFormDataPressOnLHB((prevFormData) => ({
+          ...Object.keys(prevFormData).reduce((acc, key) => {
+            acc[key] = null;
+            return acc;
+          }, {}),
+          createdBy: "ADMIN",
+          SectionId: 1,
+          DepartmentId: 3,
+          WheeltypeId: 1,
+        }));
+
+        navigate("/LHBPressOnForm/axle_details");
+      } else {
+        console.error("Error submitting form:", response.statusText);
       }
-    
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -109,10 +112,10 @@ function OperatorDetails({
       </h2>
       <h2>Operator Details for PRESS-ON OF LHB WHEEL FORM</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   M/C No.:
@@ -124,7 +127,7 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter M/C No."
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -137,7 +140,7 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter Operator"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -150,10 +153,10 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter Operator"
                 />
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Inspector Name:
@@ -165,7 +168,7 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter Inspector Name"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -178,10 +181,10 @@ function OperatorDetails({
                   onChange={handleChange}
                   placeholder="Enter Inspector No."
                 />
-                
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>Remark:</label>
                 <input
@@ -219,12 +222,15 @@ function OperatorDetails({
                 </div>
               </div>
             </div>
-
-            <div className="row-3">
+            <div></div>
+            <div></div>
+            <div></div>
+          
+            <div className="Pressonoffrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+            <div className="btn-containerPressonoff">
               <div>
                 <button type="submit" onClick={handleSubmit}>
                   Submit
@@ -233,9 +239,9 @@ function OperatorDetails({
               <div>
                 <button
                   onClick={() => {
-                   
-                      navigate("/proceedsubmitlhbpresson");
-                    
+
+                    navigate("/proceedsubmitlhbpresson");
+
                   }}
                 >
                   Preview for Submission

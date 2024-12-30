@@ -58,7 +58,7 @@ const ProceedSubmitPressOn = ({
           }, {}),
           createdBy: "ADMIN",
           SectionId: 1,
-          DepartmentId: 1,
+          DepartmentId: 3,
           WheeltypeId: 1,
           modifiedBy: "admin",
         }));

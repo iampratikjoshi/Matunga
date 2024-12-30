@@ -95,7 +95,7 @@ function ParentLhbPressOn() {
     WheelActivityBDThickness: "",
     WheelActivityBDMake: "",
     SectionId: 1,
-    DepartmentId: 1,
+    DepartmentId: 3,
     WheeltypeId: 1,
     createdBy: "ADMIN",
     modifiedBy: "admin",

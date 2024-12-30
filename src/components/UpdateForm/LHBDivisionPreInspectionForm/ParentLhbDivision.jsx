@@ -24,7 +24,6 @@ function ParentLhbDivision() {
         WheeltypeId:1,
         createdBy: "ADMIN",
         modifiedBy: "admin",
-        modifiedDate:"",
       });
   return (
     <div>

@@ -12,7 +12,7 @@ function WheelDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  
+
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -58,7 +58,7 @@ function WheelDetails({
     console.log(formDataPressOnLHB);
   };
 
- 
+
 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
@@ -67,6 +67,9 @@ function WheelDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 3,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/LHBPressOnForm/wheel_details");
@@ -75,19 +78,19 @@ function WheelDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    
-      onNextStep();
-      navigate("/LHBPressOnForm/wheelactivities_details");
-    
+
+    onNextStep();
+    navigate("/LHBPressOnForm/wheelactivities_details");
+
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -95,10 +98,10 @@ function WheelDetails({
       </h2>
       <h2>Wheel Details for PRESS-ON OF LHB WHEEL Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   Wheel No.:
@@ -110,7 +113,7 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel No."
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -123,7 +126,7 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Axle No"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -136,10 +139,10 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter ATL No."
                 />
-                
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>
                   Wheel Seat Size:
@@ -151,7 +154,7 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel Seat Size"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -164,7 +167,7 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter BD Seat Size"
                 />
-                
+
               </div>
 
               <div>
@@ -178,10 +181,10 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter RA Value"
                 />
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Operator Name:
@@ -193,14 +196,17 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Operator Name"
                 />
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+             <div></div>
+            <div></div>
+            <div></div>
+            <div className="btn-containerPressonoff">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button className="red_btn" onClick={handleCancel}>
                 Cancel

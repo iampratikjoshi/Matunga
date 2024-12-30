@@ -1,0 +1,142 @@
+/* Global background gradient */
+.repeated-page-container {
+  background: linear-gradient(
+    to right,
+    rgba(156, 39, 176, 0.2),
+    rgba(63, 81, 181, 0.2),
+    rgba(0, 150, 136, 0.2)
+  );
+  min-height: 100vh;
+  padding: 20px;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+/* Page title */
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(
+    45deg,
+    #150269ee,
+    #9ac8f7
+  ); 
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.form-div{
+ display: flex;
+ flex-direction: column; 
+ justify-content: space-between;
+}
+
+.form-div > label{
+  color: rgb(0, 0, 0);
+}
+
+/* Form container */
+.form-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+
+
+.time-range-select, .wheel-type-select, .search-button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 40px;
+}
+
+.search-button {
+  background-color: #027eb3;
+  color: white;
+  cursor: pointer;
+  margin-top: 22px;
+  margin-left: 5px;
+}
+
+.search-button:hover {
+  background-color: #1c5f91;
+}
+
+/* Error and Loading Indicators */
+.error-message, .loading-indicator {
+  text-align: center;
+  color: red;
+  font-size: 1.2rem;
+}
+
+.result-info {
+  background: linear-gradient(
+    45deg,
+    #150269ee,
+    #9ac8f7
+  ); /* A cool gradient that complements the page bg */
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.result-info p {
+  font-size: 1rem;
+  margin: 5px 0;
+  color: white;
+}
+
+/* Table Styling */
+.repeated-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.repeated-table th, .repeated-table td {
+  padding: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+}
+
+.repeated-table td {
+  color: #000000;
+}
+
+.repeated-table th {
+  background-color: #1e3a8a; /* Gradient header to match page title */
+  color: rgb(255, 255, 255);
+}
+
+ .repeated-table tr:hover {
+   background-color: rgba(
+    20,
+    184,
+    166,
+    0.2
+  ); /* Lighter shade from the gradient for row hover */
+  transition: background-color 0.3s ease;
+} 
+
+.highlighted-cell {
+  background-color: #a3b8f1;
+  font-weight: bold;
+}
+
+/* No data message */
+.no-data {
+  text-align: center;
+  color: #000000;
+  font-size: 15px;
+  margin-top: 20px;
+}

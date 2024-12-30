@@ -59,7 +59,7 @@ function IdentificationDetails({
     console.log(formDataPressOffLHB);
   };
 
-  
+
 
   const handleCancel = () => {
     setFormDataPressOffLHB((prevFormData) => ({
@@ -69,7 +69,7 @@ function IdentificationDetails({
       }, {}),
       createdBy: "ADMIN",
       SectionID: 1,
-      DepartmentID: 2,
+      DepartmentID: 5,
       WheeltypeID: 1,
     }));
     onResetStep();
@@ -79,19 +79,19 @@ function IdentificationDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    
-      onNextStep();
-      navigate("/LHBPressOffForm/wheelcondition_details");
-    
+
+    onNextStep();
+    navigate("/LHBPressOffForm/wheelcondition_details");
+
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -99,14 +99,14 @@ function IdentificationDetails({
       </h2>
       <h2> Wheel Details For PRESS-OFF OF LHB WHEEL FORM</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   Shop Sr.No. (Wheel No.):
-                  
+
                 </label>
                 <input
                   type="text"
@@ -115,7 +115,7 @@ function IdentificationDetails({
                   onChange={handleChange}
                   placeholder="Enter Shop Sr.No."
                 />
-               
+
               </div>
               <div>
                 <label>
@@ -128,7 +128,7 @@ function IdentificationDetails({
                   onChange={handleChange}
                   placeholder="Enter Axle No."
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -141,10 +141,10 @@ function IdentificationDetails({
                   onChange={handleChange}
                   placeholder="Enter Disc Sr.No."
                 />
-                
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>
                   Date:
@@ -155,7 +155,7 @@ function IdentificationDetails({
                   value={formDataPressOffLHB.Date}
                   onChange={handleChange}
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -173,14 +173,14 @@ function IdentificationDetails({
                   <option value="Shift 2">Shift 2</option>
                   <option value="Shift 3">Shift 3</option>
                 </select>
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+            <div className="btn-containerPressonoff">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button className="red_btn" onClick={handleCancel}>
                 Cancel

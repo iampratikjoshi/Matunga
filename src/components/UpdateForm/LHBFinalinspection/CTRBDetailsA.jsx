@@ -10,7 +10,7 @@ function CTRBDetailsA({
   onNextStep,
   onResetStep,
 }) {
-  const [ctrbdefectA, setctrbdefectA] = useState(formDataFinal.CTRBDefectA);
+  const [CTRBDefectA, setctrbdefectA] = useState(formDataFinal.CTRBDefectA);
   const [CTRBDefectNameA, setCTRBDefectNameA] = useState(formDataFinal.CTRBDefectNameA);
   const [CTRBRemarkA, setRemarkA] = useState(formDataFinal.CTRBRemarkA);
   const [otherRemarkA, setOtherRemarkA] = useState("");
@@ -56,7 +56,7 @@ function CTRBDetailsA({
     // If "Others" is selected, we use OtherRemark, otherwise, we set Remark
     if (selectedRemark !== "yes") {
       // console.log(selectedRemark);
-      // console.log(ctrbdefectA);
+      // console.log(CTRBDefectA);
 
       setFormDataFinal((prevData) => ({
         ...prevData,
@@ -282,7 +282,7 @@ function CTRBDetailsA({
       }, {}),
       createdBy: "ADMIN",
       SectionId: 1,
-      DepartmentId: 2,
+      DepartmentId: 4,
       WheeltypeId: 1,
     }));
     onResetStep();
@@ -307,7 +307,7 @@ function CTRBDetailsA({
   };
 
   return (
-    <div className="component">
+    <div className="componentFinal">
       <h2
         style={{
           textAlign: "center",
@@ -320,10 +320,10 @@ function CTRBDetailsA({
       </h2>
       <h2>CTRB A Details for LHB Final Inspection Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderFinal">
+        <div className="page-contentFinal">
+          <div className="wheel-page-main-final-content">
+            <div className="Finalrow-1">
               <div>
                 <label>
                   CTRB No. A:
@@ -372,7 +372,7 @@ function CTRBDetailsA({
               )}
 
             </div>
-            <div className="row-2">
+            <div className="Finalrow-2">
               <div>
                 <label>
                   CTRB Make A:
@@ -427,7 +427,7 @@ function CTRBDetailsA({
 
             </div>
 
-            <div className="row-3">
+            <div className="Finalrow-3">
               <div>
                 <label>
                   CTRB Remark A:
@@ -470,7 +470,7 @@ function CTRBDetailsA({
                 </label>
                 <select
                   name="CTRBDefectA"
-                  value={ctrbdefectA}
+                  value={CTRBDefectA}
                   onChange={handleCTRBDefectAChange}
                   required
                 >
@@ -484,8 +484,8 @@ function CTRBDetailsA({
               </div>
 
             </div>
-            <div className="row-3">
-              {ctrbdefectA === "yes" && (
+            <div className="Finalrow-3">
+              {CTRBDefectA === "yes" && (
                 <div>
                   <label>
                     Choose CTRB Defect Name A:
@@ -530,7 +530,7 @@ function CTRBDetailsA({
 
               </div>
             </div>
-            <div className="btn-container">
+            <div className="btn-containerFinal">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button onClick={handleBack}>Back</button>
               <button className="red_btn" onClick={handleCancel}>

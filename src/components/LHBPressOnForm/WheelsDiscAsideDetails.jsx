@@ -12,7 +12,7 @@ function WheelsDiscAsideDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  
+
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -93,29 +93,32 @@ function WheelsDiscAsideDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 3,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/LHBPressOnForm/wheel_details");
   };
 
- 
+
 
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-   
-      onNextStep();
-      navigate("/LHBPressOnForm/wheeldiscBBoresize_details");
-    
+
+    onNextStep();
+    navigate("/LHBPressOnForm/wheeldiscBBoresize_details");
+
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -123,10 +126,10 @@ function WheelsDiscAsideDetails({
       </h2>
       <h2>Wheel Disc A Side Details for PRESS-ON OF LHB WHEEL Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   VTL No.:
@@ -138,12 +141,12 @@ function WheelsDiscAsideDetails({
                   onChange={handleChange}
                   placeholder="Enter VTL No."
                 />
-                
+
               </div>
               <div>
                 <label>
                   Bore Size By Operator:
-                  
+
                 </label>
                 <input
                   type="text"
@@ -152,7 +155,7 @@ function WheelsDiscAsideDetails({
                   onChange={handleChange}
                   placeholder="Enter Bore Size By Operator"
                 />
-               
+
               </div>
               <div>
                 <label>
@@ -165,10 +168,10 @@ function WheelsDiscAsideDetails({
                   onChange={handleChange}
                   placeholder="Enter RA Value"
                 />
-                
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>
                   Operator Name:
@@ -180,12 +183,12 @@ function WheelsDiscAsideDetails({
                   onChange={handleChange}
                   placeholder="Enter Operator Name"
                 />
-                
+
               </div>
               <div>
                 <label>
                   B' Wheel Seat Size:
-                  
+
                 </label>
                 <input
                   type="text"
@@ -194,7 +197,7 @@ function WheelsDiscAsideDetails({
                   onChange={handleChange}
                   placeholder="Enter B' Wheel Seat Size"
                 />
-                
+
               </div>
 
               <div>
@@ -209,14 +212,14 @@ function WheelsDiscAsideDetails({
                   placeholder="Enter Allow"
                   disabled
                 />
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Press-On Pressure in Ton:
-                  
+
                 </label>
                 <input
                   type="text"
@@ -225,7 +228,7 @@ function WheelsDiscAsideDetails({
                   onChange={handleChange}
                   placeholder="Enter Press-On Pressure in Ton"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -238,12 +241,12 @@ function WheelsDiscAsideDetails({
                   onChange={handleChange}
                   placeholder="Enter RD No."
                 />
-                
+
               </div>
               <div>
                 <label>
                   Wheel Disc Particulars:
-                  
+
                 </label>
                 <input
                   type="text"
@@ -252,14 +255,17 @@ function WheelsDiscAsideDetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel Disc Particulars"
                 />
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+             <div></div>
+            <div></div>
+            <div></div>
+            <div className="btn-containerPressonoff">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <div>
                 <button className="back_btn" onClick={handleBack}>

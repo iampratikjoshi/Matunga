@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useDropzone } from "react-dropzone";
+import "../../resources/LHB/NewPreInspectionForm/newpreinspectionform.css";
 
 function WheelDetails({
   formDataDivision,
@@ -44,7 +45,7 @@ function WheelDetails({
     // console.log(formData);
   };
 
-  
+
 
   const handleCancel = () => {
     setFormDataDivision((prevFormData) => ({
@@ -53,6 +54,9 @@ function WheelDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 1,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/LHBDivisionPreInspectionForm/wheel_details");
@@ -61,14 +65,14 @@ function WheelDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    
-      onNextStep();
-      navigate("/LHBDivisionPreInspectionForm/report_details");
-    
+
+    onNextStep();
+    navigate("/LHBDivisionPreInspectionForm/report_details");
+
   };
 
   return (
-    <div className="component">
+    <div className="componentPreInspection">
       <h2
         style={{
           textAlign: "center",
@@ -81,10 +85,10 @@ function WheelDetails({
       </h2>
       <h2> Wheel Details For LHB Division Pre Inspection Form</h2>
 
-      <div className="page-border">
+      <div className="page-borderPreInspection">
         <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+          <div className="wheel-page-main-PreInspection-content">
+            <div className="PreInspectionrow-1">
               <div>
                 <label>
                   Wheel No:
@@ -96,7 +100,7 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Wheel No."
                 />
-                
+
               </div>
 
               <div>
@@ -110,27 +114,27 @@ function WheelDetails({
                   onChange={handleChange}
                   placeholder="Enter Loory No."
                 />
-                
+
               </div>
 
               <div className="file-container">
-                
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="PreInspectionrow-2">
               <div>
-                
+
               </div>
             </div>
 
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="row-3"></div>
-            <div className="row-3"></div>
-            <div className="row-3"></div>
-            <div className="btn-container">
+            <div className="PreInspectionrow-3"></div>
+            <div className="PreInspectionrow-3"></div>
+            <div className="PreInspectionrow-3"></div>
+            <div className="btn-containerPreInspection">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button className="red_btn" onClick={handleCancel}>
                 Cancel

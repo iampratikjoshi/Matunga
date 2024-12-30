@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { useNavigate } from "react-router-dom";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { postData } from "../Axios/AxiosConnection";
+import "../../resources/LHB/NewPreInspectionForm/newpreinspectionform.css";
 
 function ReportDetails({
   formDataDivision,
@@ -133,6 +134,9 @@ function ReportDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 1,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/LHBDivisionPreInspectionForm/wheel_details");
@@ -143,40 +147,40 @@ function ReportDetails({
   const handleSubmit = async (e) => {
     e.preventDefault();
     let wheelNo = formDataDivision.WheelNo;
-    
-      try {
-        const response = await postData("/inward/data", formDataDivision);
-        console.log(response.AxleNo);
-        if (response) {
-          const data = await response; // Get JSON from the response
-          console.log("Form submitted successfully:", data);
-          setFormDataDivision((prevFormData) => ({
-            ...Object.keys(prevFormData).reduce((acc, key) => {
-              acc[key] = null;
-              return acc;
-            }, {}),
-            createdBy: "ADMIN",
-            SectionId: 1,
-            DepartmentId: 1,
-            WheeltypeId: 1,
-          }));
 
-          navigate("/LHBSchedulePreInspection/details", {
-            state: {
-              WheelNo: wheelNo,
-            },
-          });
-        } else {
-          console.error("Error submitting form:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
+    try {
+      const response = await postData("/inward/data", formDataDivision);
+      console.log(response.AxleNo);
+      if (response) {
+        const data = await response; // Get JSON from the response
+        console.log("Form submitted successfully:", data);
+        setFormDataDivision((prevFormData) => ({
+          ...Object.keys(prevFormData).reduce((acc, key) => {
+            acc[key] = null;
+            return acc;
+          }, {}),
+          createdBy: "ADMIN",
+          SectionId: 1,
+          DepartmentId: 1,
+          WheeltypeId: 1,
+        }));
+
+        navigate("/LHBSchedulePreInspection/details", {
+          state: {
+            WheelNo: wheelNo,
+          },
+        });
+      } else {
+        console.error("Error submitting form:", response.statusText);
       }
-    
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+
   };
 
   return (
-    <div className="component">
+    <div className="componentPreInspection">
       <h2
         style={{
           textAlign: "center",
@@ -189,10 +193,10 @@ function ReportDetails({
       </h2>
       <h2>Report Details For LHB Division Pre Inspection Form</h2>
 
-      <div className="page-border">
+      <div className="page-borderPreInspection">
         <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+          <div className="wheel-page-main-PreInspection-content">
+            <div className="PreInspectionrow-1">
               <div>
                 <label>
                   P.O.H Date:
@@ -254,7 +258,7 @@ function ReportDetails({
                 </div>
               )}
             </div>
-            <div className="row-2">
+            <div className="PreInspectionrow-2">
               <div>
                 <label>
                   Division Report:
@@ -319,7 +323,7 @@ function ReportDetails({
 
               </div>
             </div>
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               <div>
                 <label>Remark:</label>
                 <input
@@ -359,13 +363,13 @@ function ReportDetails({
             <div className="row-4"></div>
             <div></div>
             <div></div>
-            <div className="btn-container">
+            <div className="btn-containerPreInspection">
               <div>
                 <button type="submit" onClick={handleSubmit}>
                   Next
                 </button>
               </div>
-              
+
               <div>
                 <button
                   onClick={() => {

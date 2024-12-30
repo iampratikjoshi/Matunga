@@ -1,0 +1,53 @@
+.import-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(156, 39, 176, 0.2),
+    rgba(63, 81, 181, 0.2),
+    rgba(0, 150, 136, 0.2)
+  );
+  height: 100%;
+}
+
+.upload-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.upload-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.upload-input {
+  margin-bottom: 20px;
+}
+
+.dropdowns {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.dropdowns select {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.upload-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+}

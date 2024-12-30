@@ -39,7 +39,7 @@ function LHBDivisionPreInspectionForm({
       <hr></hr>
       <div className="containerLHB">
         <SidebarLHB />
-        <div className="content">
+        <div className="contentLHB">
           <div>
             <Routes>
               <Route

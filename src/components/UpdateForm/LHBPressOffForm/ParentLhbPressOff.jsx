@@ -35,9 +35,9 @@ function ParentLhbPressOff() {
     serviceablediscidnumber:"",
     Reason: "",
     PressedOffRemark: "",
-    SectionId: 1,
-    DepartmentId: 1,
-    WheeltypeId: 1,
+    SectionID: 1,
+    DepartmentID: 5,
+    WheeltypeID: 1,
     createdBy: "ADMIN",
     modifiedBy: "admin",
   });

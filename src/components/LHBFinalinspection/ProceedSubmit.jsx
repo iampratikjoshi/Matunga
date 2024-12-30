@@ -69,6 +69,12 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
   };
 
   const exportToExcel = async () => {
+    const workshopName = localStorage.getItem('selectedWorkshop') || 'Unknown Workshop';
+
+    const loginInfo = localStorage.getItem('loggedInUser')
+      ? `${localStorage.getItem('loggedInUser')}` : 'Unknown';
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleString();
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet("LHBFinalInspection");
 
@@ -112,11 +118,20 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       { header: "CTRB Make B", key: "CTRBMakeB", width: 10 },
       { header: "CTRB Status A", key: "CTRBStatusA", width: 10 },
       { header: "CTRB Status B", key: "CTRBStatusB", width: 10 },
+      { header: "CTRB Remark A", key: "CTRBRemarkA", width: 10 },
+      { header: "CTRB Remark B", key: "CTRBRemarkB", width: 10 },
+      { header: "CTRB Defect A", key: "CTRBDefectA", width: 10 },
+      { header: "CTRB Defect B", key: "CTRBDefectB", width: 10 },
+      { header: "CTRB Defect Name A", key: "CTRBDefectNameA", width: 10 },
+      { header: "CTRB Defect Name B", key: "CTRBDefectNameB", width: 10 },
       { header: "Refurbishment Details A", key: "RefurbishmentDetailsA", width: 10 },
       { header: "Refurbishment Details B", key: "RefurbishmentDetailsB", width: 10 },
       { header: "CTRB Remaining Life A", key: "CTRBRemainingLifeA", width: 10 },
       { header: "CTRB Remaining Life B", key: "CTRBRemainingLifeB", width: 10 },
       { header: "Wheel Tread UST", key: "WheelTreadUST", width: 10 },
+      { header: "Workshop Name", key: "workshopName", width: 10 },
+      { header: "Logged in as", key: "loginInfo", width: 10 },
+      { header: "Time of Export", key: "formattedDate", width: 10 },
 
     ];
 
@@ -159,11 +174,20 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "CTRB Make B",
       "CTRB Status A",
       "CTRB Status B",
+      "CTRB Defect A",
+      "CTRB Defect B",
+      "CTRB Defect Name A",
+      "CTRB Defect Name B",
+      "CTRB Remark A",
+      "CTRB Remark B",
       "Refurbishment Details A",
       "Refurbishment Details B",
       "CTRB Remaining Life A",
       "CTRB Remaining Life B",
       "Wheel Tread UST",
+      "Workshop Name",
+      "Logged in as",
+      "Time of Export",
     ];
 
     worksheet.getRow(2).values = [
@@ -178,6 +202,15 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "Jr. Oval B",
       "Jr. Tap A",
       "Jr. Tap B",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
       "",
       "",
       "",
@@ -240,6 +273,16 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
     worksheet.mergeCells("AN1:AN2");
     worksheet.mergeCells("AO1:AO2");
     worksheet.mergeCells("AP1:AP2");
+    worksheet.mergeCells("AQ1:AQ2");
+    worksheet.mergeCells("AR1:AR2");
+    worksheet.mergeCells("AS1:AS2");
+    worksheet.mergeCells("AT1:AT2");
+    worksheet.mergeCells("AU1:AU2");
+    worksheet.mergeCells("AV1:AV2");
+    worksheet.mergeCells("AW1:AW2");
+    worksheet.mergeCells("AX1:AX2");
+    worksheet.mergeCells("AY1:AY2");
+    
 
     // Apply styles to headers
     worksheet.getRow(1).font = { bold: true };
@@ -291,47 +334,56 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
     // Add data to worksheet
     worksheet.addRow({
       AxleNo: formDataFinal.AxleNo,
-      WheelSize: formDataFinal.WheelDiaA,
-      WheelDiaA: formDataFinal.WheelDiaB,
-      WheelDiaB: formDataFinal.WheelRG,
-      WheelRG: formDataFinal.WheelFLG,
-      // JournalSize: "", // Not used but included for layout
-      WheelFLG: formDataFinal.SizeA,
-      JournalSize: formDataFinal.SizeB,
-      SizeA: formDataFinal.OvalA,
-      SizeB: formDataFinal.OvalB,
-      OvalA: formDataFinal.TapA,
-      OvalB: formDataFinal.TapB,
-      TapA: formDataFinal.ShoulderSizeA,
-      TapB: formDataFinal.ShoulderSizeB,
-      ShoulderSizeA: formDataFinal.JrWaivinessA,
-      ShoulderSizeB: formDataFinal.JrWaivinessB,
-      JrWaivinessA: formDataFinal.DiscParticularA,
-      JrWaivinessB: formDataFinal.DiscParticularB,
-      DiscParticularA: formDataFinal.BDMake,
-      DiscParticularB: formDataFinal.BDSizeA,
-      BDMake: formDataFinal.BDSizeB,
-      BDSizeA: formDataFinal.EndHoleA,
-      BDSizeB: formDataFinal.EndHoleB,
-      EndHoleA: formDataFinal.MEPA,
-      EndHoleB: formDataFinal.MEPB,
-      MEPA: formDataFinal.FittingDt,
-      MEPB: formDataFinal.ECATest,
-      FittingDt: formDataFinal.InspectorName,
-      ECATest: formDataFinal.InspectorTicketNo,
-      InspectorName: formDataFinal.Shift,
-      InspectorTicketNo: formDataFinal.WheelNo,
-      Shift: formDataFinal.CTRBNumberA,
-      WheelNo: formDataFinal.CTRBNumberB,
-      CTRBNumberA: formDataFinal.CTRBMakeA,
-      CTRBNumberB: formDataFinal.CTRBMakeB,
-      CTRBMakeA: formDataFinal.CTRBStatusA,
-      CTRBMakeB: formDataFinal.CTRBStatusB,
-      CTRBStatusA: formDataFinal.RefurbishmentDetailsA,
-      CTRBStatusB: formDataFinal.RefurbishmentDetailsB,
-      RefurbishmentDetailsA: formDataFinal.CTRBRemainingLifeA,
-      RefurbishmentDetailsB: formDataFinal.CTRBRemainingLifeB,
-      CTRBRemainingLifeA: formDataFinal.WheelTreadUST,
+        WheelSize: formDataFinal.WheelDiaA,
+        WheelDiaA: formDataFinal.WheelDiaB,
+        WheelDiaB: formDataFinal.WheelRG,
+        WheelRG: formDataFinal.WheelFLG,
+        WheelFLG: formDataFinal.SizeA,
+        JournalSize: formDataFinal.SizeB,
+        SizeA: formDataFinal.OvalA,
+        SizeB: formDataFinal.OvalB,
+        OvalA: formDataFinal.TapA,
+        OvalB: formDataFinal.TapB,
+        TapA: formDataFinal.ShoulderSizeA,
+        TapB: formDataFinal.ShoulderSizeB,
+        ShoulderSizeA: formDataFinal.JrWaivinessA,
+        ShoulderSizeB: formDataFinal.JrWaivinessB,
+        JrWaivinessA: formDataFinal.DiscParticularA,
+        JrWaivinessB: formDataFinal.DiscParticularB,
+        DiscParticularA: formDataFinal.BDMake,
+        DiscParticularB: formDataFinal.BDSizeA,
+        BDMake: formDataFinal.BDSizeB,
+        BDSizeA: formDataFinal.EndHoleA,
+        BDSizeB: formDataFinal.EndHoleB,
+        EndHoleA: formDataFinal.MEPA,
+        EndHoleB: formDataFinal.MEPB,
+        MEPA: formDataFinal.USTName,
+        MEPB: formDataFinal.FittingDt,
+        USTName: formDataFinal.ECATest,
+        FittingDt: formDataFinal.InspectorName,
+        ECATest: formDataFinal.InspectorTicketNo,
+        InspectorName: formDataFinal.Shift,
+        InspectorTicketNo: formDataFinal.WheelNo,
+        Shift: formDataFinal.CTRBNumberA,
+        WheelNo: formDataFinal.CTRBNumberB,
+        CTRBNumberA: formDataFinal.CTRBMakeA,
+        CTRBNumberB: formDataFinal.CTRBMakeB,
+        CTRBMakeA: formDataFinal.CTRBStatusA,
+        CTRBMakeB: formDataFinal.CTRBStatusB,
+        CTRBStatusA: formDataFinal.RefurbishmentDetailsA,
+        CTRBStatusB: formDataFinal.RefurbishmentDetailsB,
+        RefurbishmentDetailsA: formDataFinal.CTRBDefectA,
+        RefurbishmentDetailsB: formDataFinal.CTRBDefectB,
+        CTRBDefectA: formDataFinal.CTRBDefectNameA,
+        CTRBDefectB: formDataFinal.CTRBDefectNameB,
+        CTRBDefectNameA: formDataFinal.CTRBRemarkA,
+        CTRBDefectNameB: formDataFinal.CTRBRemarkB,
+        CTRBRemarkA:formDataFinal.CTRBRemainingLifeA,
+        CTRBRemarkB:formDataFinal.CTRBRemainingLifeB,
+        CTRBRemainingLifeA:formDataFinal.WheelTreadUST,
+        CTRBRemainingLifeB: workshopName,
+        WheelTreadUST: loginInfo,
+        workshopName: formattedDate,
     });
 
     // Generate Excel file
@@ -381,6 +433,12 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         { content: "CTRB Make B", rowSpan: 2 },
         { content: "CTRB Status A", rowSpan: 2 },
         { content: "CTRB Status B", rowSpan: 2 },
+        { content: "CTRB Defect A", rowSpan: 2 },
+        { content: "CTRB Defect B", rowSpan: 2 },
+        { content: "CTRB Defect Name A", rowSpan: 2 },
+        { content: "CTRB Defect Name A B", rowSpan: 2 },
+        { content: "CTRB Remark A", rowSpan: 2 },
+        { content: "CTRB Remark B", rowSpan: 2 },
         { content: "Refurbishment Details A", rowSpan: 2 },
         { content: "Refurbishment Details B", rowSpan: 2 },
         { content: "CTRB Remaining Life A", rowSpan: 2 },
@@ -442,6 +500,14 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         formDataFinal.CTRBMakeB,
         formDataFinal.CTRBStatusA,
         formDataFinal.CTRBStatusB,
+
+        formDataFinal.CTRBDefectA,
+        formDataFinal.CTRBDefectB,
+        formDataFinal.CTRBDefectNameA,
+        formDataFinal.CTRBDefectNameB,
+        formDataFinal.CTRBRemarkA,
+        formDataFinal.CTRBRemarkB,
+
         formDataFinal.RefurbishmentDetailsA,
         formDataFinal.RefurbishmentDetailsB,
         formDataFinal.CTRBRemainingLifeA,
@@ -484,44 +550,50 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         1: { cellWidth: 18 },
         2: { cellWidth: 18 },
         3: { cellWidth: 18 },
-        4: { cellWidth: 20 },
-        5: { cellWidth: 20 },
-        6: { cellWidth: 20 },
-        7: { cellWidth: 20 },
-        8: { cellWidth: 20 },
-        9: { cellWidth: 20 },
-        10: { cellWidth: 20 },
-        11: { cellWidth: 20 },
-        12: { cellWidth: 20 },
-        13: { cellWidth: 20 },
+        4: { cellWidth: 16 },
+        5: { cellWidth: 16 },
+        6: { cellWidth: 16 },
+        7: { cellWidth: 16 },
+        8: { cellWidth: 16 },
+        9: { cellWidth: 16 },
+        10: { cellWidth: 16 },
+        11: { cellWidth: 16 },
+        12: { cellWidth: 16 },
+        13: { cellWidth: 16 },
         14: { cellWidth: 18 },
         15: { cellWidth: 18 },
         16: { cellWidth: 18 },
-        17: { cellWidth: 20 },
-        18: { cellWidth: 20 },
-        19: { cellWidth: 20 },
+        17: { cellWidth: 16 },
+        18: { cellWidth: 16 },
+        19: { cellWidth: 16 },
         20: { cellWidth: 18 },
         21: { cellWidth: 18 },
-        22: { cellWidth: 20 },
-        23: { cellWidth: 22 },
-        24: { cellWidth: 20 },
+        22: { cellWidth: 16 },
+        23: { cellWidth: 16 },
+        24: { cellWidth: 16 },
         25: { cellWidth: 22 },
         26: { cellWidth: 18 },
-        27: { cellWidth: 20 },
-        28: { cellWidth: 20 },
-        29: { cellWidth: 20 },
-        30: { cellWidth: 20 },
-        31: { cellWidth: 20 },
-        32: { cellWidth: 20 },
-        33: { cellWidth: 20 },
-        34: { cellWidth: 20 },
-        35: { cellWidth: 20 },
-        36: { cellWidth: 20 },
-        37: { cellWidth: 20 },
-        38: { cellWidth: 20 },
-        39: { cellWidth: 20 },
-        40: { cellWidth: 20 },
-        41: { cellWidth: 20 },
+        27: { cellWidth: 16 },
+        28: { cellWidth: 16 },
+        29: { cellWidth: 16 },
+        30: { cellWidth: 16 },
+        31: { cellWidth: 16 },
+        32: { cellWidth: 16 },
+        33: { cellWidth: 16 },
+        34: { cellWidth: 16 },
+        35: { cellWidth: 16 },
+        36: { cellWidth: 16 },
+        37: { cellWidth: 16 },
+        38: { cellWidth: 16 },
+        39: { cellWidth: 16 },
+        40: { cellWidth: 16 },
+        41: { cellWidth: 16 },
+        42: { cellWidth: 16 },
+        43: { cellWidth: 16 },
+        44: { cellWidth: 16 },
+        45: { cellWidth: 16 },
+        46: { cellWidth: 16 },
+        47: { cellWidth: 16 },
       },
       margin: { top: 20, left: 10, right: 10 }, // Adjusted margins
       didDrawPage: (data) => {
@@ -534,6 +606,32 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
             20
           );
         }
+        const workshopName = localStorage.getItem('selectedWorkshop') || 'Unknown Workshop';
+        const loginInfo = localStorage.getItem('loggedInUser')
+            ? `Logged in as: ${localStorage.getItem('loggedInUser')}`
+            : 'Logged in as: Unknown';
+
+        const SystemName = "Digital Workshop";
+        const pageSize = doc.internal.pageSize;
+        const pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth();
+        const pageHeight = pageSize.height
+          ? pageSize.height
+          : pageSize.getHeight();
+        doc.setFontSize(10);
+        const textWidth = doc.getTextWidth(workshopName, SystemName);
+        const xCenter = (pageWidth - textWidth) / 2;
+        doc.text(workshopName, xCenter, pageHeight - 20);
+        doc.text(SystemName, xCenter, pageHeight - 7);
+
+
+
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleString(); // Format date and time
+        doc.text(formattedDate, data.settings.margin.left, pageHeight - 10);
+
+
+
+        doc.text(loginInfo, 20, pageHeight - 35);
       },
     });
 
@@ -595,6 +693,12 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
       "CTRB Make B",
       "CTRB Status A",
       "CTRB Status B",
+      "CTRB Defect A",
+      "CTRB Defect B",
+      "CTRB Defect Name A",
+      "CTRB Defect Name B",
+      "CTRB Remark A",
+      "CTRB Remark B",
       "Refurbishment Details A",
       "Refurbishment Details B",
       "CTRB Remaining Life A",
@@ -642,6 +746,12 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
         formDataFinal.CTRBMakeB,
         formDataFinal.CTRBStatusA,
         formDataFinal.CTRBStatusB,
+        formDataFinal.CTRBDefectA,
+        formDataFinal.CTRBDefectB,
+        formDataFinal.CTRBDefectNameA,
+        formDataFinal.CTRBDefectNameB,
+        formDataFinal.CTRBRemarkA,
+        formDataFinal.CTRBRemarkB,
         formDataFinal.RefurbishmentDetailsA,
         formDataFinal.RefurbishmentDetailsB,
         formDataFinal.CTRBRemainingLifeA,
@@ -722,6 +832,12 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
               <th rowSpan="2">CTRB Make B</th>
               <th rowSpan="2">CTRB Status A</th>
               <th rowSpan="2">CTRB Status B</th>
+              <th rowSpan="2">CTRB Defect A</th>
+              <th rowSpan="2">CTRB Defect B</th>
+              <th rowSpan="2">CTRB Defect Name A</th>
+              <th rowSpan="2">CTRB Defect Name B</th>
+              <th rowSpan="2">CTRB Remark A</th>
+              <th rowSpan="2">CTRB Remark B</th>
               <th rowSpan="2">Refurbishment Details A</th>
               <th rowSpan="2">Refurbishment Details B</th>
               <th rowSpan="2">CTRB Remaining Life A</th>
@@ -781,6 +897,12 @@ const ProceedSubmitFinal = ({ formDataFinal, setFormDataFinal }) => {
               <td rowSpan="2">{formDataFinal.CTRBMakeB}</td>
               <td rowSpan="2">{formDataFinal.CTRBStatusA}</td>
               <td rowSpan="2">{formDataFinal.CTRBStatusB}</td>
+              <td rowSpan="2">{formDataFinal.CTRBDefectA}</td>
+              <td rowSpan="2">{formDataFinal.CTRBDefectB}</td>
+              <td rowSpan="2">{formDataFinal.CTRBDefectNameA}</td>
+              <td rowSpan="2">{formDataFinal.CTRBDefectNameB}</td>
+              <td rowSpan="2">{formDataFinal.CTRBRemarkA}</td>
+              <td rowSpan="2">{formDataFinal.CTRBRemarkB}</td>
               <td rowSpan="2">{formDataFinal.RefurbishmentDetailsA}</td>
               <td rowSpan="2">{formDataFinal.RefurbishmentDetailsB}</td>
               <td rowSpan="2">{formDataFinal.CTRBRemainingLifeA}</td>

@@ -93,6 +93,9 @@ function WheelsDiscAsideDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 3,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/parentedit/UpdateLHBPressOnForm/wheel_details");
@@ -110,12 +113,12 @@ function WheelsDiscAsideDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -123,10 +126,10 @@ function WheelsDiscAsideDetails({
       </h2>
       <h2>Wheel Disc A Side Details for PRESS-ON OF LHB WHEEL Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   VTL No.:
@@ -168,7 +171,7 @@ function WheelsDiscAsideDetails({
                 
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>
                   Operator Name:
@@ -212,7 +215,7 @@ function WheelsDiscAsideDetails({
                 
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Press-On Pressure in Ton:
@@ -255,11 +258,14 @@ function WheelsDiscAsideDetails({
                 
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+             <div></div>
+                        <div></div>
+                        <div></div>
+            <div className="btn-containerPressonoff">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <div>
                 <button className="back_btn" onClick={handleBack}>

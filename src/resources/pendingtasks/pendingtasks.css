@@ -1,3 +1,175 @@
+
+/* General Container Styles */
+.pending-container {
+  margin-right: -25px;
+  display: flex;
+  font-family: 'Helvetica Neue', sans-serif;
+  /* margin: 20px; */
+  padding: 30px;
+  background: linear-gradient(
+    to right,
+    rgba(156, 39, 176, 0.2),
+    rgba(63, 81, 181, 0.2),
+    rgba(0, 150, 136, 0.2)
+  );
+  /* border-radius: 12px; */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  color: #f0f0f0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.search-div-pending{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.search-div-pending > .search-container > label{
+  color: rgb(0, 0, 0);
+}
+
+/* Title */
+.report-title {
+  margin-right: -25px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff; /* White text for contrast */
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(45deg, #ff66b2, #9b59b6); /* Pink to Purple gradient */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px 20px; /* Adds some padding for better appearance */
+}
+
+/* Info Paragraph */
+.report-info {
+  font-size: 18px;
+  margin: 15px 0;
+  color: #ddd; /* Lighter gray for text */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle transparent background */
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-weight: 500;
+}
+
+.report-info strong {
+  font-weight: bold;
+}
+
+/* Table Container */
+.report-table-container {
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+/* Table Styles */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    rgba(156, 39, 176, 0.2),
+    rgba(63, 81, 181, 0.2),
+    rgba(0, 150, 136, 0.2)
+  );
+  overflow: hidden;
+}
+
+/* Table Header */
+.report-table th {
+  background-color: #2C3E50; /* Deep blue-gray for a classy feel */
+  color: #fff;
+  padding: 15px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  text-align: left;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Table Rows */
+.report-table td {
+  padding: 15px;
+  text-align: left;
+  color: #333;
+  font-size: 14px;
+}
+
+/* .report-table tr:nth-child(even) td {
+  background-color: #f7f7f7;
+}
+
+.report-table tr:hover td {
+  background-color: #f0f0f0;
+} */
+
+.report-table tr:first-child td {
+  border-top: 2px solid #2C3E50;
+}
+
+/* Table Borders */
+.report-table th, .report-table td {
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.report-table td:first-child, .report-table th:first-child {
+  border-left: none;
+}
+
+.report-table td:last-child, .report-table th:last-child {
+  border-right: none;
+}
+
+/* No Data Available */
+.no-data {
+  font-size: 18px;
+  color: #ccc;
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 500;
+}
+
+/* Loading Indicator */
+.report-loading {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Error Message */
+.report-error {
+  text-align: center;
+  color: #e74c3c;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -----------------------------------------------------------------------OLD-------------------------------------------------------- */
+
 .pending-tasks-container {
   display: flex;
   flex-direction: column;
@@ -52,6 +224,7 @@
 
 thead th {
   background-color: #3e3e3e;
+  border: 1px solid #0a0202;
   color: white;
   padding: 10px;
   text-align: center;
@@ -60,14 +233,15 @@ thead th {
 }
 
 tbody td {
+   border: 1px solid #0a0202;
   padding: 10px;
   text-align: center;
   /* text-align: left; */
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #807a7a;
 }
 
 tbody tr:hover {
-  background-color: #f1f1f1;
+  background-color: #b1afaf;
 }
 
 button {
@@ -102,6 +276,7 @@ button:hover {
   font-weight: 600;
   cursor: pointer;
   box-shadow: -14px 15px 9px -15px rgb(166, 165, 165);
+  color: black;
 }
 
 .tt h3 {
@@ -111,6 +286,7 @@ button:hover {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
+  color: white;
 }
 
 .search-div{

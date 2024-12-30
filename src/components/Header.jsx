@@ -18,7 +18,7 @@ function Header() {
         <img src={CompanyIcon} alt="Company Logo" className="logo" />
         <div className="mid-content">
           <div className="mid-content-A">
-            <div>
+            <div className="Screen768x1024header">
               <span>CR Carriage Repair Workshop - Matunga</span>
               <br />
               <span>Wheel Inspection Shop</span>

@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import api from "../Axios/AxiosConnection";
+import "../../resources/LHB/FinalInspectionForm/FinalInspection.css";
 
 function AxleDetails({
   formDataFinal,
@@ -46,7 +47,7 @@ function AxleDetails({
     }
   }, [wheelid, WheelNo]);
 
-  // Set the WheelNo in ShopSNo when the component loads
+  // Set the WheelNo in ShopSNo when the componentFinal loads
   useEffect(() => {
     if (wheelid) {
       // Fetch data from the Schedule Pre Inspection API using wheelid
@@ -125,7 +126,7 @@ function AxleDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentFinal">
       {/* dropdown here */}
       <h2
         style={{
@@ -139,10 +140,10 @@ function AxleDetails({
       </h2>
       <h2>Axle Details for LHB Final Inspection Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderFinal">
+        <div className="page-contentFinal">
+          <div className="wheel-page-main-final-content">
+            <div className="Finalrow-1">
               <div>
                 <label>Wheel No:</label>
                 <input
@@ -179,19 +180,19 @@ function AxleDetails({
                 </select>
               </div>
             </div>
-            <div className="row-2">
+            <div className="Finalrow-2">
               <div></div>
               <div></div>
             </div>
-            <div className="row-3">
+            <div className="Finalrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="row-3">
+            <div className="Finalrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+            <div className="btn-containerFinal">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button className="red_btn" onClick={handleCancel}>
                 Cancel

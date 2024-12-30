@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useDropzone } from "react-dropzone";
+import "../../resources/LHB/NewPreInspectionForm/newpreinspectionform.css";
 
 function BDAndCoachDetails({
   formData,
@@ -150,7 +151,7 @@ function BDAndCoachDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentPreInspection">
       <h2
         style={{
           textAlign: "center",
@@ -163,10 +164,10 @@ function BDAndCoachDetails({
       </h2>
       <h2>BD And COACH Details for LHB PRE Inspection Form</h2>
 
-      <div className="page-border">
+      <div className="page-borderPreInspection">
         <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+          <div className="wheel-page-main-PreInspection-content">
+            <div className="PreInspectionrow-1">
               <div>
                 <label>BD Make:</label>
                 {/* <input
@@ -213,7 +214,7 @@ function BDAndCoachDetails({
                 />
               </div>
             </div>
-            <div className="row-2">
+            <div className="PreInspectionrow-2">
               <div>
                 <label>BD Thickness A:</label>
                 <input
@@ -236,7 +237,7 @@ function BDAndCoachDetails({
               </div>
             </div>
 
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               <div>
                 <label>BD Defect:</label>
                 <select
@@ -281,12 +282,12 @@ function BDAndCoachDetails({
                 </div>
               )}
             </div>
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               <div></div>
               <div></div>
             </div>
 
-            <div className="btn-container">
+            <div className="btn-containerPreInspection">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button onClick={handleBack}>Back</button>
               <button className="red_btn" onClick={handleCancel}>

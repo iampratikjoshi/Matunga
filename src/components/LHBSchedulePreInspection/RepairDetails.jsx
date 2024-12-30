@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { postData } from "../Axios/AxiosConnection";
+import "../../resources/LHB/NewPreInspectionForm/newpreinspectionform.css";
 
 function RepairDetails({
   formData,
@@ -82,7 +83,7 @@ function RepairDetails({
     e.preventDefault();
 
     try {
-      const response = await postData("/api/data", formData);
+      const response = await postData("/prelhb/data", formData);
       console.log(response.AxleNumber);
       if (response) {
         const data = await response; // Get JSON from the response
@@ -108,7 +109,7 @@ function RepairDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentPreInspection">
       <h2
         style={{
           textAlign: "center",
@@ -121,10 +122,10 @@ function RepairDetails({
       </h2>
       <h2>Repair Details for LHB PRE Inspection Form</h2>
 
-      <div className="page-border">
+      <div className="page-borderPreInspection">
         <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1" style={{ columnGap: "33px" }}>
+          <div className="wheel-page-main-PreInspection-content">
+            <div className="PreInspectionrow-1" style={{ columnGap: "33px" }}>
               <div>
                 <label>Type of Repair:</label>
                 <select
@@ -168,8 +169,28 @@ function RepairDetails({
                   placeholder="Enter Matunga Remark"
                 />
               </div>
+              <div>
+                <label>In Date:</label>
+                <input
+                  type="date"
+                  name="createdDate"
+                  value={
+                    formData.createdDate
+                      ? formData.createdDate
+                      : new Date().toISOString().split("T")[0]
+                  } // Default to current date if null
+                  onChange={(e) => {
+                    const { name, value } = e.target;
+                    setFormData((prev) => ({
+                      ...prev,
+                      [name]: value ? value : new Date().toISOString().split("T")[0],
+                    }));
+                  }}
+                />
+              </div>
+
             </div>
-            <div className="row-2">
+            <div className="PreInspectionrow-2">
               <div>
                 <label>Inspector Ticket No.:</label>
                 <input
@@ -215,7 +236,7 @@ function RepairDetails({
                 </div>
               </div>
             </div>
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               <div>
                 <label>Inspector Name:</label>
                 <input
@@ -237,12 +258,12 @@ function RepairDetails({
                 />
               </div>
             </div>
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               <div></div>
               <div></div>
             </div>
 
-            <div className="btn-container">
+            <div className="btn-containerPreInspection">
               <div>
                 <button type="submit" onClick={handleSubmit}>
                   Submit

@@ -28,7 +28,7 @@ const ProceedSubmitPressOff = ({
           }, {}),
           createdBy: "ADMIN",
           SectionID: 1,
-          DepartmentID: 2,
+          DepartmentID: 5,
           WheeltypeID: 1,
           modifiedBy: "admin",
         }));
@@ -58,7 +58,7 @@ const ProceedSubmitPressOff = ({
           }, {}),
           createdBy: "ADMIN",
           SectionID: 1,
-          DepartmentID: 2,
+          DepartmentID: 5,
           WheeltypeID: 1,
           modifiedBy: "admin",
         }));

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../../resources/LHB/preInspectionform/preInspectionform.css";
+import "../../resources/LHB/NewPreInspectionForm/newpreinspectionform.css";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
 
@@ -29,8 +29,8 @@ function SidebarLHB() {
 
   return (
     <div>
-      <div className="sidebar1">
-        <ul className="sidebarlist">
+      <div className="sidebar1PreInspection">
+        <ul className="sidebarlistPreInspection">
           {SidebarData.map((val, key) => {
             return (
               <li

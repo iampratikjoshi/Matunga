@@ -100,6 +100,9 @@ function WheelDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 1,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/parentedit/UpdateLHBDivisionPreInspectionForm/wheel_details");
@@ -115,7 +118,7 @@ function WheelDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentPreInspection">
       <h2
         style={{
           textAlign: "center",
@@ -128,10 +131,10 @@ function WheelDetails({
       </h2>
       <h2> Wheel Details For LHB Division Pre Inspection Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPreInspection">
+        <div className="page-contentPreInspection">
+          <div className="wheel-page-main-PreInspection-content">
+            <div className="PreInspectionrow-1">
               <div>
                 <label>
                   Wheel No:
@@ -164,20 +167,20 @@ function WheelDetails({
                 
               </div>
             </div>
-            <div className="row-2">
+            <div className="PreInspectionrow-2">
               <div>
                 
               </div>
             </div>
 
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="row-3"></div>
-            <div className="row-3"></div>
-            <div className="row-3"></div>
-            <div className="btn-container">
+            <div className="PreInspectionrow-3"></div>
+            <div className="PreInspectionrow-3"></div>
+            <div className="PreInspectionrow-3"></div>
+            <div className="btn-containerPreInspection">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button className="red_btn" onClick={handleCancel}>
                 Cancel

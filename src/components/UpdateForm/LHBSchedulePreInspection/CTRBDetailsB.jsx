@@ -234,7 +234,7 @@ function CTRBDetailsB({
   };
 
   return (
-    <div className="component">
+    <div className="componentPreInspection">
       <h2
         style={{
           textAlign: "center",
@@ -247,10 +247,10 @@ function CTRBDetailsB({
       </h2>
       <h2>CTRB B Details for LHB PRE Inspection Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPreInspection">
+        <div className="page-contentPreInspection">
+          <div className="wheel-page-main-PreInspection-content">
+            <div className="PreInspectionrow-1">
               <div>
                 <label>CTRB No. B:</label>
                 <input
@@ -287,7 +287,7 @@ function CTRBDetailsB({
                 </div>
               )} */}
             </div>
-            <div className="row-2">
+            <div className="PreInspectionrow-2">
               <div>
                 <label>CTRB Make B:</label>
                 <select
@@ -327,7 +327,7 @@ function CTRBDetailsB({
                 />
               </div>
             </div>
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               <div>
                 <label>CTRB Remark B:</label>
                 <select
@@ -370,7 +370,7 @@ function CTRBDetailsB({
                 </select>
               </div>
             </div>
-            <div className="row-3">
+            <div className="PreInspectionrow-3">
               {ctrbdefectB === "yes" && (
                 <div>
                   <label>Choose CTRB Defect Name B:</label>
@@ -398,7 +398,7 @@ function CTRBDetailsB({
               )}
             </div>
 
-            <div className="btn-container">
+            <div className="btn-containerPreInspection">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button onClick={handleBack}>Back</button>
               <button className="red_btn" onClick={handleCancel}>

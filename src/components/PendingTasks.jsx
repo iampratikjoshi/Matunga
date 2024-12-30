@@ -15,7 +15,11 @@ function PendingTasks() {
     // Dispatch: true,
     "Press-On": true,
   });
+  const [selectedWheelType, setSelectedWheelType] = useState("LHB"); // Store the selected wheel type
 
+  const [emuData, setEmuData] = useState([]);
+  const [icfData, setIcfData] = useState([]);
+  const [vbData, setVbData] = useState([]);
   const [preInspectionData, setPreInspectionData] = useState([]);
   const [filteredPreInspectionData, setFilteredPreInspectionData] = useState(
     []
@@ -35,98 +39,127 @@ function PendingTasks() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchPreInspectionData = async () => {
-      try {
-        const response = await api.get(
-          "/summaryreport/pendingdataof/preinspectiontable"
-        );
-        console.log("Pre Inspection response: ", response.data);
-        setPreInspectionData(response.data);
-      } catch (error) {
-        console.error("Error fetching Pre-Inspection data:", error);
-      }
-    };
+    if (selectedWheelType === "LHB") {
+      const fetchPreInspectionData = async () => {
+        try {
+          const response = await api.get(
+            "/summaryreport/pendingdataof/preinspectiontable"
+          );
+          console.log("Pre Inspection response: ", response.data);
+          setPreInspectionData(response.data);
+        } catch (error) {
+          console.error("Error fetching Pre-Inspection data:", error);
+        }
+      };
 
-    fetchPreInspectionData();
-  }, []);
+      fetchPreInspectionData();
 
-  useEffect(() => {
-    const fetchPressOffData = async () => {
-      try {
-        const response = await api.get(
-          "/summaryreport/heavyrepair/pressofftable"
-        );
-        console.log("Press Off response: ", response.data);
-        setPressOffData(response.data);
-      } catch (error) {
-        console.error("Error fetching press-off data:", error);
-      }
-    };
+      const fetchPressOffData = async () => {
+        try {
+          const response = await api.get(
+            "/summaryreport/heavyrepair/pressofftable"
+          );
+          console.log("Press Off response: ", response.data);
+          setPressOffData(response.data);
+        } catch (error) {
+          console.error("Error fetching press-off data:", error);
+        }
+      };
 
-    fetchPressOffData();
-  }, []);
+      fetchPressOffData();
 
-  useEffect(() => {
-    const finalInspectionData = async () => {
-      try {
-        const response = await api.get(
-          "/summaryreport/normalrepair/finalinspectiontable"
-        );
-        console.log("final inspection response: ", response);
-        setfinalInspectionData(response.data);
-      } catch (error) {
-        console.error("Error fetching final-Inspection data: ", error);
-      }
-    };
+      const finalInspectionData = async () => {
+        try {
+          const response = await api.get(
+            "/summaryreport/normalrepair/finalinspectiontable"
+          );
+          console.log("final inspection response: ", response);
+          setfinalInspectionData(response.data);
+        } catch (error) {
+          console.error("Error fetching final-Inspection data: ", error);
+        }
+      };
 
-    finalInspectionData();
+      finalInspectionData();
 
-    const PressOnApprovedfinalInspectionData = async () => {
-      try {
-        const response = await api.get(
-          "/summaryreport/dataComingFromPressOn/finalinspectiontable"
-        );
-        console.log("Press On Appr. final inspection response: ", response);
-        setfinalInspectionData2(response.data);
-      } catch (error) {
-        console.error("Error fetching final-Inspection data: ", error);
-      }
-    };
+      const PressOnApprovedfinalInspectionData = async () => {
+        try {
+          const response = await api.get(
+            "/summaryreport/dataComingFromPressOn/finalinspectiontable"
+          );
+          console.log("Press On Appr. final inspection response: ", response);
+          setfinalInspectionData2(response.data);
+        } catch (error) {
+          console.error("Error fetching final-Inspection data: ", error);
+        }
+      };
 
-    PressOnApprovedfinalInspectionData();
-  }, []);
+      PressOnApprovedfinalInspectionData();
 
-  useEffect(() => {
-    const pressOnPendingData = async () => {
-      try {
-        const response = await api.get(
-          "/summaryreport/pendingdataof/pressontable"
-        );
-        console.log("pending data for press on response: ", response);
-        setpressOnPendingData(response.data);
-      } catch (error) {
-        console.error("Error fetching  press on pending data: ", error);
-      }
-    };
+      const pressOnPendingData = async () => {
+        try {
+          const response = await api.get(
+            "/summaryreport/pendingdataof/pressontable"
+          );
+          console.log("pending data for press on response: ", response);
+          setpressOnPendingData(response.data);
+        } catch (error) {
+          console.error("Error fetching  press on pending data: ", error);
+        }
+      };
 
-    pressOnPendingData();
-  }, []);
+      pressOnPendingData();
 
-  useEffect(() => {
-    const dispatchPendingData = async () => {
-      try {
-        const response = await api.get(
-          "/summaryreport/pendingdataof/dispatchtable"
-        );
-        console.log("pending data for dispatch response: ", response);
-        setdispatchPendingData(response.data);
-      } catch (error) {
-        console.error("Error fetching  dispatch pending data: ", error);
-      }
-    };
+      const dispatchPendingData = async () => {
+        try {
+          const response = await api.get(
+            "/summaryreport/pendingdataof/dispatchtable"
+          );
+          console.log("pending data for dispatch response: ", response);
+          setdispatchPendingData(response.data);
+        } catch (error) {
+          console.error("Error fetching  dispatch pending data: ", error);
+        }
+      };
 
-    dispatchPendingData();
-  }, []);
+      dispatchPendingData();
+    } else if (selectedWheelType === "EMU") {
+      const emuData = async () => {
+        try {
+          const response = await api.get("/emu/summaryreport/combineddata");
+          setEmuData(response.data);
+        } catch (error) {
+          console.error("Error fetching data: ", error);
+        }
+      };
+
+      emuData();
+    } else if (selectedWheelType === "ICF") {
+      const icfData = async () => {
+        try {
+          const response = await api.get("/icf/summaryreport/combineddata");
+          console.log("icf Data response: ", response.data);
+          setIcfData(response.data);
+        } catch (error) {
+          console.error("Error fetching data: ", error);
+        }
+      };
+
+      icfData();
+    } else if (selectedWheelType === "VB") {
+      const vbData = async () => {
+        try {
+          const response = await api.get("/vb/summaryreport/combineddata");
+          console.log("vb Data response: ", response.data);
+          setVbData(response.data);
+        } catch (error) {
+          console.error("Error fetching data: ", error);
+        }
+      };
+
+      vbData();
+    }
+  }, [selectedWheelType]);
 
   useEffect(() => {
     // if (pressOnPendingData.length && pressOffData.length) {
@@ -224,7 +257,12 @@ function PendingTasks() {
   };
 
   // Helper function to filter data based on search term
-   const filteredDataBySearch = (data) => {
+  const filteredDataBySearch = (data) => {
+    if (!data || data.length === 0) {
+      // If data is not available or is empty, return an empty array
+      return [];
+    }
+
     return data.filter((item) => {
       // Check if search term matches
       const matchesSearchTerm = searchTerm
@@ -270,10 +308,10 @@ function PendingTasks() {
 
   return (
     <>
-      <div className="pending-tasks-container">
-        <div className="search-div">
+      <div className="report-container">
+        <div className="search-div-pending">
           <div className="search-container">
-            <label>Seach By Wheel No. :</label>
+            <label>Wheel No. :</label>
             <input
               type="text"
               placeholder="Search by Wheel No."
@@ -290,7 +328,7 @@ function PendingTasks() {
             />
           </div>
           <div className="search-container">
-            <label>To Date:</label>
+            <label>To Date :</label>
             <input
               type="date"
               value={toDate}
@@ -298,19 +336,22 @@ function PendingTasks() {
             />
           </div>
           <div className="search-container">
-            <label>Search By Wheel Type :</label>
-            <select>
-              <option value="">Search By Wheel Type</option>
-              <option>LHB</option>
-              <option>ICF</option>
-              <option>EMU</option>
-              <option>VB</option>
+            <label>Wheel Type :</label>
+            <select
+              value={selectedWheelType}
+              onChange={(e) => setSelectedWheelType(e.target.value)}
+            >
+              <option value="">Select Wheel Type</option>
+              <option value="LHB">LHB</option>
+              <option value="ICF">ICF</option>
+              <option value="EMU">EMU</option>
+              <option value="VB">VB</option>
             </select>
           </div>
         </div>
-        <h1>Jobs Pending For LHB</h1>
+        <h1 className="report-title">Jobs Pending</h1>
 
-        <div className="cont">
+        <div className="pending-container">
           <div className="sidebar2">
             <div>
               <ul className="sidebarlist2">
@@ -331,12 +372,15 @@ function PendingTasks() {
               <div className="vertical"></div>
             </div>
           </div>
-          <div className="tt">
+          <div className="report-table-container">
             {selectedFields.All && <></>}
-            {selectedFields["Pre-Inspection"] &&
+            {selectedWheelType === "LHB" &&
+              selectedFields["Pre-Inspection"] &&
               filteredDataBySearch(preInspectionData).length > 0 && (
-                <div className="tred-turning">
-                  <h3>Wheels Pending for Pre-Inspection</h3>
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for LHB Pre-Inspection
+                  </h3>
                   <table>
                     <thead>
                       <tr>
@@ -374,10 +418,13 @@ function PendingTasks() {
                   </table>
                 </div>
               )}
-            {selectedFields["Press-Off"] &&
+            {selectedWheelType === "LHB" &&
+              selectedFields["Press-Off"] &&
               filteredDataBySearch(filteredPressOffData).length > 0 && (
-                <div className="tred-turning">
-                  <h3>Wheels Pending for Press-Off</h3>
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for LHB Press-Off
+                  </h3>
                   <table>
                     <thead>
                       <tr>
@@ -417,12 +464,57 @@ function PendingTasks() {
                   </table>
                 </div>
               )}
-            {selectedFields["Final Inspection"] &&
+
+            {selectedWheelType === "LHB" &&
+              selectedFields["Press-On"] &&
+              filteredDataBySearch(filteredPressOnData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for LHB Press-On
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(filteredPressOnData).map((item) => (
+                        <tr key={item.WheelID}>
+                          <td>{item.WheelNo}</td>
+                          <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                          <td>
+                            <button
+                              onClick={() =>
+                                navigate("/LHBPressOnForm/wheel_details", {
+                                  state: {
+                                    WheelNo: item.WheelNo,
+                                    wheelid: item.WheelID,
+                                  },
+                                })
+                              }
+                            >
+                              Proceed
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedWheelType === "LHB" &&
+              selectedFields["Final Inspection"] &&
               (filteredDataBySearch(filteredfinalInspectionData).length > 0 ||
                 filteredDataBySearch(filteredfinalInspectionData2).length >
-                0) && (
-                <div className="wheel-assembly">
-                  <h3>Wheels Pending for Final Inspection</h3>
+                  0) && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for LHB Final Inspection
+                  </h3>
                   <table>
                     <thead>
                       <tr>
@@ -480,10 +572,13 @@ function PendingTasks() {
                   </table>
                 </div>
               )}
-            {selectedFields["Dispatch"] &&
+            {selectedWheelType === "LHB" &&
+              selectedFields["Dispatch"] &&
               filteredDataBySearch(dispatchPendingData).length > 0 && (
-                <div className="roller-bearing">
-                  <h3>Wheels Pending for Dispatch</h3>
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for LHB Dispatch
+                  </h3>
                   <table>
                     <thead>
                       <tr>
@@ -520,10 +615,16 @@ function PendingTasks() {
                   </table>
                 </div>
               )}
-            {selectedFields["Press-On"] &&
-              filteredDataBySearch(filteredPressOnData).length > 0 && (
-                <div className="press-on">
-                  <h3>Wheels Pending for Press-On</h3>
+
+            {selectedFields.All && <></>}
+            {selectedWheelType === "EMU" &&
+              selectedFields["Pre-Inspection"] &&
+              filteredDataBySearch(emuData.preinspectionPendingData).length >
+                0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for EMU Pre-Inspection
+                  </h3>
                   <table>
                     <thead>
                       <tr>
@@ -533,19 +634,23 @@ function PendingTasks() {
                       </tr>
                     </thead>
                     <tbody>
-                      {filteredDataBySearch(filteredPressOnData).map((item) => (
+                      {filteredDataBySearch(
+                        emuData.preinspectionPendingData
+                      ).map((item) => (
                         <tr key={item.WheelID}>
                           <td>{item.WheelNo}</td>
                           <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
                           <td>
                             <button
                               onClick={() =>
-                                navigate("/LHBPressOnForm/wheel_details", {
-                                  state: {
-                                    WheelNo: item.WheelNo,
-                                    wheelid: item.WheelID,
-                                  },
-                                })
+                                navigate(
+                                  "/emuschedulepreinspectionform/w1_details",
+                                  {
+                                    state: {
+                                      WheelNo: item.WheelNo,
+                                    },
+                                  }
+                                )
                               }
                             >
                               Proceed
@@ -553,6 +658,721 @@ function PendingTasks() {
                           </td>
                         </tr>
                       ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            {selectedWheelType === "EMU" &&
+              selectedFields["Press-Off"] &&
+              filteredDataBySearch(emuData.heavyRepairData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for EMU Press-Off
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(emuData.heavyRepairData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            {/* <td>{item.WheelStageEnrtyTimestamp}</td> */}
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/emupressoffForm/identification_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedWheelType === "EMU" &&
+              selectedFields["Press-On"] &&
+              filteredDataBySearch(emuData.pressOnPendingData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for EMU Press-On
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(emuData.pressOnPendingData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate("/emu_presson/emu_details", {
+                                    state: {
+                                      WheelNo: item.WheelNo,
+                                      WheelID: item.WheelID,
+                                    },
+                                  })
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedWheelType === "EMU" &&
+              selectedFields["Final Inspection"] &&
+              (filteredDataBySearch(emuData.normalRepairData).length > 0 ||
+                filteredDataBySearch(emuData.pressOnApprovedData).length >
+                  0) && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for EMU Final Inspection
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(emuData.normalRepairData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/emufinalinspection/wheel_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                      {filteredDataBySearch(emuData.pressOnApprovedData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/emufinalinspection/wheel_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            {selectedWheelType === "EMU" &&
+              selectedFields["Dispatch"] &&
+              filteredDataBySearch(emuData.dispatchPendingData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for EMU Dispatch
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(emuData.dispatchPendingData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/wheelsdispatchrecordform/divisionorcarshed_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedFields.All && <></>}
+            {selectedWheelType === "ICF" &&
+              selectedFields["Pre-Inspection"] &&
+              filteredDataBySearch(icfData.preinspectionPendingData).length >
+                0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for ICF Pre-Inspection
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(
+                        icfData.preinspectionPendingData
+                      ).map((item) => (
+                        <tr key={item.WheelID}>
+                          <td>{item.WheelNo}</td>
+                          <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                          <td>
+                            <button
+                              onClick={() =>
+                                navigate(
+                                  "/icfschedulepreinspectionform/w1_details",
+                                  {
+                                    state: {
+                                      WheelNo: item.WheelNo,
+                                    },
+                                  }
+                                )
+                              }
+                            >
+                              Proceed
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            {selectedWheelType === "ICF" &&
+              selectedFields["Press-Off"] &&
+              filteredDataBySearch(icfData.heavyRepairData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for ICF Press-Off
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(icfData.heavyRepairData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            {/* <td>{item.WheelStageEnrtyTimestamp}</td> */}
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/icfpressoffForm/identification_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedWheelType === "ICF" &&
+              selectedFields["Press-On"] &&
+              filteredDataBySearch(icfData.pressOnPendingData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for ICF Press-On
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(icfData.pressOnPendingData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate("/icf_presson/icf_details", {
+                                    state: {
+                                      WheelNo: item.WheelNo,
+                                      WheelID: item.WheelID,
+                                    },
+                                  })
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedWheelType === "ICF" &&
+              selectedFields["Final Inspection"] &&
+              (filteredDataBySearch(icfData.normalRepairData).length > 0 ||
+                filteredDataBySearch(icfData.pressOnApprovedData).length >
+                  0) && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for ICF Final Inspection
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(icfData.normalRepairData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/icffinalinspection/wheel_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                      {filteredDataBySearch(icfData.pressOnApprovedData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/icffinalinspection/wheel_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            {selectedWheelType === "ICF" &&
+              selectedFields["Dispatch"] &&
+              filteredDataBySearch(icfData.dispatchPendingData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for ICF Dispatch
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(icfData.dispatchPendingData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/wheelsdispatchrecordform/divisionorcarshed_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedFields.All && <></>}
+            {selectedWheelType === "VB" &&
+              selectedFields["Pre-Inspection"] &&
+              filteredDataBySearch(vbData.preinspectionPendingData).length >
+                0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for VB Pre-Inspection
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(
+                        vbData.preinspectionPendingData
+                      ).map((item) => (
+                        <tr key={item.WheelID}>
+                          <td>{item.WheelNo}</td>
+                          <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                          <td>
+                            <button
+                              onClick={() =>
+                                navigate(
+                                  "/VBSchedulePreInspection/details",
+                                  {
+                                    state: {
+                                      WheelNo: item.WheelNo,
+                                    },
+                                  }
+                                )
+                              }
+                            >
+                              Proceed
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            {selectedWheelType === "VB" &&
+              selectedFields["Press-Off"] &&
+              filteredDataBySearch(vbData.heavyRepairData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for VB Press-Off
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(vbData.heavyRepairData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            {/* <td>{item.WheelStageEnrtyTimestamp}</td> */}
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/VBPressOffForm/identification_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedWheelType === "VB" &&
+              selectedFields["Press-On"] &&
+              filteredDataBySearch(vbData.pressOnPendingData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for ICF Press-On
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(vbData.pressOnPendingData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate("/VBPressOnForm/wheel_details", {
+                                    state: {
+                                      WheelNo: item.WheelNo,
+                                      WheelID: item.WheelID,
+                                    },
+                                  })
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            {selectedWheelType === "VB" &&
+              selectedFields["Final Inspection"] &&
+              (filteredDataBySearch(vbData.normalRepairData).length > 0 ||
+                filteredDataBySearch(vbData.pressOnApprovedData).length >
+                  0) && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for ICF Final Inspection
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(vbData.normalRepairData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/VBfinalinspection/axle_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                      {filteredDataBySearch(vbData.pressOnApprovedData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/VBfinalinspection/axle_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            {selectedWheelType === "VB" &&
+              selectedFields["Dispatch"] &&
+              filteredDataBySearch(vbData.dispatchPendingData).length > 0 && (
+                <div className="report-table">
+                  <h3 className="report-title">
+                    Wheels Pending for ICF Dispatch
+                  </h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Wheel No.</th>
+                        <th>Date of Entry</th>
+                        <th>Proceed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataBySearch(vbData.dispatchPendingData).map(
+                        (item) => (
+                          <tr key={item.WheelID}>
+                            <td>{item.WheelNo}</td>
+                            <td>{formatDate(item.WheelStageEnrtyTimestamp)}</td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  navigate(
+                                    "/wheelsdispatchrecordform/divisionorcarshed_details",
+                                    {
+                                      state: {
+                                        WheelNo: item.WheelNo,
+                                        wheelid: item.WheelID,
+                                      },
+                                    }
+                                  )
+                                }
+                              >
+                                Proceed
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
                     </tbody>
                   </table>
                 </div>

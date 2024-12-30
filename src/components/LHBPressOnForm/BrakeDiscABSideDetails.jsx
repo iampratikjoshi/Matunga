@@ -12,7 +12,7 @@ function BrakeDiscABSideDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  
+
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -45,7 +45,7 @@ function BrakeDiscABSideDetails({
     console.log(formDataPressOnLHB);
   };
 
- 
+
 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
@@ -54,6 +54,9 @@ function BrakeDiscABSideDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 3,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/LHBPressOnForm/wheel_details");
@@ -128,10 +131,10 @@ function BrakeDiscABSideDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    
-      onNextStep();
-      navigate("/LHBPressOnForm/brakediscBBoresize_details");
-    
+
+    onNextStep();
+    navigate("/LHBPressOnForm/brakediscBBoresize_details");
+
   };
 
   const handleBack = () => {
@@ -139,12 +142,12 @@ function BrakeDiscABSideDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -152,10 +155,10 @@ function BrakeDiscABSideDetails({
       </h2>
       <h2>Brake Disc A & B Side Details for PRESS-ON OF LHB WHEEL Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   A B' BD Seat Size:
@@ -167,7 +170,7 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter B' BD Seat Size"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -181,12 +184,12 @@ function BrakeDiscABSideDetails({
                   placeholder="Enter Allow"
                   disabled
                 />
-                
+
               </div>
               <div>
                 <label>
                   A Press-On Pressure in Ton:
-                  
+
                 </label>
                 <input
                   type="text"
@@ -195,10 +198,10 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Press-On Pressure in Ton"
                 />
-               
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>
                   A BD Thickness:
@@ -210,12 +213,12 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter BD Thickness"
                 />
-               
+
               </div>
               <div>
                 <label>
                   A Brake Disc make & Particulars:
-                  
+
                 </label>
                 <input
                   type="text"
@@ -224,10 +227,10 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Brake Disc make & Particulars"
                 />
-                
+
               </div>
             </div>
-            <div className="row-1">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   B B' BD Seat Size:
@@ -239,7 +242,7 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter B' BD Seat Size"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -253,12 +256,12 @@ function BrakeDiscABSideDetails({
                   placeholder="Enter Allow"
                   disabled
                 />
-                
+
               </div>
               <div>
                 <label>
                   B Press-On Pressure in Ton:
-                  
+
                 </label>
                 <input
                   type="text"
@@ -267,10 +270,10 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Press-On Pressure in Ton"
                 />
-                
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>
                   B BD Thickness:
@@ -282,12 +285,12 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter BD Thickness"
                 />
-                
+
               </div>
               <div>
                 <label>
                   B Brake Disc make & Particulars:
-                  
+
                 </label>
                 <input
                   type="text"
@@ -296,10 +299,13 @@ function BrakeDiscABSideDetails({
                   onChange={handleChange}
                   placeholder="Enter Brake Disc make & Particulars"
                 />
-               
+
               </div>
             </div>
-            <div className="btn-container">
+             <div></div>
+            <div></div>
+            <div></div>
+            <div className="btn-containerPressonoff">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <div>
                 <button className="back_btn" onClick={handleBack}>

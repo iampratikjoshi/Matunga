@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { postData } from "../Axios/AxiosConnection";
 import { useDropzone } from "react-dropzone";
 import { IoCloudUploadOutline } from "react-icons/io5";
+import "../../resources/LHB/FinalInspectionForm/FinalInspection.css";
 
 function GeneralInspection({
   formDataFinal,
@@ -98,7 +99,7 @@ function GeneralInspection({
   const navigate = useNavigate();
 
   return (
-    <div className="component">
+    <div className="componentFinal">
       <h2
         style={{
           textAlign: "center",
@@ -111,10 +112,10 @@ function GeneralInspection({
       </h2>
       <h2>General Inspection for LHB Final Inspection Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderFinal">
+        <div className="page-contentFinal">
+          <div className="wheel-page-main-final-content">
+            <div className="Finalrow-1">
               <div>
                 <label>UST Name:</label>
                 <input
@@ -145,7 +146,7 @@ function GeneralInspection({
                 />
               </div>
             </div>
-            <div className="row-2">
+            <div className="Finalrow-2">
               <div>
                 <label>ECA Test:</label>
                 {/* <input
@@ -188,7 +189,7 @@ function GeneralInspection({
                 />
               </div>
             </div>
-            <div className="row-3">
+            <div className="Finalrow-3">
               <div className="file-container">
                 <span style={{ fontWeight: "bold", marginBottom: "5px" }}>
                   Upload Image:
@@ -214,12 +215,31 @@ function GeneralInspection({
                   )}
                 </div>
               </div>
+              <div>
+                <label>In Date:</label>
+                <input
+                  type="date"
+                  name="createdDate"
+                  value={
+                    formDataFinal.createdDate
+                      ? formDataFinal.createdDate
+                      : new Date().toISOString().split("T")[0]
+                  } // Default to current date if null
+                  onChange={(e) => {
+                    const { name, value } = e.target;
+                    setFormDataFinal((prev) => ({
+                      ...prev,
+                      [name]: value ? value : new Date().toISOString().split("T")[0],
+                    }));
+                  }}
+                />
+              </div>
             </div>
-            <div className="row-3">
+            <div className="Finalrow-3">
               <div></div>
               <div></div>
             </div>
-            <div className="btn-container">
+            <div className="btn-containerFinal">
               <div>
                 <button type="submit" onClick={handleSubmit}>
                   Submit

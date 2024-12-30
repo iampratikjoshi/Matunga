@@ -12,7 +12,7 @@ function BrakeDiscASideBoreSizeDetails({
 }) {
   const [fileName, setFileName] = useState("No file chosen");
   const [preview, setPreview] = useState(null);
-  
+
   const [file, setFile] = useState(null); // Single file state
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*", // Accept only image files
@@ -93,7 +93,7 @@ function BrakeDiscASideBoreSizeDetails({
   //   newErrors.WheelDiscBWheelDiscParticulars = "Wheel Disc Particulars must be alphanumeric.";
   // }
 
-  
+
 
   const handleCancel = () => {
     setFormDataPressOnLHB((prevFormData) => ({
@@ -102,6 +102,9 @@ function BrakeDiscASideBoreSizeDetails({
         return acc;
       }, {}),
       createdBy: "ADMIN",
+      SectionId: 1,
+      DepartmentId: 3,
+      WheeltypeId: 1,
     }));
     onResetStep();
     navigate("/LHBPressOnForm/wheel_details");
@@ -110,10 +113,10 @@ function BrakeDiscASideBoreSizeDetails({
   const navigate = useNavigate();
 
   const saveandcontinue = () => {
-    
-      onNextStep();
-      navigate("/LHBPressOnForm/brakediscA_Bdetails");
-    
+
+    onNextStep();
+    navigate("/LHBPressOnForm/brakediscA_Bdetails");
+
   };
 
   const handleBack = () => {
@@ -121,12 +124,12 @@ function BrakeDiscASideBoreSizeDetails({
   };
 
   return (
-    <div className="component">
+    <div className="componentPressonoff">
       <h2
         style={{
           textAlign: "center",
           backgroundColor: "black",
-          color: "white",
+          color: "black",
           opacity: 1,
         }}
       >
@@ -134,10 +137,10 @@ function BrakeDiscASideBoreSizeDetails({
       </h2>
       <h2>Brake Disc A Bore Size Details for PRESS-ON OF LHB WHEEL Form</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
               <div>
                 <label>
                   Top X-axis:
@@ -149,7 +152,7 @@ function BrakeDiscASideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Top X-axis"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -162,10 +165,10 @@ function BrakeDiscASideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Top Y-axis"
                 />
-                
+
               </div>
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>
                   Middle X-axis:
@@ -177,7 +180,7 @@ function BrakeDiscASideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Middle X-axis"
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -190,10 +193,10 @@ function BrakeDiscASideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Middle Y-axis"
                 />
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Lower X-axis:
@@ -205,7 +208,7 @@ function BrakeDiscASideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Lower X-axis"
                 />
-                
+
               </div>
 
               <div>
@@ -219,10 +222,10 @@ function BrakeDiscASideBoreSizeDetails({
                   onChange={handleChange}
                   placeholder="Enter Lower Y-axis"
                 />
-                
+
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
               <div>
                 <label>
                   Avg X-axis:
@@ -235,7 +238,7 @@ function BrakeDiscASideBoreSizeDetails({
                   placeholder="Enter Avg X-axis"
                   disabled
                 />
-                
+
               </div>
               <div>
                 <label>
@@ -249,10 +252,15 @@ function BrakeDiscASideBoreSizeDetails({
                   placeholder="Enter Avg Y-axis"
                   disabled
                 />
-                
+
               </div>
+          
+            <div></div>
             </div>
-            <div className="btn-container">
+            <div></div>
+            <div></div>
+            
+            <div className="btn-containerPressonoff">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <div>
                 <button className="back_btn" onClick={handleBack}>

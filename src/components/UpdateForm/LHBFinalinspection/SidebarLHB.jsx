@@ -32,7 +32,7 @@ function SidebarLHB() {
   return (
     <div>
       <div className="sidebar1">
-        <ul className="sidebarlist">
+        <ul className="sidebarlistFinal">
           {SidebarData.map((val, key) => {
             return (
               <li

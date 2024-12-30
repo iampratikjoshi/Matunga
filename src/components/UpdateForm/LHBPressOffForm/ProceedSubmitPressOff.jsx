@@ -30,9 +30,9 @@ const ProceedSubmitPressOff = ({
             return acc;
           }, {}),
           createdBy: "ADMIN",
-          SectionId: 1,
-          DepartmentId: 2,
-          WheeltypeId: 1,
+          SectionID: 1,
+          DepartmentID: 5,
+          WheeltypeID: 1,
         }));
   
         // Navigate only after successful update
@@ -63,9 +63,9 @@ const ProceedSubmitPressOff = ({
             return acc;
           }, {}),
           createdBy: "ADMIN",
-          SectionId: 1,
-          DepartmentId: 2,
-          WheeltypeId: 1,
+          SectionID: 1,
+          DepartmentID: 5,
+          WheeltypeID: 1,
         }));
   
         // Navigate only after successful update

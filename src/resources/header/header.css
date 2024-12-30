@@ -97,6 +97,7 @@
     border: none;
     text-align: center;
     height: 35px;
+    font-size: small;
 }
 
 .react-autoql-notifications-button-container.no-badge 
@@ -118,4 +119,37 @@
 
 .end-content-2 p{
     font-weight: 700;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+.logo {
+    width: 143px;
+    height: 98px;
+    /* background-color: #b8d5ef; */
+}
+.mid-content-A span {
+    font-size: x-small;
+    font-weight: 800;
+    /* margin-bottom: 4px; */
+}
+.Screen768x1024header{
+    text-align: center;
+    font-weight: 700;
+    margin-top: 29px;
+    font-size: 10px;
+}
+
+.mid-content-A {
+    margin-top: -6px;
+    text-align: center;
+    font-weight: 700;
+}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    .Screen768x1024header {
+        text-align: center;
+        font-weight: 800;
+        margin-top: 23px;
+        font-size: 15px;
+    }
 }

@@ -200,7 +200,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
       }, {}),
       createdBy: "ADMIN",
       SectionID: 1,
-      DepartmentID: 2,
+      DepartmentID: 5,
       WheeltypeID: 1,
     }));
     onResetStep();
@@ -217,15 +217,14 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
   };
 
   return (
-    <div className="component">
-      <h2 style={{ textAlign: "center", backgroundColor: "black", color: "white", opacity: 1 }}>PRESS-OFF OF LHB WHEEL FORM </h2>
+    <div className="componentPressonoff">
+      <h2 style={{ textAlign: "center", backgroundColor: "black", color: "black", opacity: 1 }}>PRESS-OFF OF LHB WHEEL FORM </h2>
       <h2> Wheel Condition Details For PRESS-OFF OF LHB WHEEL FORM</h2>
 
-      <div className="page-border">
-        <div className="page-contentLHB">
-
-          <div className="wheel-page-main-content">
-            <div className="row-1">
+      <div className="page-borderPressonoff">
+        <div className="page-contentPressOnoff">
+          <div className="wheel-page-main-pressonoff-content">
+            <div className="Pressonoffrow-1">
 
 
               <div>
@@ -284,7 +283,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
               )}
 
             </div>
-            <div className="row-2">
+            <div className="Pressonoffrow-2">
               <div>
                 <label>Brake Disc Condition</label>
                 <input
@@ -332,7 +331,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
 
               </div>
             </div>
-            <div className="row-3">
+            <div className="Pressonoffrow-3">
 
               <div>
                 <label>Wheel Disc Condition:</label>
@@ -399,7 +398,7 @@ function WheelConditionDetails({ formDataPressOffLHB, setFormDataPressOffLHB, on
                 </div>
               )}
             </div>
-            <div className="btn-container">
+            <div className="btn-containerPressonoff">
               <button onClick={saveandcontinue}>Save & Continue</button>
               <button className="back_btn" onClick={handleBack}>Back</button>
               <button className="red_btn" onClick={handleCancel}>

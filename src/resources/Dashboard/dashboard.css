@@ -11,20 +11,214 @@
   height: 100%;
 }
 
-.filter-bar {
+/* .filter-bar {
   gap: 10px;
-  display: flex;
-  /* justify-content: space-between; */
-  width: 98%;
-  /* background-color: #1f4a7d; */
-  background-color: #fff;
-  /* padding: 10px; */
-  margin-bottom: 20px;
+  display: flex; */
+/* justify-content: space-between; */
+/* width: 98%; */
+/* background-color: #1f4a7d; */
+/* background-color: #fff; */
+/* padding: 10px; */
+/* margin-bottom: 20px;
   border-radius: 8px;
   display: flex;
   gap: 10px;
   border: 2px solid #ddd;
   margin-top: 10px;
+} */
+
+.filter-bar {
+  width: 98%;
+  margin-bottom: 20px;
+  margin-top: 10px;
+
+  /* Grid layout */
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* grid-cols-1 */
+  gap: 1.5rem; /* gap-6 */
+
+  /* Gradient background with purple, blue, and teal */
+  background: linear-gradient(
+    to right,
+    rgba(156, 39, 176, 0.2),
+    rgba(63, 81, 181, 0.2),
+    rgba(0, 150, 136, 0.2)
+  );
+
+  /* Glassmorphic effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Subtle border with transparency */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+
+  /* Box shadow for depth */
+  box-shadow: 0 8px 32px 0 rgba(156, 39, 176, 0.15),
+    0 4px 8px 0 rgba(63, 81, 181, 0.1), 0 4px 8px 0 rgba(0, 150, 136, 0.1);
+
+  /* Padding for internal spacing */
+  padding: 15px;
+
+  /* Ensure crisp edges and smooth transitions */
+  overflow: visible; /* Allow overflow for dropdowns and date pickers */
+  transition: all 0.3s ease;
+  position: relative; /* For proper positioning of child elements */
+  z-index: 1; /* Ensure stacking order */
+}
+
+/* Optional: Hover effect */
+.filter-bar:hover {
+  box-shadow: 0 12px 40px 0 rgba(156, 39, 176, 0.2),
+    0 6px 12px 0 rgba(63, 81, 181, 0.15), 0 6px 12px 0 rgba(0, 150, 136, 0.15);
+}
+
+/* Responsive grid layout */
+@media (min-width: 768px) {
+  /* md */
+  .filter-bar {
+    grid-template-columns: repeat(12, 1fr); /* md:grid-cols-12 */
+  }
+}
+
+/* iPad Pro 1024x1366 (Portrait mode) */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+  .filter-bar {
+    grid-template-columns: repeat(
+      8,
+      1fr
+    ); /* Use 8-column grid for portrait mode */
+  }
+  
+}
+
+/* iPad Pro 1024x1366 (Landscape mode) */
+@media (min-width: 1366px) and (orientation: landscape) {
+  .filter-bar {
+    grid-template-columns: repeat(
+      12,
+      1fr
+    ); /* Use 12-column grid for landscape mode */
+  }
+}
+
+/* Medium screens: Tablet size (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .filter-bar {
+    grid-template-columns: repeat(
+      6,
+      1fr
+    ); /* 6-column grid for medium screens */
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  /* Adjust breakpoint as needed */
+  .filter-bar {
+    grid-template-columns: repeat(2, 1fr); /* Create two equal-width columns */
+    grid-template-rows: repeat(
+      2,
+      auto
+    ); /* Create two rows with automatic height */
+  }
+
+  .DateRange:first-of-type, /* Target the "Department" section */
+  .filter-container {
+    /* Target the "Section" section */
+    grid-row: 2; /* Place them on the second row */
+  }
+
+  .DateRange:first-of-type {
+    grid-column: 1; /* Place "Department" in the first column */
+  }
+
+  .filter-container {
+    grid-column: 2; /* Place "Section" in the second column */
+  }
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .filter-bar {
+    width: 90%; /* Adjust width as needed */
+    height: auto; /* Or a specific height if desired */
+    /* Add other styles to adjust layout for iPad Pro */
+  }
+  
+}
+
+@media (max-width: 1366px) and (max-height: 768px) {
+  .filter-bar {
+    /* Add your desired styles here */
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* Adjust minmax values as needed */
+    grid-auto-flow: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Or other desired alignment */
+  }
+}
+
+.Section {
+  margin: 5px;
+  width: 15.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 25px;
+  margin-left: 12px;
+}
+
+.DateRange {
+  margin: 5px;
+  width: 15.6rem;
+  position: relative; /* Ensure dropdowns are positioned properly */
+  z-index: 2; /* Higher stacking order to appear above other elements */
+  margin-right: 25px;
+  margin-left: 12px;
+}
+
+.DateRange input,
+.DateRange select {
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 14px);
+  border: 2px solid #e0e0e0;
+  border-radius: clamp(6px, 1vw, 8px);
+  font-size: clamp(0.875rem, 1.5vw, 0.95rem);
+  transition: all 0.3s ease;
+  background-color: white;
+  box-sizing: border-box;
+  z-index: 2; 
+}
+
+/* Style for labels */
+.dashlabel {
+  margin-top: inherit;
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: rgba(255, 255, 255, 0.8); /* text-white/80 */
+  margin-bottom: 0.5rem; /* mb-2 */
+  padding: 0.25rem 0.5rem; /* px-2 py-1 */
+  background-color: rgba(0, 0, 0, 0.6); /* bg-black/60 */
+  backdrop-filter: blur(4px); /* backdrop-blur-sm */
+  border-radius: 0.375rem; /* rounded-md */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+}
+
+/* Fix for dropdown or date picker position */
+.DateRange .datepicker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 3; /* Ensure dropdown is above everything */
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
 }
 
 .filter {
@@ -62,7 +256,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 10px;
-  margin-left: -25px;
+  margin-left: -19px;
 }
 
 .filter-box:hover {
@@ -87,11 +281,11 @@
 }
 
 #date-range {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 140px;
-  margin-top: 22px;
+  width: 100%;
+  padding: 0.5rem 0.75rem; /* px-3 py-2 */
+  border: 1px solid #d1d5db; /* border border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
+  margin-top: 5px;
 }
 
 .from-label,
@@ -100,10 +294,10 @@
 }
 
 .date-input {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 140px;
+  width: 100%; /* w-full */
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem; /* px-3 py-2 pr-10 */
+  border: 1px solid #d1d5db; /* border border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
   margin-top: 22px;
   cursor: pointer;
   background-image: url(/src/assets/calendar.png);
@@ -132,15 +326,14 @@
 }
 
 .sidebar:hover {
-  min-width: 13%;
+  min-width: 15%;
   /* z-index: 1000; */
 }
 
-#department {
+/* #department {
   margin-top: 28px;
   background: #fff;
   border: 1px solid #ccc;
-  /* margin-top: 22px; */
   margin-left: -15px;
   background: #fff;
   border: 1px solid #ccc;
@@ -161,6 +354,31 @@
   white-space: nowrap;
   position: relative;
   color: #000;
+} */
+
+#department {
+  margin-top: 5px; /* Adjust spacing from the element above */
+  width: 100%; /* Ensure full-width alignment */
+  padding: 0.5rem 0.75rem; /* Consistent padding */
+  border: 1px solid #d1d5db; /* Soft border */
+  border-radius: 0.5rem; /* Rounded corners */
+
+  /* Visual improvements */
+  background: #fff; /* Ensure a clean white background */
+  background-image: url(/src/assets/down.png); /* Dropdown arrow */
+  background-repeat: no-repeat;
+  background-position: right 5px center; /* Align dropdown icon */
+  background-size: 10px 10px;
+
+  /* Text appearance */
+  font-weight: 400; /* Normal font weight */
+  color: #000; /* Black text color */
+  text-overflow: ellipsis; /* Handle overflow text with ellipsis */
+  white-space: nowrap; /* Prevent text wrapping */
+
+  /* Positioning and overflow adjustments */
+  position: relative;
+  overflow: hidden;
 }
 
 /* To hide scrollbar in case of overflow */
@@ -168,7 +386,7 @@
   display: none;
 }
 
-#section {
+/* #section {
   margin-top: 22px;
   margin-left: -15px;
   background: #fff;
@@ -178,7 +396,6 @@
   border-radius: 3px;
   padding: 1px 0 4px;
   font-weight: 400;
-  /* background-image: url(/src/Components/Assets/down.png); */
   background-image: url(/src/assets/down.png);
   background-repeat: no-repeat;
   background-position: right 5px center;
@@ -190,6 +407,31 @@
   white-space: nowrap;
   position: relative;
   color: #000;
+} */
+
+#section {
+  margin-top: 5px; /* Adjust spacing from the element above */
+  width: 100%; /* Ensure full-width alignment */
+  padding: 0.5rem 0.75rem; /* Consistent padding */
+  border: 1px solid #d1d5db; /* Soft border */
+  border-radius: 0.5rem; /* Rounded corners */
+
+  /* Visual improvements */
+  background: #fff; /* Ensure a clean white background */
+  background-image: url(/src/assets/down.png); /* Dropdown arrow */
+  background-repeat: no-repeat;
+  background-position: right 5px center; /* Align dropdown icon */
+  background-size: 10px 10px;
+
+  /* Text appearance */
+  font-weight: 400; /* Normal font weight */
+  color: #000; /* Black text color */
+  text-overflow: ellipsis; /* Handle overflow text with ellipsis */
+  white-space: nowrap; /* Prevent text wrapping */
+
+  /* Positioning and overflow adjustments */
+  position: relative;
+  overflow: hidden;
 }
 
 /* To hide scrollbar in case of overflow */
@@ -197,7 +439,7 @@
   display: none; /* Chrome, Safari */
 }
 
-#stage {
+/* #stage {
   margin-top: 22px;
   margin-left: -15px;
   background: #fff;
@@ -218,13 +460,38 @@
   white-space: nowrap;
   position: relative;
   color: #000;
+} */
+
+#stage {
+  margin-top: 5px; /* Adjust spacing from the element above */
+  width: 100%; /* Ensure full-width alignment */
+  padding: 0.5rem 0.75rem; /* Consistent padding */
+  border: 1px solid #d1d5db; /* Soft border */
+  border-radius: 0.5rem; /* Rounded corners */
+
+  /* Visual improvements */
+  background: #fff; /* Ensure a clean white background */
+  background-image: url(/src/assets/down.png); /* Dropdown arrow */
+  background-repeat: no-repeat;
+  background-position: right 5px center; /* Align dropdown icon */
+  background-size: 10px 10px;
+
+  /* Text appearance */
+  font-weight: 400; /* Normal font weight */
+  color: #000; /* Black text color */
+  text-overflow: ellipsis; /* Handle overflow text with ellipsis */
+  white-space: nowrap; /* Prevent text wrapping */
+
+  /* Positioning and overflow adjustments */
+  position: relative;
+  overflow: hidden;
 }
 
 #stage::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
 
-.dropdown-options {
+/* .dropdown-options {
   position: absolute;
   top: 85%;
   left: 0;
@@ -233,9 +500,36 @@
   border: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   width: 155px;
-  /* max-height: 150px; */
   overflow-y: auto;
   scrollbar-width: none;
+} */
+
+.dropdown-options {
+  position: absolute;
+  top: 85%;
+  left: 0;
+  z-index: 1000;
+
+  /* Layout and styling changes */
+  width: 100%; /* Matches the input's width */
+  padding: 0.5rem 0.75rem; /* Matches input padding */
+  border: 1px solid #d1d5db; /* Matches input border */
+  border-radius: 0.5rem; /* Rounded corners */
+  margin-top: 5px; /* Matches input margin */
+
+  /* Visual enhancements */
+  background-color: white; /* Keep dropdown white for contrast */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Add depth with shadow */
+
+  /* Scrollable content */
+  max-height: 150px; /* Restrict height if necessary */
+  overflow-y: auto; /* Allow scrolling */
+  scrollbar-width: none; /* Hide scrollbar on Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar on IE and Edge */
+}
+
+.dropdown-options::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on Webkit browsers */
 }
 
 .summary-boxes {
@@ -270,7 +564,7 @@
 .summary-box h3 {
   font-size: 14px;
   margin-bottom: 5px;
-  margin-left: 7px;
+  margin-left: 0px;
   margin-top: 1px;
   color: #fff;
   text-transform: uppercase;
@@ -289,11 +583,45 @@
 }
 
 .box2 {
-  background: linear-gradient(145deg, #53b3cc, #5a54cc);
+  /* Gradient background */
+  background: linear-gradient(to right, #3b82f6, #2563eb); /* Blue gradient */
+
+  /* Padding for internal spacing */
+  padding: 1.5rem; /* Equivalent to p-6 in Tailwind */
+
+  /* Rounded corners */
+  border-radius: 0.75rem; /* Equivalent to rounded-xl in Tailwind */
+
+  /* Text styling */
+  color: white; /* Equivalent to text-white in Tailwind */
+
+  /* Box shadow for depth */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+
+  /* Smooth transition for hover effects */
+  transition: box-shadow 0.3s ease-in-out; /* transition-shadow */
+}
+
+.box2:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* hover:shadow-xl */
 }
 
 .box3 {
-  background: linear-gradient(145deg, #53b3cc, #5a54cc);
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.75rem; /* rounded-xl */
+  color: white; /* text-white */
+  background: linear-gradient(
+    to right,
+    #10b981,
+    #059669
+  ); /* from-emerald-500 to-emerald-600 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  transition: box-shadow 0.3s ease; /* transition-shadow */
+}
+
+.box3:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* hover:shadow-xl */
 }
 
 .box4 {
@@ -332,6 +660,14 @@
   margin: 0;
   font-size: 12px;
   color: #d6dddc;
+  cursor: pointer;
+}
+
+.react-datepicker__input-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: -20px;
 }
 
 .number > p {
@@ -378,6 +714,21 @@
 }
 .workflow-step {
   /* position: relative; */
+  background: linear-gradient(
+    to right,
+    rgba(156, 39, 176, 0.2),
+    rgba(63, 81, 181, 0.2),
+    rgba(0, 150, 136, 0.2)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(156, 39, 176, 0.15),
+    0 4px 8px 0 rgba(63, 81, 181, 0.1), 0 4px 8px 0 rgba(0, 150, 136, 0.1);
+  padding: 15px;
+  overflow: visible;
+  transition: all 0.3s ease;
 }
 
 /* .workflow-step h4 {
@@ -520,14 +871,136 @@
   height: 295px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1366px) {
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  .Section {
+    margin: 5px;
+    width: 15.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 25px;
+    margin-left: 114px;
+  }
+
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 73px;
+    margin-left: -140px;
+  }
+  .inspection-items {
+    position: absolute;
+    right: -3px;
+    bottom: -4px;
+    display: grid
+;
+    grid-template-columns: repeat(2, max-content);
+    gap: 10px;
+}
+}
+
+@media screen and (max-width: 1024px) {
   .sidebar {
     min-width: 3%;
     /* max-width: 18%; */
   }
 
   .sidebar:hover {
-    min-width: 15%;
+    min-width: 18%;
+    /* z-index: 1000; */
+  }
+
+  .filter-bar {
+    display: grid;
+    grid-template-columns: 185px 395px 175px 0px;
+    height: 215px;
+    width: 95%;
+  }
+
+  .page-content {
+    width: 100%;
+  }
+
+  .sidebar-content .train {
+    display: flex;
+    margin-left: 20px;
+    flex-direction: column;
+    row-gap: 22px;
+    font-weight: 700;
+  }
+
+  .number > p {
+    margin-left: 140px;
+    /* font-size: 35px;
+    font-weight: bold;
+    margin-top: -36px;
+    color: #fff; */
+  }
+
+  .charts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 200px;
+  }
+
+  .barChart {
+    padding-top: 62px;
+    width: 95%;
+    height: 295px;
+    margin-bottom: 10px;
+    padding-left: 185px;
+  }
+
+  .pieChart {
+    width: 95%;
+    height: 350px;
+    margin-bottom: 10px;
+    padding-left: 300px;
+  }
+
+  .radarChart {
+    padding-left: 300px;
+    width: 95%;
+    height: 350px;
+  }
+
+  .barChart canvas {
+    width: 95%;
+  }
+  #barChart {
+    box-sizing: border-box;
+    display: block;
+    height: 295px;
+    width: 880px;
+  }
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1366px) and (max-height: 768px) {
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0;
+    margin-left: -19px;
+  }
+
+  .sidebar {
+    min-width: 3%;
+    /* max-width: 18%; */
+  }
+  .sidebar_titles {
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+  }
+
+  .sidebar:hover {
+    min-width: 16%;
     /* z-index: 1000; */
   }
 
@@ -553,12 +1026,11 @@
     /* background-color: #fcfcfc; */
   }
 
- 
-
   .sidebar-content a {
     color: #fcfcfc; /* White color for the links */
     text-decoration: none; /* Remove underline */
     /* font-weight: 600;  */
+    width: max-content;
   }
 
   .sidebar-content .train {
@@ -605,22 +1077,82 @@
   }
 
   .filter {
+    grid-column: span 3; /* md:col-span-3 */
     color: #000;
     font-size: 16px;
     font-weight: bold;
-    /* margin-top: 10px; */
-    /* margin-left: 22px; */
     border-radius: 4px;
-    /* width: 50%; */
     display: flex;
     flex-direction: column;
   }
 
+  /* .filter-container {
+        display: flex;
+        justify-content: space-between;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 81px;
+        margin-left: 125px;
+    } */
+
+  .DateRange input,
+  .DateRange select {
+    width: 100%;
+    padding: clamp(10px, 1.5vw, 14px);
+    border: 2px solid #e0e0e0;
+    border-radius: clamp(6px, 1vw, 8px);
+    font-size: clamp(0.875rem, 1.5vw, 0.95rem);
+    transition: all 0.3s ease;
+    background-color: white;
+    box-sizing: border-box;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 1366px) and (max-height: 768px) {
+    .filter-bar {
+      display: grid; /* Enable grid layout */
+      grid-template-columns: repeat(
+        3,
+        1fr
+      ); /* Create two equal-width columns */
+    }
+
+    .DateRange, /* Target all DateRange elements */
   .filter-container {
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: flex-start;
-    gap: 0px;
+      /* Target the filter-container */
+      grid-column: span 1; /* Make these elements span across both columns */
+    }
+
+    .Section {
+      /* Target the Section element */
+      grid-column: span 1; /* Make this element span across both columns */
+      grid-row: 1; /* Place this element in the second row */
+    }
+  }
+
+  .DateRange {
+    margin: 5px;
+    width: 15.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 51px;
+    margin-left: 12px;
+  }
+
+  .Section {
+    /* margin: 5px;
+    width: 15.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 25px;
+    margin-left: 110px; */
+    margin: 5px;
+    width: 15.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 25px;
+    margin-left: 11px;
   }
 
   .summary-boxes {
@@ -684,8 +1216,8 @@
     flex-direction: row-reverse; */
   }
 
-  .header-login-dropdown1{
-    height: 35px;
+  .header-login-dropdown1 {
+    height: 44px;
   }
 
   #sankeyChart {
@@ -734,42 +1266,542 @@
     /* height: 350px; */
   }
 }
+@media screen and (min-width: 1600px) {
+  .DateRange {
+    input[type="text"],
+    select,
+    input[type="Date"] {
+      /* width: 100%; */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+      width: 204px;
+      margin-top: inherit;
+    }
+    margin: 5px;
+    width: 12.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 18px;
+    margin-left: 7px;
+  }
 
-@media screen and (max-width: 1024px) {
   .sidebar {
     min-width: 3%;
     /* max-width: 18%; */
   }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .Section {
+    margin: 5px;
+    width: 12.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 11px;
+    margin-left: 52px;
+}
+.STAGE768x1024 {
+  margin: 5px;
+  width: 10.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 21px;
+  margin-left: -126px;
+}
+.filter-bar {
+  display: grid;
+  grid-template-columns: 185px 395px 175px 0px;
+  height: 215px;
+  width: 95%;
+}
+.DEPT768x1024{
+  margin: 5px;
+  width: 13.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 25px;
+  margin-left: 12px;
+}
+.FROM768x1024 {
+  margin: 5px;
+  width: 12.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 15px;
+  margin-left: 68px;
+}
+.TO768x1024 {
+  margin: 5px;
+  width: 12.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 15px;
+  margin-left: 2px;
+}
+.DateRange768x1024 {
+  margin: 5px;
+  width: 13.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 25px;
+  margin-left: 12px;
+}
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: -1px;
+  margin-left: -20px;
+}
+.summary-box {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  width: 40%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  color: white;
+  font-family: "Arial", sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+.barChart {
+  padding-top: 62px;
+  width: 77%;
+  height: 295px;
+  margin-bottom: 10px;
+  padding-left: 115px;
+}
+.pieChart {
+  width: 64%;
+  height: 350px;
+  margin-bottom: 10px;
+  padding-left: 213px;
+}
+.sidebar {
+  min-width: 3%;
+  /* max-width: 18%; */
+  height: 187.5vh;
+}
+.radarChart {
+  padding-left: 208px;
+  width: 64.5%;
+  height: 350px;
+}
+}
 
-  .sidebar:hover {
-    min-width: 18%;
-    /* z-index: 1000; */
+@media only screen and (min-width: 1180px) and (max-height: 820px) and (orientation: landscape) {
+  .DateRange768x1024 {
+    margin: 5px;
+    width: 9.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 25px;
+    margin-left: 12px;
+}
+.FROM768x1024 {
+  margin: 5px;
+  width: 9.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 15px;
+  margin-left: -141px;
+}
+.TO768x1024 {
+  margin: 5px;
+  width: 9.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 15px;
+  margin-left: -67px;
+}
+.DEPT768x1024 {
+  margin: 5px;
+  width: 9.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 25px;
+  margin-left: -7px;
+}
+.Section {
+  margin: 5px;
+  width: 9.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 11px;
+  margin-left: -20px;
+}
+.STAGE768x1024 {
+  margin: 5px;
+  width: 9.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 21px;
+  margin-left: -9px;
+}
+.summary-box {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  width: 44%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  color: white;
+  font-family: "Arial", sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+.charts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 200px;
+}
+.barChart {
+  padding-top: 62px;
+  width: 71%;
+  height: 295px;
+  margin-bottom: 10px;
+  padding-left: 279px;
+}
+.pieChart {
+  width: 64%;
+  height: 350px;
+  margin-bottom: 10px;
+  padding-left: 359px;
+}
+.radarChart{
+  padding: 134px;
+padding-left: 355px;
+width: 54%;
+height: 375px;
+}
+#radarChart{
+    box-sizing: border-box;
+    display: block;
+    height: 461px;
+    width: 450px;
+}
+.sidebar {
+  min-width: 3%;
+  /* max-width: 18%; */
+  height: 252vh;
+}
+
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .Section {
+      margin: 5px;
+      width: 14.6rem;
+      position: relative;
+      z-index: 2;
+      margin-right: 11px;
+      margin-left: 111px;
   }
-
-  .filter-bar {
-    display: grid;
-    grid-template-columns: 185px 395px 175px 0px;
-    height: 215px;
-    width: 100%;
+  .STAGE768x1024 {
+    margin: 5px;
+    width: 13.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 21px;
+    margin-left: 28px;
+}
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 116px;
+  margin-left: 55px;
+}
+.FROM768x1024 {
+  margin: 5px;
+  width: 12.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 15px;
+  margin-left: 68px;
+}
+.TO768x1024 {
+  margin: 5px;
+  width: 12.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 15px;
+  margin-left: 2px;
+}
+.barChart {
+  padding-top: 62px;
+  width: 77%;
+  height: 295px;
+  margin-bottom: 10px;
+  padding-left: 177px;
+}
+.pieChart {
+  width: 64%;
+  height: 350px;
+  margin-bottom: 10px;
+  padding-left: 303px;
+}
+.radarChart {
+  padding-left: 299px;
+  width: 64.5%;
+  height: 350px;
+}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  .sidebar {
+      min-width: 3%;
+      /* max-width: 18%; */
+      height: 251vh;
   }
-
-  .page-content {
-    width: 100%;
+  .radarChart {
+      padding-left: 296px;
+      width: 64.5%;
+      height: 350px;
   }
-
-  .sidebar-content .train {
+  .pieChart {
+      width: 64%;
+      height: 350px;
+      margin-bottom: 10px;
+      padding-left: 298px;
+  }
+  .barChart {
+      padding-top: 62px;
+      width: 77%;
+      height: 295px;
+      margin-bottom: 10px;
+      padding-left: 170px;
+  }
+  .DEPT768x1024 {
+      margin: 5px;
+      width: 10.6rem;
+      position: relative;
+      z-index: 2;
+      margin-right: 25px;
+      margin-left: 8px;
+  }
+  .Section {
+        margin: 5px;
+        width: 10.6rem;
+        position: relative;
+        z-index: 2;
+        margin-right: 11px;
+        margin-left: -2px;
+  }
+  .STAGE768x1024 {
+    margin: 5px;
+    width: 10.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 21px;
+    margin-left: 4px;
+  }
+  .DateRange768x1024 {
+      margin: 5px;
+      width: 9.6rem;
+      position: relative;
+      z-index: 2;
+      margin-right: 25px;
+      margin-left: 12px;
+  }
+  input[type="text"], select, input[type="Date"] {
+      /* width: 100%; */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+      width: 267px;
+  }
+  .FROM768x1024 {
+    margin: 5px;
+    width: 10.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 15px;
+    margin-left: 129px;
+  }
+  .TO768x1024 {
+    margin: 5px;
+    width: 10.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 15px;
+    margin-left: -41px;
+  }
+  /* .sidebar1PreInspection {
+    height: 100%;
+    width: 23px;
     display: flex;
-    margin-left: 20px;
-    flex-direction: column;
-    row-gap: 22px;
-    font-weight: 700;
-  }
+    justify-content: space-between;
+} */
+.sidebarlistPreInspection {
+  list-style-type: none;
+  padding: 0%;
+  /* display: none; */
+}
+.wheel-page-main-PreInspection-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 30px);
+  overflow-x: scroll;
+}
+.sidebar1PreInspection {
+  height: 100%;
+  width: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.charts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 200px;
+}
+.barChart {
+  padding-bottom: 74px;
+  padding-top: 62px;
+  width: 75%;
+  height: 295px;
+  margin-bottom: 10px;
+  padding-left: 280px;
+}
+.pieChart {
+  padding: 91px;
+  padding-bottom: 116px;
+  width: 64%;
+  height: 350px;
+  margin-bottom: 10px;
+  padding-left: 423px;
+}
+.radarChart {
+  padding: 122px;
+  padding-left: 417px;
+  width: 64.5%;
+  height: 350px;
+}
+}
 
-  .number > p {
-    margin-left: 130px;
-    /* font-size: 35px;
-    font-weight: bold;
-    margin-top: -36px;
-    color: #fff; */
+@media only screen and (width: 1024px) and (height: 768px) and (orientation: landscape) {
+  .Section {
+    margin: 5px;
+    width: 12.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 11px;
+    margin-left: 127px;
+}
+
+.STAGE768x1024 {
+  .Section {
+    margin: 5px;
+    width: 12.6rem;
+    position: relative;
+    z-index: 2;
+    margin-right: 11px;
+    margin-left: 127px;
+}
+
+}
+.filter-bar {
+  display: grid;
+  grid-template-columns: 185px 395px 175px 0px;
+  height: 215px;
+  width: 95%;
+}
+.DEPT768x1024{
+  margin: 5px;
+  width: 13.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 25px;
+  margin-left: 12px;
+}
+.FROM768x1024 {
+  margin: 5px;
+  width: 12.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 15px;
+  margin-left: 68px;
+}
+.TO768x1024 {
+  margin: 5px;
+  width: 12.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 15px;
+  margin-left: 2px;
+}
+.DateRange768x1024 {
+  margin: 5px;
+  width: 13.6rem;
+  position: relative;
+  z-index: 2;
+  margin-right: 25px;
+  margin-left: 12px;
+}
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 133px;
+  margin-left: 68px;
+}
+.summary-box {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  width: 40%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  color: white;
+  font-family: "Arial", sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+.barChart {
+  padding-top: 62px;
+  width: 77%;
+  height: 295px;
+  margin-bottom: 10px;
+  padding-left: 162px;
+}
+.pieChart {
+  width: 64%;
+  height: 350px;
+  margin-bottom: 10px;
+  padding-left: 213px;
+}
+.sidebar {
+  min-width: 3%;
+  /* max-width: 18%; */
+  height: 311vh;
+}
+.radarChart {
+  padding-left: 208px;
+  width: 61.5%;
+  height: 350px;
+}
+}
+@media only screen and (width: 1280px) and (height: 800px) and (orientation: landscape) {
+  .sidebar {
+      min-width: 3%;
+      max-width: 20%; /* Example: Adjusted max width specifically for 1280x800 */
+      height: 286vh; /* Example: Adjusted height specifically for 1280x800 */
   }
 }
+
